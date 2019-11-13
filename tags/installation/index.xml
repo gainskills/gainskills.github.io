@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Installation on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/installation/</link><description>Recent content in Installation on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 29 Nov 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/installation/index.xml" rel="self" type="application/rss+xml"/><item><title>Adding Realtek 8139 Driver to ESXi6</title><link>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</guid><description>Note: This is not an official guide, backup is required before you apply the driver. My Dell PC has two NICs:
+Intel I217-LM Realtek RTl-8139 and #2 Realtek 8139 is not supported by VMware EXSi.
+There are some guides about customize EXSi installation ISO to support the NIC, but I’m trying to find a way to apply the driver without reinstall EXSi.
+Here is a page which contains many NIC drivers: https://vibsdepot.</description></item><item><title>VSphere6, VCenter6 Installation</title><link>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</link><pubDate>Fri, 08 Jan 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</guid><description>Crash happened when I install Vsphere on my PC
+Solution: Disable option &amp;ldquo;Limit Maximum CPUID&amp;rdquo; in Bios
+VCenter appliance deployment
+Vmware doesn&amp;rsquo;t provide vcenter appliance in ova/ovf format anymore, follow the instruction to deploy it.
+Inventory is empty in VCenter webpage
+The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;
+Also, Vmware has a KB about this issue:</description></item></channel></rss>

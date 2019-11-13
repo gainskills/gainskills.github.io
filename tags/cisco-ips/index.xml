@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cisco IPS on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/cisco-ips/</link><description>Recent content in Cisco IPS on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 24 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/cisco-ips/index.xml" rel="self" type="application/rss+xml"/><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>Setup Cisco IPS on EVE
+I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via certcollection (mega)
+Followed the instructions for IPS Interfaces.
+and met the issue:
+Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute ping command.
+Related post on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE</description></item></channel></rss>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>operator on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/operator/</link><description>Recent content in operator on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/operator/index.xml" rel="self" type="application/rss+xml"/><item><title>os.path.join() or os.sep.join()?</title><link>https://blog.gainskills.top/2019/07/23/path-join/</link><pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/07/23/path-join/</guid><description>There are two functions join a full path. E.g.: In drive: C:
+|- test | |- test.xt os.path.join
+import os fullpath = os.path.join(&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;) Output on windows:
+c:test\test.txt Output on Mac OS c:/test/test.txt
+os.sep.join
+import os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
+c:\test\test.txt Output on Mac OS c:/test/test.txt
+From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expect on windows.</description></item><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>with Zip Read a block of pseudo Python code like comA = zip(lsA, lsB) comB = zip(*comA)
+then made a try to see how * works: 1 2 3 4 5 6 7 8 a = [1, 2, 3] b = [4, 5, 6] c = zip(a,b) for j in c: print(j) d = zip(*c) for i in d: print(i)
+and the output: (1, 4) (2, 5) (3, 6)</description></item><item><title>Python operator: double start(**)</title><link>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</guid><description>Here is the data:
+testdata = { &#39;a&#39; : 1, &#39;b&#39;: 2 } There are two ways to pass the data to a function
+Passing the data to the function
+def loop(data): for key, value in data.items(): print(key, value) loop(testdata) Passing the data with operator: **
+def loopStar(**kwargs): for key, value in kwargs.items(): print(key, value) loopStar(**testdata)</description></item></channel></rss>
