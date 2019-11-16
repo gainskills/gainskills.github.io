@@ -3,6 +3,7 @@ sitemap: https://blog.gainskills.top/sitemap.xml
 disallow: /img/avatar-kz.jpg
 disallow: /img/reward/
 allow: https://blog.gainskills.top/index.xml
+allow: https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-django/
 allow: https://blog.gainskills.top/2019/10/25/tips-for-newzealand/
 allow: https://blog.gainskills.top/2019/07/23/path-join/
 allow: https://blog.gainskills.top/2019/03/01/file-name-on-winos/
