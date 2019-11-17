@@ -40,6 +40,7 @@ allow: https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/
 allow: https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/
 allow: https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/
 allow: https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/
+allow: https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/
 allow: https://blog.gainskills.top/2016/07/21/loop-a-dict-to-update-key/
 allow: https://blog.gainskills.top/2016/06/07/python-sublimetext-anaconda/
 allow: https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/
