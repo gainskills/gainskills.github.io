@@ -8,18 +8,18 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/tc title=tc>tc</a>
 <a class=tag href=https://blog.gainskills.top/tags/traffic-control title="Traffic Control">Traffic Control</a></div><h1>tc-How it work on different IPs</h1><h3 class=subheading></h3><span class=meta>Posted on September 22, 2017</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><pre><code class=language-bash>#!/bin/bash
-interface=eth0
-ip1=192.168.1.1
-ip2=172.16.1.1
-delay1=100ms
-delay2=200ms
+post-container"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#!/bin/bash
+</span><span style=color:#75715e></span>interface<span style=color:#f92672>=</span>eth0
+ip1<span style=color:#f92672>=</span>192.168.1.1
+ip2<span style=color:#f92672>=</span>172.16.1.1
+delay1<span style=color:#f92672>=</span>100ms
+delay2<span style=color:#f92672>=</span>200ms
 tc qdisc add dev $interface root handle 1: prio
 tc qdisc add dev $interface parent 1:1 netem delay $delay1 10ms 25%
-tc filter add dev $interface parent 1: protocol ip prio 1 u32 match ip dst $ip1 flowid 1:1
+tc filter add dev $interface parent 1: protocol ip prio <span style=color:#ae81ff>1</span> u32 match ip dst $ip1 flowid 1:1
 tc qdisc add dev $interface parent 1:2 netem delay $delay2 10ms 25%
-tc filter add dev $interface parent 1: protocol ip prio 2 u32 match ip dst $ip2 flowid 1:2
-</code></pre><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+tc filter add dev $interface parent 1: protocol ip prio <span style=color:#ae81ff>2</span> u32 match ip dst $ip2 flowid 1:2
+</code></pre></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>tc-How it work on different IPs</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

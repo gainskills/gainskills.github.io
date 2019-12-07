@@ -9,33 +9,32 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/ipphone title=IPPhone>IPPhone</a>
 <a class=tag href=https://blog.gainskills.top/tags/troubleshooting title=Troubleshooting>Troubleshooting</a></div><h1>Trouble shooting: Cisco router DHCP No option 125</h1><h3 class=subheading></h3><span class=meta>Posted on November 13, 2013</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>Topology:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:264px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu9aa9ba89cbfca88f9bac8c6345399027_47500_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu9aa9ba89cbfca88f9bac8c6345399027_47500_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:300px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.</p><ol><li><p>start DHCP service by command:</p><pre><code class=language-bash>service dhcp
-</code></pre></li><li><p>debug on Cisco router to check DHCP request by the commands:</p><pre><code class=language-bash>debug ip dhcp server packet
+post-container"><p>Topology:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:264px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu9aa9ba89cbfca88f9bac8c6345399027_47500_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu9aa9ba89cbfca88f9bac8c6345399027_47500_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:300px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.</p><ol><li><p>start DHCP service by command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>service dhcp
+</code></pre></div></li><li><p>debug on Cisco router to check DHCP request by the commands:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>debug ip dhcp server packet
 terminal monitor
-</code></pre><p>Debug info :</p><pre><code class=language-log>DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
-</code></pre></li><li><p>configure DHCP</p><pre><code class=language-bash>ip dhcp pool ItalkBB
+</code></pre></div><p>Debug info :</p><pre><code class=language-log data-lang=log>DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
+</code></pre></li><li><p>configure DHCP</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ip dhcp pool ItalkBB
     host 10.0.0.127 255.255.255.0 //no mask configured, IP’s class mask assigned
     client-identifier 0100.1c23.3541
     default-router 10.10.10.99
-</code></pre><p>But italkBB can’t get IP from Cisco router 2811, and the error msg in debug info is:</p><pre><code>DHCPD: client’s VPN is .
+</code></pre></div><p>But italkBB can’t get IP from Cisco router 2811, and the error msg in debug info is:</p><pre><code>DHCPD: client’s VPN is .
 DHCPD: No option 125
 </code></pre><p>Checked DHCPREQUEST on Cisco Router in debugging mode:</p><pre><code>DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
-</code></pre></li><li><p>change client-identifier by command:</p><pre><code class=language-bash>client-identifier  0100.1c23.3541.98
-</code></pre></li></ol><p>ItalkBB works.</p><p>Note: from my understanding, the MAC of the iTalkBB should be &lsquo;0100.1c23.3541&rsquo;, in fact, the suffix: &lsquo;.98&rsquo; is required as a part of the identifier.</p><p>The basic config file for configuring DHCP SERVER on Cisco router</p><pre><code class=language-bash>service dhcp
+</code></pre></li><li><p>change client-identifier by command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>client-identifier  0100.1c23.3541.98
+</code></pre></div></li></ol><p>ItalkBB works.</p><p>Note: from my understanding, the MAC of the iTalkBB should be &lsquo;0100.1c23.3541&rsquo;, in fact, the suffix: &lsquo;.98&rsquo; is required as a part of the identifier.</p><p>The basic config file for configuring DHCP SERVER on Cisco router</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>service dhcp
 no ip dhcp conflict logging
 !
-ip dhcp pool 1
+ip dhcp pool <span style=color:#ae81ff>1</span>
  network 11.0.0.0 255.0.0.0
  default-router 11.0.0.1
 !
 interface GigabitEthernet0/1
  ip address 11.0.0.1 255.0.0.0
-</code></pre><p>A case from blog : <a href=http://www.embeddedsystemtesting.com/2013/07/no-option-125-error-from-cisco-dhcp.html rel="nofollow noreferrer" target=_blank>Embedded System Testing Blog</a></p><blockquote><p>“No option 125” error from Cisco DHCP server
-Problem : “No option 125” error was continuously repeating and DHCP Server on Cisco was not offering any IP address to the clients.</p><pre><code class=language-log>Jul 24 05:36:21.147: DHCPD: No option 125
+</code></pre></div><p>A case from blog : <a href=http://www.embeddedsystemtesting.com/2013/07/no-option-125-error-from-cisco-dhcp.html>Embedded System Testing Blog</a></p><blockquote><p>“No option 125” error from Cisco DHCP server
+Problem : “No option 125” error was continuously repeating and DHCP Server on Cisco was not offering any IP address to the clients.</p><pre><code class=language-log data-lang=log></code></pre></blockquote><p>Jul 24 05:36:21.147: DHCPD: No option 125
 Jul 24 05:36:21.147: DHCPD: DHCPDISCOVER received from client 001e.e5dc.ae.c0 on interface GigabitEthernet0/1.
 Jul 24 05:36:30.707: DHCPD: client’s VPN is .
-Jul 24 05:36:30.707: DHCPD: No option 125
-</code></pre><p>Solution: After some debugging, came to know that the problem is with the subnet configured on the Gigabit ethernet. For DHCP Server to offer the ip address at least one interface should be in the same network as the pool is defined. Once the subnet is properly configured, the Server started replying.</p></blockquote><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+Jul 24 05:36:30.707: DHCPD: No option 125</p><pre><code>&gt; Solution: After some debugging, came to know that the problem is with the subnet configured on the Gigabit ethernet. For DHCP Server to offer the ip address at least one interface should be in the same network as the pool is defined. Once the subnet is properly configured, the Server started replying.</code></pre><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>Trouble shooting: Cisco router DHCP No option 125</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

@@ -9,11 +9,12 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a>
 <a class=tag href=https://blog.gainskills.top/tags/web title=Web>Web</a></div><h1>aiohttp/aiodns-Resolving using custom nameservers</h1><h3 class=subheading></h3><span class=meta>Posted on January 23, 2019</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p><a href=https://github.com/aio-libs/aiohttp rel="nofollow noreferrer" target=_blank>aiohttp</a> is an Asynchronous HTTP client/server framework for asyncio and Python</p><p>I tried it because the features:</p><ul><li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache rel="nofollow noreferrer" target=_blank>Tuning the DNS cache</a></li><li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers rel="nofollow noreferrer" target=_blank>Resolving using custom nameservers</a></li></ul><p>With this, verifying the CDN&rsquo;s POPs with different ISPs&rsquo; DNS on single a point should be possible.</p><p>Since the code on the officical document is simple:</p><blockquote><pre><code class=language-python>from aiohttp.resolver import AsyncResolver
+post-container"><p><a href=https://github.com/aio-libs/aiohttp>aiohttp</a> is an Asynchronous HTTP client/server framework for asyncio and Python</p><p>I tried it because the features:</p><ul><li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache>Tuning the DNS cache</a></li><li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers>Resolving using custom nameservers</a></li></ul><p>With this, verifying the CDN's POPs with different ISPs&rsquo; DNS on single a point should be possible.</p><p>Since the code on the officical document is simple:</p><blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python></code></pre></div></blockquote><p>from aiohttp.resolver import AsyncResolver</p><p>resolver = AsyncResolver(nameservers=[&ldquo;8.8.8.8&rdquo;, &ldquo;8.8.4.4&rdquo;])
+conn = aiohttp.TCPConnector(resolver=resolver)</p><pre><code>
+I tried it with following code:
 
-resolver = AsyncResolver(nameservers=[&quot;8.8.8.8&quot;, &quot;8.8.4.4&quot;])
-conn = aiohttp.TCPConnector(resolver=resolver)
-</code></pre></blockquote><p>I tried it with following code:</p><pre><code class=language-python>import aiohttp
+~~~python
+import aiohttp
 import asyncio
 from aiohttp.resolver import AsyncResolver
 
@@ -25,76 +26,76 @@ async def dnstesting():
         print(r.text)
 
 asyncio.run(dnstesting())
-</code></pre><p>Run with following error:</p><pre><code class=language-python>/aiohttp-1.py:38: DeprecationWarning: The object should be created from async function
-  resolver = AsyncResolver(nameservers=[&quot;114.114.114.114&quot;])
-/aiohttp-1.py:41: DeprecationWarning: verify_ssl is deprecated, use ssl=False instead
-  async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) assession:
+</code></pre><p>Run with following error:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>38</span>: <span style=color:#a6e22e>DeprecationWarning</span>: The object should be created <span style=color:#f92672>from</span> async function
+  resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>114.114.114.114</span><span style=color:#e6db74>&#34;</span>])
+<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>41</span>: <span style=color:#a6e22e>DeprecationWarning</span>: verify_ssl <span style=color:#f92672>is</span> deprecated, use ssl<span style=color:#f92672>=</span>False instead
+  async <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span>False, use_dns_cache<span style=color:#f92672>=</span>False, resolver<span style=color:#f92672>=</span>resolver)) assession:
 Traceback (most recent call last):
-  File &quot;/aiohttp-1.py&quot;, line 51, in &lt;module&gt;
-    asyncio.run(dnstesting())
-  File &quot;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py&quot;, line 43, in run
-    return loop.run_until_complete(main)
-  File &quot;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py&quot;, line 584, in run_until_complete
-    return future.result()
-  File &quot;/aiohttp-1.py&quot;, line 42, in dnstesting
-    r = await session.get(&quot;http://google.com&quot;)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py&quot;, line 476, in _request
-    timeout=real_timeout
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 522, in connect
-    proto = await self._create_connection(req, traces, timeout)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 854, in _create_connection
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/aiohttp-1.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>51</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+    asyncio<span style=color:#f92672>.</span>run(dnstesting())
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>43</span>, <span style=color:#f92672>in</span> run
+    <span style=color:#66d9ef>return</span> loop<span style=color:#f92672>.</span>run_until_complete(main)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>584</span>, <span style=color:#f92672>in</span> run_until_complete
+    <span style=color:#66d9ef>return</span> future<span style=color:#f92672>.</span>result()
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/aiohttp-1.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>42</span>, <span style=color:#f92672>in</span> dnstesting
+    r <span style=color:#f92672>=</span> await session<span style=color:#f92672>.</span>get(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>http://google.com</span><span style=color:#e6db74>&#34;</span>)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>476</span>, <span style=color:#f92672>in</span> _request
+    timeout<span style=color:#f92672>=</span>real_timeout
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>522</span>, <span style=color:#f92672>in</span> connect
+    proto <span style=color:#f92672>=</span> await self<span style=color:#f92672>.</span>_create_connection(req, traces, timeout)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>854</span>, <span style=color:#f92672>in</span> _create_connection
     req, traces, timeout)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 955, in _create_d/aiohttp-1.py:38: DeprecationWarning: The object should be created from async function
-  resolver = AsyncResolver(nameservers=[&quot;114.114.114.114&quot;])
-/aiohttp-1.py:41: DeprecationWarning: verify_ssl is deprecated, use ssl=False instead
-  async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) assession:
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>955</span>, <span style=color:#f92672>in</span> _create_d<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>38</span>: <span style=color:#a6e22e>DeprecationWarning</span>: The object should be created <span style=color:#f92672>from</span> async function
+  resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>114.114.114.114</span><span style=color:#e6db74>&#34;</span>])
+<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>41</span>: <span style=color:#a6e22e>DeprecationWarning</span>: verify_ssl <span style=color:#f92672>is</span> deprecated, use ssl<span style=color:#f92672>=</span>False instead
+  async <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span>False, use_dns_cache<span style=color:#f92672>=</span>False, resolver<span style=color:#f92672>=</span>resolver)) assession:
 Traceback (most recent call last):
-  File &quot;/aiohttp-1.py&quot;, line 51, in &lt;module&gt;
-    asyncio.run(dnstesting())
-  File &quot;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py&quot;, line 43, in run
-    return loop.run_until_complete(main)
-  File &quot;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py&quot;, line 584, in run_until_complete
-    return future.result()
-  File &quot;/aiohttp-1.py&quot;, line 42, in dnstesting
-    r = await session.get(&quot;http://google.com&quot;)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py&quot;, line 476, in _request
-    timeout=real_timeout
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 522, in connect
-    proto = await self._create_connection(req, traces, timeout)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 854, in _create_connection
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/aiohttp-1.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>51</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+    asyncio<span style=color:#f92672>.</span>run(dnstesting())
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>43</span>, <span style=color:#f92672>in</span> run
+    <span style=color:#66d9ef>return</span> loop<span style=color:#f92672>.</span>run_until_complete(main)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>584</span>, <span style=color:#f92672>in</span> run_until_complete
+    <span style=color:#66d9ef>return</span> future<span style=color:#f92672>.</span>result()
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/aiohttp-1.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>42</span>, <span style=color:#f92672>in</span> dnstesting
+    r <span style=color:#f92672>=</span> await session<span style=color:#f92672>.</span>get(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>http://google.com</span><span style=color:#e6db74>&#34;</span>)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>476</span>, <span style=color:#f92672>in</span> _request
+    timeout<span style=color:#f92672>=</span>real_timeout
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>522</span>, <span style=color:#f92672>in</span> connect
+    proto <span style=color:#f92672>=</span> await self<span style=color:#f92672>.</span>_create_connection(req, traces, timeout)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>854</span>, <span style=color:#f92672>in</span> _create_connection
     req, traces, timeout)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 955, in _create_direct_connection
-    traces=traces), loop=self._loop)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 788, in _resolve_host
-    host, port, family=self._family))
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py&quot;, line 64, in resolve
-    resp = await self._resolver.gethostbyname(host, family)
-RuntimeError: Task &lt;Task pending coro=&lt;TCPConnector._resolve_host() running at /pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py:788&gt; cb=[shield.&lt;locals&gt;._done_callback() at /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/tasks.py:776]&gt; got Future &lt;Future pending&gt; attached to a different loop
-python3(38437,0x107b185c0) malloc: *** error for object 0x9000000000000000: pointer being freed was not allocated
-python3(38437,0x107b185c0) malloc: *** set a breakpoint in malloc_error_break to debug
-Abort trap: 6irect_connection
-    traces=traces), loop=self._loop)
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&quot;, line 788, in _resolve_host
-    host, port, family=self._family))
-  File &quot;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py&quot;, line 64, in resolve
-    resp = await self._resolver.gethostbyname(host, family)
-RuntimeError: Task &lt;Task pending coro=&lt;TCPConnector._resolve_host() running at /pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py:788&gt; cb=[shield.&lt;locals&gt;._done_callback() at /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/tasks.py:776]&gt; got Future &lt;Future pending&gt; attached to a different loop
-python3(38437,0x107b185c0) malloc: *** error for object 0x9000000000000000: pointer being freed was not allocated
-python3(38437,0x107b185c0) malloc: *** set a breakpoint in malloc_error_break to debug
-Abort trap: 6
-</code></pre><p>Did something debugging without any clue, with <a href=https://github.com/saghul rel="nofollow noreferrer" target=_blank>Saghul</a> and <a href=https://github.com/asvetlov rel="nofollow noreferrer" target=_blank>asvetlov</a>&rsquo;s help on the issue <a href=https://github.com/aio-libs/aiohttp/issues/3573 rel="nofollow noreferrer" target=_blank>#3573</a>, it works finally with: <em>Moving the resolver definition from outside of the function to inside</em>.</p><pre><code class=language-python>import asyncio
-import aiohttp
-from aiohttp.resolver import AsyncResolver
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>955</span>, <span style=color:#f92672>in</span> _create_direct_connection
+    traces<span style=color:#f92672>=</span>traces), loop<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_loop)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>788</span>, <span style=color:#f92672>in</span> _resolve_host
+    host, port, family<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_family))
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>64</span>, <span style=color:#f92672>in</span> resolve
+    resp <span style=color:#f92672>=</span> await self<span style=color:#f92672>.</span>_resolver<span style=color:#f92672>.</span>gethostbyname(host, family)
+<span style=color:#a6e22e>RuntimeError</span>: Task <span style=color:#f92672>&lt;</span>Task pending coro<span style=color:#f92672>=</span><span style=color:#f92672>&lt;</span>TCPConnector<span style=color:#f92672>.</span>_resolve_host() running at <span style=color:#f92672>/</span>pyvenvs<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>venv<span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#f92672>.</span><span style=color:#ae81ff>7</span><span style=color:#f92672>/</span>site<span style=color:#f92672>-</span>packages<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>connector<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>788</span><span style=color:#f92672>&gt;</span> cb<span style=color:#f92672>=</span>[shield<span style=color:#f92672>.</span><span style=color:#f92672>&lt;</span>locals<span style=color:#f92672>&gt;</span><span style=color:#f92672>.</span>_done_callback() at <span style=color:#f92672>/</span>Library<span style=color:#f92672>/</span>Frameworks<span style=color:#f92672>/</span>Python<span style=color:#f92672>.</span>framework<span style=color:#f92672>/</span>Versions<span style=color:#f92672>/</span><span style=color:#ae81ff>3.7</span><span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#f92672>.</span><span style=color:#ae81ff>7</span><span style=color:#f92672>/</span>asyncio<span style=color:#f92672>/</span>tasks<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>776</span>]<span style=color:#f92672>&gt;</span> got Future <span style=color:#f92672>&lt;</span>Future pending<span style=color:#f92672>&gt;</span> attached to a different loop
+python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>*</span><span style=color:#f92672>*</span><span style=color:#f92672>*</span> error <span style=color:#66d9ef>for</span> object <span style=color:#ae81ff>0x9000000000000000</span>: pointer being freed was <span style=color:#f92672>not</span> allocated
+python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>*</span><span style=color:#f92672>*</span><span style=color:#f92672>*</span> set a breakpoint <span style=color:#f92672>in</span> malloc_error_break to debug
+Abort trap: <span style=color:#ae81ff>6</span>irect_connection
+    traces<span style=color:#f92672>=</span>traces), loop<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_loop)
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>788</span>, <span style=color:#f92672>in</span> _resolve_host
+    host, port, family<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_family))
+  File <span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py</span><span style=color:#e6db74>&#34;</span>, line <span style=color:#ae81ff>64</span>, <span style=color:#f92672>in</span> resolve
+    resp <span style=color:#f92672>=</span> await self<span style=color:#f92672>.</span>_resolver<span style=color:#f92672>.</span>gethostbyname(host, family)
+<span style=color:#a6e22e>RuntimeError</span>: Task <span style=color:#f92672>&lt;</span>Task pending coro<span style=color:#f92672>=</span><span style=color:#f92672>&lt;</span>TCPConnector<span style=color:#f92672>.</span>_resolve_host() running at <span style=color:#f92672>/</span>pyvenvs<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>venv<span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#f92672>.</span><span style=color:#ae81ff>7</span><span style=color:#f92672>/</span>site<span style=color:#f92672>-</span>packages<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>connector<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>788</span><span style=color:#f92672>&gt;</span> cb<span style=color:#f92672>=</span>[shield<span style=color:#f92672>.</span><span style=color:#f92672>&lt;</span>locals<span style=color:#f92672>&gt;</span><span style=color:#f92672>.</span>_done_callback() at <span style=color:#f92672>/</span>Library<span style=color:#f92672>/</span>Frameworks<span style=color:#f92672>/</span>Python<span style=color:#f92672>.</span>framework<span style=color:#f92672>/</span>Versions<span style=color:#f92672>/</span><span style=color:#ae81ff>3.7</span><span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#f92672>.</span><span style=color:#ae81ff>7</span><span style=color:#f92672>/</span>asyncio<span style=color:#f92672>/</span>tasks<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>776</span>]<span style=color:#f92672>&gt;</span> got Future <span style=color:#f92672>&lt;</span>Future pending<span style=color:#f92672>&gt;</span> attached to a different loop
+python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>*</span><span style=color:#f92672>*</span><span style=color:#f92672>*</span> error <span style=color:#66d9ef>for</span> object <span style=color:#ae81ff>0x9000000000000000</span>: pointer being freed was <span style=color:#f92672>not</span> allocated
+python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>*</span><span style=color:#f92672>*</span><span style=color:#f92672>*</span> set a breakpoint <span style=color:#f92672>in</span> malloc_error_break to debug
+Abort trap: <span style=color:#ae81ff>6</span>
+</code></pre></div><p>Did something debugging without any clue, with <a href=https://github.com/saghul>Saghul</a> and <a href=https://github.com/asvetlov>asvetlov</a>&lsquo;s help on the issue <a href=https://github.com/aio-libs/aiohttp/issues/3573>#3573</a>, it works finally with: <em>Moving the resolver definition from outside of the function to inside</em>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> asyncio
+<span style=color:#f92672>import</span> aiohttp
+<span style=color:#f92672>from</span> aiohttp.resolver <span style=color:#f92672>import</span> AsyncResolver
 
-async def dnstesting():
-    resolver = AsyncResolver(nameservers=[&quot;114.114.114.114&quot;])
+async <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>dnstesting</span>():
+    resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>114.114.114.114</span><span style=color:#e6db74>&#34;</span>])
 
-    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) as session:
-        r = await session.get(&quot;http://google.com&quot;)
-        print(r.text)
+    async <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span>False, use_dns_cache<span style=color:#f92672>=</span>False, resolver<span style=color:#f92672>=</span>resolver)) <span style=color:#66d9ef>as</span> session:
+        r <span style=color:#f92672>=</span> await session<span style=color:#f92672>.</span>get(<span style=color:#e6db74></span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>http://google.com</span><span style=color:#e6db74>&#34;</span>)
+        <span style=color:#66d9ef>print</span>(r<span style=color:#f92672>.</span>text)
 
-asyncio.run(dnstesting())
-</code></pre><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+asyncio<span style=color:#f92672>.</span>run(dnstesting())
+</code></pre></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>aiohttp/aiodns-Resolving using custom nameservers</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

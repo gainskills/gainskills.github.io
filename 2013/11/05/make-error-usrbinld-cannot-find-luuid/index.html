@@ -9,15 +9,15 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/make title=Make>Make</a>
 <a class=tag href=https://blog.gainskills.top/tags/centos title=CentOS>CentOS</a></div><h1>make error :/usr/bin/ld: cannot find -luuid</h1><h3 class=subheading></h3><span class=meta>Posted on November 5, 2013</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>I met a make error in CentOS 6:</p><pre><code class=language-bash># make
+post-container"><p>I met a make error in CentOS 6:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># make</span>
 
 ......
 
 /usr/bin/ld: cannot find -luuid
- ld returned 1 exit status
-make: *** Error 1
-</code></pre><p>The way to fix this error is to install lib : uuid-devel</p><pre><code class=language-bash>yum -y install libuuid-devel
-</code></pre><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+ ld returned <span style=color:#ae81ff>1</span> exit status
+make: *** Error <span style=color:#ae81ff>1</span>
+</code></pre></div><p>The way to fix this error is to install lib : uuid-devel</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>yum -y install libuuid-devel
+</code></pre></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>make error :/usr/bin/ld: cannot find -luuid</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

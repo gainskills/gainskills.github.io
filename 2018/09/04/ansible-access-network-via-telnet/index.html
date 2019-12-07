@@ -9,137 +9,137 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/telnet title=Telnet>Telnet</a>
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a></div><h1>Ansible-Access Network via Telnet</h1><h3 class=subheading></h3><span class=meta>Posted on September 4, 2018</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>I’m learning <a href=https://www.ansible.com/ rel="nofollow noreferrer" target=_blank>Ansible</a> by reading the official document and some books like <a href=Ansible入门 rel="nofollow noreferrer" target=_blank>Ansible入门</a>. Most of the instructions show you how to deploy or maintenance the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.</p><p>The most import thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour from accessing the network device from CLI too.</p><p>I build a simple lab on EVE for testing: a Cios IOS switch for telnet access, a Cisco IOS router for SSH access.</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1208px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x200_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:200px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>then install Python, ansible on macOS High Sierra (it should be same on Linux, windows), here is the version info:</p><pre><code class=language-bash>ansible 2.6.3
-config file = None
-configured module search path = ['/Users/kz/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-ansible python module location = /Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible
-executable location = /Users/kz/Documents/C/ansibleprj/venv/bin/ansible
-python version = 3.7.0 (v3.7.0:1bf9cc5093, Jun 26 2018, 23:26:24) [Clang 6.0 (clang-600.0.57)]
-</code></pre><p>Ansible is designed to running over SSH, but there is a module: telnet extends its capbility to access network device via Telnet.</p><h3 id=part-1>Part 1</h3><h5 id=1-enable-telnet-on-device>1. Enable Telnet on device</h5><p>start device: SW on eve, configure IP, enable telnet from line vty, set username/password: test/test123</p><h5 id=2-new-inventory-telnet-yml>2. new inventory_telnet.yml</h5><pre><code class=language-yaml>---
-
-telnet:
+post-container"><p>I’m learning <a href=https://www.ansible.com/>Ansible</a> by reading the official document and some books like <a href=Ansible%E5%85%A5%E9%97%A8>Ansible入门</a>. Most of the instructions show you how to deploy or maintenance the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.</p><p>The most import thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour from accessing the network device from CLI too.</p><p>I build a simple lab on EVE for testing: a Cios IOS switch for telnet access, a Cisco IOS router for SSH access.</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1208px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x200_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:200px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>then install Python, ansible on macOS High Sierra (it should be same on Linux, windows), here is the version info:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible 2.6.3
+config file <span style=color:#f92672>=</span> None
+configured module search path <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;/Users/kz/.ansible/plugins/modules&#39;</span>, <span style=color:#e6db74>&#39;/usr/share/ansible/plugins/modules&#39;</span><span style=color:#f92672>]</span>
+ansible python module location <span style=color:#f92672>=</span> /Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible
+executable location <span style=color:#f92672>=</span> /Users/kz/Documents/C/ansibleprj/venv/bin/ansible
+python version <span style=color:#f92672>=</span> 3.7.0 <span style=color:#f92672>(</span>v3.7.0:1bf9cc5093, Jun <span style=color:#ae81ff>26</span> 2018, 23:26:24<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Clang 6.0 <span style=color:#f92672>(</span>clang-600.0.57<span style=color:#f92672>)</span><span style=color:#f92672>]</span>
+</code></pre></div><p>Ansible is designed to running over SSH, but there is a module: telnet extends its capbility to access network device via Telnet.</p><h3 id=part-1>Part 1</h3><h5 id=1-enable-telnet-on-device>1. Enable Telnet on device</h5><p>start device: SW on eve, configure IP, enable telnet from line vty, set username/password: test/test123</p><h5 id=2-new-inventorytelnetyml>2. new inventory_telnet.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>telnet:</span>
 hosts:
     sw1:
-    ansible_host: &quot;192.168.1.100&quot;
-</code></pre><p>Note: I use YAML format though ini format should also work because <a href=https://github.com/ansible/ansible/issues/43897 rel="nofollow noreferrer" target=_blank>Misleading documentation, it shows that you can store vaulted passwords in INI files but it does not work #43897</a></p><h5 id=3-new-playbook-pb-telnet-yml>3. new playbook: pb_telnet.yml</h5><pre><code class=language-yaml>---
-
-- name: show version
+    ansible_host: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
+</code></pre></div><p>Note: I use YAML format though ini format should also work because <a href=https://github.com/ansible/ansible/issues/43897>Misleading documentation, it shows that you can store vaulted passwords in INI files but it does not work #43897</a></p><h5 id=3-new-playbook-pbtelnetyml>3. new playbook: pb_telnet.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: show version</span>
   hosts: telnet
-  gather_facts: false
+  gather_facts: <span style=color:#66d9ef>false</span>
   connection: local
   tasks:
     - name: telnet sw
       telnet:
         user: test
         password: test123
-        login_prompt: &quot;Username: &quot;
+        login_prompt: <span style=color:#e6db74>&#34;Username: &#34;</span>
         prompts:
-          - '[&gt;|#]'
+          - <span style=color:#e6db74>&#39;[&gt;|#]&#39;</span>
         command:
-          - terminal length 0
+          - terminal length <span style=color:#ae81ff>0</span>
           - show version
-</code></pre><p>The playbook will connect to the device: sw, and run command show version</p><h5 id=4-run-playbook>4.run playbook</h5><p>Run the task by the command:</p><pre><code class=language-bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
-</code></pre><h5 id=5-debugging>5. Debugging</h5><p>Unfortunately, the task failed to run:</p><pre><code class=language-bash>(venv) KZs-MacBook-Pro:pys kz$ ansible-playbook -i inventory_telnet.yml pb_telnet.yml
-PLAY [show version] ***********************************************************************************************************************************
-TASK [telnet sw] **************************************************************************************************************************************
-An exception occurred during task execution. To see the full traceback, use -vvv. The error was: TypeError: argument should be integer or bytes-like object, not 'AnsibleUnicode'
-fatal: [sw1]: FAILED! =&gt; {&quot;msg&quot;: &quot;Unexpected failure during module execution.&quot;, &quot;stdout&quot;: &quot;&quot;}
+</code></pre></div><p>The playbook will connect to the device: sw, and run command show version</p><h5 id=4run-playbook>4.run playbook</h5><p>Run the task by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
+</code></pre></div><h5 id=5-debugging>5. Debugging</h5><p>Unfortunately, the task failed to run:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>(</span>venv<span style=color:#f92672>)</span> KZs-MacBook-Pro:pys kz$ ansible-playbook -i inventory_telnet.yml pb_telnet.yml
+PLAY <span style=color:#f92672>[</span>show version<span style=color:#f92672>]</span> ***********************************************************************************************************************************
+TASK <span style=color:#f92672>[</span>telnet sw<span style=color:#f92672>]</span> **************************************************************************************************************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: TypeError: argument should be integer or bytes-like object, not <span style=color:#e6db74>&#39;AnsibleUnicode&#39;</span>
+fatal: <span style=color:#f92672>[</span>sw1<span style=color:#f92672>]</span>: FAILED! <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;msg&#34;</span>: <span style=color:#e6db74>&#34;Unexpected failure during module execution.&#34;</span>, <span style=color:#e6db74>&#34;stdout&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>}</span>
 to retry, use: --limit @/Users/kz/Documents/C/ansibleprj/pys/pb_telnet.retry
 PLAY RECAP ********************************************************************************************************************************************
-sw1 : ok=0 changed=0 unreachable=0 failed=1
-</code></pre><p>Debugging it by the command:</p><pre><code class=language-bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml -vvv
-</code></pre><p>get the full stack:</p><pre><code class=language-bash>task path: /Users/kz/Documents/C/ansibleprj/pys/pb_telnet.yml:8
+sw1 : ok<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> changed<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> unreachable<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> failed<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</code></pre></div><p>Debugging it by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml -vvv
+</code></pre></div><p>get the full stack:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>task path: /Users/kz/Documents/C/ansibleprj/pys/pb_telnet.yml:8
 The full traceback is:
-Traceback (most recent call last):
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/executor/task_executor.py&quot;, line 139, in run
-res = self._execute()
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/executor/task_executor.py&quot;, line 577, in _execute
-result = self._handler.run(task_vars=variables)
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/action/telnet.py&quot;, line 69, in run
-tn.read_until(login_prompt)
-File &quot;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/telnetlib.py&quot;, line 302, in read_until
-i = self.cookedq.find(match)
-TypeError: argument should be integer or bytes-like object, not 'AnsibleUnicode'
-fatal: [sw1]: FAILED! =&gt; {
-&quot;msg&quot;: &quot;Unexpected failure during module execution.&quot;,
-&quot;stdout&quot;: &quot;&quot;
-}
+Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/executor/task_executor.py&#34;</span>, line 139, in run
+res <span style=color:#f92672>=</span> self._execute<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/executor/task_executor.py&#34;</span>, line 577, in _execute
+result <span style=color:#f92672>=</span> self._handler.run<span style=color:#f92672>(</span>task_vars<span style=color:#f92672>=</span>variables<span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/action/telnet.py&#34;</span>, line 69, in run
+tn.read_until<span style=color:#f92672>(</span>login_prompt<span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/telnetlib.py&#34;</span>, line 302, in read_until
+i <span style=color:#f92672>=</span> self.cookedq.find<span style=color:#f92672>(</span>match<span style=color:#f92672>)</span>
+TypeError: argument should be integer or bytes-like object, not <span style=color:#e6db74>&#39;AnsibleUnicode&#39;</span>
+fatal: <span style=color:#f92672>[</span>sw1<span style=color:#f92672>]</span>: FAILED! <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>{</span>
+<span style=color:#e6db74>&#34;msg&#34;</span>: <span style=color:#e6db74>&#34;Unexpected failure during module execution.&#34;</span>,
+<span style=color:#e6db74>&#34;stdout&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>
+<span style=color:#f92672>}</span>
 to retry, use: --limit @/Users/kz/Documents/C/ansibleprj/pys/pb_telnet.retryPLAY RECAP ********************************************************************************************************************************************
-sw1 : ok=0 changed=0 unreachable=0 failed=1
-</code></pre><p>Searched on Google and find it’s a known issue in current version:Ansible <a href="Ansible Cisco IOS – Telnet" rel="nofollow noreferrer" target=_blank>Cisco IOS – Telnet</a>, what I did is copy the latest telnet.py from <a href=https://github.com/ansible/ansible/pull/43609/files/ac393ff504e08d6c87f868fb647099270c859bfa rel="nofollow noreferrer" target=_blank>telnet action plugin type error #43609</a> to my ansible (Share my path for reference: /Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/action/telnet.py).</p><p>Run the playbook again:</p><pre><code class=language-bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
-</code></pre><p>everything works as expected:</p><pre><code class=language-bash>PLAY [show version] ***********************************************************************************************************************************
-TASK [telnet sw] **************************************************************************************************************************************
-changed: [sw1]
+sw1 : ok<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> changed<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> unreachable<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> failed<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</code></pre></div><p>Searched on Google and find it’s a known issue in current version:Ansible [Cisco IOS – Telnet](Ansible Cisco IOS – Telnet), what I did is copy the latest telnet.py from <a href=https://github.com/ansible/ansible/pull/43609/files/ac393ff504e08d6c87f868fb647099270c859bfa>telnet action plugin type error #43609</a> to my ansible (Share my path for reference: /Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/action/telnet.py).</p><p>Run the playbook again:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
+</code></pre></div><p>everything works as expected:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>PLAY <span style=color:#f92672>[</span>show version<span style=color:#f92672>]</span> ***********************************************************************************************************************************
+TASK <span style=color:#f92672>[</span>telnet sw<span style=color:#f92672>]</span> **************************************************************************************************************************************
+changed: <span style=color:#f92672>[</span>sw1<span style=color:#f92672>]</span>
 PLAY RECAP ********************************************************************************************************************************************
-sw1 : ok=1 changed=1 unreachable=0 failed=0
-</code></pre><h3 id=part-2>Part 2</h3><h5 id=a-minor-improvement>A minor Improvement</h5><p>I still don’t want to save the password in cleartext as what I did in Part 1 (the password was defined in the playbook).</p><p>But I find it will only retrieve the password form playbook and won’t try the credential which was defined in inventory file after I went through telnet.py:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1436px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x344_resize_q20_catmullrom_2.png data-fancybox data-caption=Telnet.py><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Telnet.py style=height:400px></a><figcaption class=text-capitalize><small>Telnet.py</small></figcaption></figure></div><p>so, refer to other modules, I made some change: <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py rel="nofollow noreferrer" target=_blank>ansible-telnet</a> so that that <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py rel="nofollow noreferrer" target=_blank>telnet.py</a> can retrieve the info from inventory file. update the inventory with the telnet.py:</p><pre><code class=language-yaml>---
-
-telnet:
+sw1 : ok<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> changed<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> unreachable<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> failed<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</code></pre></div><h3 id=part-2>Part 2</h3><h5 id=a-minor-improvement>A minor Improvement</h5><p>I still don’t want to save the password in cleartext as what I did in Part 1 (the password was defined in the playbook).</p><p>But I find it will only retrieve the password form playbook and won’t try the credential which was defined in inventory file after I went through telnet.py:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1436px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x344_resize_q20_catmullrom_2.png data-fancybox data-caption=Telnet.py><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Telnet.py style=height:400px></a><figcaption class=text-capitalize><small>Telnet.py</small></figcaption></figure></div><p>so, refer to other modules, I made some change: <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py>ansible-telnet</a> so that that <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py>telnet.py</a> can retrieve the info from inventory file. update the inventory with the telnet.py:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>telnet:</span>
   hosts:
     sw1:
-      ansible_host: &quot;192.168.1.100&quot;
+      ansible_host: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
       connection: local
       ansible_ssh_user: test
       ansible_ssh_pass: test123
-      ansible_ssh_timeout: 2
-      ansible_ssh_port: 23
-</code></pre><p>then playbook file:</p><pre><code class=language-yaml>---
-
-- name: show version
+      ansible_ssh_timeout: <span style=color:#ae81ff>2</span>
+      ansible_ssh_port: <span style=color:#ae81ff>23</span>
+</code></pre></div><p>then playbook file:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: show version</span>
   hosts: telnet
-  gather_facts: false
-  # connection: local
+  gather_facts: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e># connection: local</span>
   tasks:
     - name: CM via telnet
       telnet:
-        login_prompt: &quot;Username: &quot;
+        login_prompt: <span style=color:#e6db74>&#34;Username: &#34;</span>
         prompts:
-          - '[&gt;|#]'
+          - <span style=color:#e6db74>&#39;[&gt;|#]&#39;</span>
         command:
-          - terminal length 0
+          - terminal length <span style=color:#ae81ff>0</span>
           - show version
-</code></pre><p>Verify the change by the same cmd:</p><pre><code>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
-</code></pre><h5 id=encrypt-the-password>encrypt the password</h5><p>password can be encrypted by “ansible-vault” command:</p><pre><code class=language-bash>ansible-vault encrypt_string --vault-id test@prompt 'test123' --name 'ansible_ssh_pass'
-</code></pre><p>I use the password: test123 to encrypt the string.</p><p>Update the hashed string to inventory file:</p><pre><code class=language-yaml>---
-
-telnet:
+</code></pre></div><p>Verify the change by the same cmd:</p><pre><code>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
+</code></pre><h5 id=encrypt-the-password>encrypt the password</h5><p>password can be encrypted by “ansible-vault” command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-vault encrypt_string --vault-id test@prompt <span style=color:#e6db74>&#39;test123&#39;</span> --name <span style=color:#e6db74>&#39;ansible_ssh_pass&#39;</span>
+</code></pre></div><p>I use the password: test123 to encrypt the string.</p><p>Update the hashed string to inventory file:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>telnet:</span>
 hosts:
     sw1:
-    ansible_host: &quot;192.168.1.100&quot;
+    ansible_host: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
     connection: local
     ansible_ssh_user: test
-    ansible_ssh_pass: !vault |
-        $ANSIBLE_VAULT;1.2;AES256;test
-        63386332356237643731346539336262336231343432313963376438653933323737636535383365
+    ansible_ssh_pass: !vault <span style=color:#e6db74>|
+</span><span style=color:#e6db74>       </span><span style=color:#e6db74> </span><span style=color:#e6db74>$ANSIBLE_VAULT;1.2;AES256;test</span>
+        <span style=color:#ae81ff>63386332356237643731346539336262336231343432313963376438653933323737636535383365</span>
         3562383633646261653739343536386566323462323063320a613638373439363032353137343330
-        34306264613932323832373532636230323730626239393564326564303563356666343734633135
+        <span style=color:#ae81ff>34306264613932323832373532636230323730626239393564326564303563356666343734633135</span>
         6664373266663238660a363666336661353364393437356433616462346331313537623430393861
-        3536
-    ansible_ssh_timeout: 2
-    ansible_ssh_port: 23
-</code></pre><p>Verify it by the command:</p><pre><code class=language-bash>ansible-playbook -i inventory_telnet.yml --vault-id test@prompt pb_telnet.yml
-</code></pre><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1778px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/9-opt_hu3f0bd835a8fbe13b3432dda9ffb5dbac_18565_0x324_resize_q20_catmullrom_2.png data-fancybox data-caption=result&#32;with&#32;vault><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/9-opt_hu3f0bd835a8fbe13b3432dda9ffb5dbac_18565_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=result&#32;with&#32;vault style=height:400px></a><figcaption class=text-capitalize><small>result with vault</small></figcaption></figure></div><h3 id=part-3>Part 3</h3><p>Update1 (20180916)</p><p>Thanks for <a href=https://hanbaobao2005.wordpress.com/2018/09/04/ansible-beginner-telnet-access-network/#comment-301 rel="nofollow noreferrer" target=_blank>Stefan P’s comment</a> about the command: “show version | include uptime”. Tried it and find that the strings after ‘|’ were cutted:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1556px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/16-opt_hu8ad724876d893668f2abb5edb8c8f16a_8856_0x254_resize_q20_catmullrom_2.png data-fancybox data-caption=Pipe><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/16-opt_hu8ad724876d893668f2abb5edb8c8f16a_8856_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Pipe style=height:400px></a><figcaption class=text-capitalize><small>Pipe</small></figcaption></figure></div><p>Read the code</p><ul><li><p>line 80 of telnet.py:</p><pre><code class=language-python>tn.expect(list(map(to_bytes, prompts)))
-</code></pre></li><li><p>line 652 and 654 of telnet.py:</p><pre><code class=language-python>return self._expect_with_poll(list, timeout)
-returnself._expect_with_select(list, timeout)
-</code></pre></li><li><p>line 667 and line 731 of telnet.py:</p><pre><code class=language-python>list[i] = re.compile(list[i])
-</code></pre></li></ul><p>prompts of playbook actually work as the regular expression match, this is why “|” in <a href=https://docs.ansible.com/ansible/latest/modules/telnet_module.html rel="nofollow noreferrer" target=_blank>ansible official sample</a> because ‘|’ works for either ‘&gt;’ or ‘ #’. Since [] in Python RE works as single character match, remove “|” from playbook can work:</p><pre><code class=language-yaml>---
-
-- name: show version
+        <span style=color:#ae81ff>3536</span>
+    ansible_ssh_timeout: <span style=color:#ae81ff>2</span>
+    ansible_ssh_port: <span style=color:#ae81ff>23</span>
+</code></pre></div><p>Verify it by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_telnet.yml --vault-id test@prompt pb_telnet.yml
+</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1778px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/9-opt_hu3f0bd835a8fbe13b3432dda9ffb5dbac_18565_0x324_resize_q20_catmullrom_2.png data-fancybox data-caption="result with vault"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/9-opt_hu3f0bd835a8fbe13b3432dda9ffb5dbac_18565_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="result with vault" style=height:400px></a><figcaption class=text-capitalize><small>result with vault</small></figcaption></figure></div><h3 id=part-3>Part 3</h3><p>Update1 (20180916)</p><p>Thanks for <a href=https://hanbaobao2005.wordpress.com/2018/09/04/ansible-beginner-telnet-access-network/#comment-301>Stefan P’s comment</a> about the command: “show version | include uptime”. Tried it and find that the strings after ‘|’ were cutted:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1556px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/16-opt_hu8ad724876d893668f2abb5edb8c8f16a_8856_0x254_resize_q20_catmullrom_2.png data-fancybox data-caption=Pipe><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/16-opt_hu8ad724876d893668f2abb5edb8c8f16a_8856_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Pipe style=height:400px></a><figcaption class=text-capitalize><small>Pipe</small></figcaption></figure></div><p>Read the code</p><ul><li>line 80 of telnet.py:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>tn<span style=color:#f92672>.</span>expect(list(map(to_bytes, prompts)))
+</code></pre></div><ul><li>line 652 and 654 of telnet.py:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>return</span> self<span style=color:#f92672>.</span>_expect_with_poll(list, timeout)
+returnself<span style=color:#f92672>.</span>_expect_with_select(list, timeout)
+</code></pre></div><ul><li>line 667 and line 731 of telnet.py:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>list[i] <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>compile(list[i])
+</code></pre></div><p>prompts of playbook actually work as the regular expression match, this is why “|” in <a href=https://docs.ansible.com/ansible/latest/modules/telnet_module.html>ansible official sample</a> because ‘|’ works for either ‘>’ or ‘ #’. Since [] in Python RE works as single character match, remove “|” from playbook can work:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: show version</span>
   hosts: telnet
-  gather_facts: false
-  # connection: local
+  gather_facts: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e># connection: local</span>
   tasks:
     - name: CM via telnet
       telnet:
-        login_prompt: &quot;Username: &quot;
+        login_prompt: <span style=color:#e6db74>&#34;Username: &#34;</span>
         prompts:
-          - '[&gt;#]'
+          - <span style=color:#e6db74>&#39;[&gt;#]&#39;</span>
         command:
-          - terminal length 0
+          - terminal length <span style=color:#ae81ff>0</span>
           - show version | include uptime
           - show version | include Processor board ID
           - exit
-</code></pre><p>Output:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1997px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/15-opt_hu29924ca1f8291984c7b307c935c91b9d_14453_0x270_resize_q20_catmullrom_2.png data-fancybox data-caption=works><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/15-opt_hu29924ca1f8291984c7b307c935c91b9d_14453_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=works style=height:400px></a><figcaption class=text-capitalize><small>works</small></figcaption></figure></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+</code></pre></div><p>Output:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1997px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/15-opt_hu29924ca1f8291984c7b307c935c91b9d_14453_0x270_resize_q20_catmullrom_2.png data-fancybox data-caption=works><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/15-opt_hu29924ca1f8291984c7b307c935c91b9d_14453_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=works style=height:400px></a><figcaption class=text-capitalize><small>works</small></figcaption></figure></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>Ansible-Access Network via Telnet</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

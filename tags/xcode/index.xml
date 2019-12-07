@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xcode on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/xcode/</link><description>Recent content in Xcode on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/xcode/index.xml" rel="self" type="application/rss+xml"/><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:
-Install Jenkins Install Xcode plugin on Jenkins New a ‘Freestyle project’ on Jenkins Jenkins project configuration
+Install Jenkins
+Install Xcode plugin on Jenkins
+New a ‘Freestyle project’ on Jenkins
+Jenkins project configuration
 ‘Source Code Management’ on Jenkins ‘Build’ setting on Jenkins Jenkins Project -&amp;gt; ‘Build Now’
-Errors:
-CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.</description></item></channel></rss>
+Errors:</description></item></channel></rss>

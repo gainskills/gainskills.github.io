@@ -9,15 +9,15 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/ssh title=SSH>SSH</a>
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a></div><h1>Ansible-Access Network via SSH</h1><h3 class=subheading></h3><span class=meta>Posted on September 4, 2018</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>After <a href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/>Telnet</a>, continue to discuss how to access network device via SSH with Ansible.</p><p>For SSH access, we should consider 3 methods:</p><ol><li>Username/password</li><li>Username/Public-Key without password</li><li>Username/Public-Key with password</li></ol><p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:2113px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x350_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:350px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><h5 id=enable-ssh-on-the-router>Enable SSH on the router</h5><p>Jump #1 username/password part to public key configuration, I discussed <a href=https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/>how to configure public key on IOS router with Putty</a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</p><p>Considering Cisco IOS device support RSA key only, I generate keys by the command:</p><pre><code class=language-bash>ssh-keygen -t rsa -b 1024
-</code></pre><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:708px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/8-opt_hu72d1c57ae0663a0b246410b6e1bac2f7_38596_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=SSH&#32;key><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/8-opt_hu72d1c57ae0663a0b246410b6e1bac2f7_38596_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=SSH&#32;key style=height:300px></a><figcaption class=text-capitalize><small>SSH key</small></figcaption></figure></div><p>Keep passphrase empty is for Case#2.</p><h5 id=configuration-for-ssh-access>Configuration for SSH access</h5><p>Because I run all the 3 cases on the same one device, here the points I must care:</p><ul><li><p>Share SSH Sessions</p><p>The name of the feature of Ansible should be ‘Cache Connections’, refer to the description in the issue: <a href=https://github.com/ansible/ansible/issues/12006 rel="nofollow noreferrer" target=_blank>ansible is caching connections?</a>: Ansible itself does not cache connections, but if you ssh is new enough it will be using control master/persist which allows ssh itself to cache connections, you can disable this by overriding ssh args in ansible.cfg or switching to paramiko as a transport. (Here is a <a href="https://www.youtube.com/watch?v=GGYOkwgEGfc&amp;feature=share" rel="nofollow noreferrer" target=_blank>demo</a> about how Putty supports it)</p></li><li><p><a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking rel="nofollow noreferrer" target=_blank>Host Key Checking</a></p><p>From my understanding, it will compare the fingerprint of the host to see whether it’s a known host or not
-For sake of methods testing, I configured secondary IPs (192.168.1.98, 192.168.1.97) and named the IP different names, <a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking rel="nofollow noreferrer" target=_blank>disabled Host Key Checking</a>.</p></li></ul><h5 id=new-inventory-inventory-ssh-yml>new inventory: inventory_ssh.yml</h5><pre><code class=language-yaml>---
+post-container"><p>After <a href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/>Telnet</a>, continue to discuss how to access network device via SSH with Ansible.</p><p>For SSH access, we should consider 3 methods:</p><ol><li>Username/password</li><li>Username/Public-Key without password</li><li>Username/Public-Key with password</li></ol><p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:2113px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x350_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:350px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><h5 id=enable-ssh-on-the-router>Enable SSH on the router</h5><p>Jump #1 username/password part to public key configuration, I discussed <a href=https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/>how to configure public key on IOS router with Putty</a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</p><p>Considering Cisco IOS device support RSA key only, I generate keys by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ssh-keygen -t rsa -b <span style=color:#ae81ff>1024</span>
+</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:708px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/8-opt_hu72d1c57ae0663a0b246410b6e1bac2f7_38596_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="SSH key"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/8-opt_hu72d1c57ae0663a0b246410b6e1bac2f7_38596_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="SSH key" style=height:300px></a><figcaption class=text-capitalize><small>SSH key</small></figcaption></figure></div><p>Keep passphrase empty is for Case#2.</p><h5 id=configuration-for-ssh-access>Configuration for SSH access</h5><p>Because I run all the 3 cases on the same one device, here the points I must care:</p><ul><li><p>Share SSH Sessions</p><p>The name of the feature of Ansible should be ‘Cache Connections’, refer to the description in the issue: <a href=https://github.com/ansible/ansible/issues/12006>ansible is caching connections?</a>: Ansible itself does not cache connections, but if you ssh is new enough it will be using control master/persist which allows ssh itself to cache connections, you can disable this by overriding ssh args in ansible.cfg or switching to paramiko as a transport. (Here is a <a href="https://www.youtube.com/watch?v=GGYOkwgEGfc&feature=share">demo</a> about how Putty supports it)</p></li><li><p><a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking>Host Key Checking</a></p><p>From my understanding, it will compare the fingerprint of the host to see whether it’s a known host or not
+For sake of methods testing, I configured secondary IPs (192.168.1.98, 192.168.1.97) and named the IP different names, <a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking>disabled Host Key Checking</a>.</p></li></ul><h5 id=new-inventory-inventorysshyml>new inventory: inventory_ssh.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
 user:
   hosts:
     user_R:
-      ansible_host: &quot;192.168.1.97&quot;
+      ansible_host: <span style=color:#e6db74>&#34;192.168.1.97&#34;</span>
   vars:
-    ansible_network_os: &quot;ios&quot;
+    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
     ansible_ssh_user: test
     ansible_ssh_pass: test123
 
@@ -25,25 +25,25 @@ user:
 pubkeynopass:
   hosts:
     pubkeynopass_R:
-      ansible_host: &quot;192.168.1.98&quot;
+      ansible_host: <span style=color:#e6db74>&#34;192.168.1.98&#34;</span>
   vars:
-    ansible_network_os: &quot;ios&quot;
+    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
     ansible_ssh_user: sshpubkey
-    ansible_ssh_private_key_file: '/Users/kz/Documents/SSH/tmp/id_rsa_nokey'
+    ansible_ssh_private_key_file: <span style=color:#e6db74>&#39;/Users/kz/Documents/SSH/tmp/id_rsa_nokey&#39;</span>
 
 
 pubkeypass:
   hosts:
     pubkeypass_R:
-      ansible_host: &quot;192.168.1.99&quot;
+      ansible_host: <span style=color:#e6db74>&#34;192.168.1.99&#34;</span>
   vars:
-    ansible_network_os: &quot;ios&quot;
+    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
     ansible_ssh_user: sshpubkeypass
     ansible_ssh_private_key_file: /Users/kz/Documents/SSH/tmp/id_rsa_pass
     ansible_ssh_pass: test123
-</code></pre><p>Note: For the public key with password case, instead of SSH password, ‘ansible_ssh_pass’ is for the key’s password.</p><h5 id=new-playbook-pb-first-yml>New playbook: pb_first.yml</h5><pre><code class=language-yaml>---
-
-- name: ssh username/password
+</code></pre></div><p>Note: For the public key with password case, instead of SSH password, ‘ansible_ssh_pass’ is for the key’s password.</p><h5 id=new-playbook-pbfirstyml>New playbook: pb_first.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
+</span><span style=color:#e6db74></span><span style=color:#e6db74>
+</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: ssh username/password</span>
   connection: network_cli
   hosts: user
   become_method: enable
@@ -54,7 +54,7 @@ pubkeypass:
 
     - name: Display the config
       debug:
-        msg: &quot;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&quot;
+        msg: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
 
 
 - name: ssh username/keyWithoutPassword
@@ -68,7 +68,7 @@ pubkeypass:
 
     - name: Display the config
       debug:
-        msg: &quot;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&quot;
+        msg: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
 
 
 - name: ssh username/keyWithPassword
@@ -82,41 +82,41 @@ pubkeypass:
 
     - name: Display the config
       debug:
-        msg: &quot;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&quot;
-</code></pre><h5 id=run-playbook>Run playbook</h5><p>Run the playbook by executing the command:</p><pre><code class=language-bash>ansible-playbook -i inventory_ssh.yml pb_first.yml
-</code></pre><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:524px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=Run&#32;Playbook><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x500_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Run&#32;Playbook style=height:500px></a><figcaption class=text-capitalize><small>Run Playbook</small></figcaption></figure></div><h5 id=how-to-verify>How to verify?</h5><p>From the inventory file, you can see that I use different users for different methods, you can run ‘show users’ command on the IOS router to see if device was accessed by different users:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:586px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption=username&#32;password><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=username&#32;password style=height:80px></a><figcaption class=text-capitalize><small>username password</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:575px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption=public&#32;key&#32;nopass><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=public&#32;key&#32;nopass style=height:80px></a><figcaption class=text-capitalize><small>public key nopass</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:568px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x158_resize_q20_catmullrom_2.png data-fancybox data-caption=public&#32;key&#32;with&#32;password><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=public&#32;key&#32;with&#32;password style=height:80px></a><figcaption class=text-capitalize><small>public key with password</small></figcaption></figure></div><p>*** End ***</p><p>Reference:</p><ul><li><p><a href=https://www.ssh.com/ssh/keygen/ rel="nofollow noreferrer" target=_blank>https://www.ssh.com/ssh/keygen/</a></p><p>How to generate the keys</p></li><li><p><a href=https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c rel="nofollow noreferrer" target=_blank>https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c</a></p><p>How to run SSH with SSH-add as ansible recommended: Ansible does not expose a channel to allow communication between the user and the ssh process to accept a password manually to decrypt an ssh key when using the ssh connection plugin (which is the default). The use of ssh-agent is highly recommended.</p></li><li><p><a href=https://gist.github.com/yaegashi/9660f147cc8a5dfff339 rel="nofollow noreferrer" target=_blank>https://gist.github.com/yaegashi/9660f147cc8a5dfff339</a></p><p>A sample reminds me that ansible_ssh_pass should work for the key.</p></li><li><p>The output of Ansible cache connections error:</p><pre><code class=language-bash>PLAY [ssh username/password] **************************************************************************************************************************
-TASK [Gathering Facts] ********************************************************************************************************************************
+        msg: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
+</code></pre></div><h5 id=run-playbook>Run playbook</h5><p>Run the playbook by executing the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_ssh.yml pb_first.yml
+</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:524px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="Run Playbook"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x500_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="Run Playbook" style=height:500px></a><figcaption class=text-capitalize><small>Run Playbook</small></figcaption></figure></div><h5 id=how-to-verify>How to verify?</h5><p>From the inventory file, you can see that I use different users for different methods, you can run ‘show users’ command on the IOS router to see if device was accessed by different users:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:586px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption="username password"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="username password" style=height:80px></a><figcaption class=text-capitalize><small>username password</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:575px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption="public key nopass"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="public key nopass" style=height:80px></a><figcaption class=text-capitalize><small>public key nopass</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:568px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x158_resize_q20_catmullrom_2.png data-fancybox data-caption="public key with password"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="public key with password" style=height:80px></a><figcaption class=text-capitalize><small>public key with password</small></figcaption></figure></div><p>*** End ***</p><p>Reference:</p><ul><li><p><a href=https://www.ssh.com/ssh/keygen/><a href=https://www.ssh.com/ssh/keygen/>https://www.ssh.com/ssh/keygen/</a></a></p><p>How to generate the keys</p></li><li><p><a href=https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c><a href=https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c>https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c</a></a></p><p>How to run SSH with SSH-add as ansible recommended: Ansible does not expose a channel to allow communication between the user and the ssh process to accept a password manually to decrypt an ssh key when using the ssh connection plugin (which is the default). The use of ssh-agent is highly recommended.</p></li><li><p><a href=https://gist.github.com/yaegashi/9660f147cc8a5dfff339><a href=https://gist.github.com/yaegashi/9660f147cc8a5dfff339>https://gist.github.com/yaegashi/9660f147cc8a5dfff339</a></a></p><p>A sample reminds me that ansible_ssh_pass should work for the key.</p></li><li><p>The output of Ansible cache connections error:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>PLAY <span style=color:#f92672>[</span>ssh username/password<span style=color:#f92672>]</span> **************************************************************************************************************************
+TASK <span style=color:#f92672>[</span>Gathering Facts<span style=color:#f92672>]</span> ********************************************************************************************************************************
 task path: /Users/kz/Documents/C/ansibleprj/pys/pb_first.yml:3
 The full traceback is:
-Traceback (most recent call last):
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&quot;, line 352, in _connect_uncached
+Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&#34;</span>, line 352, in _connect_uncached
 **sock_kwarg
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/client.py&quot;, line 424, in connect
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/client.py&#34;</span>, line 424, in connect
 passphrase,
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/client.py&quot;, line 714, in _auth
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/client.py&#34;</span>, line 714, in _auth
 raise saved_exception
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/client.py&quot;, line 701, in _auth
-self._transport.auth_password(username, password)
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/transport.py&quot;, line 1381, in auth_password
-return self.auth_handler.wait_for_response(my_event)
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/auth_handler.py&quot;, line 212, in wait_for_response
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/client.py&#34;</span>, line 701, in _auth
+self._transport.auth_password<span style=color:#f92672>(</span>username, password<span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/transport.py&#34;</span>, line 1381, in auth_password
+<span style=color:#66d9ef>return</span> self.auth_handler.wait_for_response<span style=color:#f92672>(</span>my_event<span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/paramiko/auth_handler.py&#34;</span>, line 212, in wait_for_response
 raise e
 paramiko.ssh_exception.AuthenticationException: Authentication failed.
 During handling of the above exception, another exception occurred:
-Traceback (most recent call last):
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/bin/ansible-connection&quot;, line 105, in start
-self.connection._connect()
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/network_cli.py&quot;, line 298, in _connect
-ssh = self.paramiko_conn._connect()
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&quot;, line 249, in _connect
-self.ssh = SSH_CONNECTION_CACHE[cache_key] = self._connect_uncached()
-File &quot;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&quot;, line 365, in _connect_uncached
-raise AnsibleConnectionFailure(msg)
+Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/bin/ansible-connection&#34;</span>, line 105, in start
+self.connection._connect<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/network_cli.py&#34;</span>, line 298, in _connect
+ssh <span style=color:#f92672>=</span> self.paramiko_conn._connect<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&#34;</span>, line 249, in _connect
+self.ssh <span style=color:#f92672>=</span> SSH_CONNECTION_CACHE<span style=color:#f92672>[</span>cache_key<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> self._connect_uncached<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&#34;</span>, line 365, in _connect_uncached
+raise AnsibleConnectionFailure<span style=color:#f92672>(</span>msg<span style=color:#f92672>)</span>
 ansible.errors.AnsibleConnectionFailure: Authentication failed.
-fatal: [user_r]: FAILED! =&gt; {
-&quot;msg&quot;: &quot;Authentication failed.&quot;
-}
-</code></pre></li></ul><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+fatal: <span style=color:#f92672>[</span>user_r<span style=color:#f92672>]</span>: FAILED! <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>{</span>
+<span style=color:#e6db74>&#34;msg&#34;</span>: <span style=color:#e6db74>&#34;Authentication failed.&#34;</span>
+<span style=color:#f92672>}</span>
+</code></pre></div></li></ul><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>Ansible-Access Network via SSH</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

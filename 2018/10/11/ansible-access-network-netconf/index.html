@@ -7,24 +7,24 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/cisco title=Cisco>Cisco</a>
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a></div><h1>Ansible-Access Network via Netconf</h1><h3 class=subheading></h3><span class=meta>Posted on October 11, 2018</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>Continue to try ansible with the device which was configure in <a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>netconf feature on Cisco IOS/IOSXE</a>.</p><p>Ansible Inventory:</p><pre><code class=language-yaml>---
+post-container"><p>Continue to try ansible with the device which was configure in <a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>netconf feature on Cisco IOS/IOSXE</a>.</p><p>Ansible Inventory:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
 netconf:
 hosts:
     netconfIos:
-    ansible_host: &quot;172.16.254.100&quot;
-    ansible_network_os: &quot;ios&quot;
-    ansible_ssh_port: 22
+    ansible_host: <span style=color:#e6db74>&#34;172.16.254.100&#34;</span>
+    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
+    ansible_ssh_port: <span style=color:#ae81ff>22</span>
     netconfJunos:
-    ansible_host: &quot;172.16.254.9&quot;
-    ansible_network_os: &quot;junos&quot;
-    ansible_ssh_port: 830
+    ansible_host: <span style=color:#e6db74>&#34;172.16.254.9&#34;</span>
+    ansible_network_os: <span style=color:#e6db74>&#34;junos&#34;</span>
+    ansible_ssh_port: <span style=color:#ae81ff>830</span>
 vars:
-    ansible_connection: &quot;netconf&quot;
+    ansible_connection: <span style=color:#e6db74>&#34;netconf&#34;</span>
     ansible_ssh_user: test
     ansible_ssh_pass: test123
-</code></pre><p><strong><em>Note:</em></strong></p><ol><li>ansible_connnection should be ‘netconf’</li><li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)</li></ol><p>PlayBook:</p><pre><code class=language-yaml>- name: IOS
+</code></pre></div><p><em><strong>Note:</strong></em></p><ol><li>ansible_connnection should be ‘netconf’</li><li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)</li></ol><p>PlayBook:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- name: IOS
 hosts: netconfIos
-gather_facts: false
+gather_facts: <span style=color:#66d9ef>false</span>
 tasks:
     - name: Get config for IOS devices
     netconf_get:
@@ -33,10 +33,10 @@ tasks:
 
     - name: Display output
     debug:
-        msg: &quot;{{ iosnetconf.stdout }}&quot;
-</code></pre><p><strong><em>Note:</em></strong></p><ol><li><p>I tried module: ios_facts with the error:</p><pre><code class=language-bash>fatal: [netconfIos]: FAILED! =&gt; {“changed” : false, “msg”: “Connection type netconf is not valid for this module”}.
-</code></pre><p>This is why I choose <a href=https://docs.ansible.com/ansible/latest/modules/netconf_get_module.html rel="nofollow noreferrer" target=_blank>netconf_get</a>.</p><p>BTW: I tried the module: junos_facts on Juniper device, works.</p></li><li><p>With return values of <a href=https://docs.ansible.com/ansible/latest/modules/netconf_get_module.html#return-values rel="nofollow noreferrer" target=_blank>netconf_get</a> module and Register variables of Ansible, you can verify the output of netconf request.</p></li></ol><p>Run PlayBook</p><pre><code class=language-bash>ansible-playbook -i inventory_netconf.yml pb_netconf.yml
-</code></pre><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:733px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/10/2-opt_hub4368bf07e01b000c10cc46f0878f885_57187_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=netconf><img data-src=https://blog.gainskills.top/img/postimgs/2018/10/2-opt_hub4368bf07e01b000c10cc46f0878f885_57187_0x280_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=netconf style=height:280px></a><figcaption class=text-capitalize><small>netconf</small></figcaption></figure></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+        msg: <span style=color:#e6db74>&#34;{{ iosnetconf.stdout }}&#34;</span>
+</code></pre></div><p><em><strong>Note:</strong></em></p><ol><li><p>I tried module: ios_facts with the error:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>fatal: <span style=color:#f92672>[</span>netconfIos<span style=color:#f92672>]</span>: FAILED! <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>{</span>“changed” : false, “msg”: “Connection type netconf is not valid <span style=color:#66d9ef>for</span> this module”<span style=color:#f92672>}</span>.
+</code></pre></div><p>This is why I choose <a href=https://docs.ansible.com/ansible/latest/modules/netconf_get_module.html>netconf_get</a>.</p><p>BTW: I tried the module: junos_facts on Juniper device, works.</p></li><li><p>With return values of <a href=https://docs.ansible.com/ansible/latest/modules/netconf_get_module.html#return-values>netconf_get</a> module and Register variables of Ansible, you can verify the output of netconf request.</p></li></ol><p>Run PlayBook</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_netconf.yml pb_netconf.yml
+</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:733px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/10/2-opt_hub4368bf07e01b000c10cc46f0878f885_57187_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=netconf><img data-src=https://blog.gainskills.top/img/postimgs/2018/10/2-opt_hub4368bf07e01b000c10cc46f0878f885_57187_0x280_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=netconf style=height:280px></a><figcaption class=text-capitalize><small>netconf</small></figcaption></figure></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>Ansible-Access Network via Netconf</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

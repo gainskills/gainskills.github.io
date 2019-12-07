@@ -11,82 +11,82 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/troubleshooting title=Troubleshooting>Troubleshooting</a>
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a></div><h1>Netconf feature on Cisco IOS/IOSXE</h1><h3 class=subheading></h3><span class=meta>Posted on October 7, 2018</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>I tried to see how ansible works with the netconf feature on Cisco and Juniper in past days: <a href=https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html rel="nofollow noreferrer" target=_blank>Juniper’s official document</a> is clear and easy to follow. but for Cisco, I followed <a href=https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf rel="nofollow noreferrer" target=_blank>NETCONF over SSHv2</a>, unfortunately, I was stuck on it for 6 days.</p><p><strong>OS Version</strong></p><ul><li>Cisco IOS XE Software, Version 16.04.01</li><li>Cisco IOS Software, Linux Software (I86BI<em>LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9</em>]</li></ul><p><strong>NetConf Requests</strong></p><p>Tried many requests, all failed:</p><ol><li><p>The hello (works) request:</p><pre><code class=language-xml>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;hello&gt;
-&lt;capabilities&gt;
-&lt;capability&gt;
+post-container"><p>I tried to see how ansible works with the netconf feature on Cisco and Juniper in past days: <a href=https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html>Juniper’s official document</a> is clear and easy to follow. but for Cisco, I followed <a href=https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf>NETCONF over SSHv2</a>, unfortunately, I was stuck on it for 6 days.</p><p><strong>OS Version</strong></p><ul><li>Cisco IOS XE Software, Version 16.04.01</li><li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</li></ul><p><strong>NetConf Requests</strong></p><p>Tried many requests, all failed:</p><ol><li><p>The hello (works) request:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;hello</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capabilities</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capability</span><span style=color:#f92672>&gt;</span>
 urn:ietf:params:xml:ns:netconf:base:1.0
-&lt;/capability&gt;
-&lt;/capabilities&gt;
-&lt;/hello&gt;]]&gt;]]&gt;
-</code></pre></li><li><p>The request with nf: which was mentioned in (Cisco community)[<a href=https://community.cisco.com/t5/network-management/netconf-get-config-error-wrong-document-namespaces-not-specified/td-p/3298323]: rel="nofollow noreferrer" target=_blank>https://community.cisco.com/t5/network-management/netconf-get-config-error-wrong-document-namespaces-not-specified/td-p/3298323]:</a></p><pre><code class=language-xml>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;hello xmlns=”urn:ietf:params:xml:ns:netconf:base:1.0″&gt;
-&lt;capabilities&gt;
-&lt;capability&gt;urn:ietf:params:netconf:base:1.0&lt;/capability&gt;
-&lt;/capabilities&gt;
-&lt;/hello&gt;]]&gt;]]&gt;
-&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;nf:rpc xmlns:nf=”urn:ietf:params:xml:ns:netconf:base:1.0″ message-id=”1″&gt;
-&lt;nf:get-configtype=”subtree”&gt;
-&lt;nf:source&gt;
-&lt;nf:running/&gt;
-&lt;/nf:source&gt;
-&lt;nf:filter&gt;
-&lt;nf:config-format-text-block/&gt;
-&lt;/nf:filter&gt;
-&lt;/nf:get-config&gt;
-&lt;/nf:rpc&gt;]]&gt;]]&gt;
-</code></pre><pre><code class=language-xml>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;hello xmlns=”urn:ietf:params:xml:ns:netconf:base:1.0″&gt;
-&lt;capabilities&gt;
-&lt;capability&gt;urn:ietf:params:netconf:base:1.0&lt;/capability&gt;
-&lt;/capabilities&gt;
-&lt;/hello&gt;]]&gt;]]&gt;
-&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;rpc xmlns:nf=”urn:ietf:params:xml:ns:netconf:base:1.0″ message-id=”101″&gt;
-&lt;get-config&gt;
-&lt;source&gt;
-&lt;running/&gt;
-&lt;/source&gt;
-&lt;/get-config&gt;
-&lt;/rpc&gt;]]&gt;]]&gt;
-</code></pre><pre><code class=language-xml>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;hello xmlns=”urn:ietf:params:xml:ns:netconf:base:1.0″&gt;
-&lt;capabilities&gt;
-&lt;capability&gt;urn:ietf:params:netconf:base:1.0&lt;/capability&gt;
-&lt;/capabilities&gt;
-&lt;/hello&gt;]]&gt;]]&gt;
-&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;
-&lt;rpc xmlns=”urn:ietf:params:xml:ns:netconf:base:1.0″ message-id=”101″&gt;
-&lt;get-config&gt;
-&lt;source&gt;
-&lt;running/&gt;
-&lt;/source&gt;
-&lt;filter&gt;
-&lt;config-format-text-block/&gt;
-&lt;/filter&gt;
-&lt;/get-config&gt;
-&lt;/rpc&gt;
+<span style=color:#f92672>&lt;/capability&gt;</span>
+<span style=color:#f92672>&lt;/capabilities&gt;</span>
+<span style=color:#f92672>&lt;/hello&gt;</span>]]&gt;]]&gt;
+</code></pre></div></li><li><p>The request with nf: which was mentioned in (Cisco community)[<a href=https://community.cisco.com/t5/network-management/netconf-get-config-error-wrong-document-namespaces-not-specified/td-p/3298323>https://community.cisco.com/t5/network-management/netconf-get-config-error-wrong-document-namespaces-not-specified/td-p/3298323</a>]:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;hello</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capabilities</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capability</span><span style=color:#f92672>&gt;</span>urn:ietf:params:netconf:base:1.0<span style=color:#f92672>&lt;/capability&gt;</span>
+<span style=color:#f92672>&lt;/capabilities&gt;</span>
+<span style=color:#f92672>&lt;/hello&gt;</span>]]&gt;]]&gt;
+<span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;nf:rpc</span> <span style=color:#a6e22e>xmlns:nf=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span> <span style=color:#a6e22e>message-id=</span><span style=color:#e6db74>”1″</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;nf:get-configtype</span><span style=color:#960050;background-color:#1e0010>=</span><span style=color:#960050;background-color:#1e0010>”</span><span style=color:#960050;background-color:#1e0010>s</span><span style=color:#960050;background-color:#1e0010>u</span><span style=color:#960050;background-color:#1e0010>b</span><span style=color:#960050;background-color:#1e0010>t</span><span style=color:#960050;background-color:#1e0010>r</span><span style=color:#960050;background-color:#1e0010>e</span><span style=color:#960050;background-color:#1e0010>e</span><span style=color:#960050;background-color:#1e0010>”</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;nf:source</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;nf:running</span><span style=color:#f92672>/&gt;</span>
+<span style=color:#f92672>&lt;/nf:source&gt;</span>
+<span style=color:#f92672>&lt;nf:filter</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;nf:config-format-text-block</span><span style=color:#f92672>/&gt;</span>
+<span style=color:#f92672>&lt;/nf:filter&gt;</span>
+<span style=color:#f92672>&lt;/nf:get-config&gt;</span>
+<span style=color:#f92672>&lt;/nf:rpc&gt;</span>]]&gt;]]&gt;
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;hello</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capabilities</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capability</span><span style=color:#f92672>&gt;</span>urn:ietf:params:netconf:base:1.0<span style=color:#f92672>&lt;/capability&gt;</span>
+<span style=color:#f92672>&lt;/capabilities&gt;</span>
+<span style=color:#f92672>&lt;/hello&gt;</span>]]&gt;]]&gt;
+<span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;rpc</span> <span style=color:#a6e22e>xmlns:nf=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span> <span style=color:#a6e22e>message-id=</span><span style=color:#e6db74>”101″</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;get-config</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;source</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;running</span><span style=color:#f92672>/&gt;</span>
+<span style=color:#f92672>&lt;/source&gt;</span>
+<span style=color:#f92672>&lt;/get-config&gt;</span>
+<span style=color:#f92672>&lt;/rpc&gt;</span>]]&gt;]]&gt;
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;hello</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capabilities</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;capability</span><span style=color:#f92672>&gt;</span>urn:ietf:params:netconf:base:1.0<span style=color:#f92672>&lt;/capability&gt;</span>
+<span style=color:#f92672>&lt;/capabilities&gt;</span>
+<span style=color:#f92672>&lt;/hello&gt;</span>]]&gt;]]&gt;
+<span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span>
+<span style=color:#f92672>&lt;rpc</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span> <span style=color:#a6e22e>message-id=</span><span style=color:#e6db74>”101″</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;get-config</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;source</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;running</span><span style=color:#f92672>/&gt;</span>
+<span style=color:#f92672>&lt;/source&gt;</span>
+<span style=color:#f92672>&lt;filter</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;config-format-text-block</span><span style=color:#f92672>/&gt;</span>
+<span style=color:#f92672>&lt;/filter&gt;</span>
+<span style=color:#f92672>&lt;/get-config&gt;</span>
+<span style=color:#f92672>&lt;/rpc&gt;</span>
 ]]&gt;]]&gt;
-</code></pre><pre><code class=language-xml>&lt;?xml version=”1.0″?&gt;
-&lt;nc:rpc message-id=”1″ xmlns:nc=”urn:ietf:params:xml:ns:netconf:base:1.0″ xmlns=”http://www.cisco.com/nxos:1.0:nfcli”&amp;gt;
-&lt;nc:get&gt;
-&lt;nc:filtertype=”subtree”&gt;
-&lt;show&gt;
-&lt;xml&gt;
-&lt;server&gt;
-&lt;status/&gt;
-&lt;/server&gt;
-&lt;/xml&gt;
-&lt;/show&gt;
-&lt;/nc:filter&gt;
-&lt;/nc:get&gt;
-&lt;/nc:rpc&gt;]]&gt;]]&gt;
-</code></pre></li></ol><p><strong>How I test the requests</strong></p><ol><li><p>Send the request after enter the netconf subsystem by the command:</p><pre><code class=language-bash>ssh test@device_ip -s netconf
-</code></pre></li><li><p>The tool: (netconf_client)<a href="which was mentioned in the Cisco Community" rel="nofollow noreferrer" target=_blank>https://github.com/nnakamot/netconf_client</a>.
-I have made some changes so that the tool can run with Python3, here is the link.</p></li></ol><p><strong><em>Error Message</em></strong></p><pre><code class=language-xml>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;&lt;rpc-reply message-id=”1″ xmlns=”urn:ietf:params:xml:ns:netconf:base:1.0″&gt;&lt;rpc-error&gt;&lt;error-type&gt;protocol&lt;/error-type&gt;&lt;error-tag&gt;operation-failed&lt;/error-tag&gt;&lt;error-severity&gt;error&lt;/error-severity&gt;&lt;/rpc-error&gt;&lt;/rpc-reply&gt;]]&gt;]]&gt;
-</code></pre><p><strong>Solution</strong></p><p>Refer to <a href=https://qiita.com/eiuemura/items/55c5520dba35e7e31b47 rel="nofollow noreferrer" target=_blank>NETCONF/YANG を使って、Ciscoルータからコンフィグ設定を取得する(IOS-XE)</a></p><p>Configure the username password with privilege 15 on devices:</p><pre><code class=language-bash>username test privilege 15 password 0 test123
-</code></pre><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:455px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/10/4-opt_hu19d93954faaded9c7806bd6c6adcaf86_123028_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=netconf><img data-src=https://blog.gainskills.top/img/postimgs/2018/10/4-opt_hu19d93954faaded9c7806bd6c6adcaf86_123028_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=netconf style=height:400px></a><figcaption class=text-capitalize><small>netconf</small></figcaption></figure></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=”1.0″?&gt;</span>
+<span style=color:#f92672>&lt;nc:rpc</span> <span style=color:#a6e22e>message-id=</span><span style=color:#e6db74>”1″</span> <span style=color:#a6e22e>xmlns:nc=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>”http://www.cisco.com/nxos:1.0:nfcli”&amp;gt;</span>
+<span style=color:#960050;background-color:#1e0010>&lt;</span><span style=color:#960050;background-color:#1e0010>n</span><span style=color:#960050;background-color:#1e0010>c</span><span style=color:#960050;background-color:#1e0010>:</span><span style=color:#960050;background-color:#1e0010>g</span><span style=color:#960050;background-color:#1e0010>e</span><span style=color:#960050;background-color:#1e0010>t</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;nc:filtertype</span><span style=color:#960050;background-color:#1e0010>=</span><span style=color:#960050;background-color:#1e0010>”</span><span style=color:#960050;background-color:#1e0010>s</span><span style=color:#960050;background-color:#1e0010>u</span><span style=color:#960050;background-color:#1e0010>b</span><span style=color:#960050;background-color:#1e0010>t</span><span style=color:#960050;background-color:#1e0010>r</span><span style=color:#960050;background-color:#1e0010>e</span><span style=color:#960050;background-color:#1e0010>e</span><span style=color:#960050;background-color:#1e0010>”</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;show</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;xml</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;server</span><span style=color:#f92672>&gt;</span>
+<span style=color:#f92672>&lt;status</span><span style=color:#f92672>/&gt;</span>
+<span style=color:#f92672>&lt;/server&gt;</span>
+<span style=color:#f92672>&lt;/xml&gt;</span>
+<span style=color:#f92672>&lt;/show&gt;</span>
+<span style=color:#f92672>&lt;/nc:filter&gt;</span>
+<span style=color:#f92672>&lt;/nc:get&gt;</span>
+<span style=color:#f92672>&lt;/nc:rpc&gt;</span>]]&gt;]]&gt;
+</code></pre></div></li></ol><p><strong>How I test the requests</strong></p><ol><li><p>Send the request after enter the netconf subsystem by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ssh test@device_ip -s netconf
+</code></pre></div></li><li><p>The tool: (netconf_client)[<a href=https://github.com/nnakamot/netconf_client>https://github.com/nnakamot/netconf_client</a>] (which was mentioned in the Cisco Community).
+I have made some changes so that the tool can run with Python3, here is the link.</p></li></ol><p><em><strong>Error Message</strong></em></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;</span><span style=color:#f92672>&lt;rpc-reply</span> <span style=color:#a6e22e>message-id=</span><span style=color:#e6db74>”1″</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>”urn:ietf:params:xml:ns:netconf:base:1.0″</span><span style=color:#f92672>&gt;</span><span style=color:#f92672>&lt;rpc-error</span><span style=color:#f92672>&gt;</span><span style=color:#f92672>&lt;error-type</span><span style=color:#f92672>&gt;</span>protocol<span style=color:#f92672>&lt;/error-type&gt;</span><span style=color:#f92672>&lt;error-tag</span><span style=color:#f92672>&gt;</span>operation-failed<span style=color:#f92672>&lt;/error-tag&gt;</span><span style=color:#f92672>&lt;error-severity</span><span style=color:#f92672>&gt;</span>error<span style=color:#f92672>&lt;/error-severity&gt;</span><span style=color:#f92672>&lt;/rpc-error&gt;</span><span style=color:#f92672>&lt;/rpc-reply&gt;</span>]]&gt;]]&gt;
+</code></pre></div><p><strong>Solution</strong></p><p>Refer to <a href=https://qiita.com/eiuemura/items/55c5520dba35e7e31b47>NETCONF/YANG を使って、Ciscoルータからコンフィグ設定を取得する(IOS-XE)</a></p><p>Configure the username password with privilege 15 on devices:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>username test privilege <span style=color:#ae81ff>15</span> password <span style=color:#ae81ff>0</span> test123
+</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:455px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/10/4-opt_hu19d93954faaded9c7806bd6c6adcaf86_123028_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption=netconf><img data-src=https://blog.gainskills.top/img/postimgs/2018/10/4-opt_hu19d93954faaded9c7806bd6c6adcaf86_123028_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=netconf style=height:400px></a><figcaption class=text-capitalize><small>netconf</small></figcaption></figure></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
 <span class=author align=right><br><p class=tip>Netconf feature on Cisco IOS/IOSXE</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
 <button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>

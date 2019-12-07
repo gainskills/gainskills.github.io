@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mac OS on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/mac-os/</link><description>Recent content in Mac OS on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/mac-os/index.xml" rel="self" type="application/rss+xml"/><item><title>os.path.join() or os.sep.join()?</title><link>https://blog.gainskills.top/2019/07/23/path-join/</link><pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/07/23/path-join/</guid><description>There are two functions join a full path. E.g.: In drive: C:
-|- test | |- test.xt os.path.join
-import os fullpath = os.path.join(&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;) Output on windows:
+|- test | |- test.xt os.path.joinimport os fullpath = os.path.join(&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;) Output on windows:
 c:test\test.txt Output on Mac OS c:/test/test.txt
-os.sep.join
-import os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
+os.sep.joinimport os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
 c:\test\test.txt Output on Mac OS c:/test/test.txt
-From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expect on windows.</description></item></channel></rss>
+From the outputs, you can see the difference: os.path.join()doesn't work as expect on windows.</description></item></channel></rss>
