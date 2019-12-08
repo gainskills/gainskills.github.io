@@ -1,4 +1,4 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Ansible Beginner Series"><meta name=keywords content="Ansible Cisco IOS Telnet Python"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Ansible-Access Network via Telnet-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/><link rel=alternate href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Ansible-Access Network via Telnet","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" September 4, 2018","dateModified":" September 4, 2018","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"Ansible Beginner Series"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Ansible Beginner Series"><meta name=keywords content="Ansible Cisco IOS Telnet Python"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Ansible-Access Network via Telnet-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/><link rel=alternate href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Ansible-Access Network via Telnet","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" September 4, 2018","dateModified":" December 7, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"Ansible Beginner Series"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
 <a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=https://blog.gainskills.top/categories/code>code</a></li><li><a href=https://blog.gainskills.top/categories/devops>devops</a></li><li><a href=https://blog.gainskills.top/categories/life>life</a></li><li><a href=https://blog.gainskills.top/categories/network>network</a></li><li><a href=https://blog.gainskills.top/categories/os>os</a></li><li><a href=https://blog.gainskills.top/top/about/>ABOUT</a></li><li><a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
@@ -9,33 +9,33 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 <a class=tag href=https://blog.gainskills.top/tags/telnet title=Telnet>Telnet</a>
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a></div><h1>Ansible-Access Network via Telnet</h1><h3 class=subheading></h3><span class=meta>Posted on September 4, 2018</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>I’m learning <a href=https://www.ansible.com/>Ansible</a> by reading the official document and some books like <a href=Ansible%E5%85%A5%E9%97%A8>Ansible入门</a>. Most of the instructions show you how to deploy or maintenance the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.</p><p>The most import thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour from accessing the network device from CLI too.</p><p>I build a simple lab on EVE for testing: a Cios IOS switch for telnet access, a Cisco IOS router for SSH access.</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1208px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x200_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:200px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>then install Python, ansible on macOS High Sierra (it should be same on Linux, windows), here is the version info:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible 2.6.3
+post-container"><p>I’m learning <a href=https://www.ansible.com/>Ansible</a> by reading the official document and some books like <a href=Ansible%E5%85%A5%E9%97%A8>Ansible入门</a>. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.</p><p>The most important thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour by accessing the network device from CLI too.</p><p>I build a simple lab on EVE for testing: a Cios IOS switch for telnet access, a Cisco IOS router for SSH access.</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1208px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x200_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:200px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>then install Python, ansible on macOS High Sierra (it should be same on Linux, windows), here is the version info:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible 2.6.3
 config file <span style=color:#f92672>=</span> None
 configured module search path <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;/Users/kz/.ansible/plugins/modules&#39;</span>, <span style=color:#e6db74>&#39;/usr/share/ansible/plugins/modules&#39;</span><span style=color:#f92672>]</span>
 ansible python module location <span style=color:#f92672>=</span> /Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible
 executable location <span style=color:#f92672>=</span> /Users/kz/Documents/C/ansibleprj/venv/bin/ansible
-python version <span style=color:#f92672>=</span> 3.7.0 <span style=color:#f92672>(</span>v3.7.0:1bf9cc5093, Jun <span style=color:#ae81ff>26</span> 2018, 23:26:24<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Clang 6.0 <span style=color:#f92672>(</span>clang-600.0.57<span style=color:#f92672>)</span><span style=color:#f92672>]</span>
-</code></pre></div><p>Ansible is designed to running over SSH, but there is a module: telnet extends its capbility to access network device via Telnet.</p><h3 id=part-1>Part 1</h3><h5 id=1-enable-telnet-on-device>1. Enable Telnet on device</h5><p>start device: SW on eve, configure IP, enable telnet from line vty, set username/password: test/test123</p><h5 id=2-new-inventorytelnetyml>2. new inventory_telnet.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>telnet:</span>
-hosts:
-    sw1:
-    ansible_host: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
-</code></pre></div><p>Note: I use YAML format though ini format should also work because <a href=https://github.com/ansible/ansible/issues/43897>Misleading documentation, it shows that you can store vaulted passwords in INI files but it does not work #43897</a></p><h5 id=3-new-playbook-pbtelnetyml>3. new playbook: pb_telnet.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: show version</span>
-  hosts: telnet
-  gather_facts: <span style=color:#66d9ef>false</span>
-  connection: local
-  tasks:
-    - name: telnet sw
-      telnet:
-        user: test
-        password: test123
-        login_prompt: <span style=color:#e6db74>&#34;Username: &#34;</span>
-        prompts:
+python version <span style=color:#f92672>=</span> 3.7.0 <span style=color:#f92672>(</span>v3.7.0:1bf9cc5093, Jun <span style=color:#ae81ff>26</span> 2018, 23:26:24<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Clang 6.0 <span style=color:#f92672>(</span>clang-600.0.57<span style=color:#f92672>)]</span>
+</code></pre></div><p>Ansible is designed to running over SSH, but there is a module: telnet extends its capbility to access network device via Telnet.</p><h3 id=part-1>Part 1</h3><h5 id=1-enable-telnet-on-device>1. Enable Telnet on device</h5><p>start device: SW on eve, configure IP, enable telnet from line vty, set username/password: test/test123</p><h5 id=2-new-inventory_telnetyml>2. new inventory_telnet.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+
+<span style=color:#66d9ef>telnet</span>:
+<span style=color:#66d9ef>hosts</span>:
+    <span style=color:#66d9ef>sw1</span>:
+    <span style=color:#66d9ef>ansible_host</span>: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
+</code></pre></div><p>Note: I use YAML format (ini format should also work) because <a href=https://github.com/ansible/ansible/issues/43897>Misleading documentation, it shows that you can store vaulted passwords in INI files but it does not work #43897</a></p><h5 id=3-new-playbook-pb_telnetyml>3. new playbook: pb_telnet.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+
+- <span style=color:#66d9ef>name</span>: show version
+  <span style=color:#66d9ef>hosts</span>: telnet
+  <span style=color:#66d9ef>gather_facts</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#66d9ef>connection</span>: local
+  <span style=color:#66d9ef>tasks</span>:
+    - <span style=color:#66d9ef>name</span>: telnet sw
+      <span style=color:#66d9ef>telnet</span>:
+        <span style=color:#66d9ef>user</span>: test
+        <span style=color:#66d9ef>password</span>: test123
+        <span style=color:#66d9ef>login_prompt</span>: <span style=color:#e6db74>&#34;Username: &#34;</span>
+        <span style=color:#66d9ef>prompts</span>:
           - <span style=color:#e6db74>&#39;[&gt;|#]&#39;</span>
-        command:
+        <span style=color:#66d9ef>command</span>:
           - terminal length <span style=color:#ae81ff>0</span>
           - show version
 </code></pre></div><p>The playbook will connect to the device: sw, and run command show version</p><h5 id=4run-playbook>4.run playbook</h5><p>Run the task by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
@@ -52,7 +52,7 @@ sw1 : ok<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> cha
 The full traceback is:
 Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/executor/task_executor.py&#34;</span>, line 139, in run
-res <span style=color:#f92672>=</span> self._execute<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+res <span style=color:#f92672>=</span> self._execute<span style=color:#f92672>()</span>
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/executor/task_executor.py&#34;</span>, line 577, in _execute
 result <span style=color:#f92672>=</span> self._handler.run<span style=color:#f92672>(</span>task_vars<span style=color:#f92672>=</span>variables<span style=color:#f92672>)</span>
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/action/telnet.py&#34;</span>, line 69, in run
@@ -72,69 +72,69 @@ TASK <span style=color:#f92672>[</span>telnet sw<span style=color:#f92672>]</spa
 changed: <span style=color:#f92672>[</span>sw1<span style=color:#f92672>]</span>
 PLAY RECAP ********************************************************************************************************************************************
 sw1 : ok<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> changed<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> unreachable<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> failed<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</code></pre></div><h3 id=part-2>Part 2</h3><h5 id=a-minor-improvement>A minor Improvement</h5><p>I still don’t want to save the password in cleartext as what I did in Part 1 (the password was defined in the playbook).</p><p>But I find it will only retrieve the password form playbook and won’t try the credential which was defined in inventory file after I went through telnet.py:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1436px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x344_resize_q20_catmullrom_2.png data-fancybox data-caption=Telnet.py><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Telnet.py style=height:400px></a><figcaption class=text-capitalize><small>Telnet.py</small></figcaption></figure></div><p>so, refer to other modules, I made some change: <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py>ansible-telnet</a> so that that <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py>telnet.py</a> can retrieve the info from inventory file. update the inventory with the telnet.py:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>telnet:</span>
-  hosts:
-    sw1:
-      ansible_host: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
-      connection: local
-      ansible_ssh_user: test
-      ansible_ssh_pass: test123
-      ansible_ssh_timeout: <span style=color:#ae81ff>2</span>
-      ansible_ssh_port: <span style=color:#ae81ff>23</span>
-</code></pre></div><p>then playbook file:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: show version</span>
-  hosts: telnet
-  gather_facts: <span style=color:#66d9ef>false</span>
+</code></pre></div><h3 id=part-2>Part 2</h3><h5 id=a-minor-improvement>A minor Improvement</h5><p>I still don’t want to save the password in cleartext as what I did in Part 1 (the password was defined in the playbook).</p><p>But I find it will only retrieve the password form playbook and won’t try the credential which was defined in inventory file after I went through telnet.py:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1436px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x344_resize_q20_catmullrom_2.png data-fancybox data-caption=Telnet.py><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/21-opt_hub490ab56a69fc0fcbb69a34c973cc9ec_31782_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Telnet.py style=height:400px></a><figcaption class=text-capitalize><small>Telnet.py</small></figcaption></figure></div><p>so, refer to other modules, I made some change: <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py>ansible-telnet</a> so that that <a href=https://github.com/hanbaobao2005/ansible-telnet/blob/master/telnet.py>telnet.py</a> can retrieve the info from the inventory file. update the inventory with the telnet.py:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+
+<span style=color:#66d9ef>telnet</span>:
+  <span style=color:#66d9ef>hosts</span>:
+    <span style=color:#66d9ef>sw1</span>:
+      <span style=color:#66d9ef>ansible_host</span>: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
+      <span style=color:#66d9ef>connection</span>: local
+      <span style=color:#66d9ef>ansible_ssh_user</span>: test
+      <span style=color:#66d9ef>ansible_ssh_pass</span>: test123
+      <span style=color:#66d9ef>ansible_ssh_timeout</span>: <span style=color:#ae81ff>2</span>
+      <span style=color:#66d9ef>ansible_ssh_port</span>: <span style=color:#ae81ff>23</span>
+</code></pre></div><p>then playbook file:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+
+- <span style=color:#66d9ef>name</span>: show version
+  <span style=color:#66d9ef>hosts</span>: telnet
+  <span style=color:#66d9ef>gather_facts</span>: <span style=color:#66d9ef>false</span>
   <span style=color:#75715e># connection: local</span>
-  tasks:
-    - name: CM via telnet
-      telnet:
-        login_prompt: <span style=color:#e6db74>&#34;Username: &#34;</span>
-        prompts:
+  <span style=color:#66d9ef>tasks</span>:
+    - <span style=color:#66d9ef>name</span>: CM via telnet
+      <span style=color:#66d9ef>telnet</span>:
+        <span style=color:#66d9ef>login_prompt</span>: <span style=color:#e6db74>&#34;Username: &#34;</span>
+        <span style=color:#66d9ef>prompts</span>:
           - <span style=color:#e6db74>&#39;[&gt;|#]&#39;</span>
-        command:
+        <span style=color:#66d9ef>command</span>:
           - terminal length <span style=color:#ae81ff>0</span>
           - show version
 </code></pre></div><p>Verify the change by the same cmd:</p><pre><code>ansible-playbook -i inventory_telnet.yml pb_telnet.yml
 </code></pre><h5 id=encrypt-the-password>encrypt the password</h5><p>password can be encrypted by “ansible-vault” command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-vault encrypt_string --vault-id test@prompt <span style=color:#e6db74>&#39;test123&#39;</span> --name <span style=color:#e6db74>&#39;ansible_ssh_pass&#39;</span>
-</code></pre></div><p>I use the password: test123 to encrypt the string.</p><p>Update the hashed string to inventory file:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>telnet:</span>
-hosts:
-    sw1:
-    ansible_host: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
-    connection: local
-    ansible_ssh_user: test
-    ansible_ssh_pass: !vault <span style=color:#e6db74>|
-</span><span style=color:#e6db74>       </span><span style=color:#e6db74> </span><span style=color:#e6db74>$ANSIBLE_VAULT;1.2;AES256;test</span>
+</code></pre></div><p>I use the password: test123 to encrypt the string.</p><p>Update the hashed string to inventory file:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+
+<span style=color:#66d9ef>telnet</span>:
+<span style=color:#66d9ef>hosts</span>:
+    <span style=color:#66d9ef>sw1</span>:
+    <span style=color:#66d9ef>ansible_host</span>: <span style=color:#e6db74>&#34;192.168.1.100&#34;</span>
+    <span style=color:#66d9ef>connection</span>: local
+    <span style=color:#66d9ef>ansible_ssh_user</span>: test
+    <span style=color:#66d9ef>ansible_ssh_pass</span>: !vault <span style=color:#e6db74>|
+</span><span style=color:#e6db74>        $ANSIBLE_VAULT;1.2;AES256;test</span>
         <span style=color:#ae81ff>63386332356237643731346539336262336231343432313963376438653933323737636535383365</span>
         3562383633646261653739343536386566323462323063320a613638373439363032353137343330
         <span style=color:#ae81ff>34306264613932323832373532636230323730626239393564326564303563356666343734633135</span>
         6664373266663238660a363666336661353364393437356433616462346331313537623430393861
         <span style=color:#ae81ff>3536</span>
-    ansible_ssh_timeout: <span style=color:#ae81ff>2</span>
-    ansible_ssh_port: <span style=color:#ae81ff>23</span>
+    <span style=color:#66d9ef>ansible_ssh_timeout</span>: <span style=color:#ae81ff>2</span>
+    <span style=color:#66d9ef>ansible_ssh_port</span>: <span style=color:#ae81ff>23</span>
 </code></pre></div><p>Verify it by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_telnet.yml --vault-id test@prompt pb_telnet.yml
 </code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1778px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/9-opt_hu3f0bd835a8fbe13b3432dda9ffb5dbac_18565_0x324_resize_q20_catmullrom_2.png data-fancybox data-caption="result with vault"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/9-opt_hu3f0bd835a8fbe13b3432dda9ffb5dbac_18565_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="result with vault" style=height:400px></a><figcaption class=text-capitalize><small>result with vault</small></figcaption></figure></div><h3 id=part-3>Part 3</h3><p>Update1 (20180916)</p><p>Thanks for <a href=https://hanbaobao2005.wordpress.com/2018/09/04/ansible-beginner-telnet-access-network/#comment-301>Stefan P’s comment</a> about the command: “show version | include uptime”. Tried it and find that the strings after ‘|’ were cutted:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1556px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/16-opt_hu8ad724876d893668f2abb5edb8c8f16a_8856_0x254_resize_q20_catmullrom_2.png data-fancybox data-caption=Pipe><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/16-opt_hu8ad724876d893668f2abb5edb8c8f16a_8856_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Pipe style=height:400px></a><figcaption class=text-capitalize><small>Pipe</small></figcaption></figure></div><p>Read the code</p><ul><li>line 80 of telnet.py:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>tn<span style=color:#f92672>.</span>expect(list(map(to_bytes, prompts)))
 </code></pre></div><ul><li>line 652 and 654 of telnet.py:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>return</span> self<span style=color:#f92672>.</span>_expect_with_poll(list, timeout)
 returnself<span style=color:#f92672>.</span>_expect_with_select(list, timeout)
 </code></pre></div><ul><li>line 667 and line 731 of telnet.py:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>list[i] <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>compile(list[i])
-</code></pre></div><p>prompts of playbook actually work as the regular expression match, this is why “|” in <a href=https://docs.ansible.com/ansible/latest/modules/telnet_module.html>ansible official sample</a> because ‘|’ works for either ‘>’ or ‘ #’. Since [] in Python RE works as single character match, remove “|” from playbook can work:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: show version</span>
-  hosts: telnet
-  gather_facts: <span style=color:#66d9ef>false</span>
+</code></pre></div><p>prompts of playbook actually work as the regular expression match, this is why “|” in <a href=https://docs.ansible.com/ansible/latest/modules/telnet_module.html>ansible official sample</a> because ‘|’ works for either ‘>’ or ‘ #’. Since [] in Python RE works as a single character match, remove “|” from playbook can work:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+
+- <span style=color:#66d9ef>name</span>: show version
+  <span style=color:#66d9ef>hosts</span>: telnet
+  <span style=color:#66d9ef>gather_facts</span>: <span style=color:#66d9ef>false</span>
   <span style=color:#75715e># connection: local</span>
-  tasks:
-    - name: CM via telnet
-      telnet:
-        login_prompt: <span style=color:#e6db74>&#34;Username: &#34;</span>
-        prompts:
+  <span style=color:#66d9ef>tasks</span>:
+    - <span style=color:#66d9ef>name</span>: CM via telnet
+      <span style=color:#66d9ef>telnet</span>:
+        <span style=color:#66d9ef>login_prompt</span>: <span style=color:#e6db74>&#34;Username: &#34;</span>
+        <span style=color:#66d9ef>prompts</span>:
           - <span style=color:#e6db74>&#39;[&gt;#]&#39;</span>
-        command:
+        <span style=color:#66d9ef>command</span>:
           - terminal length <span style=color:#ae81ff>0</span>
           - show version | include uptime
           - show version | include Processor board ID
@@ -161,7 +161,7 @@ icon='<i class="fa fa-link"></i>';if(id){return $el.prepend($("<a />").addClass(
 <a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>troubleshooting</a>
 <a href=https://blog.gainskills.top/tags/web title=web>web</a>
 <a href=https://blog.gainskills.top/tags/windows title=windows>windows</a></div></div></section></div></div></div><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"><hr class="hidden-sm hidden-xs"><div id=disqus-comment><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
-var d=document,s=d.createElement('script');s.async=true;s.src='//'+"kexian-zhangs-blog"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2018 - 2019<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
+var d=document,s=d.createElement('script');s.async=true;s.src='//'+"kexian-zhangs-blog"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2018 - 2021<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
 s.parentNode.insertBefore(o,s);}</script><script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var dnt=(navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack);var doNotTrack=(dnt=="1"||dnt=="yes");if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;if(window.sessionStorage){var GA_SESSION_STORAGE_KEY='ga:clientId';ga('create','UA-131650010-2',{'storage':'none','clientId':sessionStorage.getItem(GA_SESSION_STORAGE_KEY)});ga(function(tracker){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,tracker.get('clientId'));});}
 ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script>var options={"cookie":{"domain":"https:\/\/blog.gainskills.top","expiryDays":7,},"palette":{"popup":{"background":"#4d4d4d","text":"#ffffff",},"button":{"background":"transparent","text":"#ffffff",}},"theme":"edgeless","content":{"dismiss":"OK","message":"This site uses cookies to ensure you get the best experience.","link":"Learn more","target":'_blank',},};var instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element);</script><script>let lazyImages=[...document.querySelectorAll('.img-lazyload')]
 let inAdvance=20

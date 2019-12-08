@@ -5,4 +5,4 @@ intToStrDict = { 1: &amp;#39;one&amp;#39;, 2: &amp;#39;two&amp;#39;, 3: &amp;#39
 {‘keyA/&amp;#39;keyA&amp;#39; :’’, keyA/keyB’ : ‘’} Code1:
 keyPrefix = &amp;#39;keyA&amp;#39; for key, value in Dict.items(): newkey = &amp;#39;/&amp;#39;.join([keyPrefix, key]) Dict[newkey] = Dict.pop(key) Code2:
 keyPrefix = &amp;#39;keyA&amp;#39; for key, value in Dict.keys(): newkey = &amp;#39;/&amp;#39;.join([keyPrefix, key]) Dict[newkey] = Dict.pop(key) Result of code1/code2 is:
-{&amp;#39;keyA/keyA/keyB&amp;#39; : &amp;#39;&amp;#39;, &amp;#39;keyA/keyA/keyA&amp;#39;: &amp;#39;&amp;#39;} It doesn't work as expected, and I found the case only exists when prefix is same to a key of the dict which means code1/code2 works well when the keyPrefix is neither ‘keyA’ nor ‘beyB’.</description></item></channel></rss>
+{&amp;#39;keyA/keyA/keyB&amp;#39; : &amp;#39;&amp;#39;, &amp;#39;keyA/keyA/keyA&amp;#39;: &amp;#39;&amp;#39;} It doesn&amp;rsquo;t work as expected, and I found the case only exists when prefix is the same to a key of the dict which means code1/code2 works well when the keyPrefix is neither ‘keyA’ nor ‘beyB’.</description></item></channel></rss>

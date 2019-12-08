@@ -2,5 +2,5 @@
 I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via certcollection (mega)
 Followed the [instructions](http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/ http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips) for IPS Interfaces.
 and met the issue:
-Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute ping command.
+Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.
 Related post on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE</description></item></channel></rss>

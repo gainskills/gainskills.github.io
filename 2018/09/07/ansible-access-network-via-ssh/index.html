@@ -1,4 +1,4 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Ansible Beginner Series"><meta name=keywords content="Ansible Cisco IOS SSH Python"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Ansible-Access Network via SSH-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/><link rel=alternate href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Ansible-Access Network via SSH","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" September 4, 2018","dateModified":" September 4, 2018","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"Ansible Beginner Series"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Ansible Beginner Series"><meta name=keywords content="Ansible Cisco IOS SSH Python"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Ansible-Access Network via SSH-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/><link rel=alternate href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Ansible-Access Network via SSH","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" September 4, 2018","dateModified":" November 14, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"Ansible Beginner Series"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
 <a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=https://blog.gainskills.top/categories/code>code</a></li><li><a href=https://blog.gainskills.top/categories/devops>devops</a></li><li><a href=https://blog.gainskills.top/categories/life>life</a></li><li><a href=https://blog.gainskills.top/categories/network>network</a></li><li><a href=https://blog.gainskills.top/categories/os>os</a></li><li><a href=https://blog.gainskills.top/top/about/>ABOUT</a></li><li><a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
@@ -11,80 +11,80 @@ $navbar.className+=" in";}}</script><style type=text/css>header.intro-header{bac
 col-md-10 col-md-offset-1
 post-container"><p>After <a href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/>Telnet</a>, continue to discuss how to access network device via SSH with Ansible.</p><p>For SSH access, we should consider 3 methods:</p><ol><li>Username/password</li><li>Username/Public-Key without password</li><li>Username/Public-Key with password</li></ol><p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:2113px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x78_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu2b29a6504de15aeee49252c9da5793c3_7081_0x350_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:350px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><h5 id=enable-ssh-on-the-router>Enable SSH on the router</h5><p>Jump #1 username/password part to public key configuration, I discussed <a href=https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/>how to configure public key on IOS router with Putty</a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</p><p>Considering Cisco IOS device support RSA key only, I generate keys by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ssh-keygen -t rsa -b <span style=color:#ae81ff>1024</span>
 </code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:708px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/8-opt_hu72d1c57ae0663a0b246410b6e1bac2f7_38596_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="SSH key"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/8-opt_hu72d1c57ae0663a0b246410b6e1bac2f7_38596_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="SSH key" style=height:300px></a><figcaption class=text-capitalize><small>SSH key</small></figcaption></figure></div><p>Keep passphrase empty is for Case#2.</p><h5 id=configuration-for-ssh-access>Configuration for SSH access</h5><p>Because I run all the 3 cases on the same one device, here the points I must care:</p><ul><li><p>Share SSH Sessions</p><p>The name of the feature of Ansible should be ‘Cache Connections’, refer to the description in the issue: <a href=https://github.com/ansible/ansible/issues/12006>ansible is caching connections?</a>: Ansible itself does not cache connections, but if you ssh is new enough it will be using control master/persist which allows ssh itself to cache connections, you can disable this by overriding ssh args in ansible.cfg or switching to paramiko as a transport. (Here is a <a href="https://www.youtube.com/watch?v=GGYOkwgEGfc&feature=share">demo</a> about how Putty supports it)</p></li><li><p><a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking>Host Key Checking</a></p><p>From my understanding, it will compare the fingerprint of the host to see whether it’s a known host or not
-For sake of methods testing, I configured secondary IPs (192.168.1.98, 192.168.1.97) and named the IP different names, <a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking>disabled Host Key Checking</a>.</p></li></ul><h5 id=new-inventory-inventorysshyml>new inventory: inventory_ssh.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
-user:
-  hosts:
-    user_R:
-      ansible_host: <span style=color:#e6db74>&#34;192.168.1.97&#34;</span>
-  vars:
-    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
-    ansible_ssh_user: test
-    ansible_ssh_pass: test123
+For sake of methods testing, I configured secondary IPs (192.168.1.98, 192.168.1.97) and named the IP different names, <a href=https://docs.ansible.com/ansible/2.5/user_guide/intro_getting_started.html#host-key-checking>disabled Host Key Checking</a>.</p></li></ul><h5 id=new-inventory-inventory_sshyml>new inventory: inventory_ssh.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
+<span style=color:#66d9ef>user</span>:
+  <span style=color:#66d9ef>hosts</span>:
+    <span style=color:#66d9ef>user_R</span>:
+      <span style=color:#66d9ef>ansible_host</span>: <span style=color:#e6db74>&#34;192.168.1.97&#34;</span>
+  <span style=color:#66d9ef>vars</span>:
+    <span style=color:#66d9ef>ansible_network_os</span>: <span style=color:#e6db74>&#34;ios&#34;</span>
+    <span style=color:#66d9ef>ansible_ssh_user</span>: test
+    <span style=color:#66d9ef>ansible_ssh_pass</span>: test123
 
 
-pubkeynopass:
-  hosts:
-    pubkeynopass_R:
-      ansible_host: <span style=color:#e6db74>&#34;192.168.1.98&#34;</span>
-  vars:
-    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
-    ansible_ssh_user: sshpubkey
-    ansible_ssh_private_key_file: <span style=color:#e6db74>&#39;/Users/kz/Documents/SSH/tmp/id_rsa_nokey&#39;</span>
+<span style=color:#66d9ef>pubkeynopass</span>:
+  <span style=color:#66d9ef>hosts</span>:
+    <span style=color:#66d9ef>pubkeynopass_R</span>:
+      <span style=color:#66d9ef>ansible_host</span>: <span style=color:#e6db74>&#34;192.168.1.98&#34;</span>
+  <span style=color:#66d9ef>vars</span>:
+    <span style=color:#66d9ef>ansible_network_os</span>: <span style=color:#e6db74>&#34;ios&#34;</span>
+    <span style=color:#66d9ef>ansible_ssh_user</span>: sshpubkey
+    <span style=color:#66d9ef>ansible_ssh_private_key_file</span>: <span style=color:#e6db74>&#39;/Users/kz/Documents/SSH/tmp/id_rsa_nokey&#39;</span>
 
 
-pubkeypass:
-  hosts:
-    pubkeypass_R:
-      ansible_host: <span style=color:#e6db74>&#34;192.168.1.99&#34;</span>
-  vars:
-    ansible_network_os: <span style=color:#e6db74>&#34;ios&#34;</span>
-    ansible_ssh_user: sshpubkeypass
-    ansible_ssh_private_key_file: /Users/kz/Documents/SSH/tmp/id_rsa_pass
-    ansible_ssh_pass: test123
-</code></pre></div><p>Note: For the public key with password case, instead of SSH password, ‘ansible_ssh_pass’ is for the key’s password.</p><h5 id=new-playbook-pbfirstyml>New playbook: pb_first.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>--<span style=color:#e6db74>-
-</span><span style=color:#e6db74></span><span style=color:#e6db74>
-</span><span style=color:#e6db74></span><span style=color:#e6db74>- name: ssh username/password</span>
-  connection: network_cli
-  hosts: user
-  become_method: enable
-  tasks:
-    - name: Get config for IOS devices
-      ios_facts:
-        gather_subset: all
+<span style=color:#66d9ef>pubkeypass</span>:
+  <span style=color:#66d9ef>hosts</span>:
+    <span style=color:#66d9ef>pubkeypass_R</span>:
+      <span style=color:#66d9ef>ansible_host</span>: <span style=color:#e6db74>&#34;192.168.1.99&#34;</span>
+  <span style=color:#66d9ef>vars</span>:
+    <span style=color:#66d9ef>ansible_network_os</span>: <span style=color:#e6db74>&#34;ios&#34;</span>
+    <span style=color:#66d9ef>ansible_ssh_user</span>: sshpubkeypass
+    <span style=color:#66d9ef>ansible_ssh_private_key_file</span>: /Users/kz/Documents/SSH/tmp/id_rsa_pass
+    <span style=color:#66d9ef>ansible_ssh_pass</span>: test123
+</code></pre></div><p>Note: For the public key with password case, instead of SSH password, ‘ansible_ssh_pass’ is for the key’s password.</p><h5 id=new-playbook-pb_firstyml>New playbook: pb_first.yml</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>---
 
-    - name: Display the config
-      debug:
-        msg: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
+- <span style=color:#66d9ef>name</span>: ssh username/password
+  <span style=color:#66d9ef>connection</span>: network_cli
+  <span style=color:#66d9ef>hosts</span>: user
+  <span style=color:#66d9ef>become_method</span>: enable
+  <span style=color:#66d9ef>tasks</span>:
+    - <span style=color:#66d9ef>name</span>: Get config for IOS devices
+      <span style=color:#66d9ef>ios_facts</span>:
+        <span style=color:#66d9ef>gather_subset</span>: all
 
-
-- name: ssh username/keyWithoutPassword
-  connection: network_cli
-  hosts: pubkeynopass
-  become_method: enable
-  tasks:
-    - name: Get config for IOS devices
-      ios_facts:
-        gather_subset: all
-
-    - name: Display the config
-      debug:
-        msg: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
+    - <span style=color:#66d9ef>name</span>: Display the config
+      <span style=color:#66d9ef>debug</span>:
+        <span style=color:#66d9ef>msg</span>: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
 
 
-- name: ssh username/keyWithPassword
-  connection: network_cli
-  hosts: pubkeypass
-  become_method: enable
-  tasks:
-    - name: Get config for IOS devices
-      ios_facts:
-        gather_subset: all
+- <span style=color:#66d9ef>name</span>: ssh username/keyWithoutPassword
+  <span style=color:#66d9ef>connection</span>: network_cli
+  <span style=color:#66d9ef>hosts</span>: pubkeynopass
+  <span style=color:#66d9ef>become_method</span>: enable
+  <span style=color:#66d9ef>tasks</span>:
+    - <span style=color:#66d9ef>name</span>: Get config for IOS devices
+      <span style=color:#66d9ef>ios_facts</span>:
+        <span style=color:#66d9ef>gather_subset</span>: all
 
-    - name: Display the config
-      debug:
-        msg: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
+    - <span style=color:#66d9ef>name</span>: Display the config
+      <span style=color:#66d9ef>debug</span>:
+        <span style=color:#66d9ef>msg</span>: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
+
+
+- <span style=color:#66d9ef>name</span>: ssh username/keyWithPassword
+  <span style=color:#66d9ef>connection</span>: network_cli
+  <span style=color:#66d9ef>hosts</span>: pubkeypass
+  <span style=color:#66d9ef>become_method</span>: enable
+  <span style=color:#66d9ef>tasks</span>:
+    - <span style=color:#66d9ef>name</span>: Get config for IOS devices
+      <span style=color:#66d9ef>ios_facts</span>:
+        <span style=color:#66d9ef>gather_subset</span>: all
+
+    - <span style=color:#66d9ef>name</span>: Display the config
+      <span style=color:#66d9ef>debug</span>:
+        <span style=color:#66d9ef>msg</span>: <span style=color:#e6db74>&#34;The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}&#34;</span>
 </code></pre></div><h5 id=run-playbook>Run playbook</h5><p>Run the playbook by executing the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-playbook -i inventory_ssh.yml pb_first.yml
-</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:524px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="Run Playbook"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x500_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="Run Playbook" style=height:500px></a><figcaption class=text-capitalize><small>Run Playbook</small></figcaption></figure></div><h5 id=how-to-verify>How to verify?</h5><p>From the inventory file, you can see that I use different users for different methods, you can run ‘show users’ command on the IOS router to see if device was accessed by different users:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:586px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption="username password"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="username password" style=height:80px></a><figcaption class=text-capitalize><small>username password</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:575px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption="public key nopass"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="public key nopass" style=height:80px></a><figcaption class=text-capitalize><small>public key nopass</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:568px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x158_resize_q20_catmullrom_2.png data-fancybox data-caption="public key with password"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="public key with password" style=height:80px></a><figcaption class=text-capitalize><small>public key with password</small></figcaption></figure></div><p>*** End ***</p><p>Reference:</p><ul><li><p><a href=https://www.ssh.com/ssh/keygen/><a href=https://www.ssh.com/ssh/keygen/>https://www.ssh.com/ssh/keygen/</a></a></p><p>How to generate the keys</p></li><li><p><a href=https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c><a href=https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c>https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c</a></a></p><p>How to run SSH with SSH-add as ansible recommended: Ansible does not expose a channel to allow communication between the user and the ssh process to accept a password manually to decrypt an ssh key when using the ssh connection plugin (which is the default). The use of ssh-agent is highly recommended.</p></li><li><p><a href=https://gist.github.com/yaegashi/9660f147cc8a5dfff339><a href=https://gist.github.com/yaegashi/9660f147cc8a5dfff339>https://gist.github.com/yaegashi/9660f147cc8a5dfff339</a></a></p><p>A sample reminds me that ansible_ssh_pass should work for the key.</p></li><li><p>The output of Ansible cache connections error:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>PLAY <span style=color:#f92672>[</span>ssh username/password<span style=color:#f92672>]</span> **************************************************************************************************************************
+</code></pre></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:524px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="Run Playbook"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/20-opt_hu7ba43768ec60e6cd2b0343eacd9d8287_61732_0x500_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="Run Playbook" style=height:500px></a><figcaption class=text-capitalize><small>Run Playbook</small></figcaption></figure></div><h5 id=how-to-verify>How to verify?</h5><p>From the inventory file, you can see that I use different users for different methods, you can run ‘show users’ command on the IOS router to see if device was accessed by different users:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:586px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption="username password"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/1-opt_hu682ed3e254f7f1c27a72a3274a93ed2b_13160_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="username password" style=height:80px></a><figcaption class=text-capitalize><small>username password</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:575px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x154_resize_q20_catmullrom_2.png data-fancybox data-caption="public key nopass"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/2-opt_hu3e21e5c7f3523b7ea92553702a8df8e3_14132_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="public key nopass" style=height:80px></a><figcaption class=text-capitalize><small>public key nopass</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:568px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x158_resize_q20_catmullrom_2.png data-fancybox data-caption="public key with password"><img data-src=https://blog.gainskills.top/img/postimgs/2018/09/3-opt_hu8fe77822555ce88d17471514d9540059_14139_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="public key with password" style=height:80px></a><figcaption class=text-capitalize><small>public key with password</small></figcaption></figure></div><p>*** End ***</p><p>Reference:</p><ul><li><p><a href=https://www.ssh.com/ssh/keygen/>https://www.ssh.com/ssh/keygen/</a></p><p>How to generate the keys</p></li><li><p><a href=https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c>https://medium.com/openinfo/ansible-ssh-private-public-keys-and-agent-setup-19c50b69c8c</a></p><p>How to run SSH with SSH-add as ansible recommended: Ansible does not expose a channel to allow communication between the user and the ssh process to accept a password manually to decrypt an ssh key when using the ssh connection plugin (which is the default). The use of ssh-agent is highly recommended.</p></li><li><p><a href=https://gist.github.com/yaegashi/9660f147cc8a5dfff339>https://gist.github.com/yaegashi/9660f147cc8a5dfff339</a></p><p>A sample reminds me that ansible_ssh_pass should work for the key.</p></li><li><p>The output of Ansible cache connections error:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>PLAY <span style=color:#f92672>[</span>ssh username/password<span style=color:#f92672>]</span> **************************************************************************************************************************
 TASK <span style=color:#f92672>[</span>Gathering Facts<span style=color:#f92672>]</span> ********************************************************************************************************************************
 task path: /Users/kz/Documents/C/ansibleprj/pys/pb_first.yml:3
 The full traceback is:
@@ -105,11 +105,11 @@ paramiko.ssh_exception.AuthenticationException: Authentication failed.
 During handling of the above exception, another exception occurred:
 Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/bin/ansible-connection&#34;</span>, line 105, in start
-self.connection._connect<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+self.connection._connect<span style=color:#f92672>()</span>
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/network_cli.py&#34;</span>, line 298, in _connect
-ssh <span style=color:#f92672>=</span> self.paramiko_conn._connect<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+ssh <span style=color:#f92672>=</span> self.paramiko_conn._connect<span style=color:#f92672>()</span>
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&#34;</span>, line 249, in _connect
-self.ssh <span style=color:#f92672>=</span> SSH_CONNECTION_CACHE<span style=color:#f92672>[</span>cache_key<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> self._connect_uncached<span style=color:#f92672>(</span><span style=color:#f92672>)</span>
+self.ssh <span style=color:#f92672>=</span> SSH_CONNECTION_CACHE<span style=color:#f92672>[</span>cache_key<span style=color:#f92672>]</span> <span style=color:#f92672>=</span> self._connect_uncached<span style=color:#f92672>()</span>
 File <span style=color:#e6db74>&#34;/Users/kz/Documents/C/ansibleprj/venv/lib/python3.7/site-packages/ansible/plugins/connection/paramiko_ssh.py&#34;</span>, line 365, in _connect_uncached
 raise AnsibleConnectionFailure<span style=color:#f92672>(</span>msg<span style=color:#f92672>)</span>
 ansible.errors.AnsibleConnectionFailure: Authentication failed.
@@ -138,7 +138,7 @@ icon='<i class="fa fa-link"></i>';if(id){return $el.prepend($("<a />").addClass(
 <a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>troubleshooting</a>
 <a href=https://blog.gainskills.top/tags/web title=web>web</a>
 <a href=https://blog.gainskills.top/tags/windows title=windows>windows</a></div></div></section></div></div></div><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"><hr class="hidden-sm hidden-xs"><div id=disqus-comment><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
-var d=document,s=d.createElement('script');s.async=true;s.src='//'+"kexian-zhangs-blog"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2018 - 2019<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
+var d=document,s=d.createElement('script');s.async=true;s.src='//'+"kexian-zhangs-blog"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2018 - 2021<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
 s.parentNode.insertBefore(o,s);}</script><script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var dnt=(navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack);var doNotTrack=(dnt=="1"||dnt=="yes");if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;if(window.sessionStorage){var GA_SESSION_STORAGE_KEY='ga:clientId';ga('create','UA-131650010-2',{'storage':'none','clientId':sessionStorage.getItem(GA_SESSION_STORAGE_KEY)});ga(function(tracker){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,tracker.get('clientId'));});}
 ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script>var options={"cookie":{"domain":"https:\/\/blog.gainskills.top","expiryDays":7,},"palette":{"popup":{"background":"#4d4d4d","text":"#ffffff",},"button":{"background":"transparent","text":"#ffffff",}},"theme":"edgeless","content":{"dismiss":"OK","message":"This site uses cookies to ensure you get the best experience.","link":"Learn more","target":'_blank',},};var instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element);</script><script>let lazyImages=[...document.querySelectorAll('.img-lazyload')]
 let inAdvance=20

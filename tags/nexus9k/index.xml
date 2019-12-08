@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nexus9K on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/nexus9k/</link><description>Recent content in Nexus9K on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 08 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/nexus9k/index.xml" rel="self" type="application/rss+xml"/><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>Refer to how to add NX-OXv 9000 to GNS3
 1. Download image files Here is the NX-OSv9k image file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.
-No I can’t provide the image with anyone.
+No I can’t provide the image to anyone.
 2. Copy image to eve(UNL) change file name to ‘hda.qcow2’
 copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’
 run
