@@ -1,0 +1,530 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="A note for DDNS, Certificate on Openwrt">
+<meta name=keywords content="OPENWRT DDNS Let's Encrypt Certificate">
+<link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico>
+<title>openwrt DDNS, acme commands-Blog - uTIcARdI</title>
+<link rel=alternate hreflang=en href=https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/>
+<link rel=alternate href=https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/ hreflang=x-default>
+<link rel=canonical href=https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/>
+<link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css>
+<link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css>
+<script src=https://blog.gainskills.top/js/jquery.min.js></script>
+<script src=https://blog.gainskills.top/js/bootstrap.min.js></script>
+<script src=https://blog.gainskills.top/js/hux-blog.min.js></script>
+<link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"openwrt DDNS, acme commands","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" September 15, 2021","dateModified":" September 15, 2021","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"A note for DDNS, Certificate on Openwrt"}</script>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script>
+<script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:!0})</script>
+<script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script>
+</head>
+<body>
+<amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942>
+</amp-auto-ads>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<div class=container-fluid>
+<div class="navbar-header page-scroll">
+<button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a>
+</div>
+<div id=huxblog_navbar>
+<div class=navbar-collapse>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href=https://blog.gainskills.top/categories/code>code</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/devops>devops</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/life>life</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/linux>linux</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/network>network</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/os>os</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/top/about/>ABOUT</a>
+</li>
+<li>
+<a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<script>var $body=document.body,$toggle=document.querySelector('.navbar-toggle'),$navbar=document.querySelector('#huxblog_navbar'),$collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic);function handleMagic(a){$navbar.className.indexOf('in')>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf('in')<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script>
+<style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style>
+<header class=intro-header>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<div class=tags>
+<a class=tag href=https://blog.gainskills.top/tags/openwrt title=OPENWRT>OPENWRT</a>
+<a class=tag href=https://blog.gainskills.top/tags/ddns title=DDNS>DDNS</a>
+<a class=tag href=https://blog.gainskills.top/tags/lets-encrypt title="Let's Encrypt">Let's Encrypt</a>
+<a class=tag href=https://blog.gainskills.top/tags/certificate title=Certificate>Certificate</a>
+</div>
+<h1>openwrt DDNS, acme commands</h1>
+<h3 class=subheading></h3>
+<span class=meta>Posted on September 15, 2021
+</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1
+col-md-10 col-md-offset-1
+post-container">
+<p>I&rsquo;m using <a href=https://openwrt.org/releases/21.02/notes-21.02.0>OpenWrt R21.8.6</a> by compile it from <a href=https://github.com/coolsnowwolf/lede>coolsnowwolf/lede</a>.</p>
+<h3 id=1-install-softwares-on-openwrt>1. Install softwares on Openwrt</h3>
+<ul>
+<li>acme</li>
+<li>ddns-scripts (This originally built when compile the firmware)</li>
+</ul>
+<h3 id=2-ddns-configuration>2. DDNS configuration</h3>
+<ul>
+<li>
+<p>DNS System</p>
+<p>Creating a dynamic DNS record on your DNS service provider (Mine is running over <a href=https://dns.he.net/>dns.he.net</a>)</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:257px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/01-opt_hu8cfa2cd0f7adcab730dd80b40ed3bf72_41960_0x456_resize_q20_catmullrom.jpg data-fancybox data-caption="Dynamic DNS A Record - New">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/01-opt_hu8cfa2cd0f7adcab730dd80b40ed3bf72_41960_0x180_resize_q20_catmullrom.jpg class="img-responsive img-lazyload" alt="Dynamic DNS A Record - New" style=height:180px>
+</a>
+<figcaption class=text-capitalize>
+<small>Dynamic DNS A Record - New</small>
+</figcaption>
+</figure>
+</div>
+<p>Generate password for DDNS</p>
+<p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:3471px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/02-opt_hu67886e5ba2201a73e0a1c316b2c3534a_11634_0x41_resize_q20_catmullrom.jpg data-fancybox data-caption="Dynamic DNS A Record password - entry">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/02-opt_hu67886e5ba2201a73e0a1c316b2c3534a_11634_0x120_resize_q20_catmullrom.jpg class="img-responsive img-lazyload" alt="Dynamic DNS A Record password - entry" style=height:120px>
+</a>
+<figcaption class=text-capitalize>
+<small>Dynamic DNS A Record password - entry</small>
+</figcaption>
+</figure>
+</div>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:289px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/03-opt_hu46367372650d79f4fa704baa76eb2856_8164_0x214_resize_q20_catmullrom_3.png data-fancybox data-caption="Dynamic DNS A Record password - generate">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/03-opt_hu46367372650d79f4fa704baa76eb2856_8164_0x150_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Dynamic DNS A Record password - generate" style=height:150px>
+</a>
+<figcaption class=text-capitalize>
+<small>Dynamic DNS A Record password - generate</small>
+</figcaption>
+</figure>
+</div></p>
+</li>
+<li>
+<p>Configuration on Openwrt</p>
+<p>Find &lsquo;Services&rsquo; on the top bar, then go to &ldquo;Dynamic DNS&rdquo;</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:226px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/04-opt_hua3d67e478427de03e76242ee3e6b4fa1_12164_0x225_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 1">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/04-opt_hua3d67e478427de03e76242ee3e6b4fa1_12164_0x130_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 1" style=height:130px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 1</small>
+</figcaption>
+</figure>
+</div>
+<p>Give the record a name and click &lsquo;Add&rsquo; button</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:230px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/05-opt_hu0e4c66d47ed3c8512c437e9d2c19e5e2_11274_0x310_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 2">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/05-opt_hu0e4c66d47ed3c8512c437e9d2c19e5e2_11274_0x190_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 2" style=height:190px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 2</small>
+</figcaption>
+</figure>
+</div>
+<p>Find and switch the DNS service as you&rsquo;re using</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:309px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/06-opt_hu74de86126e95d432e61fa156543904a7_14928_0x348_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 3">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/06-opt_hu74de86126e95d432e61fa156543904a7_14928_0x190_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 3" style=height:190px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 3</small>
+</figcaption>
+</figure>
+</div>
+<p>Enable the service and enter your dynamic record and password after the UI updated with the provider been switched, click &lsquo;Save & Apply&rsquo; in the corner when the configuration is done</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:252px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/07-opt_hue11fa4ac0d28b404c43c7579d3a614ff_24634_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 4">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/07-opt_hue11fa4ac0d28b404c43c7579d3a614ff_24634_0x220_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 4" style=height:220px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 4</small>
+</figcaption>
+</figure>
+</div>
+<p>Just in case, check the &ldquo;Advanced Settings&rdquo; tab and make sure it is the interface connects to Internet</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:512px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/08-opt_hu74fab65e99ea1d5d2b9c60bb18df919f_13464_0x222_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 5">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/08-opt_hu74fab65e99ea1d5d2b9c60bb18df919f_13464_0x130_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 5" style=height:130px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 5</small>
+</figcaption>
+</figure>
+</div>
+<p>Refresh the page, the process should be running when PID is there in the &ldquo;Process ID Start / Stop&rdquo; column</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:479px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/09-opt_huc2faa7a4218d8e840e83732c1f32e1e7_7387_0x131_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 5">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/09-opt_huc2faa7a4218d8e840e83732c1f32e1e7_7387_0x80_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 5" style=height:80px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 5</small>
+</figcaption>
+</figure>
+</div>
+<p>The Process can be started by clicking &lsquo;Start&rsquo; button</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:401px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/10-opt_hu83e705353799b1c45b2541591846afd9_14579_0x238_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt DDNS configuration 5">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/10-opt_hu83e705353799b1c45b2541591846afd9_14579_0x110_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt DDNS configuration 5" style=height:110px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt DDNS configuration 5</small>
+</figcaption>
+</figure>
+</div>
+</li>
+<li>
+<p>Verification</p>
+<p>Check on the DNS system, the record will be updated to the public IP</p>
+</li>
+</ul>
+<h3 id=3-generating-cert-by-using-acme-via-dns-api>3. Generating Cert by using ACME via DNS API</h3>
+<ul>
+<li>
+<p>Find and download the script for DNS from <a href=https://github.com/acmesh-official/acme.sh/tree/master/dnsapi>acmesh-official/acme.sh</a></p>
+<p>For me, I downloaded <a href=https://github.com/acmesh-official/acme.sh/blob/master/dnsapi/dns_he.sh>dns_he.sh</a></p>
+</li>
+<li>
+<p>Edit the script by adding the username/password</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:422px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2021/09/11-opt_hu71d8031c9cffbb00783ffb6b5a07ce49_7878_0x195_resize_q20_catmullrom_3.png data-fancybox data-caption="Openwrt ACME 1">
+<img data-src=https://blog.gainskills.top/img/postimgs/2021/09/11-opt_hu71d8031c9cffbb00783ffb6b5a07ce49_7878_0x110_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Openwrt ACME 1" style=height:110px>
+</a>
+<figcaption class=text-capitalize>
+<small>Openwrt ACME 1</small>
+</figcaption>
+</figure>
+</div>
+<p><strong>Note: Don&rsquo;t share your credential with others</strong></p>
+</li>
+<li>
+<p>Configuration on Openwrt</p>
+<ul>
+<li>
+<p>Install acme service</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>root@OpenWrt:~# cd /usr/lib/acme/
+root@OpenWrt:/usr/lib/acme# ./acme.sh --install</code></pre></div>
+<p>The output when installation is good
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Installing to /root/.acme.sh
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Installed to /root/.acme.sh/acme.sh
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> No profile is found, you will need to go into /root/.acme.sh to use acme.sh
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Installing cron job
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> OK</code></pre></div></p>
+</li>
+<li>
+<p>Configuration</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>root@OpenWrt:~# cd /root/.acme.sh
+root@OpenWrt:~/.acme.sh# mkdir dnsapi</code></pre></div>
+</li>
+<li>
+<p>Upload the file: <code>dns_he.sh</code> to the new created folder: <code>/root/.acme.sh/dnsapi</code></p>
+</li>
+<li>
+<p>Certificate generation</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>./acme.sh --issue --dns dns_he -d <span style=color:#e6db74>${</span>your_domain_name<span style=color:#e6db74>}</span></code></pre></div>
+<p>The output will be if everything works</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Using CA: https://acme-v02.api.letsencrypt.org/directory
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Creating domain key
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> The domain key is here: /root/.acme.sh/
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Single domain<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;{__omitted__}&#39;</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Getting domain auth token <span style=color:#66d9ef>for</span> each domain
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Getting webroot <span style=color:#66d9ef>for</span> domain<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;{__omitted__}&#39;</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Adding txt value: ___ <span style=color:#66d9ef>for</span> domain:  _acme-challenge.<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Using DNS-01 Hurricane Electric hook
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> TXT record added successfully.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> The txt record is added: Success.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Let<span style=color:#e6db74>&#39;s check each DNS record now. Sleep 20 seconds first.
+</span><span style=color:#e6db74>[Fri Sep 17] You can use &#39;</span>--dnssleep<span style=color:#e6db74>&#39; to disable public dns checks.
+</span><span style=color:#e6db74>[Fri Sep 17] See: https://github.com/acmesh-official/acme.sh/wiki/dnscheck
+</span><span style=color:#e6db74>[Fri Sep 17] Checking {__omitted__} for _acme-challenge.{__omitted__}
+</span><span style=color:#e6db74>[Fri Sep 17] Domain {__omitted__} &#39;</span>_acme-challenge.<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span><span style=color:#e6db74>&#39; success.
+</span><span style=color:#e6db74>[Fri Sep 17] All success, let&#39;</span>s <span style=color:#66d9ef>return</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Verifying: <span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Success
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Removing DNS records.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Removing txt: ___ <span style=color:#66d9ef>for</span> domain: _acme-challenge.<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Cleaning up after DNS-01 Hurricane Electric hook
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Record removed successfully.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Removed: Success
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Verify finished, start to sign.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Lets finalize the order.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Le_OrderFinalize<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;https://acme-v02.api.letsencrypt.org/acme/finalize/163482020/25029386060&#39;</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Downloading cert.
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Le_LinkCert<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;https://acme-v02.api.letsencrypt.org/acme/cert/03f18ca7f43ee3225f7ff175c2d0ef4cd05a&#39;</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Cert success.
+<span style=color:#f92672>{</span>Certificate key content<span style=color:#f92672>}</span>
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Your cert is in  /root/.acme.sh/<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>/<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>.cer
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> Your cert key is in  /root/.acme.sh/<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>/<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>.key
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> The intermediate CA cert is in  /root/.acme.sh/<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>/ca.cer
+<span style=color:#f92672>[</span>Fri Sep 17<span style=color:#f92672>]</span> And the full chain certs is there:  /root/.acme.sh/<span style=color:#f92672>{</span>__omitted__<span style=color:#f92672>}</span>/fullchain.cer</code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id=reference>Reference</h3>
+<ul>
+<li><a href=https://openwrt.org/releases/21.02/notes-21.02.0>https://openwrt.org/releases/21.02/notes-21.02.0</a></li>
+<li><a href=https://github.com/coolsnowwolf/lede>https://github.com/coolsnowwolf/lede</a></li>
+<li><a href=https://dns.he.net/>https://dns.he.net/</a></li>
+<li><a href=https://github.com/acmesh-official/acme.sh>https://github.com/acmesh-official/acme.sh</a></li>
+<li><a href=https://github.com/acmesh-official/acme.sh/wiki/dnsapi>https://github.com/acmesh-official/acme.sh/wiki/dnsapi</a></li>
+</ul>
+<div class="entry-shang text-center">
+<button class="zs show-zs btn btn-bred">Donation</button>
+</div>
+<div class=zs-modal-bg></div>
+<div class=zs-modal-box>
+<div class=zs-modal-head>
+<button type=button class=close>×</button>
+<span class=author align=right><br><p class=tip>openwrt DDNS, acme commands</p><br></span>
+</div>
+<div class=zs-modal-body>
+<div class=zs-modal-btns>
+<button class="btn btn-blink" data-num=2>$2</button>
+<button class="btn btn-blink" data-num=5>$5</button>
+<button class="btn btn-blink" data-num=1>Any</button>
+</div>
+<div class=zs-modal-pay>
+<img alt=donation id=pay-image>
+<p>Scan the QR code using <span id=pay-type>WeChat</span></p>
+</div>
+</div>
+<div class=zs-modal-footer>
+<label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
+<label class=radio-inline><input type=radio name=zs-type value=wechat class=zs-type class=zs-wechat><img alt=wechat></label>
+<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label>
+</div>
+</div>
+<script src=https://blog.gainskills.top/js/reward.min.js></script>
+<div class="a2a_kit a2a_default_style">
+<h5 class=share-this>Share this!</h5>
+<ul class=list-inline>
+<li>
+<a rel=nofollow class=a2a_button_facebook>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_twitter>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_email>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_linkedin>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_pocket>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_evernote>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_sina_weibo>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_wechat>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_wordpress>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-share fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+</ul>
+</div>
+<script>var a2a_config=a2a_config||{};a2a_config.num_services=2,a2a_config.delay=800,a2a_config.prioritize=["google_plus","reddit"],a2a_config.icon_color="#2a89f5",a2a_config.thanks={postShare:!1,ad:!1}</script>
+<script async src=https://static.addtoany.com/menu/page.js></script>
+<ul class=pager>
+<li class=previous>
+<a rel=nofollow href=https://blog.gainskills.top/2019/12/08/evengaristabooting/ data-toggle=tooltip data-placement=top title="Run Arista VM 4.2.2 and later version on EVE(UNL)">&larr;
+Previous Post</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<script>$(function(){return $("h2, h3, h4, h5, h6").each(function(e,d){var a,c,b;if(a=$(d),b=a.attr('id'),link=a.attr('href'),c='<i class="fa fa-link"></i>',b)return a.prepend($("<a />").addClass("header-link").attr("href","#"+b).html(c))})})</script>
+</article>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1"  >
+<hr class="hidden-sm hidden-xs">
+<h5>See Also</h5>
+<ul>
+<li><a href=https://blog.gainskills.top/2019/12/08/evengaristabooting/>Run Arista VM 4.2.2 and later version on EVE(UNL)
+</a></li>
+<li><a href=https://blog.gainskills.top/2019/02/09/ios-ip-classless/>IOS command:IP classless
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/>Run ASA9.1 on EVE(UNL)
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/>IPSec Over Palo Alto FW Static NAT
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/>MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成
+</a></li>
+</ul>
+<div class=sidebar-container>
+<h5>Pages with featured tags</h5>
+<div class=tags>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=https://blog.gainskills.top/tags/ansible title=ansible>
+ansible
+</a>
+<a href=https://blog.gainskills.top/tags/blog title=blog>
+blog
+</a>
+<a href=https://blog.gainskills.top/tags/cisco title=cisco>
+cisco
+</a>
+<a href=https://blog.gainskills.top/tags/hugo title=hugo>
+hugo
+</a>
+<a href=https://blog.gainskills.top/tags/ios title=ios>
+ios
+</a>
+<a href=https://blog.gainskills.top/tags/linux title=linux>
+linux
+</a>
+<a href=https://blog.gainskills.top/tags/python title=python>
+python
+</a>
+<a href=https://blog.gainskills.top/tags/security title=security>
+security
+</a>
+<a href=https://blog.gainskills.top/tags/simulator title=simulator>
+simulator
+</a>
+<a href=https://blog.gainskills.top/tags/tip title=tip>
+tip
+</a>
+<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>
+troubleshooting
+</a>
+<a href=https://blog.gainskills.top/tags/web title=web>
+web
+</a>
+<a href=https://blog.gainskills.top/tags/windows title=windows>
+windows
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1">
+<hr class="hidden-sm hidden-xs">
+<div id=disqus-comment>
+<div id=disqus_thread></div>
+<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//kexian-zhangs-blog.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<p class="copyright text-muted">
+Copyright &copy; Blog - uTIcARdI&sbquo; 2021
+<br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script>function async(f,b){var c=document,d='script',a=c.createElement(d),e=c.getElementsByTagName(d)[0];a.src=f,b&&a.addEventListener('load',function(a){b(null,a)},!1),e.parentNode.insertBefore(a,e)}</script>
+<script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var a=document.querySelector("nav");a&&FastClick.attach(a)})</script>
+<script type=application/javascript>var dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes",GA_SESSION_STORAGE_KEY;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,window.sessionStorage&&(GA_SESSION_STORAGE_KEY='ga:clientId',ga('create','UA-131650010-2',{storage:'none',clientId:sessionStorage.getItem(GA_SESSION_STORAGE_KEY)}),ga(function(a){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,a.get('clientId'))})),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<script>var options={cookie:{domain:"https://blog.gainskills.top",expiryDays:7},palette:{popup:{background:"#4d4d4d",text:"#ffffff"},button:{background:"transparent",text:"#ffffff"}},theme:"edgeless",content:{dismiss:"OK",message:"This site uses cookies to ensure you get the best experience.",link:"Learn more",target:'_blank'}},instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element)</script>
+<script>let lazyImages=[...document.querySelectorAll('.img-lazyload')],inAdvance=20;function lazyLoad(){lazyImages.forEach(a=>{a.offsetTop<window.innerHeight+window.pageYOffset+inAdvance&&!a.classList.contains('img-lazyload-loaded')&&(a.src=a.dataset.src,a.onload=()=>{a.classList.add('img-lazyload-loaded'),a.style.height=""})})}lazyLoad(),window.addEventListener('scroll',_.throttle(lazyLoad,8)),window.addEventListener('resize',_.throttle(lazyLoad,8))</script>
+</body>
+</html>

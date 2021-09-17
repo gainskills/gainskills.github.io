@@ -1,40 +1,467 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="A sample about an iOS project"><meta name=keywords content="Jenkins Xcode Troubleshooting"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Jenkins/Xcode plugin for iOS project delivery-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/><link rel=alternate href=https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Jenkins\/Xcode plugin for iOS project delivery","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" December 18, 2018","dateModified":" November 14, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"A sample about an iOS project"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="A sample about an iOS project">
+<meta name=keywords content="Jenkins Xcode Troubleshooting">
+<link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico>
+<title>Jenkins/Xcode plugin for iOS project delivery-Blog - uTIcARdI</title>
+<link rel=alternate hreflang=en href=https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/>
+<link rel=alternate href=https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/ hreflang=x-default>
+<link rel=canonical href=https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/>
+<link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css>
+<link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css>
+<script src=https://blog.gainskills.top/js/jquery.min.js></script>
+<script src=https://blog.gainskills.top/js/bootstrap.min.js></script>
+<script src=https://blog.gainskills.top/js/hux-blog.min.js></script>
+<link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Jenkins\/Xcode plugin for iOS project delivery","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" December 18, 2018","dateModified":" November 14, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"A sample about an iOS project"}</script>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script>
+<script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:!0})</script>
+<script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script>
+</head>
+<body>
+<amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942>
+</amp-auto-ads>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<div class=container-fluid>
+<div class="navbar-header page-scroll">
+<button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
-<a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=https://blog.gainskills.top/categories/code>code</a></li><li><a href=https://blog.gainskills.top/categories/devops>devops</a></li><li><a href=https://blog.gainskills.top/categories/life>life</a></li><li><a href=https://blog.gainskills.top/categories/network>network</a></li><li><a href=https://blog.gainskills.top/categories/os>os</a></li><li><a href=https://blog.gainskills.top/top/about/>ABOUT</a></li><li><a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
-function handleMagic(e){if($navbar.className.indexOf('in')>0){$navbar.className=" ";setTimeout(function(){if($navbar.className.indexOf('in')<0){$collapse.style.height="0px"}},400)}else{$collapse.style.height="auto"
-$navbar.className+=" in";}}</script><style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=https://blog.gainskills.top/tags/jenkins title=Jenkins>Jenkins</a>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a>
+</div>
+<div id=huxblog_navbar>
+<div class=navbar-collapse>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href=https://blog.gainskills.top/categories/code>code</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/devops>devops</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/life>life</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/linux>linux</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/network>network</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/os>os</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/top/about/>ABOUT</a>
+</li>
+<li>
+<a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<script>var $body=document.body,$toggle=document.querySelector('.navbar-toggle'),$navbar=document.querySelector('#huxblog_navbar'),$collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic);function handleMagic(a){$navbar.className.indexOf('in')>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf('in')<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script>
+<style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style>
+<header class=intro-header>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<div class=tags>
+<a class=tag href=https://blog.gainskills.top/tags/jenkins title=Jenkins>Jenkins</a>
 <a class=tag href=https://blog.gainskills.top/tags/xcode title=Xcode>Xcode</a>
-<a class=tag href=https://blog.gainskills.top/tags/troubleshooting title=Troubleshooting>Troubleshooting</a></div><h1>Jenkins/Xcode plugin for iOS project delivery</h1><h3 class=subheading></h3><span class=meta>Posted on December 18, 2018</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
+<a class=tag href=https://blog.gainskills.top/tags/troubleshooting title=Troubleshooting>Troubleshooting</a>
+</div>
+<h1>Jenkins/Xcode plugin for iOS project delivery</h1>
+<h3 class=subheading></h3>
+<span class=meta>Posted on December 18, 2018
+</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:</p><ol><li><p>Install Jenkins</p></li><li><p>Install Xcode plugin on Jenkins</p></li><li><p>New a ‘Freestyle project’ on Jenkins</p></li><li><p>Jenkins project configuration</p><ul><li>‘Source Code Management’ on Jenkins</li><li>‘Build’ setting on Jenkins</li></ul></li><li><p>Jenkins Project -> ‘Build Now’</p></li></ol><p>Errors:</p><ul><li><p>CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.x’</p><p>I have stuck on this error for days and got it resolved by checking following configuration:</p><ol><li><p>For XCode, Check if the account you logged on Xcode has been bound Certificate and Provisioning profiles on <a href="https://idmsa.apple.com/IDMSWebAuth/signin?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2Faccount%2F&rv=1">Apple Developer</a>. The option ‘Automatically manage signing’ was enabled on my project and it doesn’t cause any issue (XCode version: 10.1)</p></li><li><p>For Fastlane, if the account was verified as #1, there won’t be any issue.</p></li><li><p>For Jenkins, I prefer to enable ‘Import developer profile’ option before run build with <a href=https://wiki.jenkins-ci.org/display/JENKINS/Xcode+Plugin>Xcode Plugin</a>. Actually, the steps about how to upload the profile to Jenkins has been described in details on <a href=https://wiki.jenkins.io/display/JENKINS/Xcode+Plugin#XcodePlugin-Signing>XCode Plugin page</a>:</p><blockquote><p>This plugin builds on top of Credentials Plugin to allow you to store your Apple Developer Profile (*.developerprofile) file. This file contains a code signing private key, corresponding developer/distribution certificates, and mobile provisioning profiles. You can create this file from your XCode. To upload the developer profile into Jenkins, go to “Manage Credentials” in the system configuration page, and select “Apple Developer Profile” from the “Add” button. To use this profile for signing, add “Import developer profile” as a build step before you run Xcode, and select the developer profile to import into the build machine. This build step will install the developer profile into the slave’s keychain.</p></blockquote><p>Screenshots about Apple Developer Profile Export:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:193px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/3-opt_hu98ffe6d45043874c02b86150ddbc7626_10920_0x162_resize_q20_catmullrom_2.png data-fancybox data-caption="XCode-Export Apple Developer Profile-1"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/3-opt_hu98ffe6d45043874c02b86150ddbc7626_10920_0x80_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="XCode-Export Apple Developer Profile-1" style=height:80px></a><figcaption class=text-capitalize><small>XCode-Export Apple Developer Profile-1</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:268px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/4-opt_hu5dd5a9884a2d7b9fb9a6bd8af718fb03_35963_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="XCode-Export Apple Developer Profile-2"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/4-opt_hu5dd5a9884a2d7b9fb9a6bd8af718fb03_35963_0x400_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="XCode-Export Apple Developer Profile-2" style=height:400px></a><figcaption class=text-capitalize><small>XCode-Export Apple Developer Profile-2</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:407px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/5-opt_hu03ebc7eccbba4dff0f3c295742bd683a_40386_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="XCode-Export Apple Developer Profile-3"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/5-opt_hu03ebc7eccbba4dff0f3c295742bd683a_40386_0x250_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="XCode-Export Apple Developer Profile-3" style=height:250px></a><figcaption class=text-capitalize><small>XCode-Export Apple Developer Profile-3</small></figcaption></figure></div><p>Screenshot about Apple Developer Profile Import:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:423px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/2-opt_hu8698fa92485f06ce6426216be673dae4_77684_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="XCode-Export Jenkins-Import Apple Developer Profile-1"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/2-opt_hu8698fa92485f06ce6426216be673dae4_77684_0x200_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="XCode-Export Jenkins-Import Apple Developer Profile-1" style=height:200px></a><figcaption class=text-capitalize><small>XCode-Export Jenkins-Import Apple Developer Profile-1</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:780px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/6-opt_hucbd0e47b84d90393c37c3b7e977f1ae0_35714_0x230_resize_q20_catmullrom_2.png data-fancybox data-caption="XCode-Export Jenkins-Import Apple Developer Profile-2"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/6-opt_hucbd0e47b84d90393c37c3b7e977f1ae0_35714_0x100_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="XCode-Export Jenkins-Import Apple Developer Profile-2" style=height:100px></a><figcaption class=text-capitalize><small>XCode-Export Jenkins-Import Apple Developer Profile-2</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:419px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/7-opt_hu3c2f2c8571ff095baa78fc1fde5cb7de_20087_0x312_resize_q20_catmullrom_2.png data-fancybox data-caption="XCode-Export Jenkins-Import Apple Developer Profile-3"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/7-opt_hu3c2f2c8571ff095baa78fc1fde5cb7de_20087_0x100_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="XCode-Export Jenkins-Import Apple Developer Profile-3" style=height:100px></a><figcaption class=text-capitalize><small>XCode-Export Jenkins-Import Apple Developer Profile-3</small></figcaption></figure></div></li><li><p>For Jenkins/Xcode plugin, make sure the ‘Scheme’ or the ‘Target’ was defined properly.</p><p>Two schedules were defined in my project: one for real devices and another for the simulator.</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:249px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/8-opt_hu88b4934d6bc2a2b3f2bb56cd14d5e083_47212_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="Jenkins/Xcode plugin-Scheme"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/8-opt_hu88b4934d6bc2a2b3f2bb56cd14d5e083_47212_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="Jenkins/Xcode plugin-Scheme" style=height:300px></a><figcaption class=text-capitalize><small>Jenkins/Xcode plugin-Scheme</small></figcaption></figure></div><p>Scheme names also can be found by the command: ‘xcodebuild -list’</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:387px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/9-opt_hua734563475284147f68bdbbf8ec3dd52_47420_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="xcodebuild -list"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/9-opt_hua734563475284147f68bdbbf8ec3dd52_47420_0x260_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="xcodebuild -list" style=height:260px></a><figcaption class=text-capitalize><small>xcodebuild -list</small></figcaption></figure></div></li></ol></li><li><p>Target ‘xxx’ (project ‘xxx’) has copy command from file_location1 to file_location2</p></li></ul><p>Refer to the question on StackOverflow, the issue can be resolved by changing Build System to ‘Legacy Build System’</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:381px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/10-opt_hu781fcc7398bc9ad8fda34fa9875e461c_122401_0x550_resize_q20_catmullrom_2.png data-fancybox data-caption="xcode build system"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/10-opt_hu781fcc7398bc9ad8fda34fa9875e461c_122401_0x260_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="xcode build system" style=height:260px></a><figcaption class=text-capitalize><small>xcode build system</small></figcaption></figure></div><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1820px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2018/12/11-opt_hu8f24af7a0ffa56ca1f5a79d96116ad49_27793_0x256_resize_q20_catmullrom_2.png data-fancybox data-caption="build option of xcode plugin"><img data-src=https://blog.gainskills.top/img/postimgs/2018/12/11-opt_hu8f24af7a0ffa56ca1f5a79d96116ad49_27793_0x260_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt="build option of xcode plugin" style=height:260px></a><figcaption class=text-capitalize><small>build option of xcode plugin</small></figcaption></figure></div><p>Note: I prefer “Jenkins Credential” than “<a href=https://wiki.jenkins.io/display/JENKINS/Keychains+and+Provisioning+Profiles+Plugin>Keychains and Provisioning Profiles Plugin</a>” because the comment: ‘This plugin exposes the keychain passwords in the Compare Environment section.’ from <a href=https://wiki.jenkins.io/display/~hyei>Henry Yei</a>.</p><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
-<span class=author align=right><br><p class=tip>Jenkins/Xcode plugin for iOS project delivery</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
+post-container">
+<p>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:</p>
+<ol>
+<li>
+<p>Install Jenkins</p>
+</li>
+<li>
+<p>Install Xcode plugin on Jenkins</p>
+</li>
+<li>
+<p>New a ‘Freestyle project’ on Jenkins</p>
+</li>
+<li>
+<p>Jenkins project configuration</p>
+<ul>
+<li>‘Source Code Management’ on Jenkins</li>
+<li>‘Build’ setting on Jenkins</li>
+</ul>
+</li>
+<li>
+<p>Jenkins Project -> ‘Build Now’</p>
+</li>
+</ol>
+<p>Errors:</p>
+<ul>
+<li>
+<p>CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.x’</p>
+<p>I have stuck on this error for days and got it resolved by checking following configuration:</p>
+<ol>
+<li>
+<p>For XCode, Check if the account you logged on Xcode has been bound Certificate and Provisioning profiles on <a href="https://idmsa.apple.com/IDMSWebAuth/signin?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2Faccount%2F&rv=1">Apple Developer</a>. The option ‘Automatically manage signing’ was enabled on my project and it doesn’t cause any issue (XCode version: 10.1)</p>
+</li>
+<li>
+<p>For Fastlane, if the account was verified as #1, there won’t be any issue.</p>
+</li>
+<li>
+<p>For Jenkins, I prefer to enable ‘Import developer profile’ option before run build with <a href=https://wiki.jenkins-ci.org/display/JENKINS/Xcode+Plugin>Xcode Plugin</a>. Actually, the steps about how to upload the profile to Jenkins has been described in details on <a href=https://wiki.jenkins.io/display/JENKINS/Xcode+Plugin#XcodePlugin-Signing>XCode Plugin page</a>:</p>
+<blockquote>
+<p>This plugin builds on top of Credentials Plugin to allow you to store your Apple Developer Profile (*.developerprofile) file. This file contains a code signing private key, corresponding developer/distribution certificates, and mobile provisioning profiles. You can create this file from your XCode. To upload the developer profile into Jenkins, go to “Manage Credentials” in the system configuration page, and select “Apple Developer Profile” from the “Add” button. To use this profile for signing, add “Import developer profile” as a build step before you run Xcode, and select the developer profile to import into the build machine. This build step will install the developer profile into the slave’s keychain.</p>
+</blockquote>
+<p>Screenshots about Apple Developer Profile Export:</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:193px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/3-opt_hu98ffe6d45043874c02b86150ddbc7626_10920_0x162_resize_q20_catmullrom_3.png data-fancybox data-caption="XCode-Export Apple Developer Profile-1">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/3-opt_hu98ffe6d45043874c02b86150ddbc7626_10920_0x80_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="XCode-Export Apple Developer Profile-1" style=height:80px>
+</a>
+<figcaption class=text-capitalize>
+<small>XCode-Export Apple Developer Profile-1</small>
+</figcaption>
+</figure>
+</div>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:268px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/4-opt_hu5dd5a9884a2d7b9fb9a6bd8af718fb03_35963_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="XCode-Export Apple Developer Profile-2">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/4-opt_hu5dd5a9884a2d7b9fb9a6bd8af718fb03_35963_0x400_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="XCode-Export Apple Developer Profile-2" style=height:400px>
+</a>
+<figcaption class=text-capitalize>
+<small>XCode-Export Apple Developer Profile-2</small>
+</figcaption>
+</figure>
+</div>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:407px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/5-opt_hu03ebc7eccbba4dff0f3c295742bd683a_40386_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="XCode-Export Apple Developer Profile-3">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/5-opt_hu03ebc7eccbba4dff0f3c295742bd683a_40386_0x250_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="XCode-Export Apple Developer Profile-3" style=height:250px>
+</a>
+<figcaption class=text-capitalize>
+<small>XCode-Export Apple Developer Profile-3</small>
+</figcaption>
+</figure>
+</div>
+<p>Screenshot about Apple Developer Profile Import:</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:423px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/2-opt_hu8698fa92485f06ce6426216be673dae4_77684_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="XCode-Export Jenkins-Import Apple Developer Profile-1">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/2-opt_hu8698fa92485f06ce6426216be673dae4_77684_0x200_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="XCode-Export Jenkins-Import Apple Developer Profile-1" style=height:200px>
+</a>
+<figcaption class=text-capitalize>
+<small>XCode-Export Jenkins-Import Apple Developer Profile-1</small>
+</figcaption>
+</figure>
+</div>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:780px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/6-opt_hucbd0e47b84d90393c37c3b7e977f1ae0_35714_0x230_resize_q20_catmullrom_3.png data-fancybox data-caption="XCode-Export Jenkins-Import Apple Developer Profile-2">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/6-opt_hucbd0e47b84d90393c37c3b7e977f1ae0_35714_0x100_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="XCode-Export Jenkins-Import Apple Developer Profile-2" style=height:100px>
+</a>
+<figcaption class=text-capitalize>
+<small>XCode-Export Jenkins-Import Apple Developer Profile-2</small>
+</figcaption>
+</figure>
+</div>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:419px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/7-opt_hu3c2f2c8571ff095baa78fc1fde5cb7de_20087_0x312_resize_q20_catmullrom_3.png data-fancybox data-caption="XCode-Export Jenkins-Import Apple Developer Profile-3">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/7-opt_hu3c2f2c8571ff095baa78fc1fde5cb7de_20087_0x100_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="XCode-Export Jenkins-Import Apple Developer Profile-3" style=height:100px>
+</a>
+<figcaption class=text-capitalize>
+<small>XCode-Export Jenkins-Import Apple Developer Profile-3</small>
+</figcaption>
+</figure>
+</div>
+</li>
+<li>
+<p>For Jenkins/Xcode plugin, make sure the ‘Scheme’ or the ‘Target’ was defined properly.</p>
+<p>Two schedules were defined in my project: one for real devices and another for the simulator.</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:249px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/8-opt_hu88b4934d6bc2a2b3f2bb56cd14d5e083_47212_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="Jenkins/Xcode plugin-Scheme">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/8-opt_hu88b4934d6bc2a2b3f2bb56cd14d5e083_47212_0x300_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="Jenkins/Xcode plugin-Scheme" style=height:300px>
+</a>
+<figcaption class=text-capitalize>
+<small>Jenkins/Xcode plugin-Scheme</small>
+</figcaption>
+</figure>
+</div>
+<p>Scheme names also can be found by the command: ‘xcodebuild -list’</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:387px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/9-opt_hua734563475284147f68bdbbf8ec3dd52_47420_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="xcodebuild -list">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/9-opt_hua734563475284147f68bdbbf8ec3dd52_47420_0x260_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="xcodebuild -list" style=height:260px>
+</a>
+<figcaption class=text-capitalize>
+<small>xcodebuild -list</small>
+</figcaption>
+</figure>
+</div>
+</li>
+</ol>
+</li>
+<li>
+<p>Target ‘xxx’ (project ‘xxx’) has copy command from file_location1 to file_location2</p>
+</li>
+</ul>
+<p>Refer to the question on StackOverflow, the issue can be resolved by changing Build System to ‘Legacy Build System’</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:381px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/10-opt_hu781fcc7398bc9ad8fda34fa9875e461c_122401_0x550_resize_q20_catmullrom_3.png data-fancybox data-caption="xcode build system">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/10-opt_hu781fcc7398bc9ad8fda34fa9875e461c_122401_0x260_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="xcode build system" style=height:260px>
+</a>
+<figcaption class=text-capitalize>
+<small>xcode build system</small>
+</figcaption>
+</figure>
+</div>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:1820px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2018/12/11-opt_hu8f24af7a0ffa56ca1f5a79d96116ad49_27793_0x256_resize_q20_catmullrom_3.png data-fancybox data-caption="build option of xcode plugin">
+<img data-src=https://blog.gainskills.top/img/postimgs/2018/12/11-opt_hu8f24af7a0ffa56ca1f5a79d96116ad49_27793_0x260_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt="build option of xcode plugin" style=height:260px>
+</a>
+<figcaption class=text-capitalize>
+<small>build option of xcode plugin</small>
+</figcaption>
+</figure>
+</div>
+<p>Note: I prefer “Jenkins Credential” than “<a href=https://wiki.jenkins.io/display/JENKINS/Keychains+and+Provisioning+Profiles+Plugin>Keychains and Provisioning Profiles Plugin</a>” because the comment: ‘This plugin exposes the keychain passwords in the Compare Environment section.’ from <a href=https://wiki.jenkins.io/display/~hyei>Henry Yei</a>.</p>
+<div class="entry-shang text-center">
+<button class="zs show-zs btn btn-bred">Donation</button>
+</div>
+<div class=zs-modal-bg></div>
+<div class=zs-modal-box>
+<div class=zs-modal-head>
+<button type=button class=close>×</button>
+<span class=author align=right><br><p class=tip>Jenkins/Xcode plugin for iOS project delivery</p><br></span>
+</div>
+<div class=zs-modal-body>
+<div class=zs-modal-btns>
+<button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
-<button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
+<button class="btn btn-blink" data-num=1>Any</button>
+</div>
+<div class=zs-modal-pay>
+<img alt=donation id=pay-image>
+<p>Scan the QR code using <span id=pay-type>WeChat</span></p>
+</div>
+</div>
+<div class=zs-modal-footer>
+<label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
 <label class=radio-inline><input type=radio name=zs-type value=wechat class=zs-type class=zs-wechat><img alt=wechat></label>
-<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label></div></div><script src=https://blog.gainskills.top/js/reward.min.js></script><div class="a2a_kit a2a_default_style"><h5 class=share-this>Share this!</h5><ul class=list-inline><li><a rel=nofollow class=a2a_button_facebook><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_twitter><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_email><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_linkedin><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_pocket><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_evernote><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_sina_weibo><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-weibo fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_wechat><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-wechat fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_wordpress><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-wordpress fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-share fa-stack-1x fa-inverse"></i></span></a></li></ul></div><script>var a2a_config=a2a_config||{};a2a_config.num_services=2;a2a_config.delay=800;a2a_config.prioritize=["google_plus","reddit"];a2a_config.icon_color="#2a89f5";a2a_config.thanks={postShare:false,ad:false}</script><script async src=https://static.addtoany.com/menu/page.js></script><ul class=pager><li class=previous><a rel=nofollow href=https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/ data-toggle=tooltip data-placement=top title="MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成">&larr;
-Previous Post</a></li><li class=next><a rel=nofollow href=https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/ data-toggle=tooltip data-placement=top title="IPSec Over Palo Alto FW Static NAT">Next
-Post &rarr;</a></li></ul></div></div></div><script>$(function(){return $("h2, h3, h4, h5, h6").each(function(i,el){var $el,icon,id;$el=$(el);id=$el.attr('id');link=$el.attr('href')
-icon='<i class="fa fa-link"></i>';if(id){return $el.prepend($("<a />").addClass("header-link").attr("href","#"+id).html(icon));}});});</script></article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"  ><hr class="hidden-sm hidden-xs"><h5>See Also</h5><ul><li><a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>Netconf feature on Cisco IOS/IOSXE</a></li><li><a href=https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/>AWS S3 Bucket Creation</a></li><li><a href=https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/>Jenkins/Xcode plugin-parameterized project</a></li><li><a href=https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/>Ansible-Access Network via Netconf</a></li><li><a href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/>Ansible-Access Network via SSH</a></li></ul><div class=sidebar-container><h5>Pages with featured tags</h5><div class=tags>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href=https://blog.gainskills.top/tags/ansible title=ansible>ansible</a>
-<a href=https://blog.gainskills.top/tags/blog title=blog>blog</a>
-<a href=https://blog.gainskills.top/tags/cisco title=cisco>cisco</a>
-<a href=https://blog.gainskills.top/tags/hugo title=hugo>hugo</a>
-<a href=https://blog.gainskills.top/tags/ios title=ios>ios</a>
-<a href=https://blog.gainskills.top/tags/linux title=linux>linux</a>
-<a href=https://blog.gainskills.top/tags/python title=python>python</a>
-<a href=https://blog.gainskills.top/tags/security title=security>security</a>
-<a href=https://blog.gainskills.top/tags/simulator title=simulator>simulator</a>
-<a href=https://blog.gainskills.top/tags/tip title=tip>tip</a>
-<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>troubleshooting</a>
-<a href=https://blog.gainskills.top/tags/web title=web>web</a>
-<a href=https://blog.gainskills.top/tags/windows title=windows>windows</a></div></div></section></div></div></div><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"><hr class="hidden-sm hidden-xs"><div id=disqus-comment><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
-var d=document,s=d.createElement('script');s.async=true;s.src='//'+"kexian-zhangs-blog"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2018 - 2021<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
-s.parentNode.insertBefore(o,s);}</script><script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var dnt=(navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack);var doNotTrack=(dnt=="1"||dnt=="yes");if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;if(window.sessionStorage){var GA_SESSION_STORAGE_KEY='ga:clientId';ga('create','UA-131650010-2',{'storage':'none','clientId':sessionStorage.getItem(GA_SESSION_STORAGE_KEY)});ga(function(tracker){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,tracker.get('clientId'));});}
-ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script>var options={"cookie":{"domain":"https:\/\/blog.gainskills.top","expiryDays":7,},"palette":{"popup":{"background":"#4d4d4d","text":"#ffffff",},"button":{"background":"transparent","text":"#ffffff",}},"theme":"edgeless","content":{"dismiss":"OK","message":"This site uses cookies to ensure you get the best experience.","link":"Learn more","target":'_blank',},};var instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element);</script><script>let lazyImages=[...document.querySelectorAll('.img-lazyload')]
-let inAdvance=20
-function lazyLoad(){lazyImages.forEach(image=>{if((image.offsetTop<window.innerHeight+window.pageYOffset+inAdvance)&&!image.classList.contains('img-lazyload-loaded')){image.src=image.dataset.src
-image.onload=()=>{image.classList.add('img-lazyload-loaded');image.style.height="";}}})}
-lazyLoad()
-window.addEventListener('scroll',_.throttle(lazyLoad,8))
-window.addEventListener('resize',_.throttle(lazyLoad,8))</script></body></html>
+<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label>
+</div>
+</div>
+<script src=https://blog.gainskills.top/js/reward.min.js></script>
+<div class="a2a_kit a2a_default_style">
+<h5 class=share-this>Share this!</h5>
+<ul class=list-inline>
+<li>
+<a rel=nofollow class=a2a_button_facebook>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_twitter>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_email>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_linkedin>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_pocket>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_evernote>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_sina_weibo>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_wechat>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_wordpress>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-share fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+</ul>
+</div>
+<script>var a2a_config=a2a_config||{};a2a_config.num_services=2,a2a_config.delay=800,a2a_config.prioritize=["google_plus","reddit"],a2a_config.icon_color="#2a89f5",a2a_config.thanks={postShare:!1,ad:!1}</script>
+<script async src=https://static.addtoany.com/menu/page.js></script>
+<ul class=pager>
+<li class=previous>
+<a rel=nofollow href=https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/ data-toggle=tooltip data-placement=top title="MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成">&larr;
+Previous Post</a>
+</li>
+<li class=next>
+<a rel=nofollow href=https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/ data-toggle=tooltip data-placement=top title="IPSec Over Palo Alto FW Static NAT">Next
+Post &rarr;</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<script>$(function(){return $("h2, h3, h4, h5, h6").each(function(e,d){var a,c,b;if(a=$(d),b=a.attr('id'),link=a.attr('href'),c='<i class="fa fa-link"></i>',b)return a.prepend($("<a />").addClass("header-link").attr("href","#"+b).html(c))})})</script>
+</article>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1"  >
+<hr class="hidden-sm hidden-xs">
+<h5>See Also</h5>
+<ul>
+<li><a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>Netconf feature on Cisco IOS/IOSXE
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/>AWS S3 Bucket Creation
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/>Jenkins/Xcode plugin-parameterized project
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/>Ansible-Access Network via Netconf
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/>Ansible-Access Network via SSH
+</a></li>
+</ul>
+<div class=sidebar-container>
+<h5>Pages with featured tags</h5>
+<div class=tags>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=https://blog.gainskills.top/tags/ansible title=ansible>
+ansible
+</a>
+<a href=https://blog.gainskills.top/tags/blog title=blog>
+blog
+</a>
+<a href=https://blog.gainskills.top/tags/cisco title=cisco>
+cisco
+</a>
+<a href=https://blog.gainskills.top/tags/hugo title=hugo>
+hugo
+</a>
+<a href=https://blog.gainskills.top/tags/ios title=ios>
+ios
+</a>
+<a href=https://blog.gainskills.top/tags/linux title=linux>
+linux
+</a>
+<a href=https://blog.gainskills.top/tags/python title=python>
+python
+</a>
+<a href=https://blog.gainskills.top/tags/security title=security>
+security
+</a>
+<a href=https://blog.gainskills.top/tags/simulator title=simulator>
+simulator
+</a>
+<a href=https://blog.gainskills.top/tags/tip title=tip>
+tip
+</a>
+<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>
+troubleshooting
+</a>
+<a href=https://blog.gainskills.top/tags/web title=web>
+web
+</a>
+<a href=https://blog.gainskills.top/tags/windows title=windows>
+windows
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1">
+<hr class="hidden-sm hidden-xs">
+<div id=disqus-comment>
+<div id=disqus_thread></div>
+<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//kexian-zhangs-blog.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<p class="copyright text-muted">
+Copyright &copy; Blog - uTIcARdI&sbquo; 2018 - 2021
+<br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script>function async(f,b){var c=document,d='script',a=c.createElement(d),e=c.getElementsByTagName(d)[0];a.src=f,b&&a.addEventListener('load',function(a){b(null,a)},!1),e.parentNode.insertBefore(a,e)}</script>
+<script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var a=document.querySelector("nav");a&&FastClick.attach(a)})</script>
+<script type=application/javascript>var dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes",GA_SESSION_STORAGE_KEY;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,window.sessionStorage&&(GA_SESSION_STORAGE_KEY='ga:clientId',ga('create','UA-131650010-2',{storage:'none',clientId:sessionStorage.getItem(GA_SESSION_STORAGE_KEY)}),ga(function(a){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,a.get('clientId'))})),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<script>var options={cookie:{domain:"https://blog.gainskills.top",expiryDays:7},palette:{popup:{background:"#4d4d4d",text:"#ffffff"},button:{background:"transparent",text:"#ffffff"}},theme:"edgeless",content:{dismiss:"OK",message:"This site uses cookies to ensure you get the best experience.",link:"Learn more",target:'_blank'}},instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element)</script>
+<script>let lazyImages=[...document.querySelectorAll('.img-lazyload')],inAdvance=20;function lazyLoad(){lazyImages.forEach(a=>{a.offsetTop<window.innerHeight+window.pageYOffset+inAdvance&&!a.classList.contains('img-lazyload-loaded')&&(a.src=a.dataset.src,a.onload=()=>{a.classList.add('img-lazyload-loaded'),a.style.height=""})})}lazyLoad(),window.addEventListener('scroll',_.throttle(lazyLoad,8)),window.addEventListener('resize',_.throttle(lazyLoad,8))</script>
+</body>
+</html>

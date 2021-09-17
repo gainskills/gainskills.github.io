@@ -1,71 +1,450 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="A tip about Ansible"><meta name=keywords content="Ansible Windows Guide Tip Python"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Run Ansible on Windows-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/><link rel=alternate href=https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Run Ansible on Windows","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" November 29, 2016","dateModified":" December 7, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"A tip about Ansible"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="A tip about Ansible">
+<meta name=keywords content="Ansible Windows Guide Tip Python">
+<link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico>
+<title>Run Ansible on Windows-Blog - uTIcARdI</title>
+<link rel=alternate hreflang=en href=https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/>
+<link rel=alternate href=https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/ hreflang=x-default>
+<link rel=canonical href=https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/>
+<link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css>
+<link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css>
+<script src=https://blog.gainskills.top/js/jquery.min.js></script>
+<script src=https://blog.gainskills.top/js/bootstrap.min.js></script>
+<script src=https://blog.gainskills.top/js/hux-blog.min.js></script>
+<link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js></script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Run Ansible on Windows","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" November 29, 2016","dateModified":" December 7, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"A tip about Ansible"}</script>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script>
+<script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:!0})</script>
+<script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script>
+</head>
+<body>
+<amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942>
+</amp-auto-ads>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<div class=container-fluid>
+<div class="navbar-header page-scroll">
+<button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
-<a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=https://blog.gainskills.top/categories/code>code</a></li><li><a href=https://blog.gainskills.top/categories/devops>devops</a></li><li><a href=https://blog.gainskills.top/categories/life>life</a></li><li><a href=https://blog.gainskills.top/categories/network>network</a></li><li><a href=https://blog.gainskills.top/categories/os>os</a></li><li><a href=https://blog.gainskills.top/top/about/>ABOUT</a></li><li><a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
-function handleMagic(e){if($navbar.className.indexOf('in')>0){$navbar.className=" ";setTimeout(function(){if($navbar.className.indexOf('in')<0){$collapse.style.height="0px"}},400)}else{$collapse.style.height="auto"
-$navbar.className+=" in";}}</script><style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=https://blog.gainskills.top/tags/ansible title=Ansible>Ansible</a>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a>
+</div>
+<div id=huxblog_navbar>
+<div class=navbar-collapse>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href=https://blog.gainskills.top/categories/code>code</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/devops>devops</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/life>life</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/linux>linux</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/network>network</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/os>os</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/top/about/>ABOUT</a>
+</li>
+<li>
+<a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<script>var $body=document.body,$toggle=document.querySelector('.navbar-toggle'),$navbar=document.querySelector('#huxblog_navbar'),$collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic);function handleMagic(a){$navbar.className.indexOf('in')>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf('in')<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script>
+<style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style>
+<header class=intro-header>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<div class=tags>
+<a class=tag href=https://blog.gainskills.top/tags/ansible title=Ansible>Ansible</a>
 <a class=tag href=https://blog.gainskills.top/tags/windows title=Windows>Windows</a>
 <a class=tag href=https://blog.gainskills.top/tags/guide title=Guide>Guide</a>
 <a class=tag href=https://blog.gainskills.top/tags/tip title=Tip>Tip</a>
-<a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a></div><h1>Run Ansible on Windows</h1><h3 class=subheading></h3><span class=meta>Posted on November 29, 2016</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
+<a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a>
+</div>
+<h1>Run Ansible on Windows</h1>
+<h3 class=subheading></h3>
+<span class=meta>Posted on November 29, 2016
+</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container"><p>Background:</p><p>Here is a topology about the environment for performance testing, let’s name the servers 1st:</p><ul><li>1 windows server as the License/Workspace server</li><li>5 windows servers as the Network Server</li><li>5 windows servers as the Automation server</li></ul><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:476px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu6df44ea45b9e1d5fc838c2d6b2a9642c_6725_0x519_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu6df44ea45b9e1d5fc838c2d6b2a9642c_6725_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:300px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>It took us a lot of time to deploy the product and collect logs on all of these servers.</p><p>My colleague wrote a client-server application and do some of the tasks automatically. The application indeed works for log collection, but for product deployment, as the server end running as a service and fails to launch the InstallShield wizard, it doesn’t support the product installation.</p><p>At the same time, I read an article about <a href=http://mp.weixin.qq.com/s/SeGxM87rCiq5jF9ixjGbtw>Deployment Management Tools comparison between Puppet, Chef, Ansible</a>, and decided to try Ansible.</p><p>Note:</p><ul><li>Ray Zhao shared with me his experience that how he used Puppet in OpenStack Lab.</li><li>Jin told me LinkedIn is using Ansible.</li></ul><h5 id=deploy-ansible>Deploy Ansible</h5><p><a href=http://docs.ansible.com/ansible/index.html>Ansible’s document</a> is very easy to read/understand.</p><p>Install Ansible with the command (Python is required):</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>pip install ansible
-</code></pre></div><p>For windows management, Pywinrm is required, but pay attention to pywinrm version, because I met the issue:<a href=https://github.com/ansible/ansible/issues/15973>https://github.com/ansible/ansible/issues/15973</a> Error Accessing Windows Machine: “ssl: ‘Session’ object has no attribute ‘merge_environment_settings&rsquo;”</p><p>I installed pywinrm by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>pip install pywinrm<span style=color:#f92672>==</span>0.1.1
-</code></pre></div><p><del>Note: Currently, Ansible doesn’t support Python3.</del></p><h5 id=windows-system-prep>Windows System Prep</h5><p>I chose win2012R2 to simple windows environment preparation. Just ran ansible’s <a href=https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1>power shell</a> for winRm setup and make sure port : 5986 is open:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:699px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2016/11/4-opt_huf5b22afaf676b7be7835662574d4a5ec_1927_0x237_resize_q20_catmullrom_2.png data-fancybox data-caption=Topo><img data-src=https://blog.gainskills.top/img/postimgs/2016/11/4-opt_huf5b22afaf676b7be7835662574d4a5ec_1927_0x300_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Topo style=height:300px></a><figcaption class=text-capitalize><small>Topo</small></figcaption></figure></div><p>For the PowerShell security issue:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>File ConfigureRemotingForAnsible.ps1 cannot be loaded because running scripts is disabled on this system. For more
+post-container">
+<p>Background:</p>
+<p>Here is a topology about the environment for performance testing, let’s name the servers 1st:</p>
+<ul>
+<li>1 windows server as the License/Workspace server</li>
+<li>5 windows servers as the Network Server</li>
+<li>5 windows servers as the Automation server</li>
+</ul>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:476px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu6df44ea45b9e1d5fc838c2d6b2a9642c_6725_0x519_resize_q20_catmullrom_3.png data-fancybox data-caption=Topo>
+<img data-src=https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu6df44ea45b9e1d5fc838c2d6b2a9642c_6725_0x300_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt=Topo style=height:300px>
+</a>
+<figcaption class=text-capitalize>
+<small>Topo</small>
+</figcaption>
+</figure>
+</div>
+<p>It took us a lot of time to deploy the product and collect logs on all of these servers.</p>
+<p>My colleague wrote a client-server application and do some of the tasks automatically. The application indeed works for log collection, but for product deployment, as the server end running as a service and fails to launch the InstallShield wizard, it doesn’t support the product installation.</p>
+<p>At the same time, I read an article about <a href=http://mp.weixin.qq.com/s/SeGxM87rCiq5jF9ixjGbtw>Deployment Management Tools comparison between Puppet, Chef, Ansible</a>, and decided to try Ansible.</p>
+<p>Note:</p>
+<ul>
+<li>Ray Zhao shared with me his experience that how he used Puppet in OpenStack Lab.</li>
+<li>Jin told me LinkedIn is using Ansible.</li>
+</ul>
+<h5 id=deploy-ansible>Deploy Ansible</h5>
+<p><a href=http://docs.ansible.com/ansible/index.html>Ansible’s document</a> is very easy to read/understand.</p>
+<p>Install Ansible with the command (Python is required):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>pip install ansible
+</code></pre></div><p>For windows management, Pywinrm is required, but pay attention to pywinrm version, because I met the issue:<a href=https://github.com/ansible/ansible/issues/15973>https://github.com/ansible/ansible/issues/15973</a> Error Accessing Windows Machine: “ssl: ‘Session’ object has no attribute ‘merge_environment_settings'”</p>
+<p>I installed pywinrm by the command:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>pip install pywinrm<span style=color:#f92672>==</span>0.1.1
+</code></pre></div><p><del>Note: Currently, Ansible doesn’t support Python3.</del></p>
+<h5 id=windows-system-prep>Windows System Prep</h5>
+<p>I chose win2012R2 to simple windows environment preparation. Just ran ansible’s <a href=https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1>power shell</a> for winRm setup and make sure port : 5986 is open:</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:699px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2016/11/4-opt_huf5b22afaf676b7be7835662574d4a5ec_1927_0x237_resize_q20_catmullrom_3.png data-fancybox data-caption=Topo>
+<img data-src=https://blog.gainskills.top/img/postimgs/2016/11/4-opt_huf5b22afaf676b7be7835662574d4a5ec_1927_0x300_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt=Topo style=height:300px>
+</a>
+<figcaption class=text-capitalize>
+<small>Topo</small>
+</figcaption>
+</figure>
+</div>
+<p>For the PowerShell security issue:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>File ConfigureRemotingForAnsible.ps1 cannot be loaded because running scripts is disabled on this system. For more
 information, see about_Execution_Policies at http://go.microsoft.com/fwlink/?LinkID=135170.
 + CategoryInfo : SecurityError: (:) [], ParentContainsErrorRecord
 Exception
 + FullyQualifiedErrorId : UnauthorizedAccess
-</code></pre></div><ul><li><p>Start Windows PowerShell with the “Run as Administrator” option.</p><p><a href=http://superuser.com/questions/106360/how-to-enable-execution-of-powershell-scripts>Only members of the Administrators group on the computer can change the execution policy.</a></p></li><li><p>[enable running unsigned scripts by entering:](Enable running unsigned scripts by entering:)</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>set-executionpolicy remotesigned
-</code></pre></div></li></ul><p>This will allow running unsigned scripts that you write on your local computer and signed scripts from the Internet.</p><h5 id=ansible-inventory>Ansible Inventory</h5><p>On the Linux server, create the hosts file by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vi /etc/ansible/hosts
-</code></pre></div><p>Here is a sample to add one server for testing:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>[windows]
-<span style=color:#ae81ff>10.10.6.12</span> ansible_user=<span style=color:#e6db74>&#34;user_name&#34;</span> ansible_password=<span style=color:#e6db74>&#34;password&#34;</span> ansible_port=<span style=color:#e6db74>&#34;5986&#34;</span> ansible_connection=<span style=color:#e6db74>&#34;winrm&#34;</span>
-</code></pre></div><p>configure username/password by group vars by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vi /etc/ansible/group_vars/windows.yml
-</code></pre></div><p>Here is the content:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#66d9ef>ansible_user</span>: user_name
-<span style=color:#66d9ef>ansible_password</span>: password
-<span style=color:#66d9ef>ansible_port</span>: <span style=color:#ae81ff>5986</span>
-<span style=color:#66d9ef>ansible_connection</span>: winrm
+</code></pre></div><ul>
+<li>
+<p>Start Windows PowerShell with the “Run as Administrator” option.</p>
+<p><a href=http://superuser.com/questions/106360/how-to-enable-execution-of-powershell-scripts>Only members of the Administrators group on the computer can change the execution policy.</a></p>
+</li>
+<li>
+<p>[enable running unsigned scripts by entering:](Enable running unsigned scripts by entering:)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>set-executionpolicy remotesigned
+</code></pre></div></li>
+</ul>
+<p>This will allow running unsigned scripts that you write on your local computer and signed scripts from the Internet.</p>
+<h5 id=ansible-inventory>Ansible Inventory</h5>
+<p>On the Linux server, create the hosts file by the command:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vi /etc/ansible/hosts
+</code></pre></div><p>Here is a sample to add one server for testing:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>[<span style=color:#ae81ff>windows]</span>
+<span style=color:#ae81ff>10.10.6.12</span> <span style=color:#ae81ff>ansible_user=&#34;user_name&#34; ansible_password=&#34;password&#34; ansible_port=&#34;5986&#34; ansible_connection=&#34;winrm&#34;</span>
+</code></pre></div><p>configure username/password by group vars by the command:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vi /etc/ansible/group_vars/windows.yml
+</code></pre></div><p>Here is the content:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>ansible_user</span>: <span style=color:#ae81ff>user_name</span>
+<span style=color:#f92672>ansible_password</span>: <span style=color:#ae81ff>password</span>
+<span style=color:#f92672>ansible_port</span>: <span style=color:#ae81ff>5986</span>
+<span style=color:#f92672>ansible_connection</span>: <span style=color:#ae81ff>winrm</span>
 <span style=color:#75715e># The following is necessary for Python 2.7.9+ (or any older Python that has backported SSLContext, eg, Python 2.7.5 on RHEL7) when using default WinRM self-signed certificates:</span>
-<span style=color:#66d9ef>ansible_winrm_server_cert_validation</span>: ignore
-</code></pre></div><p>Note: Encrypting the yml file with <em>ansible-vault</em> is recommended:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-vault edit group_vars/windows.yml
-</code></pre></div><h5 id=testing>Testing</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible windows -m win_ping
-</code></pre></div><h5 id=playbook>Playbook</h5><p>Create a playbook by the command:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vi /etc/ansible/playbook.yml
-</code></pre></div><p>Here is the content</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#66d9ef>name</span>: test raw module
-<span style=color:#66d9ef>hosts</span>: windows
-<span style=color:#66d9ef>tasks</span>:
-- <span style=color:#66d9ef>name</span>: run ipconfig
+<span style=color:#f92672>ansible_winrm_server_cert_validation</span>: <span style=color:#ae81ff>ignore</span>
+</code></pre></div><p>Note: Encrypting the yml file with <em>ansible-vault</em> is recommended:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible-vault edit group_vars/windows.yml
+</code></pre></div><h5 id=testing>Testing</h5>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ansible windows -m win_ping
+</code></pre></div><h5 id=playbook>Playbook</h5>
+<p>Create a playbook by the command:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>vi /etc/ansible/playbook.yml
+</code></pre></div><p>Here is the content</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>test raw module</span>
+<span style=color:#f92672>hosts</span>: <span style=color:#ae81ff>windows</span>
+<span style=color:#f92672>tasks</span>:
+- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>run ipconfig</span>
 <span style=color:#75715e># query session for RDP session</span>
-<span style=color:#66d9ef>raw</span>: CMD /C <span style=color:#e6db74>&#34;PSExec.exe \\127.0.0.1 -u user_name -p password -d -i 1 c:\Automation\Install\InstallLatestBuildWith1WS_AllInOneClick.bat&#34;</span>
-<span style=color:#66d9ef>register</span>: ipconfig
-- <span style=color:#66d9ef>debug</span>: var=ipconfig
-</code></pre></div><p>Without <strong>&ldquo;PSExec.exe&rdquo;</strong> in the raw command, ansible has the same behavior as my colleague’s application: the InstallShield wizard window do not pop up when I called it by ‘raw: CMD /C’ even it needs a process to run the command.</p><p>Refer to the articles:</p><ul><li><p><a href=http://codingbee.net/tutorials/powershell/powershell-using-psexec-to-automate-ui-tasks-on-remote-machines/>PowerShell – Using psexec to automate UI tasks on remote machines</a></p></li><li><p><a href=https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx>PsExec</a> 2.11 // detail about PsExec parameters</p></li><li><p><a href="https://technet.microsoft.com/en-us/library/cc785434(v=ws.11).aspx">Query Session</a></p><p>the command to figure out the id of a Remote Desktop session which referenced by PsExec parameter: -i</p></li></ul><p>PsExec should be the solution for both ansible and my colleague’s application which execute a command by a background service to call a GUI application.</p><hr><ul><li><p>Comment #1:</p><p>I found that there is an option “Local System account -> Allow service to interact with desktop” in service property:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:272px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2016/11/2-opt_hubd9325c1575d8d116443b200c7d0572b_3597_0x213_resize_q20_catmullrom_2.png data-fancybox data-caption=Setting><img data-src=https://blog.gainskills.top/img/postimgs/2016/11/2-opt_hubd9325c1575d8d116443b200c7d0572b_3597_0x150_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Setting style=height:150px></a><figcaption class=text-capitalize><small>Setting</small></figcaption></figure></div><p>It failed to launch windows RM service with this enabled this option:</p><div align=center><figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:345px;max-width:88%"><a href=https://blog.gainskills.top/img/postimgs/2016/11/3-opt_hu63e9c340281fdf8f37e0149dc5517855_4118_0x179_resize_q20_catmullrom_2.png data-fancybox data-caption=Prompt><img data-src=https://blog.gainskills.top/img/postimgs/2016/11/3-opt_hu63e9c340281fdf8f37e0149dc5517855_4118_0x150_resize_q20_catmullrom_2.png class="img-responsive img-lazyload" alt=Prompt style=height:150px></a><figcaption class=text-capitalize><small>Prompt</small></figcaption></figure></div></li></ul><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
-<span class=author align=right><br><p class=tip>Run Ansible on Windows</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
+<span style=color:#f92672>raw</span>: <span style=color:#ae81ff>CMD /C &#34;PSExec.exe \\127.0.0.1 -u user_name -p password -d -i 1 c:\Automation\Install\InstallLatestBuildWith1WS_AllInOneClick.bat&#34;</span>
+<span style=color:#f92672>register</span>: <span style=color:#ae81ff>ipconfig</span>
+- <span style=color:#f92672>debug</span>: <span style=color:#ae81ff>var=ipconfig</span>
+</code></pre></div><p>Without <strong>&ldquo;PSExec.exe&rdquo;</strong> in the raw command, ansible has the same behavior as my colleague’s application: the InstallShield wizard window do not pop up when I called it by ‘raw: CMD /C’ even it needs a process to run the command.</p>
+<p>Refer to the articles:</p>
+<ul>
+<li>
+<p><a href=http://codingbee.net/tutorials/powershell/powershell-using-psexec-to-automate-ui-tasks-on-remote-machines/>PowerShell – Using psexec to automate UI tasks on remote machines</a></p>
+</li>
+<li>
+<p><a href=https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx>PsExec</a> 2.11 // detail about PsExec parameters</p>
+</li>
+<li>
+<p><a href="https://technet.microsoft.com/en-us/library/cc785434(v=ws.11).aspx">Query Session</a></p>
+<p>the command to figure out the id of a Remote Desktop session which referenced by PsExec parameter: -i</p>
+</li>
+</ul>
+<p>PsExec should be the solution for both ansible and my colleague’s application which execute a command by a background service to call a GUI application.</p>
+<hr>
+<ul>
+<li>
+<p>Comment #1:</p>
+<p>I found that there is an option “Local System account -> Allow service to interact with desktop” in service property:</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:272px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2016/11/2-opt_hubd9325c1575d8d116443b200c7d0572b_3597_0x213_resize_q20_catmullrom_3.png data-fancybox data-caption=Setting>
+<img data-src=https://blog.gainskills.top/img/postimgs/2016/11/2-opt_hubd9325c1575d8d116443b200c7d0572b_3597_0x150_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt=Setting style=height:150px>
+</a>
+<figcaption class=text-capitalize>
+<small>Setting</small>
+</figcaption>
+</figure>
+</div>
+<p>It failed to launch windows RM service with this enabled this option:</p>
+<div align=center>
+<figure style="padding:.8rem;margin:2rem 0;border:thin silver solid;border-radius:10px;width:345px;max-width:88%">
+<a href=https://blog.gainskills.top/img/postimgs/2016/11/3-opt_hu63e9c340281fdf8f37e0149dc5517855_4118_0x179_resize_q20_catmullrom_3.png data-fancybox data-caption=Prompt>
+<img data-src=https://blog.gainskills.top/img/postimgs/2016/11/3-opt_hu63e9c340281fdf8f37e0149dc5517855_4118_0x150_resize_q20_catmullrom_3.png class="img-responsive img-lazyload" alt=Prompt style=height:150px>
+</a>
+<figcaption class=text-capitalize>
+<small>Prompt</small>
+</figcaption>
+</figure>
+</div>
+</li>
+</ul>
+<div class="entry-shang text-center">
+<button class="zs show-zs btn btn-bred">Donation</button>
+</div>
+<div class=zs-modal-bg></div>
+<div class=zs-modal-box>
+<div class=zs-modal-head>
+<button type=button class=close>×</button>
+<span class=author align=right><br><p class=tip>Run Ansible on Windows</p><br></span>
+</div>
+<div class=zs-modal-body>
+<div class=zs-modal-btns>
+<button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
-<button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
+<button class="btn btn-blink" data-num=1>Any</button>
+</div>
+<div class=zs-modal-pay>
+<img alt=donation id=pay-image>
+<p>Scan the QR code using <span id=pay-type>WeChat</span></p>
+</div>
+</div>
+<div class=zs-modal-footer>
+<label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
 <label class=radio-inline><input type=radio name=zs-type value=wechat class=zs-type class=zs-wechat><img alt=wechat></label>
-<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label></div></div><script src=https://blog.gainskills.top/js/reward.min.js></script><div class="a2a_kit a2a_default_style"><h5 class=share-this>Share this!</h5><ul class=list-inline><li><a rel=nofollow class=a2a_button_facebook><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_twitter><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_email><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_linkedin><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_pocket><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_evernote><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_sina_weibo><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-weibo fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_wechat><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-wechat fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_wordpress><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-wordpress fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-share fa-stack-1x fa-inverse"></i></span></a></li></ul></div><script>var a2a_config=a2a_config||{};a2a_config.num_services=2;a2a_config.delay=800;a2a_config.prioritize=["google_plus","reddit"];a2a_config.icon_color="#2a89f5";a2a_config.thanks={postShare:false,ad:false}</script><script async src=https://static.addtoany.com/menu/page.js></script><ul class=pager><li class=previous><a rel=nofollow href=https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/ data-toggle=tooltip data-placement=top title="VSCode for Python debug">&larr;
-Previous Post</a></li><li class=next><a rel=nofollow href=https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/ data-toggle=tooltip data-placement=top title="Adding Realtek 8139 Driver to ESXi6">Next
-Post &rarr;</a></li></ul></div></div></div><script>$(function(){return $("h2, h3, h4, h5, h6").each(function(i,el){var $el,icon,id;$el=$(el);id=$el.attr('id');link=$el.attr('href')
-icon='<i class="fa fa-link"></i>';if(id){return $el.prepend($("<a />").addClass("header-link").attr("href","#"+id).html(icon));}});});</script></article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"  ><hr class="hidden-sm hidden-xs"><h5>See Also</h5><ul><li><a href=https://blog.gainskills.top/2019/03/01/file-name-on-winos/>File name on windows</a></li><li><a href=https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/>Ansible-Access Network via Netconf</a></li><li><a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>Netconf feature on Cisco IOS/IOSXE</a></li><li><a href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/>Ansible-Access Network via SSH</a></li><li><a href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/>Ansible-Access Network via Telnet</a></li></ul><div class=sidebar-container><h5>Pages with featured tags</h5><div class=tags>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href=https://blog.gainskills.top/tags/ansible title=ansible>ansible</a>
-<a href=https://blog.gainskills.top/tags/blog title=blog>blog</a>
-<a href=https://blog.gainskills.top/tags/cisco title=cisco>cisco</a>
-<a href=https://blog.gainskills.top/tags/hugo title=hugo>hugo</a>
-<a href=https://blog.gainskills.top/tags/ios title=ios>ios</a>
-<a href=https://blog.gainskills.top/tags/linux title=linux>linux</a>
-<a href=https://blog.gainskills.top/tags/python title=python>python</a>
-<a href=https://blog.gainskills.top/tags/security title=security>security</a>
-<a href=https://blog.gainskills.top/tags/simulator title=simulator>simulator</a>
-<a href=https://blog.gainskills.top/tags/tip title=tip>tip</a>
-<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>troubleshooting</a>
-<a href=https://blog.gainskills.top/tags/web title=web>web</a>
-<a href=https://blog.gainskills.top/tags/windows title=windows>windows</a></div></div></section></div></div></div><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"><hr class="hidden-sm hidden-xs"><div id=disqus-comment><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
-var d=document,s=d.createElement('script');s.async=true;s.src='//'+"kexian-zhangs-blog"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2016 - 2021<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
-s.parentNode.insertBefore(o,s);}</script><script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var dnt=(navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack);var doNotTrack=(dnt=="1"||dnt=="yes");if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;if(window.sessionStorage){var GA_SESSION_STORAGE_KEY='ga:clientId';ga('create','UA-131650010-2',{'storage':'none','clientId':sessionStorage.getItem(GA_SESSION_STORAGE_KEY)});ga(function(tracker){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,tracker.get('clientId'));});}
-ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script>var options={"cookie":{"domain":"https:\/\/blog.gainskills.top","expiryDays":7,},"palette":{"popup":{"background":"#4d4d4d","text":"#ffffff",},"button":{"background":"transparent","text":"#ffffff",}},"theme":"edgeless","content":{"dismiss":"OK","message":"This site uses cookies to ensure you get the best experience.","link":"Learn more","target":'_blank',},};var instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element);</script><script>let lazyImages=[...document.querySelectorAll('.img-lazyload')]
-let inAdvance=20
-function lazyLoad(){lazyImages.forEach(image=>{if((image.offsetTop<window.innerHeight+window.pageYOffset+inAdvance)&&!image.classList.contains('img-lazyload-loaded')){image.src=image.dataset.src
-image.onload=()=>{image.classList.add('img-lazyload-loaded');image.style.height="";}}})}
-lazyLoad()
-window.addEventListener('scroll',_.throttle(lazyLoad,8))
-window.addEventListener('resize',_.throttle(lazyLoad,8))</script></body></html>
+<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label>
+</div>
+</div>
+<script src=https://blog.gainskills.top/js/reward.min.js></script>
+<div class="a2a_kit a2a_default_style">
+<h5 class=share-this>Share this!</h5>
+<ul class=list-inline>
+<li>
+<a rel=nofollow class=a2a_button_facebook>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_twitter>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_email>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_linkedin>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_pocket>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_evernote>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_sina_weibo>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_wechat>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_button_wordpress>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+<li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share>
+<span class="fa-stack fa-lg" style=font-size:1em>
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-share fa-stack-1x fa-inverse"></i>
+</span>
+</a></li>
+</ul>
+</div>
+<script>var a2a_config=a2a_config||{};a2a_config.num_services=2,a2a_config.delay=800,a2a_config.prioritize=["google_plus","reddit"],a2a_config.icon_color="#2a89f5",a2a_config.thanks={postShare:!1,ad:!1}</script>
+<script async src=https://static.addtoany.com/menu/page.js></script>
+<ul class=pager>
+<li class=previous>
+<a rel=nofollow href=https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/ data-toggle=tooltip data-placement=top title="VSCode for Python debug">&larr;
+Previous Post</a>
+</li>
+<li class=next>
+<a rel=nofollow href=https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/ data-toggle=tooltip data-placement=top title="Adding Realtek 8139 Driver to ESXi6">Next
+Post &rarr;</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<script>$(function(){return $("h2, h3, h4, h5, h6").each(function(e,d){var a,c,b;if(a=$(d),b=a.attr('id'),link=a.attr('href'),c='<i class="fa fa-link"></i>',b)return a.prepend($("<a />").addClass("header-link").attr("href","#"+b).html(c))})})</script>
+</article>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1"  >
+<hr class="hidden-sm hidden-xs">
+<h5>See Also</h5>
+<ul>
+<li><a href=https://blog.gainskills.top/2019/03/01/file-name-on-winos/>File name on windows
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/>Ansible-Access Network via Netconf
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>Netconf feature on Cisco IOS/IOSXE
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/>Ansible-Access Network via SSH
+</a></li>
+<li><a href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/>Ansible-Access Network via Telnet
+</a></li>
+</ul>
+<div class=sidebar-container>
+<h5>Pages with featured tags</h5>
+<div class=tags>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=https://blog.gainskills.top/tags/ansible title=ansible>
+ansible
+</a>
+<a href=https://blog.gainskills.top/tags/blog title=blog>
+blog
+</a>
+<a href=https://blog.gainskills.top/tags/cisco title=cisco>
+cisco
+</a>
+<a href=https://blog.gainskills.top/tags/hugo title=hugo>
+hugo
+</a>
+<a href=https://blog.gainskills.top/tags/ios title=ios>
+ios
+</a>
+<a href=https://blog.gainskills.top/tags/linux title=linux>
+linux
+</a>
+<a href=https://blog.gainskills.top/tags/python title=python>
+python
+</a>
+<a href=https://blog.gainskills.top/tags/security title=security>
+security
+</a>
+<a href=https://blog.gainskills.top/tags/simulator title=simulator>
+simulator
+</a>
+<a href=https://blog.gainskills.top/tags/tip title=tip>
+tip
+</a>
+<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>
+troubleshooting
+</a>
+<a href=https://blog.gainskills.top/tags/web title=web>
+web
+</a>
+<a href=https://blog.gainskills.top/tags/windows title=windows>
+windows
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1">
+<hr class="hidden-sm hidden-xs">
+<div id=disqus-comment>
+<div id=disqus_thread></div>
+<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//kexian-zhangs-blog.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<p class="copyright text-muted">
+Copyright &copy; Blog - uTIcARdI&sbquo; 2016 - 2021
+<br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script>function async(f,b){var c=document,d='script',a=c.createElement(d),e=c.getElementsByTagName(d)[0];a.src=f,b&&a.addEventListener('load',function(a){b(null,a)},!1),e.parentNode.insertBefore(a,e)}</script>
+<script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var a=document.querySelector("nav");a&&FastClick.attach(a)})</script>
+<script type=application/javascript>var dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes",GA_SESSION_STORAGE_KEY;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,window.sessionStorage&&(GA_SESSION_STORAGE_KEY='ga:clientId',ga('create','UA-131650010-2',{storage:'none',clientId:sessionStorage.getItem(GA_SESSION_STORAGE_KEY)}),ga(function(a){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,a.get('clientId'))})),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<script>var options={cookie:{domain:"https://blog.gainskills.top",expiryDays:7},palette:{popup:{background:"#4d4d4d",text:"#ffffff"},button:{background:"transparent",text:"#ffffff"}},theme:"edgeless",content:{dismiss:"OK",message:"This site uses cookies to ensure you get the best experience.",link:"Learn more",target:'_blank'}},instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element)</script>
+<script>let lazyImages=[...document.querySelectorAll('.img-lazyload')],inAdvance=20;function lazyLoad(){lazyImages.forEach(a=>{a.offsetTop<window.innerHeight+window.pageYOffset+inAdvance&&!a.classList.contains('img-lazyload-loaded')&&(a.src=a.dataset.src,a.onload=()=>{a.classList.add('img-lazyload-loaded'),a.style.height=""})})}lazyLoad(),window.addEventListener('scroll',_.throttle(lazyLoad,8)),window.addEventListener('resize',_.throttle(lazyLoad,8))</script>
+</body>
+</html>

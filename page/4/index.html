@@ -1,27 +1,358 @@
-<!doctype html><html lang=en-us><head><meta name=generator content="Hugo 0.65.1"><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Articles about Python, networking, servers and automation"><meta name=keywords content="Network,Cisco,Linux,Python,Internet,Web,Cloud,Ansible,Automation,Integration,Windows,Server,Code,Open Source,Cloud,SaaS"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/><link rel=alternate href=https://blog.gainskills.top/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script><script src=https://blog.gainskills.top/js/bootstrap.min.js></script><script src=https://blog.gainskills.top/js/hux-blog.min.js></script><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Blog - uTIcARdI","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" December 8, 2019","dateModified":" December 7, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":""}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script><script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:true});</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=en-us>
+<head>
+<meta name=generator content="Hugo 0.88.1">
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Articles about Python, networking, servers and automation">
+<meta name=keywords content="Network,Cisco,Linux,Python,Internet,Web,Cloud,Ansible,Automation,Integration,Windows,Server,Code,Open Source,Cloud,SaaS">
+<link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico>
+<title>Blog - uTIcARdI </title>
+<link rel=alternate hreflang=en href=https://blog.gainskills.top/>
+<link rel=alternate href=https://blog.gainskills.top/ hreflang=x-default>
+<link rel=canonical href=https://blog.gainskills.top/>
+<link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css>
+<link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css>
+<script src=https://blog.gainskills.top/js/jquery.min.js></script>
+<script src=https://blog.gainskills.top/js/bootstrap.min.js></script>
+<script src=https://blog.gainskills.top/js/hux-blog.min.js></script>
+<link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"Blog - uTIcARdI","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" September 15, 2021","dateModified":" September 15, 2021","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":""}</script>
+<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css>
+<script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script>
+<script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:!0})</script>
+<script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script>
+</head>
+<body>
+<amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942>
+</amp-auto-ads>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<div class=container-fluid>
+<div class="navbar-header page-scroll">
+<button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=https://blog.gainskills.top/categories/code>code</a></li><li><a href=https://blog.gainskills.top/categories/devops>devops</a></li><li><a href=https://blog.gainskills.top/categories/life>life</a></li><li><a href=https://blog.gainskills.top/categories/network>network</a></li><li><a href=https://blog.gainskills.top/categories/os>os</a></li><li><a href=https://blog.gainskills.top/top/about/>ABOUT</a></li><li><a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
-function handleMagic(e){if($navbar.className.indexOf('in')>0){$navbar.className=" ";setTimeout(function(){if($navbar.className.indexOf('in')<0){$collapse.style.height="0px"}},400)}else{$collapse.style.height="auto"
-$navbar.className+=" in";}}</script><header class=intro-header style=background-image:url(/img/home-psb-bg.jpeg)><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><div class=site-heading><h1>Blog - uTIcARdI</h1><span class=subheading>KISS</span></div></div></div></div></header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-1
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+</div>
+<div id=huxblog_navbar>
+<div class=navbar-collapse>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href=https://blog.gainskills.top/categories/code>code</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/devops>devops</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/life>life</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/linux>linux</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/network>network</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/categories/os>os</a>
+</li>
+<li>
+<a href=https://blog.gainskills.top/top/about/>ABOUT</a>
+</li>
+<li>
+<a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<script>var $body=document.body,$toggle=document.querySelector('.navbar-toggle'),$navbar=document.querySelector('#huxblog_navbar'),$collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic);function handleMagic(a){$navbar.className.indexOf('in')>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf('in')<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script>
+<header class=intro-header style=background-image:url(/img/home-psb-bg.jpeg)>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<div class=site-heading>
+<h1>Blog - uTIcARdI </h1>
+<span class=subheading>KISS</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-1
 col-md-8 col-md-offset-1
 col-sm-12
 col-xs-12
-post-container"><div class=post-preview><a href=https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/><h2 class=post-title>Mininet-ImportError: customClass</h2><div class=post-content-preview>A note about Mininet installation</div></a><p class=post-meta>Posted by Blog - uTIcARdI on July, 20, 2018</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/><h2 class=post-title>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration</h2><div class=post-content-preview>A sample of Flask</div></a><p class=post-meta>Posted by Blog - uTIcARdI on April, 16, 2018</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2018/02/13/python-smtplib-email/><h2 class=post-title>Python SMTPlib/Email</h2><div class=post-content-preview>A sample of Python SMTPlib</div></a><p class=post-meta>Posted by Blog - uTIcARdI on February, 13, 2018</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/><h2 class=post-title>30分钟上手Python网络爬虫</h2><div class=post-content-preview>A tutorial about web scraper</div></a><p class=post-meta>Posted by Blog - uTIcARdI on January, 30, 2018</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/><h2 class=post-title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</h2><div class=post-content-preview>Eve/UNL trick</div></a><p class=post-meta>Posted by Blog - uTIcARdI on January, 25, 2018</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/><h2 class=post-title>tc-How it work on different IPs</h2><div class=post-content-preview>A sample</div></a><p class=post-meta>Posted by Blog - uTIcARdI on September, 22, 2017</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/><h2 class=post-title>OverflowError: signed char is greater than maximum</h2><div class=post-content-preview>A note about String in Python</div></a><p class=post-meta>Posted by Blog - uTIcARdI on June, 6, 2017</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/><h2 class=post-title>Cisco IPS–Inline VLAN Pair mode</h2><div class=post-content-preview>Cisco IPS</div></a><p class=post-meta>Posted by Blog - uTIcARdI on March, 24, 2017</p></div><hr><div class=post-preview><a href=https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/><h2 class=post-title>Run NX-OSv 9000 on EVE(UNL)</h2><div class=post-content-preview>Eve/UNL trick</div></a><p class=post-meta>Posted by Blog - uTIcARdI on January, 8, 2017</p></div><hr><ul class=pager><li class=previous><a rel=nofollow href=https://blog.gainskills.top/page/3/>&larr; Newer Posts</a></li><li class=next><a rel=nofollow href=https://blog.gainskills.top/page/5/>Older Posts &rarr;</a></li></ul></div><div class="col-lg-3 col-lg-offset-0
+post-container">
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/>
+<h2 class=post-title>
+Ansible-Access Network via Telnet
+</h2>
+<div class=post-content-preview>
+Ansible Beginner Series
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on September, 4, 2018
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/>
+<h2 class=post-title>
+Mininet-ImportError: customClass
+</h2>
+<div class=post-content-preview>
+A note about Mininet installation
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on July, 20, 2018
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/>
+<h2 class=post-title>
+Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration
+</h2>
+<div class=post-content-preview>
+A sample of Flask
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on April, 16, 2018
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2018/02/13/python-smtplib-email/>
+<h2 class=post-title>
+Python SMTPlib/Email
+</h2>
+<div class=post-content-preview>
+A sample of Python SMTPlib
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on February, 13, 2018
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/>
+<h2 class=post-title>
+30分钟上手Python网络爬虫
+</h2>
+<div class=post-content-preview>
+A tutorial about web scraper
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on January, 30, 2018
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/>
+<h2 class=post-title>
+Run PaloAlto VM on EVE(UNL)/virtualbox/OSX
+</h2>
+<div class=post-content-preview>
+Eve/UNL trick
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on January, 25, 2018
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/>
+<h2 class=post-title>
+tc-How it work on different IPs
+</h2>
+<div class=post-content-preview>
+A sample
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on September, 22, 2017
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/>
+<h2 class=post-title>
+OverflowError: signed char is greater than maximum
+</h2>
+<div class=post-content-preview>
+A note about String in Python
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on June, 6, 2017
+</p>
+</div>
+<hr>
+<div class=post-preview>
+<a href=https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/>
+<h2 class=post-title>
+Cisco IPS–Inline VLAN Pair mode
+</h2>
+<div class=post-content-preview>
+Cisco IPS
+</div>
+</a>
+<p class=post-meta>
+Posted by Blog - uTIcARdI on March, 24, 2017
+</p>
+</div>
+<hr>
+<ul class=pager>
+<li class=previous>
+<a rel=nofollow href=https://blog.gainskills.top/page/3/>&larr; Newer Posts</a>
+</li>
+<li class=next>
+<a rel=nofollow href=https://blog.gainskills.top/page/5/>Older Posts &rarr;</a>
+</li>
+</ul>
+</div>
+<div class="col-lg-3 col-lg-offset-0
 col-md-3 col-md-offset-0
 col-sm-12
 col-xs-12
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=https://blog.gainskills.top/tags/ansible title=ansible>ansible</a>
-<a href=https://blog.gainskills.top/tags/blog title=blog>blog</a>
-<a href=https://blog.gainskills.top/tags/cisco title=cisco>cisco</a>
-<a href=https://blog.gainskills.top/tags/hugo title=hugo>hugo</a>
-<a href=https://blog.gainskills.top/tags/ios title=ios>ios</a>
-<a href=https://blog.gainskills.top/tags/linux title=linux>linux</a>
-<a href=https://blog.gainskills.top/tags/python title=python>python</a>
-<a href=https://blog.gainskills.top/tags/security title=security>security</a>
-<a href=https://blog.gainskills.top/tags/simulator title=simulator>simulator</a>
-<a href=https://blog.gainskills.top/tags/tip title=tip>tip</a>
-<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>troubleshooting</a>
-<a href=https://blog.gainskills.top/tags/web title=web>web</a>
-<a href=https://blog.gainskills.top/tags/windows title=windows>windows</a></div></section><section class="visible-md visible-lg"><hr><h5><a href="'/top/about'">ABOUT ME</a></h5><div class=short-about><p>Python Developer, Network Engineer, DevOps, Automation, Open Source Enthusiast</p><ul class=list-inline><li><a href=https://blog.gainskills.top/index.xml rel=alternate type=application/rss+xml title="Blog - uTIcARdI"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-rss fa-stack-1x fa-inverse"></i></span></a></li><li><a href=mailto:kex_zh@outlook.com><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://github.com/gainskills><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://stackoverflow.com/users/2701959/69444091><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i></span></a></li></ul></div></section><section><hr class="hidden-sm hidden-xs"><h5>FRIENDS</h5><ul class=list-inline><li><a target=_blank href=http://www.cnblogs.com/TomXu/>Tom大叔</a></li><li><a target=_blank href=https://www.weibo.com/u/5941049491>CC的行摄日记</a></li></ul></section><section><hr><h5>BOOKMARKS</h5><ul class=list-inline><li><a target=_blank href=http://eve-ng.net/>EVE-NG</a></li><li><a target=_blank href=https://zhaohuabing.com>Huabing's Blog</a></li><li><a target=_blank href=https://imtx.me/>TUALATRIX's Blog</a></li><li><a target=_blank href=https://lingxiankong.github.io>技术改变世界-孔今贤的博客</a></li></ul></section></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2019 - 2021<br></p></div></div></div></footer><script>function async(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
-s.parentNode.insertBefore(o,s);}</script><script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var dnt=(navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack);var doNotTrack=(dnt=="1"||dnt=="yes");if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;if(window.sessionStorage){var GA_SESSION_STORAGE_KEY='ga:clientId';ga('create','UA-131650010-2',{'storage':'none','clientId':sessionStorage.getItem(GA_SESSION_STORAGE_KEY)});ga(function(tracker){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,tracker.get('clientId'));});}
-ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script>var options={"cookie":{"domain":"https:\/\/blog.gainskills.top","expiryDays":7,},"palette":{"popup":{"background":"#4d4d4d","text":"#ffffff",},"button":{"background":"transparent","text":"#ffffff",}},"theme":"edgeless","content":{"dismiss":"OK","message":"This site uses cookies to ensure you get the best experience.","link":"Learn more","target":'_blank',},};var instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element);</script></body></html>
+sidebar-container">
+<section>
+<hr class="hidden-sm hidden-xs">
+<h5>FEATURED TAGS</h5>
+<div class=tags>
+<a href=https://blog.gainskills.top/tags/ansible title=ansible>
+ansible
+</a>
+<a href=https://blog.gainskills.top/tags/blog title=blog>
+blog
+</a>
+<a href=https://blog.gainskills.top/tags/cisco title=cisco>
+cisco
+</a>
+<a href=https://blog.gainskills.top/tags/hugo title=hugo>
+hugo
+</a>
+<a href=https://blog.gainskills.top/tags/ios title=ios>
+ios
+</a>
+<a href=https://blog.gainskills.top/tags/linux title=linux>
+linux
+</a>
+<a href=https://blog.gainskills.top/tags/python title=python>
+python
+</a>
+<a href=https://blog.gainskills.top/tags/security title=security>
+security
+</a>
+<a href=https://blog.gainskills.top/tags/simulator title=simulator>
+simulator
+</a>
+<a href=https://blog.gainskills.top/tags/tip title=tip>
+tip
+</a>
+<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>
+troubleshooting
+</a>
+<a href=https://blog.gainskills.top/tags/web title=web>
+web
+</a>
+<a href=https://blog.gainskills.top/tags/windows title=windows>
+windows
+</a>
+</div>
+</section>
+<section class="visible-md visible-lg">
+<hr>
+<h5><a href="'/top/about'">ABOUT ME</a></h5>
+<div class=short-about>
+<p>Python Developer, Network Engineer, DevOps, Automation, Open Source Enthusiast</p>
+<ul class=list-inline>
+<li>
+<a href=https://blog.gainskills.top/index.xml rel=alternate type=application/rss+xml title="Blog - uTIcARdI">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=mailto:kex_zh@outlook.com>
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a target=_blank href=https://github.com/gainskills>
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a target=_blank href=https://stackoverflow.com/users/2701959/69444091>
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+</div>
+</section>
+<section>
+<hr class="hidden-sm hidden-xs">
+<h5>FRIENDS</h5>
+<ul class=list-inline>
+<li><a target=_blank href=http://www.cnblogs.com/TomXu/>Tom大叔</a></li>
+<li><a target=_blank href=https://www.weibo.com/u/5941049491>CC的行摄日记</a></li>
+</ul>
+</section>
+<section>
+<hr>
+<h5>BOOKMARKS</h5>
+<ul class=list-inline>
+<li><a target=_blank href=http://eve-ng.net/>EVE-NG</a></li>
+<li><a target=_blank href=https://zhaohuabing.com>Huabing's Blog</a></li>
+<li><a target=_blank href=https://imtx.me/>TUALATRIX's Blog</a></li>
+<li><a target=_blank href=https://lingxiankong.github.io>技术改变世界-孔今贤的博客</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<p class="copyright text-muted">
+Copyright &copy; Blog - uTIcARdI&sbquo; 2021
+<br>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script>function async(f,b){var c=document,d='script',a=c.createElement(d),e=c.getElementsByTagName(d)[0];a.src=f,b&&a.addEventListener('load',function(a){b(null,a)},!1),e.parentNode.insertBefore(a,e)}</script>
+<script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var a=document.querySelector("nav");a&&FastClick.attach(a)})</script>
+<script type=application/javascript>var dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes",GA_SESSION_STORAGE_KEY;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,window.sessionStorage&&(GA_SESSION_STORAGE_KEY='ga:clientId',ga('create','UA-131650010-2',{storage:'none',clientId:sessionStorage.getItem(GA_SESSION_STORAGE_KEY)}),ga(function(a){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,a.get('clientId'))})),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<script>var options={cookie:{domain:"https://blog.gainskills.top",expiryDays:7},palette:{popup:{background:"#4d4d4d",text:"#ffffff"},button:{background:"transparent",text:"#ffffff"}},theme:"edgeless",content:{dismiss:"OK",message:"This site uses cookies to ensure you get the best experience.",link:"Learn more",target:'_blank'}},instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element)</script>
+</body>
+</html>
