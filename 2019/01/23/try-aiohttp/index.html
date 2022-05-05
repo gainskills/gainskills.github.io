@@ -1,119 +1,21 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Try aiohttp/aiodns">
-<meta name=keywords content="Aiohttp Asynchronous Troubleshooting Python Web">
-<link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico>
-<title>aiohttp/aiodns-Resolving using custom nameservers-Blog - uTIcARdI</title>
-<link rel=alternate hreflang=en href=https://blog.gainskills.top/2019/01/23/try-aiohttp/>
-<link rel=alternate href=https://blog.gainskills.top/2019/01/23/try-aiohttp/ hreflang=x-default>
-<link rel=canonical href=https://blog.gainskills.top/2019/01/23/try-aiohttp/>
-<link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css>
-<link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css>
-<link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css>
-<script src=https://blog.gainskills.top/js/jquery.min.js></script>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Try aiohttp/aiodns"><meta name=keywords content="Aiohttp Asynchronous Troubleshooting Python Web"><link rel="shortcut icon" href=https://blog.gainskills.top/img/favicon.ico><title>aiohttp/aiodns-Resolving using custom nameservers-Blog - uTIcARdI</title><link rel=alternate hreflang=en href=https://blog.gainskills.top/2019/01/23/try-aiohttp/><link rel=alternate href=https://blog.gainskills.top/2019/01/23/try-aiohttp/ hreflang=x-default><link rel=canonical href=https://blog.gainskills.top/2019/01/23/try-aiohttp/><link rel=stylesheet href=https://blog.gainskills.top/css/bootstrap.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/hux-blog.min.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css rel=stylesheet type=text/css><script src=https://blog.gainskills.top/js/jquery.min.js></script>
 <script src=https://blog.gainskills.top/js/bootstrap.min.js></script>
 <script src=https://blog.gainskills.top/js/hux-blog.min.js></script>
-<link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css>
-<link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"aiohttp\/aiodns-Resolving using custom nameservers","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" January 23, 2019","dateModified":" December 7, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"Try aiohttp\/aiodns"}</script>
-<link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css>
-<script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script>
+<link rel=stylesheet href=https://blog.gainskills.top/css/zanshang.min.css><link rel=stylesheet href=https://blog.gainskills.top/css/iDisqus.min.css><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage"},"headline":"aiohttp\/aiodns-Resolving using custom nameservers","image":["https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"],"datePublished":" January 23, 2019","dateModified":" December 7, 2019","author":{"@type":"Person","name":"Blog - uTIcARdI"},"publisher":{"@type":"Organization","name":"Hugo","logo":{"@type":"ImageObject","url":"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"}},"description":"Try aiohttp\/aiodns"}</script><link rel=stylesheet type=text/css href=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js></script>
 <script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
-<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:!0})</script>
-<script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script>
-</head>
-<body>
-<amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942>
-</amp-auto-ads>
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-<div class=container-fluid>
-<div class="navbar-header page-scroll">
-<button type=button class=navbar-toggle>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-5029900143451942",enable_page_level_ads:!0})</script><script async custom-element=amp-auto-ads src=https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js></script></head><body><amp-auto-ads type=adsense data-ad-client=ca-pub-5029900143451942></amp-auto-ads><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
-<span class=icon-bar></span>
-</button>
-<a class=navbar-brand href=https://blog.gainskills.top/>Blog - uTIcARdI</a>
-</div>
-<div id=huxblog_navbar>
-<div class=navbar-collapse>
-<ul class="nav navbar-nav navbar-right">
-<li>
-<a href=https://blog.gainskills.top/categories/code>code</a>
-</li>
-<li>
-<a href=https://blog.gainskills.top/categories/devops>devops</a>
-</li>
-<li>
-<a href=https://blog.gainskills.top/categories/life>life</a>
-</li>
-<li>
-<a href=https://blog.gainskills.top/categories/linux>linux</a>
-</li>
-<li>
-<a href=https://blog.gainskills.top/categories/network>network</a>
-</li>
-<li>
-<a href=https://blog.gainskills.top/categories/os>os</a>
-</li>
-<li>
-<a href=https://blog.gainskills.top/top/about/>ABOUT</a>
-</li>
-<li>
-<a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</nav>
-<script>var $body=document.body,$toggle=document.querySelector('.navbar-toggle'),$navbar=document.querySelector('#huxblog_navbar'),$collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic);function handleMagic(a){$navbar.className.indexOf('in')>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf('in')<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script>
-<style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style>
-<header class=intro-header>
-<div class=container>
-<div class=row>
-<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-<div class=post-heading>
-<div class=tags>
-<a class=tag href=https://blog.gainskills.top/tags/aiohttp title=Aiohttp>Aiohttp</a>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=https://blog.gainskills.top/>Home</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=https://blog.gainskills.top/categories/code>code</a></li><li><a href=https://blog.gainskills.top/categories/devops>devops</a></li><li><a href=https://blog.gainskills.top/categories/life>life</a></li><li><a href=https://blog.gainskills.top/categories/linux>linux</a></li><li><a href=https://blog.gainskills.top/categories/network>network</a></li><li><a href=https://blog.gainskills.top/categories/os>os</a></li><li><a href=https://blog.gainskills.top/top/about/>ABOUT</a></li><li><a rel=nofollow href=https://blog.gainskills.top/search>SEARCH <img src=https://blog.gainskills.top/img/search.png alt=Search height=15 style=cursor:pointer></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(/img/home-psb-bg.jpeg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=https://blog.gainskills.top/tags/aiohttp title=Aiohttp>Aiohttp</a>
 <a class=tag href=https://blog.gainskills.top/tags/asynchronous title=Asynchronous>Asynchronous</a>
 <a class=tag href=https://blog.gainskills.top/tags/troubleshooting title=Troubleshooting>Troubleshooting</a>
 <a class=tag href=https://blog.gainskills.top/tags/python title=Python>Python</a>
-<a class=tag href=https://blog.gainskills.top/tags/web title=Web>Web</a>
-</div>
-<h1>aiohttp/aiodns-Resolving using custom nameservers</h1>
-<h3 class=subheading></h3>
-<span class=meta>Posted on January 23, 2019
-</span>
-</div>
-</div>
-</div>
-</div>
-</header>
-<article>
-<div class=container>
-<div class=row>
-<div class="col-lg-10 col-lg-offset-1
+<a class=tag href=https://blog.gainskills.top/tags/web title=Web>Web</a></div><h1>aiohttp/aiodns-Resolving using custom nameservers</h1><h3 class=subheading></h3><span class=meta>Posted on January 23, 2019</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1
 col-md-10 col-md-offset-1
-post-container">
-<p><a href=https://github.com/aio-libs/aiohttp>aiohttp</a> is an Asynchronous HTTP client/server framework for asyncio and Python</p>
-<p>I tried it because of the features:</p>
-<ul>
-<li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache>Tuning the DNS cache</a></li>
-<li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers>Resolving using custom nameservers</a></li>
-</ul>
-<p>With this, verifying the CDN&rsquo;s POPs with different ISPs' DNS on single a point should be possible.</p>
-<p>Since the code on the official document is simple:</p>
-<blockquote>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python></code></pre></div></blockquote>
-<p>from aiohttp.resolver import AsyncResolver</p>
-<p>resolver = AsyncResolver(nameservers=[&ldquo;8.8.8.8&rdquo;, &ldquo;8.8.4.4&rdquo;])
-conn = aiohttp.TCPConnector(resolver=resolver)</p>
-<pre tabindex=0><code>
+post-container"><p><a href=https://github.com/aio-libs/aiohttp>aiohttp</a> is an Asynchronous HTTP client/server framework for asyncio and Python</p><p>I tried it because of the features:</p><ul><li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache>Tuning the DNS cache</a></li><li><a href=https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers>Resolving using custom nameservers</a></li></ul><p>With this, verifying the CDN&rsquo;s POPs with different ISPs&rsquo; DNS on single a point should be possible.</p><p>Since the code on the official document is simple:</p><blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python></code></pre></div></blockquote><p>from aiohttp.resolver import AsyncResolver</p><p>resolver = AsyncResolver(nameservers=[&ldquo;8.8.8.8&rdquo;, &ldquo;8.8.4.4&rdquo;])
+conn = aiohttp.TCPConnector(resolver=resolver)</p><pre tabindex=0><code>
 I tried it with following code:
 
 ~~~python
@@ -121,291 +23,112 @@ import aiohttp
 import asyncio
 from aiohttp.resolver import AsyncResolver
 
-resolver = AsyncResolver(nameservers=[&quot;114.114.114.114&quot;])
+resolver = AsyncResolver(nameservers=[&#34;114.114.114.114&#34;])
 
 async def dnstesting():
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) as session:
-        r = await session.get(&quot;http://google.com&quot;)
+        r = await session.get(&#34;http://google.com&#34;)
         print(r.text)
 
 asyncio.run(dnstesting())
-</code></pre><p>Run with following error:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>38</span>: <span style=color:#a6e22e>DeprecationWarning</span>: The object should be created <span style=color:#f92672>from</span> async function
-  resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;114.114.114.114&#34;</span>])
-<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>41</span>: <span style=color:#a6e22e>DeprecationWarning</span>: verify_ssl <span style=color:#f92672>is</span> deprecated, use ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span> instead
-  <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, use_dns_cache<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, resolver<span style=color:#f92672>=</span>resolver)) assession:
-Traceback (most recent call last):
-  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>51</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
-    asyncio<span style=color:#f92672>.</span>run(dnstesting())
-  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py&#34;</span>, line <span style=color:#ae81ff>43</span>, <span style=color:#f92672>in</span> run
-    <span style=color:#66d9ef>return</span> loop<span style=color:#f92672>.</span>run_until_complete(main)
-  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py&#34;</span>, line <span style=color:#ae81ff>584</span>, <span style=color:#f92672>in</span> run_until_complete
-    <span style=color:#66d9ef>return</span> future<span style=color:#f92672>.</span>result()
-  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>42</span>, <span style=color:#f92672>in</span> dnstesting
-    r <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;http://google.com&#34;</span>)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py&#34;</span>, line <span style=color:#ae81ff>476</span>, <span style=color:#f92672>in</span> _request
-    timeout<span style=color:#f92672>=</span>real_timeout
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>522</span>, <span style=color:#f92672>in</span> connect
-    proto <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_create_connection(req, traces, timeout)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>854</span>, <span style=color:#f92672>in</span> _create_connection
-    req, traces, timeout)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>955</span>, <span style=color:#f92672>in</span> _create_d<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>38</span>: <span style=color:#a6e22e>DeprecationWarning</span>: The object should be created <span style=color:#f92672>from</span> async function
-  resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;114.114.114.114&#34;</span>])
-<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>41</span>: <span style=color:#a6e22e>DeprecationWarning</span>: verify_ssl <span style=color:#f92672>is</span> deprecated, use ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span> instead
-  <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, use_dns_cache<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, resolver<span style=color:#f92672>=</span>resolver)) assession:
-Traceback (most recent call last):
-  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>51</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
-    asyncio<span style=color:#f92672>.</span>run(dnstesting())
-  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py&#34;</span>, line <span style=color:#ae81ff>43</span>, <span style=color:#f92672>in</span> run
-    <span style=color:#66d9ef>return</span> loop<span style=color:#f92672>.</span>run_until_complete(main)
-  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py&#34;</span>, line <span style=color:#ae81ff>584</span>, <span style=color:#f92672>in</span> run_until_complete
-    <span style=color:#66d9ef>return</span> future<span style=color:#f92672>.</span>result()
-  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>42</span>, <span style=color:#f92672>in</span> dnstesting
-    r <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;http://google.com&#34;</span>)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py&#34;</span>, line <span style=color:#ae81ff>476</span>, <span style=color:#f92672>in</span> _request
-    timeout<span style=color:#f92672>=</span>real_timeout
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>522</span>, <span style=color:#f92672>in</span> connect
-    proto <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_create_connection(req, traces, timeout)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>854</span>, <span style=color:#f92672>in</span> _create_connection
-    req, traces, timeout)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>955</span>, <span style=color:#f92672>in</span> _create_direct_connection
-    traces<span style=color:#f92672>=</span>traces), loop<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_loop)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>788</span>, <span style=color:#f92672>in</span> _resolve_host
-    host, port, family<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_family))
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py&#34;</span>, line <span style=color:#ae81ff>64</span>, <span style=color:#f92672>in</span> resolve
-    resp <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_resolver<span style=color:#f92672>.</span>gethostbyname(host, family)
-<span style=color:#a6e22e>RuntimeError</span>: Task <span style=color:#f92672>&lt;</span>Task pending coro<span style=color:#f92672>=&lt;</span>TCPConnector<span style=color:#f92672>.</span>_resolve_host() running at <span style=color:#f92672>/</span>pyvenvs<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>venv<span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>site<span style=color:#f92672>-</span>packages<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>connector<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>788</span><span style=color:#f92672>&gt;</span> cb<span style=color:#f92672>=</span>[shield<span style=color:#f92672>.&lt;</span>locals<span style=color:#f92672>&gt;.</span>_done_callback() at <span style=color:#f92672>/</span>Library<span style=color:#f92672>/</span>Frameworks<span style=color:#f92672>/</span>Python<span style=color:#f92672>.</span>framework<span style=color:#f92672>/</span>Versions<span style=color:#f92672>/</span><span style=color:#ae81ff>3.7</span><span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>asyncio<span style=color:#f92672>/</span>tasks<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>776</span>]<span style=color:#f92672>&gt;</span> got Future <span style=color:#f92672>&lt;</span>Future pending<span style=color:#f92672>&gt;</span> attached to a different loop
-python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> error <span style=color:#66d9ef>for</span> object <span style=color:#ae81ff>0x9000000000000000</span>: pointer being freed was <span style=color:#f92672>not</span> allocated
-python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> set a breakpoint <span style=color:#f92672>in</span> malloc_error_break to debug
-Abort trap: <span style=color:#ae81ff>6</span>irect_connection
-    traces<span style=color:#f92672>=</span>traces), loop<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_loop)
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>788</span>, <span style=color:#f92672>in</span> _resolve_host
-    host, port, family<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_family))
-  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py&#34;</span>, line <span style=color:#ae81ff>64</span>, <span style=color:#f92672>in</span> resolve
-    resp <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_resolver<span style=color:#f92672>.</span>gethostbyname(host, family)
-<span style=color:#a6e22e>RuntimeError</span>: Task <span style=color:#f92672>&lt;</span>Task pending coro<span style=color:#f92672>=&lt;</span>TCPConnector<span style=color:#f92672>.</span>_resolve_host() running at <span style=color:#f92672>/</span>pyvenvs<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>venv<span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>site<span style=color:#f92672>-</span>packages<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>connector<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>788</span><span style=color:#f92672>&gt;</span> cb<span style=color:#f92672>=</span>[shield<span style=color:#f92672>.&lt;</span>locals<span style=color:#f92672>&gt;.</span>_done_callback() at <span style=color:#f92672>/</span>Library<span style=color:#f92672>/</span>Frameworks<span style=color:#f92672>/</span>Python<span style=color:#f92672>.</span>framework<span style=color:#f92672>/</span>Versions<span style=color:#f92672>/</span><span style=color:#ae81ff>3.7</span><span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>asyncio<span style=color:#f92672>/</span>tasks<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>776</span>]<span style=color:#f92672>&gt;</span> got Future <span style=color:#f92672>&lt;</span>Future pending<span style=color:#f92672>&gt;</span> attached to a different loop
-python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> error <span style=color:#66d9ef>for</span> object <span style=color:#ae81ff>0x9000000000000000</span>: pointer being freed was <span style=color:#f92672>not</span> allocated
-python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> set a breakpoint <span style=color:#f92672>in</span> malloc_error_break to debug
-Abort trap: <span style=color:#ae81ff>6</span>
-</code></pre></div><p>Did something debugging without any clue, with <a href=https://github.com/saghul>Saghul</a> and <a href=https://github.com/asvetlov>asvetlov</a>&rsquo;s help on the issue <a href=https://github.com/aio-libs/aiohttp/issues/3573>#3573</a>, it works finally with: <em>Moving the resolver definition from outside of the function to inside</em>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> asyncio
-<span style=color:#f92672>import</span> aiohttp
-<span style=color:#f92672>from</span> aiohttp.resolver <span style=color:#f92672>import</span> AsyncResolver
-
-<span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>dnstesting</span>():
-    resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;114.114.114.114&#34;</span>])
-
-    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, use_dns_cache<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, resolver<span style=color:#f92672>=</span>resolver)) <span style=color:#66d9ef>as</span> session:
-        r <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;http://google.com&#34;</span>)
-        print(r<span style=color:#f92672>.</span>text)
-
-asyncio<span style=color:#f92672>.</span>run(dnstesting())
-</code></pre></div>
-<div class="entry-shang text-center">
-<button class="zs show-zs btn btn-bred">Donation</button>
-</div>
-<div class=zs-modal-bg></div>
-<div class=zs-modal-box>
-<div class=zs-modal-head>
-<button type=button class=close>×</button>
-<span class=author align=right><br><p class=tip>aiohttp/aiodns-Resolving using custom nameservers</p><br></span>
-</div>
-<div class=zs-modal-body>
-<div class=zs-modal-btns>
-<button class="btn btn-blink" data-num=2>$2</button>
+</code></pre><p>Run with following error:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>38</span>: <span style=color:#a6e22e>DeprecationWarning</span>: The object should be created <span style=color:#f92672>from</span> async function
+</span></span><span style=display:flex><span>  resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;114.114.114.114&#34;</span>])
+</span></span><span style=display:flex><span><span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>41</span>: <span style=color:#a6e22e>DeprecationWarning</span>: verify_ssl <span style=color:#f92672>is</span> deprecated, use ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span> instead
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, use_dns_cache<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, resolver<span style=color:#f92672>=</span>resolver)) assession:
+</span></span><span style=display:flex><span>Traceback (most recent call last):
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>51</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    asyncio<span style=color:#f92672>.</span>run(dnstesting())
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py&#34;</span>, line <span style=color:#ae81ff>43</span>, <span style=color:#f92672>in</span> run
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> loop<span style=color:#f92672>.</span>run_until_complete(main)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py&#34;</span>, line <span style=color:#ae81ff>584</span>, <span style=color:#f92672>in</span> run_until_complete
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> future<span style=color:#f92672>.</span>result()
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>42</span>, <span style=color:#f92672>in</span> dnstesting
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;http://google.com&#34;</span>)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py&#34;</span>, line <span style=color:#ae81ff>476</span>, <span style=color:#f92672>in</span> _request
+</span></span><span style=display:flex><span>    timeout<span style=color:#f92672>=</span>real_timeout
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>522</span>, <span style=color:#f92672>in</span> connect
+</span></span><span style=display:flex><span>    proto <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_create_connection(req, traces, timeout)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>854</span>, <span style=color:#f92672>in</span> _create_connection
+</span></span><span style=display:flex><span>    req, traces, timeout)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>955</span>, <span style=color:#f92672>in</span> _create_d<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>38</span>: <span style=color:#a6e22e>DeprecationWarning</span>: The object should be created <span style=color:#f92672>from</span> async function
+</span></span><span style=display:flex><span>  resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;114.114.114.114&#34;</span>])
+</span></span><span style=display:flex><span><span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>-</span><span style=color:#ae81ff>1.</span>py:<span style=color:#ae81ff>41</span>: <span style=color:#a6e22e>DeprecationWarning</span>: verify_ssl <span style=color:#f92672>is</span> deprecated, use ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span> instead
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, use_dns_cache<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, resolver<span style=color:#f92672>=</span>resolver)) assession:
+</span></span><span style=display:flex><span>Traceback (most recent call last):
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>51</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    asyncio<span style=color:#f92672>.</span>run(dnstesting())
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/runners.py&#34;</span>, line <span style=color:#ae81ff>43</span>, <span style=color:#f92672>in</span> run
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> loop<span style=color:#f92672>.</span>run_until_complete(main)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py&#34;</span>, line <span style=color:#ae81ff>584</span>, <span style=color:#f92672>in</span> run_until_complete
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> future<span style=color:#f92672>.</span>result()
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/aiohttp-1.py&#34;</span>, line <span style=color:#ae81ff>42</span>, <span style=color:#f92672>in</span> dnstesting
+</span></span><span style=display:flex><span>    r <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;http://google.com&#34;</span>)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/client.py&#34;</span>, line <span style=color:#ae81ff>476</span>, <span style=color:#f92672>in</span> _request
+</span></span><span style=display:flex><span>    timeout<span style=color:#f92672>=</span>real_timeout
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>522</span>, <span style=color:#f92672>in</span> connect
+</span></span><span style=display:flex><span>    proto <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_create_connection(req, traces, timeout)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>854</span>, <span style=color:#f92672>in</span> _create_connection
+</span></span><span style=display:flex><span>    req, traces, timeout)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>955</span>, <span style=color:#f92672>in</span> _create_direct_connection
+</span></span><span style=display:flex><span>    traces<span style=color:#f92672>=</span>traces), loop<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_loop)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>788</span>, <span style=color:#f92672>in</span> _resolve_host
+</span></span><span style=display:flex><span>    host, port, family<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_family))
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py&#34;</span>, line <span style=color:#ae81ff>64</span>, <span style=color:#f92672>in</span> resolve
+</span></span><span style=display:flex><span>    resp <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_resolver<span style=color:#f92672>.</span>gethostbyname(host, family)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>RuntimeError</span>: Task <span style=color:#f92672>&lt;</span>Task pending coro<span style=color:#f92672>=&lt;</span>TCPConnector<span style=color:#f92672>.</span>_resolve_host() running at <span style=color:#f92672>/</span>pyvenvs<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>venv<span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>site<span style=color:#f92672>-</span>packages<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>connector<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>788</span><span style=color:#f92672>&gt;</span> cb<span style=color:#f92672>=</span>[shield<span style=color:#f92672>.&lt;</span>locals<span style=color:#f92672>&gt;.</span>_done_callback() at <span style=color:#f92672>/</span>Library<span style=color:#f92672>/</span>Frameworks<span style=color:#f92672>/</span>Python<span style=color:#f92672>.</span>framework<span style=color:#f92672>/</span>Versions<span style=color:#f92672>/</span><span style=color:#ae81ff>3.7</span><span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>asyncio<span style=color:#f92672>/</span>tasks<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>776</span>]<span style=color:#f92672>&gt;</span> got Future <span style=color:#f92672>&lt;</span>Future pending<span style=color:#f92672>&gt;</span> attached to a different loop
+</span></span><span style=display:flex><span>python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> error <span style=color:#66d9ef>for</span> object <span style=color:#ae81ff>0x9000000000000000</span>: pointer being freed was <span style=color:#f92672>not</span> allocated
+</span></span><span style=display:flex><span>python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> set a breakpoint <span style=color:#f92672>in</span> malloc_error_break to debug
+</span></span><span style=display:flex><span>Abort trap: <span style=color:#ae81ff>6</span>irect_connection
+</span></span><span style=display:flex><span>    traces<span style=color:#f92672>=</span>traces), loop<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_loop)
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/connector.py&#34;</span>, line <span style=color:#ae81ff>788</span>, <span style=color:#f92672>in</span> _resolve_host
+</span></span><span style=display:flex><span>    host, port, family<span style=color:#f92672>=</span>self<span style=color:#f92672>.</span>_family))
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;/pyvenvs/aiohttp/venv/lib/python3.7/site-packages/aiohttp/resolver.py&#34;</span>, line <span style=color:#ae81ff>64</span>, <span style=color:#f92672>in</span> resolve
+</span></span><span style=display:flex><span>    resp <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> self<span style=color:#f92672>.</span>_resolver<span style=color:#f92672>.</span>gethostbyname(host, family)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>RuntimeError</span>: Task <span style=color:#f92672>&lt;</span>Task pending coro<span style=color:#f92672>=&lt;</span>TCPConnector<span style=color:#f92672>.</span>_resolve_host() running at <span style=color:#f92672>/</span>pyvenvs<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>venv<span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>site<span style=color:#f92672>-</span>packages<span style=color:#f92672>/</span>aiohttp<span style=color:#f92672>/</span>connector<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>788</span><span style=color:#f92672>&gt;</span> cb<span style=color:#f92672>=</span>[shield<span style=color:#f92672>.&lt;</span>locals<span style=color:#f92672>&gt;.</span>_done_callback() at <span style=color:#f92672>/</span>Library<span style=color:#f92672>/</span>Frameworks<span style=color:#f92672>/</span>Python<span style=color:#f92672>.</span>framework<span style=color:#f92672>/</span>Versions<span style=color:#f92672>/</span><span style=color:#ae81ff>3.7</span><span style=color:#f92672>/</span>lib<span style=color:#f92672>/</span>python3<span style=color:#ae81ff>.7</span><span style=color:#f92672>/</span>asyncio<span style=color:#f92672>/</span>tasks<span style=color:#f92672>.</span>py:<span style=color:#ae81ff>776</span>]<span style=color:#f92672>&gt;</span> got Future <span style=color:#f92672>&lt;</span>Future pending<span style=color:#f92672>&gt;</span> attached to a different loop
+</span></span><span style=display:flex><span>python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> error <span style=color:#66d9ef>for</span> object <span style=color:#ae81ff>0x9000000000000000</span>: pointer being freed was <span style=color:#f92672>not</span> allocated
+</span></span><span style=display:flex><span>python3(<span style=color:#ae81ff>38437</span>,<span style=color:#ae81ff>0x107b185c0</span>) malloc: <span style=color:#f92672>***</span> set a breakpoint <span style=color:#f92672>in</span> malloc_error_break to debug
+</span></span><span style=display:flex><span>Abort trap: <span style=color:#ae81ff>6</span>
+</span></span></code></pre></div><p>Did something debugging without any clue, with <a href=https://github.com/saghul>Saghul</a> and <a href=https://github.com/asvetlov>asvetlov</a>&rsquo;s help on the issue <a href=https://github.com/aio-libs/aiohttp/issues/3573>#3573</a>, it works finally with: <em>Moving the resolver definition from outside of the function to inside</em>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> asyncio
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> aiohttp
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> aiohttp.resolver <span style=color:#f92672>import</span> AsyncResolver
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>dnstesting</span>():
+</span></span><span style=display:flex><span>    resolver <span style=color:#f92672>=</span> AsyncResolver(nameservers<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;114.114.114.114&#34;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> aiohttp<span style=color:#f92672>.</span>ClientSession(connector<span style=color:#f92672>=</span>aiohttp<span style=color:#f92672>.</span>TCPConnector(verify_ssl<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, use_dns_cache<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, resolver<span style=color:#f92672>=</span>resolver)) <span style=color:#66d9ef>as</span> session:
+</span></span><span style=display:flex><span>        r <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;http://google.com&#34;</span>)
+</span></span><span style=display:flex><span>        print(r<span style=color:#f92672>.</span>text)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>asyncio<span style=color:#f92672>.</span>run(dnstesting())
+</span></span></code></pre></div><div class="entry-shang text-center"><button class="zs show-zs btn btn-bred">Donation</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+<span class=author align=right><br><p class=tip>aiohttp/aiodns-Resolving using custom nameservers</p><br></span></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>$2</button>
 <button class="btn btn-blink" data-num=5>$5</button>
-<button class="btn btn-blink" data-num=1>Any</button>
-</div>
-<div class=zs-modal-pay>
-<img alt=donation id=pay-image>
-<p>Scan the QR code using <span id=pay-type>WeChat</span></p>
-</div>
-</div>
-<div class=zs-modal-footer>
-<label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
+<button class="btn btn-blink" data-num=1>Any</button></div><div class=zs-modal-pay><img alt=donation id=pay-image><p>Scan the QR code using <span id=pay-type>WeChat</span></p></div></div><div class=zs-modal-footer><label class=radio-inline><input type=radio name=zs-type value=paypal class=zs-type class=zs-paypal checked><img alt=paypal></label>
 <label class=radio-inline><input type=radio name=zs-type value=wechat class=zs-type class=zs-wechat><img alt=wechat></label>
-<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label>
-</div>
-</div>
-<script src=https://blog.gainskills.top/js/reward.min.js></script>
-<div class="a2a_kit a2a_default_style">
-<h5 class=share-this>Share this!</h5>
-<ul class=list-inline>
-<li>
-<a rel=nofollow class=a2a_button_facebook>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_twitter>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_email>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_linkedin>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_pocket>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_evernote>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_sina_weibo>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_wechat>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_button_wordpress>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-<li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share>
-<span class="fa-stack fa-lg" style=font-size:1em>
-<i class="fa fa-circle fa-stack-2x"></i>
-<i class="fa fa-share fa-stack-1x fa-inverse"></i>
-</span>
-</a></li>
-</ul>
-</div>
-<script>var a2a_config=a2a_config||{};a2a_config.num_services=2,a2a_config.delay=800,a2a_config.prioritize=["google_plus","reddit"],a2a_config.icon_color="#2a89f5",a2a_config.thanks={postShare:!1,ad:!1}</script>
-<script async src=https://static.addtoany.com/menu/page.js></script>
-<ul class=pager>
-<li class=previous>
-<a rel=nofollow href=https://blog.gainskills.top/2019/01/19/get-in-dict-get/ data-toggle=tooltip data-placement=top title="get() in get() method of Pyhon dict">&larr;
-Previous Post</a>
-</li>
-<li class=next>
-<a rel=nofollow href=https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/ data-toggle=tooltip data-placement=top title="Hugo-Images management">Next
-Post &rarr;</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<script>$(function(){return $("h2, h3, h4, h5, h6").each(function(e,d){var a,c,b;if(a=$(d),b=a.attr('id'),link=a.attr('href'),c='<i class="fa fa-link"></i>',b)return a.prepend($("<a />").addClass("header-link").attr("href","#"+b).html(c))})})</script>
-</article>
-<div class=container>
-<div class=row>
-<div class="col-lg-10 col-lg-offset-1"  >
-<hr class="hidden-sm hidden-xs">
-<h5>See Also</h5>
-<ul>
-<li><a href=https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration
-</a></li>
-<li><a href=https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-Django/>VSCode as an IDLE for Django
-</a></li>
-<li><a href=https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/>Post a file to Flask by Curl via API
-</a></li>
-<li><a href=https://blog.gainskills.top/2019/01/19/get-in-dict-get/>get() in get() method of Pyhon dict
-</a></li>
-<li><a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>Netconf feature on Cisco IOS/IOSXE
-</a></li>
-</ul>
-<div class=sidebar-container>
-<h5>Pages with featured tags</h5>
-<div class=tags>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href=https://blog.gainskills.top/tags/ansible title=ansible>
-ansible
-</a>
-<a href=https://blog.gainskills.top/tags/blog title=blog>
-blog
-</a>
-<a href=https://blog.gainskills.top/tags/cisco title=cisco>
-cisco
-</a>
-<a href=https://blog.gainskills.top/tags/hugo title=hugo>
-hugo
-</a>
-<a href=https://blog.gainskills.top/tags/ios title=ios>
-ios
-</a>
-<a href=https://blog.gainskills.top/tags/linux title=linux>
-linux
-</a>
-<a href=https://blog.gainskills.top/tags/python title=python>
-python
-</a>
-<a href=https://blog.gainskills.top/tags/security title=security>
-security
-</a>
-<a href=https://blog.gainskills.top/tags/simulator title=simulator>
-simulator
-</a>
-<a href=https://blog.gainskills.top/tags/tip title=tip>
-tip
-</a>
-<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>
-troubleshooting
-</a>
-<a href=https://blog.gainskills.top/tags/web title=web>
-web
-</a>
-<a href=https://blog.gainskills.top/tags/windows title=windows>
-windows
-</a>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-10 col-lg-offset-1">
-<hr class="hidden-sm hidden-xs">
-<div id=disqus-comment>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//kexian-zhangs-blog.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class=container>
-<div class=row>
-<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-<p class="copyright text-muted">
-Copyright &copy; Blog - uTIcARdI&sbquo; 2019 - 2021
-<br>
-</p>
-</div>
-</div>
-</div>
-</footer>
-<script>function async(f,b){var c=document,d='script',a=c.createElement(d),e=c.getElementsByTagName(d)[0];a.src=f,b&&a.addEventListener('load',function(a){b(null,a)},!1),e.parentNode.insertBefore(a,e)}</script>
-<script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var a=document.querySelector("nav");a&&FastClick.attach(a)})</script>
-<script type=application/javascript>var dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes",GA_SESSION_STORAGE_KEY;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,window.sessionStorage&&(GA_SESSION_STORAGE_KEY='ga:clientId',ga('create','UA-131650010-2',{storage:'none',clientId:sessionStorage.getItem(GA_SESSION_STORAGE_KEY)}),ga(function(a){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,a.get('clientId'))})),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-<script>var options={cookie:{domain:"https://blog.gainskills.top",expiryDays:7},palette:{popup:{background:"#4d4d4d",text:"#ffffff"},button:{background:"transparent",text:"#ffffff"}},theme:"edgeless",content:{dismiss:"OK",message:"This site uses cookies to ensure you get the best experience.",link:"Learn more",target:'_blank'}},instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element)</script>
-</body>
-</html>
+<label class=radio-inline><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img alt=alipay></label></div></div><script src=https://blog.gainskills.top/js/reward.min.js></script><div class="a2a_kit a2a_default_style"><h5 class=share-this>Share this!</h5><ul class=list-inline><li><a rel=nofollow class=a2a_button_facebook><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_twitter><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_email><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_linkedin><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_pocket><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_evernote><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_sina_weibo><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-weibo fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_wechat><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wechat fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_button_wordpress><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wordpress fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=nofollow class=a2a_dd href=https://www.addtoany.com/share><span class="fa-stack fa-lg" style=font-size:1em><i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-share fa-stack-1x fa-inverse"></i></span></a></li></ul></div><script>var a2a_config=a2a_config||{};a2a_config.num_services=2,a2a_config.delay=800,a2a_config.prioritize=["google_plus","reddit"],a2a_config.icon_color="#2a89f5",a2a_config.thanks={postShare:!1,ad:!1}</script><script async src=https://static.addtoany.com/menu/page.js></script><ul class=pager><li class=previous><a rel=nofollow href=https://blog.gainskills.top/2019/01/19/get-in-dict-get/ data-toggle=tooltip data-placement=top title="get() in get() method of Pyhon dict">&larr;
+Previous Post</a></li><li class=next><a rel=nofollow href=https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/ data-toggle=tooltip data-placement=top title="Hugo-Images management">Next
+Post &rarr;</a></li></ul></div></div></div><script>$(function(){return $("h2, h3, h4, h5, h6").each(function(o,s){var t,e=$(s),n=e.attr("id");if(link=e.attr("href"),t='<i class="fa fa-link"></i>',n)return e.prepend($("<a />").addClass("header-link").attr("href","#"+n).html(t))})})</script></article><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"  ><hr class="hidden-sm hidden-xs"><h5>See Also</h5><ul><li><a href=https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration</a></li><li><a href=https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-Django/>VSCode as an IDLE for Django</a></li><li><a href=https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/>Post a file to Flask by Curl via API</a></li><li><a href=https://blog.gainskills.top/2019/01/19/get-in-dict-get/>get() in get() method of Pyhon dict</a></li><li><a href=https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/>Netconf feature on Cisco IOS/IOSXE</a></li></ul><div class=sidebar-container><h5>Pages with featured tags</h5><div class=tags>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=https://blog.gainskills.top/tags/ansible title=ansible>ansible</a>
+<a href=https://blog.gainskills.top/tags/blog title=blog>blog</a>
+<a href=https://blog.gainskills.top/tags/cisco title=cisco>cisco</a>
+<a href=https://blog.gainskills.top/tags/hugo title=hugo>hugo</a>
+<a href=https://blog.gainskills.top/tags/ios title=ios>ios</a>
+<a href=https://blog.gainskills.top/tags/linux title=linux>linux</a>
+<a href=https://blog.gainskills.top/tags/python title=python>python</a>
+<a href=https://blog.gainskills.top/tags/security title=security>security</a>
+<a href=https://blog.gainskills.top/tags/simulator title=simulator>simulator</a>
+<a href=https://blog.gainskills.top/tags/tip title=tip>tip</a>
+<a href=https://blog.gainskills.top/tags/troubleshooting title=troubleshooting>troubleshooting</a>
+<a href=https://blog.gainskills.top/tags/web title=web>web</a>
+<a href=https://blog.gainskills.top/tags/windows title=windows>windows</a></div></div></section></div></div></div><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1"><hr class="hidden-sm hidden-xs"><div id=disqus-comment><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//kexian-zhangs-blog.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div></div></div></div><footer><div class=container><div class=row><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Blog - uTIcARdI&sbquo; 2013 - 2022<br></p></div></div></div></footer><script>function async(i,t){var n=document,s="script",e=n.createElement(s),o=n.getElementsByTagName(s)[0];e.src=i,t&&e.addEventListener("load",function(e){t(null,e)},!1),o.parentNode.insertBefore(e,o)}</script><script>async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=application/javascript>var dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,GA_SESSION_STORAGE_KEY,doNotTrack=dnt=="1"||dnt=="yes";doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,window.sessionStorage&&(GA_SESSION_STORAGE_KEY="ga:clientId",ga("create","UA-131650010-2",{storage:"none",clientId:sessionStorage.getItem(GA_SESSION_STORAGE_KEY)}),ga(function(e){sessionStorage.setItem(GA_SESSION_STORAGE_KEY,e.get("clientId"))})),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
+<script>var options={cookie:{domain:"https://blog.gainskills.top",expiryDays:7},palette:{popup:{background:"#4d4d4d",text:"#ffffff"},button:{background:"transparent",text:"#ffffff"}},theme:"edgeless",content:{dismiss:"OK",message:"This site uses cookies to ensure you get the best experience.",link:"Learn more",target:"_blank"}},instance=new cookieconsent.Popup(options);document.body.appendChild(instance.element)</script></body></html>

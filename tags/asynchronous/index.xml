@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Asynchronous on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/asynchronous/</link><description>Recent content in Asynchronous on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/asynchronous/index.xml" rel="self" type="application/rss+xml"/><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>aiohttp is an Asynchronous HTTP client/server framework for asyncio and Python
 I tried it because of the features:
-Tuning the DNS cache Resolving using custom nameservers With this, verifying the CDN&amp;rsquo;s POPs with different ISPs' DNS on single a point should be possible.
+Tuning the DNS cache Resolving using custom nameservers With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.
 Since the code on the official document is simple:
 from aiohttp.resolver import AsyncResolver
 resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;]) conn = aiohttp.TCPConnector(resolver=resolver)
