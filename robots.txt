@@ -3,6 +3,7 @@ sitemap: https://blog.gainskills.top/sitemap.xml
 disallow: /img/avatar-kz.jpg
 disallow: /img/reward/
 allow: https://blog.gainskills.top/index.xml
+allow: https://blog.gainskills.top/2023/07/17/
 allow: https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/
 allow: https://blog.gainskills.top/2019/12/08/evengaristabooting/
 allow: https://blog.gainskills.top/2019/12/02/pyxlwtdebug/
