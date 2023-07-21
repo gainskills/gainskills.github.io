@@ -4,4 +4,4 @@ start DHCP service by command:
 service dhcp debug on Cisco router to check DHCP request by the commands:
 debug ip dhcp server packet terminal monitor Debug info :
 DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98 configure DHCP
-ip dhcp pool ItalkBB host 10.</description></item></channel></rss>
+ip dhcp pool ItalkBB host 10.0.0.127 255.255.255.0 //no mask configured, IP’s class mask assigned client-identifier 0100.</description></item></channel></rss>

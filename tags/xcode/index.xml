@@ -4,4 +4,5 @@ Install Xcode plugin on Jenkins
 New a ‘Freestyle project’ on Jenkins
 Jenkins project configuration
 ‘Source Code Management’ on Jenkins ‘Build’ setting on Jenkins Jenkins Project -&amp;gt; ‘Build Now’
-Errors:</description></item></channel></rss>
+Errors:
+CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.</description></item></channel></rss>

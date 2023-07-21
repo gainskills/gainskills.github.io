@@ -3,6 +3,7 @@
 2. CentOS configuration Network: IP address, DNS, and restart network service
 vi /etc/resolv.conf/DNS vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP vi /etc/networks//Route /etc/init.d/network restart configure host file
 vi /etc/hosts Modify 127.0.0.1 item to FQDN format because openldap get dc from the item automatically.
-127.0.0.1 ldap.kzblog.com Stop security services</description></item><item><title>make error :/usr/bin/ld: cannot find -luuid</title><link>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</link><pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</guid><description>I met a make error in CentOS 6:
+127.0.0.1 ldap.kzblog.com Stop security services
+setenforce permissive getenforce service iptables stop Note: This only for the testing environment.</description></item><item><title>make error :/usr/bin/ld: cannot find -luuid</title><link>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</link><pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</guid><description>I met a make error in CentOS 6:
 # make ...... /usr/bin/ld: cannot find -luuid ld returned 1 exit status make: *** Error 1 The way to fix this error is to install lib : uuid-devel
 yum -y install libuuid-devel</description></item></channel></rss>

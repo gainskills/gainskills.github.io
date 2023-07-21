@@ -3,4 +3,5 @@
 Python3
 Optional: On Mac OS, I recommend homebrew for Python Installation because third party libraries&amp;rsquo; dependency will be processed smoothly.
 Install homebrew:
-/usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; Install Python3:</description></item></channel></rss>
+/usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; Install Python3:
+brew install python@3 2. Python Extension Launch VSCode and install the Extension: Python</description></item></channel></rss>

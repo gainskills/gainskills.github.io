@@ -5,9 +5,10 @@ c:test\test.txt Output on Mac OS c:/test/test.txt
 os.sep.join
 import os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
 c:\test\test.txt Output on Mac OS c:/test/test.txt
-From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expected on windows.</description></item><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>with Zip Read a block of pseudo Python code like comA = zip(lsA, lsB) comB = zip(*comA)
-then made a try to see how * works: 1 2 3 4 5 6 7 8 a = [1, 2, 3] b = [4, 5, 6] c = zip(a,b) for j in c: print(j) d = zip(*c) for i in d: print(i)
-and the output: (1, 4) (2, 5) (3, 6)</description></item><item><title>Python operator: double start(**)</title><link>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</guid><description>Here is the data:
+From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expected on windows.
+Further verification:
+with open(fullpath) as test: test.</description></item><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>with Zip Read a block of pseudo Python code like comA = zip(lsA, lsB) comB = zip(*comA)
+then made a try to see how * works: 1 2 3 4 5 6 7 8 a = [1, 2, 3] b = [4, 5, 6] c = zip(a,b) for j in c: print(j) d = zip(*c) for i in d: print(i) and the output: (1, 4) (2, 5) (3, 6)</description></item><item><title>Python operator: double start(**)</title><link>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</guid><description>Here is the data:
 testdata = { &amp;#39;a&amp;#39; : 1, &amp;#39;b&amp;#39;: 2 } There are two ways to pass the data to a function
 Passing the data to the function
 def loop(data): for key, value in data.items(): print(key, value) loop(testdata) Passing the data with operator: **

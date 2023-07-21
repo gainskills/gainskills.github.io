@@ -5,4 +5,6 @@ c:test\test.txt Output on Mac OS c:/test/test.txt
 os.sep.join
 import os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
 c:\test\test.txt Output on Mac OS c:/test/test.txt
-From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expected on windows.</description></item></channel></rss>
+From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expected on windows.
+Further verification:
+with open(fullpath) as test: test.</description></item></channel></rss>

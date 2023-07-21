@@ -6,4 +6,5 @@ Solution: Disable option &amp;ldquo;Limit Maximum CPUID&amp;rdquo; in Bios
 VCenter appliance deployment
 Vmware doesn&amp;rsquo;t provide vcenter appliance in ova/ovf format anymore, follow the instruction to deploy it.
 Inventory is empty in the VCenter webpage
-The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;</description></item></channel></rss>
+The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;
+Also, Vmware has a KB about this issue:</description></item></channel></rss>
