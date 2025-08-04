@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mininet on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/mininet/</link><description>Recent content in Mininet on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 20 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/mininet/index.xml" rel="self" type="application/rss+xml"/><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:
-ImportError: cannot import name customClass. Error Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.
-Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).
-I guess there must be something wrong with the latest version, or there is something conflict with my previous version (mininet 2.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mininet on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/mininet/</link><description>Recent content in Mininet on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/mininet/index.xml" rel="self" type="application/rss+xml"/><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>&lt;p>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ImportError&lt;/span>: cannot &lt;span style="color:#f92672">import&lt;/span> name customClass&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 593px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_6fba2dcf3ba5ef1c.png" data-fancybox data-caption=Error >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_44500454d9367a5d.png" class="img-responsive img-lazyload" alt=Error style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Error&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.&lt;/p>
+&lt;p>Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).&lt;/p></description></item></channel></rss>

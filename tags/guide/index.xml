@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guide on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/guide/</link><description>Recent content in Guide on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 29 Nov 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>Background:
-Here is a topology about the environment for performance testing, let’s name the servers 1st:
-1 windows server as the License/Workspace server 5 windows servers as the Network Server 5 windows servers as the Automation server Topo It took us a lot of time to deploy the product and collect logs on all of these servers.
-My colleague wrote a client-server application and do some of the tasks automatically. The application indeed works for log collection, but for product deployment, as the server end running as a service and fails to launch the InstallShield wizard, it doesn’t support the product installation.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guide on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/guide/</link><description>Recent content in Guide on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>&lt;p>Background:&lt;/p>
+&lt;p>Here is a topology about the environment for performance testing, let’s name the servers 1st:&lt;/p>
+&lt;ul>
+&lt;li>1 windows server as the License/Workspace server&lt;/li>
+&lt;li>5 windows servers as the Network Server&lt;/li>
+&lt;li>5 windows servers as the Automation server&lt;/li>
+&lt;/ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 476px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_fb9d39317589d7fd.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_7bb2a51c31b7b3fe.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>It took us a lot of time to deploy the product and collect logs on all of these servers.&lt;/p></description></item></channel></rss>

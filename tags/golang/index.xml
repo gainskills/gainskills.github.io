@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/golang/</link><description>Recent content in Golang on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 17 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang abnormal CPU usage</title><link>https://blog.gainskills.top/2023/07/17/</link><pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2023/07/17/</guid><description>Plan: Sleep 2.5 hours in a for loop
-Implementation:
-package test import ( &amp;#34;context&amp;#34; &amp;#34;time&amp;#34; ) const connChkInterval = 2.5 * time.Hour.Hours() func testFunc(ctx context.Context) { _Loop: for { select { case &amp;lt;-ctx.Done(): break _Loop default: // code of default branch } time.Sleep(connChkInterval) } } Issue:
-CPU usage goes high with the code Did analysis with golang profile, and saw runtime/internal/syscall.Syscall is the root cause The CPU usage never went to so high ever even though I run SQLite and the Golang App on the same server Troubleshooting:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/golang/</link><description>Recent content in Golang on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang abnormal CPU usage</title><link>https://blog.gainskills.top/2023/07/17/</link><pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2023/07/17/</guid><description>&lt;p>Plan: Sleep 2.5 hours in a &lt;code>for&lt;/code> loop&lt;/p>
+&lt;p>Implementation:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;context&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;time&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">connChkInterval&lt;/span> = &lt;span style="color:#ae81ff">2.5&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">Hour&lt;/span>.&lt;span style="color:#a6e22e">Hours&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">testFunc&lt;/span>(&lt;span style="color:#a6e22e">ctx&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">Context&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">_Loop&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">select&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#f92672">&amp;lt;-&lt;/span>&lt;span style="color:#a6e22e">ctx&lt;/span>.&lt;span style="color:#a6e22e">Done&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span> &lt;span style="color:#a6e22e">_Loop&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">default&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//	code of default branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">Sleep&lt;/span>(&lt;span style="color:#a6e22e">connChkInterval&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Issue:&lt;/p>
+&lt;ol>
+&lt;li>CPU usage goes high with the code&lt;/li>
+&lt;li>Did analysis with golang profile, and saw &lt;code>runtime/internal/syscall.Syscall&lt;/code> is the root cause&lt;/li>
+&lt;li>The CPU usage never went to so high ever even though I run SQLite and the Golang App on the same server&lt;/li>
+&lt;/ol>
+&lt;p>Troubleshooting:&lt;/p></description></item></channel></rss>

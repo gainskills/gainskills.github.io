@@ -1,7 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IPPhone on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/ipphone/</link><description>Recent content in IPPhone on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 13 Nov 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/ipphone/index.xml" rel="self" type="application/rss+xml"/><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>Topology:
-Topo Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.
-start DHCP service by command:
-service dhcp debug on Cisco router to check DHCP request by the commands:
-debug ip dhcp server packet terminal monitor Debug info :
-DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98 configure DHCP
-ip dhcp pool ItalkBB host 10.0.0.127 255.255.255.0 //no mask configured, IP’s class mask assigned client-identifier 0100.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IPPhone on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/ipphone/</link><description>Recent content in IPPhone on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/ipphone/index.xml" rel="self" type="application/rss+xml"/><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>&lt;p>Topology:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 264px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_be4615ef6586dd59.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_25b5ce0b92cb5f75.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>start DHCP service by command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>service dhcp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>debug on Cisco router to check DHCP request by the commands:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>debug ip dhcp server packet
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>terminal monitor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Debug info :&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-log" data-lang="log">DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>configure DHCP&lt;/p></description></item></channel></rss>

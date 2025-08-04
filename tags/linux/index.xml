@@ -1,17 +1,62 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/linux/</link><description>Recent content in Linux on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 22 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>tc-How it work on different IPs</title><link>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</link><pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</guid><description>#!/bin/bash interface=eth0 ip1=192.168.1.1 ip2=172.16.1.1 delay1=100ms delay2=200ms tc qdisc add dev $interface root handle 1: prio tc qdisc add dev $interface parent 1:1 netem delay $delay1 10ms 25% tc filter add dev $interface parent 1: protocol ip prio 1 u32 match ip dst $ip1 flowid 1:1 tc qdisc add dev $interface parent 1:2 netem delay $delay2 10ms 25% tc filter add dev $interface parent 1: protocol ip prio 2 u32 match ip dst $ip2 flowid 1:2</description></item><item><title>Adding Realtek 8139 Driver to ESXi6</title><link>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</guid><description>Note: This is not an official guide, backup is required before you apply the driver. My Dell PC has two NICs:
-Intel I217-LM Realtek RTl-8139 and #2 Realtek 8139 is not supported by VMware EXSi.
-There are some guides about customizing EXSi installation ISO to support the NIC, but I’m trying to find a way to apply the driver without reinstall EXSi.
-Here is a page which contains many NIC drivers: https://vibsdepot.</description></item><item><title>SNMP simulator installation guide</title><link>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</guid><description>About SNMP Simulator
-The the SNMP Simulator software is intended for testing SNMP Managers against a large number of SNMP Agents that represent a potentially very large network populated with different kinds of SNMP-capable devices.
-Refers to its project page for more info.
-Why?
-With SNMP simulator you can simulate a device by the output of SNMPwalk without considering MIB files.
-This article is about how to install SNMP Simulator.</description></item><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.
-1.Download and install CentOS6.2 CentOS-6.xx-i366-minimal.iso
-2. CentOS configuration Network: IP address, DNS, and restart network service
-vi /etc/resolv.conf/DNS vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP vi /etc/networks//Route /etc/init.d/network restart configure host file
-vi /etc/hosts Modify 127.0.0.1 item to FQDN format because openldap get dc from the item automatically.
-127.0.0.1 ldap.kzblog.com Stop security services
-setenforce permissive getenforce service iptables stop Note: This only for the testing environment.</description></item><item><title>make error :/usr/bin/ld: cannot find -luuid</title><link>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</link><pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</guid><description>I met a make error in CentOS 6:
-# make ...... /usr/bin/ld: cannot find -luuid ld returned 1 exit status make: *** Error 1 The way to fix this error is to install lib : uuid-devel
-yum -y install libuuid-devel</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/linux/</link><description>Recent content in Linux on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>tc-How it work on different IPs</title><link>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</link><pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>interface&lt;span style="color:#f92672">=&lt;/span>eth0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ip1&lt;span style="color:#f92672">=&lt;/span>192.168.1.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ip2&lt;span style="color:#f92672">=&lt;/span>172.16.1.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>delay1&lt;span style="color:#f92672">=&lt;/span>100ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>delay2&lt;span style="color:#f92672">=&lt;/span>200ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc qdisc add dev $interface root handle 1: prio
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc qdisc add dev $interface parent 1:1 netem delay $delay1 10ms 25%
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc filter add dev $interface parent 1: protocol ip prio &lt;span style="color:#ae81ff">1&lt;/span> u32 match ip dst $ip1 flowid 1:1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc qdisc add dev $interface parent 1:2 netem delay $delay2 10ms 25%
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc filter add dev $interface parent 1: protocol ip prio &lt;span style="color:#ae81ff">2&lt;/span> u32 match ip dst $ip2 flowid 1:2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Adding Realtek 8139 Driver to ESXi6</title><link>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</guid><description>&lt;h4 id="note-this-is-not-an-official-guide-backup-is-required-before-you-apply-the-driver">Note: This is not an official guide, backup is required before you apply the driver.&lt;/h4>
+&lt;p>My Dell PC has two NICs:&lt;/p>
+&lt;ol>
+&lt;li>Intel I217-LM&lt;/li>
+&lt;li>Realtek RTl-8139&lt;/li>
+&lt;/ol>
+&lt;p>and #2 Realtek 8139 is not supported by VMware EXSi.&lt;/p>
+&lt;p>There are some guides about customizing EXSi installation ISO to support the NIC, but I’m trying to find a way to apply the driver without reinstall EXSi.&lt;/p>
+&lt;p>Here is a page which contains many NIC drivers:
+&lt;a href="https://vibsdepot.v-front.de/wiki/index.php/List_of_currently_available_ESXi_packages">https://vibsdepot.v-front.de/wiki/index.php/List_of_currently_available_ESXi_packages&lt;/a>&lt;/p></description></item><item><title>SNMP simulator installation guide</title><link>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</guid><description>&lt;p>&lt;strong>About SNMP Simulator&lt;/strong>&lt;/p>
+&lt;p>The the SNMP Simulator software is intended for testing SNMP Managers against a large number of SNMP Agents that represent a potentially very large network populated with different kinds of SNMP-capable devices.&lt;/p>
+&lt;p>Refers to its &lt;a href="https://github.com/etingof/snmpsim">project page&lt;/a> for more info.&lt;/p>
+&lt;p>Why?&lt;/p>
+&lt;p>With SNMP simulator you can simulate a device by the output of SNMPwalk without considering MIB files.&lt;/p>
+&lt;p>This article is about how to install SNMP Simulator.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Python&lt;/p></description></item><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>&lt;p>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.&lt;/p>
+&lt;h4 id="1download-and-install-centos62">1.Download and install CentOS6.2&lt;/h4>
+&lt;p>&lt;a href="http://ftp.riken.jp/Linux/centos/6/isos/i386/CentOS-6.10-i386-minimal.iso">CentOS-6.xx-i366-minimal.iso&lt;/a>&lt;/p>
+&lt;h4 id="2-centos-configuration">2. CentOS configuration&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>Network: IP address, DNS, and restart network service&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/resolv.conf/DNS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/networks//Route
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/etc/init.d/network restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>configure host file&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/hosts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Modify 127.0.0.1 item to FQDN format because openldap get &lt;em>dc&lt;/em> from the item automatically.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>127.0.0.1 ldap.kzblog.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Stop security services&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>setenforce permissive
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getenforce
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>service iptables stop
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>Note: This only for the testing environment.&lt;/em>&lt;/p></description></item><item><title>make error :/usr/bin/ld: cannot find -luuid</title><link>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</link><pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</guid><description>&lt;p>I met a make error in CentOS 6:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># make&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>......
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -luuid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ld returned &lt;span style="color:#ae81ff">1&lt;/span> exit status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make: *** Error &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The way to fix this error is to install lib : uuid-devel&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>yum -y install libuuid-devel
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

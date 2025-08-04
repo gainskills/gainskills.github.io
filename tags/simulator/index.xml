@@ -1,38 +1,180 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Simulator on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/simulator/</link><description>Recent content in Simulator on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 08 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/simulator/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Arista VM 4.2.2 and later version on EVE(UNL)</title><link>https://blog.gainskills.top/2019/12/08/evengaristabooting/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/12/08/evengaristabooting/</guid><description>One of my friends did his VXLAN practices, he came to me for help because he was unable to start the Arista instance on EVE-NG.
-The Arista vm can be started and stuck at:
-Issue I did a search and found a clue in the Arista forum, the instance began to work after changed the CPU number to 2:
-Issue</description></item><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.
-Topology: Topology Configuration Configured IP addresses on the routers
-Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.
-Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)
-Configure static routes
-R1(config)#ip route 0.</description></item><item><title>Run ASA9.1 on EVE(UNL)</title><link>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</guid><description>This blog discusses ASA, not ASAv. Refer to
-http://missingsmth.com/gns-asa-9-15-with-asdm/ http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo It’s possible to run ASA9.1 on EVE-NG (UNL, unified network lab), so I did a try:
-Image preparation
-No, I can’t provide the image to anyone, and I won’t respond to any question about it. Please Refer to following posts for the image file:
-http://missingsmth.com/gns-asa-9-15-with-asdm/ http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html https://github.com/nccgroup/asafw Refer to http://www.eve-ng.net/index.php/documentation/images-table, EVE only support hda.qcow2 format disk. Covert your image to qcow2 format before the next step.</description></item><item><title>MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成</title><link>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</link><pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</guid><description>版权声明：以下链接是本文的原文，对本文及原文任何内容、链接的转发、引用请务必标注以下链接: https://www.802101.com/unetlab-and-wireshark-for-osx-update/ https://www.802101.com/wireshark-integration-with-unetlab-on-osx/ 解决思路： MAC OX上没有为URL中’captur</description></item><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:
-ImportError: cannot import name customClass. Error Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.
-Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).
-I guess there must be something wrong with the latest version, or there is something conflict with my previous version (mininet 2.</description></item><item><title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</title><link>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</link><pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</guid><description>I tried to run Palo Alto on EVE/Virtualbox/Apple MAC OS and found it fails to start the Palo Alto Firewall. So I decided to find the root cause. (EVE suggests the users use VMware, I used VirtualBox instead because I don’t have a VMware Fusion license)
-I went through EVE logs 1st.
-System -&amp;gt; System logs -&amp;gt; unl_wrapper.txt
-Log and found the log:
-Jan 25 05:18:13 INFO: starting /opt/unetlab/wrappers/qemu_wrapper -T 0 -D 3 -t &amp;#34;PaloAlto&amp;#34; -F /opt/qemu/bin/qemu-system-x86_64 -d 0 -- -nographic -device e1000,netdev=net0,mac=50:00:00:03:00:00 -netdev tap,id=net0,ifname=vunl0_3_0,script=no -device e1000,netdev=net1,mac=50:00:00:03:00:01 -netdev tap,id=net1,ifname=vunl0_3_1,script=no -device e1000,netdev=net2,mac=50:00:00:03:00:02 -netdev tap,id=net2,ifname=vunl0_3_2,script=no -device e1000,netdev=net3,mac=50:00:00:03:00:03 -netdev tap,id=net3,ifname=vunl0_3_3,script=no -smp 2 -m 4096 -name PaloAlto -uuid 934e653f-accd-4ce0-a243-369f853b4add -drive file=virtioa.</description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>Setup Cisco IPS on EVE
-I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via certcollection (mega)
-Followed the [instructions](http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/ http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips) for IPS Interfaces.
-and met the issue:
-Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.
-Related post on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE</description></item><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>Refer to how to add NX-OXv 9000 to GNS3
-1. Download image files Here is the NX-OSv9k image file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.
-No I can’t provide the image to anyone.
-2. Copy image to eve(UNL) change file name to ‘hda.qcow2’
-copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’
-run
-/opt/unetlab/wrappers/unl_wrapper -a fixpermissions 3. Add a New node for nxosv9k Copy the php file to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;</description></item><item><title>Dynagen/Dynamips error: netio_desc_create_udp: unable to connect to</title><link>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</link><pubDate>Fri, 20 Dec 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</guid><description>OS: CentOS 6.5 x86_64 installed on vmware Dynamips 0.2.10 There is an error when loading a .net file named as test.net with 100 devices in Dynagen.0.11.0:
-netio_desc_create_udp: unable to connect to I searched on the Internet about this error msg, most of posts shared a method: specified UDP port of dynamips instance in .net file. But it doesn’t work for me.
-As I found a Dynagen description in GNS3 website: however Dynagen is still updated and developed for GNS3, this means you can download GNS3 sources, find Dynagen in it.</description></item><item><title>SNMP simulator installation guide</title><link>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</guid><description>About SNMP Simulator
-The the SNMP Simulator software is intended for testing SNMP Managers against a large number of SNMP Agents that represent a potentially very large network populated with different kinds of SNMP-capable devices.
-Refers to its project page for more info.
-Why?
-With SNMP simulator you can simulate a device by the output of SNMPwalk without considering MIB files.
-This article is about how to install SNMP Simulator.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Simulator on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/simulator/</link><description>Recent content in Simulator on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/simulator/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Arista VM 4.2.2 and later version on EVE(UNL)</title><link>https://blog.gainskills.top/2019/12/08/evengaristabooting/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/12/08/evengaristabooting/</guid><description>&lt;p>One of my friends did his VXLAN practices, he came to me for help because he was unable to start the Arista instance on EVE-NG.&lt;/p>
+&lt;p>The Arista vm can be started and stuck at:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2071px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/12/3-opt_hu_9639c8bfbdbacc11.png" data-fancybox data-caption=Issue >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/12/3-opt_hu_423781357455df10.png" class="img-responsive img-lazyload" alt=Issue style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Issue&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>I did a search and found a clue in the Arista forum, the instance began to work after changed the CPU number to 2:&lt;/p></description></item><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>&lt;p>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.&lt;/p>
+&lt;h5 id="topology">Topology:&lt;/h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 575px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_113efef6f50fddc.png" data-fancybox data-caption=Topology >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_d0c6c5b0e1aa51b8.png" class="img-responsive img-lazyload" alt=Topology style="height: 130px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topology&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="configuration">Configuration&lt;/h5>
+&lt;ol>
+&lt;li>
+&lt;p>Configured IP addresses on the routers&lt;br>
+Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)&lt;/p></description></item><item><title>Run ASA9.1 on EVE(UNL)</title><link>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</guid><description>&lt;p>This blog discusses ASA, not ASAv. Refer to&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://missingsmth.com/gns-asa-9-15-with-asdm/">http://missingsmth.com/gns-asa-9-15-with-asdm/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo">http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It’s possible to run ASA9.1 on EVE-NG (UNL, unified network lab), so I did a try:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Image preparation&lt;/p>
+&lt;p>&lt;strong>No&lt;/strong>, I can’t provide the image to anyone, and I won’t respond to any question about it.
+Please Refer to following posts for the image file:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://missingsmth.com/gns-asa-9-15-with-asdm/">http://missingsmth.com/gns-asa-9-15-with-asdm/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html">http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/nccgroup/asafw">https://github.com/nccgroup/asafw&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Refer to &lt;a href="http://www.eve-ng.net/index.php/documentation/images-table">http://www.eve-ng.net/index.php/documentation/images-table&lt;/a>, EVE only support hda.qcow2 format disk. Covert your image to qcow2 format before the next step.&lt;/p></description></item><item><title>MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成</title><link>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</link><pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</guid><description>&lt;h5 id="版权声明以下链接是本文的原文对本文及原文任何内容链接的转发引用请务必标注以下链接">版权声明：以下链接是本文的原文，对本文及原文任何内容、链接的转发、引用请务必标注以下链接:&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://www.802101.com/unetlab-and-wireshark-for-osx-update/">https://www.802101.com/unetlab-and-wireshark-for-osx-update/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.802101.com/wireshark-integration-with-unetlab-on-osx/">https://www.802101.com/wireshark-integration-with-unetlab-on-osx/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>解决思路：&lt;/p>
+&lt;p>MAC OX上没有为URL中’capture://’前缀协议关联程序，我们可以编辑系统中已经存在的条目，但按需添加并不简单。&lt;/p>
+&lt;p>所以需要创建一个关联程序，并由它调用WireShark。此功能可以通过AppleScript实现，并实现关联’capture://’及调用Wireshark.&lt;/p></description></item><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>&lt;p>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ImportError&lt;/span>: cannot &lt;span style="color:#f92672">import&lt;/span> name customClass&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 593px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_6fba2dcf3ba5ef1c.png" data-fancybox data-caption=Error >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_44500454d9367a5d.png" class="img-responsive img-lazyload" alt=Error style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Error&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.&lt;/p>
+&lt;p>Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).&lt;/p></description></item><item><title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</title><link>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</link><pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</guid><description>&lt;p>I tried to run Palo Alto on EVE/Virtualbox/Apple MAC OS and found it fails to start the Palo Alto Firewall. So I decided to find the root cause. (EVE suggests the users use VMware, I used VirtualBox instead because I don’t have a VMware Fusion license)&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>I went through EVE logs 1st.&lt;/p>
+&lt;p>System -&amp;gt; System logs -&amp;gt; unl_wrapper.txt&lt;/p>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 483px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/01/13-opt_hu_65af80ce9eba50f4.png" data-fancybox data-caption=Log >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/01/13-opt_hu_e1d63a52bdeb2ed2.png" class="img-responsive img-lazyload" alt=Log style="height: 200px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Log&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>and found the log:&lt;/p></description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>Setup Cisco IPS on EVE&lt;/p>
+&lt;p>I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via &lt;a href="http://certcollection.org/forum/topic/270568-ips-4240-ver-7-unholy-darkness/page__hl__%20cisco%20%20ips">certcollection&lt;/a> (&lt;a href="https://mega.nz/#!W99UnTIa!-3k6bQwiD_DhNCDFfL6TWlU69KoRwIYeaJE9JlDOASY">mega&lt;/a>)&lt;/p>
+&lt;p>Followed the [instructions](&lt;a href="http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/">http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/&lt;/a> &lt;a href="http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips">http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips&lt;/a>) for IPS Interfaces.&lt;/p>
+&lt;p>and met the issue:&lt;/p>
+&lt;p>Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.&lt;/p>
+&lt;p>Related &lt;a href="http://www.unetlab.com/forum/viewtopic.php?f=5&amp;amp;t=55&amp;amp;sid=25184c5b3a889925218c20bffb2f180f">post&lt;/a> on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE&lt;/p></description></item><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>&lt;p>Refer to &lt;a href="https://adosztal.blogspot.com/2016/12/how-to-add-nx-osv-9000-to-gns3.html">how to add NX-OXv 9000 to GNS3&lt;/a>&lt;/p>
+&lt;h4 id="1-download-image-files">1. Download image files&lt;/h4>
+&lt;p>Here is the NX-OSv9k &lt;a href="https://software.cisco.com/download/release.html?mdfid=286312239&amp;amp;flowid=81422&amp;amp;softwareid=282088129&amp;amp;release=7.0(3)I5(1)&amp;amp;relind=AVAILABLE&amp;amp;rellifecycle=&amp;amp;reltype=latest">image&lt;/a> file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.&lt;/p>
+&lt;p>&lt;strong>No I can’t provide the image to anyone.&lt;/strong>&lt;/p>
+&lt;h4 id="2-copy-image-to-eveunl">2. Copy image to eve(UNL)&lt;/h4>
+&lt;p>change file name to ‘hda.qcow2’&lt;/p>
+&lt;p>copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’&lt;/p>
+&lt;p>run&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3-add-a-new-node-for-nxosv9k">3. Add a New node for nxosv9k&lt;/h4>
+&lt;p>Copy the &lt;a href="https://gitlab.com/hanbaobao2005/eve-ng-public/blob/master/html/templates/nxosv9k.php">php file&lt;/a> to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;&lt;/p></description></item><item><title>Dynagen/Dynamips error: netio_desc_create_udp: unable to connect to</title><link>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</link><pubDate>Fri, 20 Dec 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</guid><description>&lt;ul>
+&lt;li>OS: CentOS 6.5 x86_64 installed on vmware&lt;/li>
+&lt;li>Dynamips 0.2.10&lt;/li>
+&lt;/ul>
+&lt;p>There is an error when loading a .net file named as test.net with 100 devices in Dynagen.0.11.0:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>netio_desc_create_udp: unable to connect to
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>I searched on the Internet about this error msg, most of posts shared a method: specified UDP port of dynamips instance in .net file. But it doesn’t work for me.&lt;/p>
+&lt;p>As I found a Dynagen description in &lt;a href="http://www.gns3.net/dynagen/">GNS3 website&lt;/a>:
+however Dynagen is still updated and developed for GNS3, this means you can download &lt;a href="http://www.gns3.net/download/">GNS3 sources&lt;/a>, find Dynagen in it.&lt;/p></description></item><item><title>SNMP simulator installation guide</title><link>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</guid><description>&lt;p>&lt;strong>About SNMP Simulator&lt;/strong>&lt;/p>
+&lt;p>The the SNMP Simulator software is intended for testing SNMP Managers against a large number of SNMP Agents that represent a potentially very large network populated with different kinds of SNMP-capable devices.&lt;/p>
+&lt;p>Refers to its &lt;a href="https://github.com/etingof/snmpsim">project page&lt;/a> for more info.&lt;/p>
+&lt;p>Why?&lt;/p>
+&lt;p>With SNMP simulator you can simulate a device by the output of SNMPwalk without considering MIB files.&lt;/p>
+&lt;p>This article is about how to install SNMP Simulator.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Python&lt;/p></description></item></channel></rss>

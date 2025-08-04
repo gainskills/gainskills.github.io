@@ -1,9 +1,145 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/jenkins/</link><description>Recent content in Jenkins on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>Jenkins/Xcode plugin-parameterized project</title><link>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</link><pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</guid><description> setting1 setting2 setting3 setting4 setting5 Reference
-Link1</description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:
-Install Jenkins
-Install Xcode plugin on Jenkins
-New a ‘Freestyle project’ on Jenkins
-Jenkins project configuration
-‘Source Code Management’ on Jenkins ‘Build’ setting on Jenkins Jenkins Project -&amp;gt; ‘Build Now’
-Errors:
-CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/jenkins/</link><description>Recent content in Jenkins on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>Jenkins/Xcode plugin-parameterized project</title><link>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</link><pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</guid><description>&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 494px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/40-opt_hu_6a49542754d38af4.png" data-fancybox data-caption=setting1 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/40-opt_hu_f69a82919b69b3a5.png" class="img-responsive img-lazyload" alt=setting1 style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting1&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 1759px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/41-opt_hu_b2c0285096799f69.png" data-fancybox data-caption=setting2 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/41-opt_hu_72167153ff1becce.png" class="img-responsive img-lazyload" alt=setting2 style="height: 400px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting2&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 207px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/42-opt_hu_363089aa7182c81.png" data-fancybox data-caption=setting3 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/42-opt_hu_fe33c8429b8a3cc1.png" class="img-responsive img-lazyload" alt=setting3 style="height: 400px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting3&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 572px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/43-opt_hu_b2c0285096799f69.png" data-fancybox data-caption=setting4 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/43-opt_hu_194b6d319393d969.png" class="img-responsive img-lazyload" alt=setting4 style="height: 130px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting4&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 498px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/44-opt_hu_950ff4db04bb2a07.png" data-fancybox data-caption=setting5 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/44-opt_hu_7bfd656887eb2152.png" class="img-responsive img-lazyload" alt=setting5 style="height: 200px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting5&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Reference&lt;/p></description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>&lt;p>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Install Xcode plugin on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>New a ‘Freestyle project’ on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins project configuration&lt;/p>
+&lt;ul>
+&lt;li>‘Source Code Management’ on Jenkins&lt;/li>
+&lt;li>‘Build’ setting on Jenkins&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins Project -&amp;gt; ‘Build Now’&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Errors:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.x’&lt;/p></description></item></channel></rss>

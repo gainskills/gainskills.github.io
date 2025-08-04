@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flask on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/flask/</link><description>Recent content in Flask on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 20 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/flask/index.xml" rel="self" type="application/rss+xml"/><item><title>Post a file to Flask by Curl via API</title><link>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</link><pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</guid><description>Curl is widely used in command lines or scripts to transfer data.
-Different ways to use curl to post a file to a web server with samples (from both client-side and server: Python-Flask side) will be discussed because it took me a while on the server-side to receiving the data from client.
-I would like to add samples of Python-requests, Postman later.
-Started with macOS Mojave Python 3.7.2 Flask 1.0.2 Flask-RESTful 0.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flask on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/flask/</link><description>Recent content in Flask on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/flask/index.xml" rel="self" type="application/rss+xml"/><item><title>Post a file to Flask by Curl via API</title><link>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</link><pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</guid><description>&lt;p>&lt;a href="https://curl.haxx.se/docs/manpage.html">Curl&lt;/a> is widely used in command lines or scripts to transfer data.&lt;br>
+Different ways to use curl to post a file to a web server with samples (from both client-side and server: &lt;a href="http://flask.pocoo.org/">Python-Flask&lt;/a> side) will be discussed because it took me a while on the server-side to receiving the data from client.&lt;br>
+I would like to add samples of &lt;a href="http://docs.python-requests.org/en/master/">Python-requests&lt;/a>, &lt;a href="https://www.getpostman.com/">Postman&lt;/a> later.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;h5 id="started-with">Started with&lt;/h5>
+&lt;ul>
+&lt;li>macOS Mojave&lt;/li>
+&lt;li>Python 3.7.2&lt;/li>
+&lt;li>Flask 1.0.2&lt;/li>
+&lt;li>Flask-RESTful 0.3.7&lt;/li>
+&lt;li>curl 7.54.0 (x86_64-apple-darwin18.0)&lt;/li>
+&lt;/ul>
+&lt;p>The Flask code:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Py file name: simple.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> flask &lt;span style="color:#f92672">import&lt;/span> Flask, request
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> flask_restful &lt;span style="color:#f92672">import&lt;/span> Api, Resource, reqparse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> werkzeug
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app &lt;span style="color:#f92672">=&lt;/span> Flask(__name__)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>api &lt;span style="color:#f92672">=&lt;/span> Api(app)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">kzwebfile&lt;/span>(Resource):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">post&lt;/span>(self, filename):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>api&lt;span style="color:#f92672">.&lt;/span>add_resource(kzwebfile, &lt;span style="color:#e6db74">&amp;#39;/&amp;lt;string:filename&amp;gt;&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app&lt;span style="color:#f92672">.&lt;/span>run()&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item></channel></rss>

@@ -1,49 +1,294 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Troubleshooting on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/troubleshooting/</link><description>Recent content in Troubleshooting on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml"/><item><title>File name on windows</title><link>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</link><pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</guid><description>Error 1 Run a bat (ping.bat) to ping multiple IPs like this: set testipa=x.x.x.x echo Checking ping %testipa% (15 times), please don&amp;#39;t close current window echo ping %testipa% (15 times) &amp;gt;&amp;gt; test.log ping %testipa% -w 500 -n 15 &amp;gt;&amp;gt; test.log
-But got the following error: Checking ping x.x.x.x (15 times), please don&amp;#39;t close current window The process cannot access the file because it is being used by another process. The process cannot access the file because it is being used by another process.</description></item><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>aiohttp is an Asynchronous HTTP client/server framework for asyncio and Python
-I tried it because of the features:
-Tuning the DNS cache Resolving using custom nameservers With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.
-Since the code on the official document is simple:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Troubleshooting on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/troubleshooting/</link><description>Recent content in Troubleshooting on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml"/><item><title>File name on windows</title><link>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</link><pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</guid><description>&lt;h3 id="error-1">Error 1&lt;/h3>
+&lt;p>Run a bat (ping.bat) to ping multiple IPs like this:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bat" data-lang="bat">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">set&lt;/span> testipa=x.x.x.x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> Checking ping %testipa% (15 times), please don&amp;#39;t close current window
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> ping %testipa% (15 times) &amp;gt;&amp;gt; test.log
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ping %testipa% -w 500 -n 15 &amp;gt;&amp;gt; test.log&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;p>But got the following error:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bat" data-lang="bat">&lt;span style="display:flex;">&lt;span>Checking ping x.x.x.x (15 times), please don&amp;#39;t close current window
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>The process cannot access the file because it is being used by another process.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>The process cannot access the file because it is being used by another process.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>&lt;p>&lt;a href="https://github.com/aio-libs/aiohttp">aiohttp&lt;/a> is an Asynchronous HTTP client/server framework for asyncio and Python&lt;/p>
+&lt;p>I tried it because of the features:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache">Tuning the DNS cache&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers">Resolving using custom nameservers&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.&lt;/p>
+&lt;p>Since the code on the official document is simple:&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;p>from aiohttp.resolver import AsyncResolver&lt;/p>
+&lt;p>resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;])
+conn = aiohttp.TCPConnector(resolver=resolver)&lt;/p>
+&lt;pre tabindex="0">&lt;code>
+I tried it with following code:
+
+~~~python
+import aiohttp
+import asyncio
 from aiohttp.resolver import AsyncResolver
-resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;]) conn = aiohttp.TCPConnector(resolver=resolver)
-I tried it with following code: ~~~python import aiohttp import asyncio from aiohttp.</description></item><item><title>get() in get() method of Pyhon dict</title><link>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</link><pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</guid><description>Write down the tip for the practice: The Time in Words.
-A dict was created for the time in number format to string format:
-intToStrDict = { 1: &amp;#39;one&amp;#39;, 2: &amp;#39;two&amp;#39;, 3: &amp;#39;three&amp;#39;, 4: &amp;#39;four&amp;#39;, 5: &amp;#39;five&amp;#39;, 6: &amp;#39;six&amp;#39;, 7: &amp;#39;seven&amp;#39;, 8: &amp;#39;eight&amp;#39;, 9: &amp;#39;nine&amp;#39;, 10: &amp;#39;ten&amp;#39;, 11: &amp;#39;eleven&amp;#39;, 12: &amp;#39;twelve&amp;#39;, 13: &amp;#39;thirteen&amp;#39;, 14: &amp;#39;fourteen&amp;#39;, 15: &amp;#39;quarter&amp;#39;, 16: &amp;#39;sixteen&amp;#39;, 17: &amp;#39;seventeen&amp;#39;, 18: &amp;#39;eighteen&amp;#39;, 19: &amp;#39;nineteen&amp;#39;, 20: &amp;#39;twenty&amp;#39;, 30: &amp;#39;half&amp;#39;, 40: &amp;#39;fourty&amp;#39;, 50: &amp;#39;fifty&amp;#39; } get() is a good way get the value of a key from the dict, so I tried following function to convert minute in number format to string format:</description></item><item><title>AWS S3 Bucket Creation</title><link>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</link><pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</guid><description>Try to create a bucket with the Python library: boto3
-from boto3.session import Session session=Session(aws_access_key_id=&amp;#39;key1&amp;#39;, aws_secret_access_key=&amp;#39;key2&amp;#39;) s3 = session.resource(&amp;#39;s3&amp;#39;) s3.create_bucket(Bucket=&amp;#39;kz-testbucket&amp;#39;) but failed to run the script with errors:
-botocore.exceptions.ClientError: An error occurred (IllegalLocationConstraintException) when calling the CreateBucket operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
-botocore.errorfactory.BucketAlreadyExists: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: The requested bucket name is not available.</description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:
-Install Jenkins
-Install Xcode plugin on Jenkins
-New a ‘Freestyle project’ on Jenkins
-Jenkins project configuration
-‘Source Code Management’ on Jenkins ‘Build’ setting on Jenkins Jenkins Project -&amp;gt; ‘Build Now’
-Errors:
-CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.</description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: Juniper’s official document is clear and easy to follow. but for Cisco, I followed NETCONF over SSHv2, unfortunately, I was stuck on it for 6 days. OS Version Cisco IOS XE Software, Version 16.04.01 Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</description></item><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:
-ImportError: cannot import name customClass. Error Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.
-Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).
-I guess there must be something wrong with the latest version, or there is something conflict with my previous version (mininet 2.</description></item><item><title>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration</title><link>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</link><pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</guid><description>I intend to acquire the Python skill on web after years&amp;rsquo; work on data processing, so I started with Flask by the following Miguel Grinberg&amp;rsquo;s instruction: The Flask Mega, you can learn how to integrate bootstrap with your project from it. After that, you can learn how to integrate select2 with your project by reading Flask Web开发:用Select2</description></item><item><title>Python SMTPlib/Email</title><link>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</link><pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</guid><description>I followed the instruction which is written in Chinese to learn how to send emails by Python, here some tips from my practice:
-Name of the attachment is shown as ‘ATT00002’
-The name of the attachment in the receiver mailbox is shown in the format ‘ATT0000X‘ with the code:
-att1[&amp;#34;Content-Disposition&amp;#34;] = &amp;#39;attachment; filename=&amp;#34;runoob.txt&amp;#34;&amp;#39; Issue The issue can be fixed by using .addheader() function:
-att1.add_header(&amp;#39;Content-Disposition&amp;#39;, &amp;#39;attachment&amp;#39;, filename=&amp;#34;1.cpp&amp;#34;) Here is my code:</description></item><item><title>OverflowError: signed char is greater than maximum</title><link>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</link><pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</guid><description>Here the pseudo code about the flow:
-from array import array c = array(&amp;#39;b&amp;#39;) with open(file, mode = &amp;#39;rb&amp;#39;) as f: for character in f: res = func(character) c.append(res) It runs into the error:
-OverflowError: signed char is greater than maximum with a special character &amp;lsquo;À&amp;rsquo; which its binary value is 192:
-Character My way to resolve this error is to update the type code of the array from &amp;lsquo;b&amp;rsquo; (signed char) to &amp;lsquo;B&amp;rsquo; (unsigned char).</description></item><item><title>Adding Realtek 8139 Driver to ESXi6</title><link>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</guid><description>Note: This is not an official guide, backup is required before you apply the driver. My Dell PC has two NICs:
-Intel I217-LM Realtek RTl-8139 and #2 Realtek 8139 is not supported by VMware EXSi.
-There are some guides about customizing EXSi installation ISO to support the NIC, but I’m trying to find a way to apply the driver without reinstall EXSi.
-Here is a page which contains many NIC drivers: https://vibsdepot.</description></item><item><title>VSphere6, VCenter6 Installation</title><link>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</link><pubDate>Fri, 08 Jan 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</guid><description>Crash happened when I install Vsphere on my PC
-Solution: Disable option &amp;ldquo;Limit Maximum CPUID&amp;rdquo; in Bios
-VCenter appliance deployment
-Vmware doesn&amp;rsquo;t provide vcenter appliance in ova/ovf format anymore, follow the instruction to deploy it.
-Inventory is empty in the VCenter webpage
-The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;
-Also, Vmware has a KB about this issue:</description></item><item><title>Dynagen/Dynamips error: netio_desc_create_udp: unable to connect to</title><link>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</link><pubDate>Fri, 20 Dec 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</guid><description>OS: CentOS 6.5 x86_64 installed on vmware Dynamips 0.2.10 There is an error when loading a .net file named as test.net with 100 devices in Dynagen.0.11.0:
-netio_desc_create_udp: unable to connect to I searched on the Internet about this error msg, most of posts shared a method: specified UDP port of dynamips instance in .net file. But it doesn’t work for me.
-As I found a Dynagen description in GNS3 website: however Dynagen is still updated and developed for GNS3, this means you can download GNS3 sources, find Dynagen in it.</description></item><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>Topology:
-Topo Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.
-start DHCP service by command:
-service dhcp debug on Cisco router to check DHCP request by the commands:
-debug ip dhcp server packet terminal monitor Debug info :
-DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98 configure DHCP
-ip dhcp pool ItalkBB host 10.0.0.127 255.255.255.0 //no mask configured, IP’s class mask assigned client-identifier 0100.</description></item><item><title>make error :/usr/bin/ld: cannot find -luuid</title><link>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</link><pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</guid><description>I met a make error in CentOS 6:
-# make ...... /usr/bin/ld: cannot find -luuid ld returned 1 exit status make: *** Error 1 The way to fix this error is to install lib : uuid-devel
-yum -y install libuuid-devel</description></item></channel></rss>
+
+resolver = AsyncResolver(nameservers=[&amp;#34;114.114.114.114&amp;#34;])
+
+async def dnstesting():
+ async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) as session:
+ r = await session.get(&amp;#34;http://google.com&amp;#34;)
+ print(r.text)
+
+asyncio.run(dnstesting())
+&lt;/code>&lt;/pre>&lt;p>Run with following error:&lt;/p></description></item><item><title>get() in get() method of Pyhon dict</title><link>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</link><pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</guid><description>&lt;p>Write down the tip for the practice: &lt;a href="https://www.hackerrank.com/challenges/the-time-in-words/problem">The Time in Words&lt;/a>.&lt;/p>
+&lt;p>A dict was created for the time in number format to string format:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>intToStrDict &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;one&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">2&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;two&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">3&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;three&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">4&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;four&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">5&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;five&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">6&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;six&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">7&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;seven&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">8&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;eight&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">9&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;nine&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">10&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;ten&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">11&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;eleven&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">12&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;twelve&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">13&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;thirteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">14&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;fourteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">15&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;quarter&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">16&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;sixteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">17&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;seventeen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">18&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;eighteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">19&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;nineteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">20&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;twenty&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">30&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;half&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">40&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;fourty&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">50&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;fifty&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://docs.python.org/3.7/library/stdtypes.html?highlight=dict%20get#dict.get">get()&lt;/a> is a good way get the value of a key from the dict, so I tried following function to convert minute in number format to string format:&lt;/p></description></item><item><title>AWS S3 Bucket Creation</title><link>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</link><pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</guid><description>&lt;p>Try to create a bucket with the Python library: boto3&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> boto3.session &lt;span style="color:#f92672">import&lt;/span> Session
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>session&lt;span style="color:#f92672">=&lt;/span>Session(aws_access_key_id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;key1&amp;#39;&lt;/span>, aws_secret_access_key&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;key2&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>s3 &lt;span style="color:#f92672">=&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>resource(&lt;span style="color:#e6db74">&amp;#39;s3&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>s3&lt;span style="color:#f92672">.&lt;/span>create_bucket(Bucket&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;kz-testbucket&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>but failed to run the script with errors:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>botocore.exceptions.ClientError: An error occurred (IllegalLocationConstraintException) when calling the CreateBucket operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>botocore.errorfactory.BucketAlreadyExists: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.&lt;/p></description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>&lt;p>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Install Xcode plugin on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>New a ‘Freestyle project’ on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins project configuration&lt;/p>
+&lt;ul>
+&lt;li>‘Source Code Management’ on Jenkins&lt;/li>
+&lt;li>‘Build’ setting on Jenkins&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins Project -&amp;gt; ‘Build Now’&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Errors:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.x’&lt;/p></description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>&lt;p>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: &lt;a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html">Juniper’s official document&lt;/a> is clear and easy to follow. but for Cisco, I followed &lt;a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf">NETCONF over SSHv2&lt;/a>, unfortunately, I was stuck on it for 6 days.&lt;/p>
+&lt;p>&lt;strong>OS Version&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Cisco IOS XE Software, Version 16.04.01&lt;/li>
+&lt;li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NetConf Requests&lt;/strong>&lt;/p>
+&lt;p>Tried many requests, all failed:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>The hello (works) request:&lt;/p></description></item><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>&lt;p>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ImportError&lt;/span>: cannot &lt;span style="color:#f92672">import&lt;/span> name customClass&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 593px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_6fba2dcf3ba5ef1c.png" data-fancybox data-caption=Error >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_44500454d9367a5d.png" class="img-responsive img-lazyload" alt=Error style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Error&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.&lt;/p>
+&lt;p>Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).&lt;/p></description></item><item><title>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration</title><link>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</link><pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</guid><description>&lt;p>I intend to acquire the Python skill on web after years&amp;rsquo; work on data processing, so I started with &lt;a href="http://flask.pocoo.org/">Flask&lt;/a> by the following Miguel &lt;a href="https://blog.miguelgrinberg.com/author/Miguel%20Grinberg">Grinberg&amp;rsquo;s instruction&lt;/a>: &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The Flask Mega&lt;/a>, you can learn how to integrate bootstrap with your project from it.&lt;/p>
+&lt;p>After that, you can learn how to integrate select2 with your project by reading &lt;a href="https://blog.csdn.net/zheng_integer/article/details/59507942">Flask Web开发:用Select2实现类似知乎的标签系统&lt;/a> as a guide.&lt;/p></description></item><item><title>Python SMTPlib/Email</title><link>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</link><pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</guid><description>&lt;p>I followed the &lt;a href="http://www.runoob.com/python3/python3-smtp.html">instruction&lt;/a> which is written in Chinese to learn how to send emails by Python, here some tips from my practice:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Name of the attachment is shown as ‘ATT00002’&lt;/p>
+&lt;p>The name of the attachment in the receiver mailbox is shown in the format ‘ATT0000X‘ with the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>att1[&lt;span style="color:#e6db74">&amp;#34;Content-Disposition&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;attachment; filename=&amp;#34;runoob.txt&amp;#34;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 173px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/02/4-opt_hu_9676f6ceeda14331.png" data-fancybox data-caption=Issue >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/02/4-opt_hu_444778dc6ac8f025.png" class="img-responsive img-lazyload" alt=Issue style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Issue&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>The issue can be fixed by using .addheader() function:&lt;/p></description></item><item><title>OverflowError: signed char is greater than maximum</title><link>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</link><pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</guid><description>&lt;p>Here the pseudo code about the flow:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> array &lt;span style="color:#f92672">import&lt;/span> array
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>c &lt;span style="color:#f92672">=&lt;/span> array(&lt;span style="color:#e6db74">&amp;#39;b&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">with&lt;/span> open(file, mode &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;rb&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> f:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> character &lt;span style="color:#f92672">in&lt;/span> f:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> func(character)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> c&lt;span style="color:#f92672">.&lt;/span>append(res)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It runs into the error:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">OverflowError&lt;/span>: signed char &lt;span style="color:#f92672">is&lt;/span> greater than maximum
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>with a special character &amp;lsquo;À&amp;rsquo; which its binary value is 192:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 75px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2017/06/1-opt_hu_d296f5b1185ec01d.png" data-fancybox data-caption=Character >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2017/06/1-opt_hu_13f2b29ea9bc2109.png" class="img-responsive img-lazyload" alt=Character style="height: 20px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Character&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>My way to resolve this error is to update the type code of the array from &amp;lsquo;b&amp;rsquo; (signed char) to &amp;lsquo;B&amp;rsquo; (unsigned char).&lt;/p></description></item><item><title>Adding Realtek 8139 Driver to ESXi6</title><link>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/29/adding-realtek-8139-driver-to-esxi6/</guid><description>&lt;h4 id="note-this-is-not-an-official-guide-backup-is-required-before-you-apply-the-driver">Note: This is not an official guide, backup is required before you apply the driver.&lt;/h4>
+&lt;p>My Dell PC has two NICs:&lt;/p>
+&lt;ol>
+&lt;li>Intel I217-LM&lt;/li>
+&lt;li>Realtek RTl-8139&lt;/li>
+&lt;/ol>
+&lt;p>and #2 Realtek 8139 is not supported by VMware EXSi.&lt;/p>
+&lt;p>There are some guides about customizing EXSi installation ISO to support the NIC, but I’m trying to find a way to apply the driver without reinstall EXSi.&lt;/p>
+&lt;p>Here is a page which contains many NIC drivers:
+&lt;a href="https://vibsdepot.v-front.de/wiki/index.php/List_of_currently_available_ESXi_packages">https://vibsdepot.v-front.de/wiki/index.php/List_of_currently_available_ESXi_packages&lt;/a>&lt;/p></description></item><item><title>VSphere6, VCenter6 Installation</title><link>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</link><pubDate>Fri, 08 Jan 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>Crash happened when I install Vsphere on my PC&lt;/p>
+&lt;p>Solution: Disable option &amp;ldquo;Limit Maximum CPUID&amp;rdquo; in Bios&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>VCenter appliance deployment&lt;/p>
+&lt;p>Vmware doesn&amp;rsquo;t provide vcenter appliance in ova/ovf format anymore, follow the &lt;a href="http://www.vladan.fr/vmware-vcenter-6-0-u1-vcsa-how-to-install-configure/">instruction&lt;/a> to deploy it.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Inventory is empty in the VCenter webpage&lt;/p>
+&lt;p>The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;&lt;/p>
+&lt;p>Also, Vmware has a KB about this issue:&lt;/p></description></item><item><title>Dynagen/Dynamips error: netio_desc_create_udp: unable to connect to</title><link>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</link><pubDate>Fri, 20 Dec 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</guid><description>&lt;ul>
+&lt;li>OS: CentOS 6.5 x86_64 installed on vmware&lt;/li>
+&lt;li>Dynamips 0.2.10&lt;/li>
+&lt;/ul>
+&lt;p>There is an error when loading a .net file named as test.net with 100 devices in Dynagen.0.11.0:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>netio_desc_create_udp: unable to connect to
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>I searched on the Internet about this error msg, most of posts shared a method: specified UDP port of dynamips instance in .net file. But it doesn’t work for me.&lt;/p>
+&lt;p>As I found a Dynagen description in &lt;a href="http://www.gns3.net/dynagen/">GNS3 website&lt;/a>:
+however Dynagen is still updated and developed for GNS3, this means you can download &lt;a href="http://www.gns3.net/download/">GNS3 sources&lt;/a>, find Dynagen in it.&lt;/p></description></item><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>&lt;p>Topology:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 264px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_be4615ef6586dd59.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_25b5ce0b92cb5f75.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>start DHCP service by command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>service dhcp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>debug on Cisco router to check DHCP request by the commands:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>debug ip dhcp server packet
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>terminal monitor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Debug info :&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-log" data-lang="log">DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>configure DHCP&lt;/p></description></item><item><title>make error :/usr/bin/ld: cannot find -luuid</title><link>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</link><pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/05/make-error-usrbinld-cannot-find-luuid/</guid><description>&lt;p>I met a make error in CentOS 6:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># make&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>......
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -luuid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ld returned &lt;span style="color:#ae81ff">1&lt;/span> exit status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make: *** Error &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The way to fix this error is to install lib : uuid-devel&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>yum -y install libuuid-devel
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

@@ -1,1 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Scraping on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/scraping/</link><description>Recent content in Scraping on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 30 Jan 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/scraping/index.xml" rel="self" type="application/rss+xml"/><item><title>30分钟上手Python网络爬虫</title><link>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</link><pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</guid><description>原文链接: https://hackernoon.com/30-minute-python-web-scraper-39d6d038e5da 此翻译已经获得作者许可。对原文、本文任何形式的转载、引用，必须知会作者 我想用Python和Selenium做网络爬虫有一会了，但</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Scraping on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/scraping/</link><description>Recent content in Scraping on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/scraping/index.xml" rel="self" type="application/rss+xml"/><item><title>30分钟上手Python网络爬虫</title><link>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</link><pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</guid><description>&lt;p>原文链接: &lt;a href="https://hackernoon.com/30-minute-python-web-scraper-39d6d038e5da">https://hackernoon.com/30-minute-python-web-scraper-39d6d038e5da&lt;/a>&lt;/p>
+&lt;p>此翻译已经获得作者许可。对原文、本文任何形式的转载、引用，必须知会作者&lt;/p>
+&lt;p>我想用Python和&lt;a href="http://www.seleniumhq.org/">Selenium&lt;/a>做网络爬虫有一会了，但是一直没有实施。几天之前，我决定小试一下。看起来令人望而却步，但实现代码从&lt;a href="https://unsplash.com/">Unsplash&lt;/a>抓取一些漂亮的图片却是相当容易的。&lt;/p>
+&lt;h4 id="简易图片爬虫的食材">简易图片爬虫的食材&lt;/h4>
+&lt;ul>
+&lt;li>&lt;a href="https://www.python.org/downloads/">Python&lt;/a>(3.6.3或更新的版本)&lt;/li>
+&lt;li>&lt;a href="https://www.jetbrains.com/pycharm/download/#section=windows">Pycharm&lt;/a>(社区版就够了)&lt;/li>
+&lt;li>pip install &lt;a href="http://docs.python-requests.org/en/master/user/install/#install">requests&lt;/a> &lt;a href="https://pillow.readthedocs.io/en/latest/installation.html#basic-installation">Pillow&lt;/a> &lt;a href="http://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium">selenium&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mozilla/geckodriver/releases/latest">geckodriver&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.mozilla.org/en-US/firefox/new/">Mozlla Firefox&lt;/a>&lt;/li>
+&lt;li>互联网&lt;/li>
+&lt;li>30分钟(或更少）&lt;/li>
+&lt;/ul>
+&lt;p>*译者注：&lt;/p></description></item></channel></rss>

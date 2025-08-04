@@ -1,7 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LDAP on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/ldap/</link><description>Recent content in LDAP on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 08 Nov 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/ldap/index.xml" rel="self" type="application/rss+xml"/><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.
-1.Download and install CentOS6.2 CentOS-6.xx-i366-minimal.iso
-2. CentOS configuration Network: IP address, DNS, and restart network service
-vi /etc/resolv.conf/DNS vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP vi /etc/networks//Route /etc/init.d/network restart configure host file
-vi /etc/hosts Modify 127.0.0.1 item to FQDN format because openldap get dc from the item automatically.
-127.0.0.1 ldap.kzblog.com Stop security services
-setenforce permissive getenforce service iptables stop Note: This only for the testing environment.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LDAP on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/ldap/</link><description>Recent content in LDAP on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/ldap/index.xml" rel="self" type="application/rss+xml"/><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>&lt;p>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.&lt;/p>
+&lt;h4 id="1download-and-install-centos62">1.Download and install CentOS6.2&lt;/h4>
+&lt;p>&lt;a href="http://ftp.riken.jp/Linux/centos/6/isos/i386/CentOS-6.10-i386-minimal.iso">CentOS-6.xx-i366-minimal.iso&lt;/a>&lt;/p>
+&lt;h4 id="2-centos-configuration">2. CentOS configuration&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>Network: IP address, DNS, and restart network service&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/resolv.conf/DNS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/networks//Route
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/etc/init.d/network restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>configure host file&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/hosts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Modify 127.0.0.1 item to FQDN format because openldap get &lt;em>dc&lt;/em> from the item automatically.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>127.0.0.1 ldap.kzblog.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Stop security services&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>setenforce permissive
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getenforce
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>service iptables stop
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>Note: This only for the testing environment.&lt;/em>&lt;/p></description></item></channel></rss>

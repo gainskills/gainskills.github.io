@@ -1,34 +1,473 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cisco on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/cisco/</link><description>Recent content in Cisco on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/cisco/index.xml" rel="self" type="application/rss+xml"/><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.
-Topology: Topology Configuration Configured IP addresses on the routers
-Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.
-Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)
-Configure static routes
-R1(config)#ip route 0.</description></item><item><title>Run ASA9.1 on EVE(UNL)</title><link>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</guid><description>This blog discusses ASA, not ASAv. Refer to
-http://missingsmth.com/gns-asa-9-15-with-asdm/ http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo It’s possible to run ASA9.1 on EVE-NG (UNL, unified network lab), so I did a try:
-Image preparation
-No, I can’t provide the image to anyone, and I won’t respond to any question about it. Please Refer to following posts for the image file:
-http://missingsmth.com/gns-asa-9-15-with-asdm/ http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html https://github.com/nccgroup/asafw Refer to http://www.eve-ng.net/index.php/documentation/images-table, EVE only support hda.qcow2 format disk. Covert your image to qcow2 format before the next step.</description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>Continue to try ansible with the device which was configure in netconf feature on Cisco IOS/IOSXE.
-Ansible Inventory:
---- netconf: hosts: netconfIos: ansible_host: &amp;#34;172.16.254.100&amp;#34; ansible_network_os: &amp;#34;ios&amp;#34; ansible_ssh_port: 22 netconfJunos: ansible_host: &amp;#34;172.16.254.9&amp;#34; ansible_network_os: &amp;#34;junos&amp;#34; ansible_ssh_port: 830 vars: ansible_connection: &amp;#34;netconf&amp;#34; ansible_ssh_user: test ansible_ssh_pass: test123 Note:
-ansible_connnection should be ‘netconf’ Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830) PlayBook:
-- name: IOS hosts: netconfIos gather_facts: false tasks: - name: Get config for IOS devices netconf_get: source: running register: iosnetconf - name: Display output debug: msg: &amp;#34;{{ iosnetconf.</description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: Juniper’s official document is clear and easy to follow. but for Cisco, I followed NETCONF over SSHv2, unfortunately, I was stuck on it for 6 days. OS Version Cisco IOS XE Software, Version 16.04.01 Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>After Telnet, continue to discuss how to access network device via SSH with Ansible.
-For SSH access, we should consider 3 methods:
-Username/password Username/Public-Key without password Username/Public-Key with password Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH
-Topo Enable SSH on the router Jump #1 username/password part to public key configuration, I discussed how to configure public key on IOS router with Putty before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>I’m learning Ansible by reading the official document and some books like Ansible入门. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation. The most important thing to practice routers/switches/routing protocol is accessing the device and</description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>Setup Cisco IPS on EVE
-I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via certcollection (mega)
-Followed the [instructions](http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/ http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips) for IPS Interfaces.
-and met the issue:
-Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.
-Related post on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE</description></item><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>Refer to how to add NX-OXv 9000 to GNS3
-1. Download image files Here is the NX-OSv9k image file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.
-No I can’t provide the image to anyone.
-2. Copy image to eve(UNL) change file name to ‘hda.qcow2’
-copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’
-run
-/opt/unetlab/wrappers/unl_wrapper -a fixpermissions 3. Add a New node for nxosv9k Copy the php file to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;</description></item><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>Topology:
-Topo Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.
-start DHCP service by command:
-service dhcp debug on Cisco router to check DHCP request by the commands:
-debug ip dhcp server packet terminal monitor Debug info :
-DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98 configure DHCP
-ip dhcp pool ItalkBB host 10.0.0.127 255.255.255.0 //no mask configured, IP’s class mask assigned client-identifier 0100.</description></item><item><title>Configuring SSH public key authentication on Cisco IOS Device</title><link>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</guid><description>SSH public Key types: RSA key use with SSH1 and SSH2 protocol DSA key use with SSH2 protocol Note: DSA is weak than RSA The Key pairs: Public key: SSH.com使用的RFC 4716指定的公钥格式，而OpenSSH使用了另外的格式</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cisco on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/cisco/</link><description>Recent content in Cisco on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/cisco/index.xml" rel="self" type="application/rss+xml"/><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>&lt;p>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.&lt;/p>
+&lt;h5 id="topology">Topology:&lt;/h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 575px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_113efef6f50fddc.png" data-fancybox data-caption=Topology >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_d0c6c5b0e1aa51b8.png" class="img-responsive img-lazyload" alt=Topology style="height: 130px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topology&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="configuration">Configuration&lt;/h5>
+&lt;ol>
+&lt;li>
+&lt;p>Configured IP addresses on the routers&lt;br>
+Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)&lt;/p></description></item><item><title>Run ASA9.1 on EVE(UNL)</title><link>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</guid><description>&lt;p>This blog discusses ASA, not ASAv. Refer to&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://missingsmth.com/gns-asa-9-15-with-asdm/">http://missingsmth.com/gns-asa-9-15-with-asdm/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo">http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It’s possible to run ASA9.1 on EVE-NG (UNL, unified network lab), so I did a try:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Image preparation&lt;/p>
+&lt;p>&lt;strong>No&lt;/strong>, I can’t provide the image to anyone, and I won’t respond to any question about it.
+Please Refer to following posts for the image file:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://missingsmth.com/gns-asa-9-15-with-asdm/">http://missingsmth.com/gns-asa-9-15-with-asdm/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html">http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/nccgroup/asafw">https://github.com/nccgroup/asafw&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Refer to &lt;a href="http://www.eve-ng.net/index.php/documentation/images-table">http://www.eve-ng.net/index.php/documentation/images-table&lt;/a>, EVE only support hda.qcow2 format disk. Covert your image to qcow2 format before the next step.&lt;/p></description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>&lt;p>Continue to try ansible with the device which was configure in &lt;a href="https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/">netconf feature on Cisco IOS/IOSXE&lt;/a>.&lt;/p>
+&lt;p>Ansible Inventory:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">netconf&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfIos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.100&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ios&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">22&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfJunos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;junos&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">830&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">vars&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_connection&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;netconf&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_user&lt;/span>: &lt;span style="color:#ae81ff">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_pass&lt;/span>: &lt;span style="color:#ae81ff">test123&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p>
+&lt;ol>
+&lt;li>ansible_connnection should be ‘netconf’&lt;/li>
+&lt;li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)&lt;/li>
+&lt;/ol>
+&lt;p>PlayBook:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">IOS&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>: &lt;span style="color:#ae81ff">netconfIos&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">gather_facts&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tasks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Get config for IOS devices&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconf_get&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">source&lt;/span>: &lt;span style="color:#ae81ff">running&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">register&lt;/span>: &lt;span style="color:#ae81ff">iosnetconf&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Display output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">debug&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">msg&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ iosnetconf.stdout }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>&lt;p>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: &lt;a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html">Juniper’s official document&lt;/a> is clear and easy to follow. but for Cisco, I followed &lt;a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf">NETCONF over SSHv2&lt;/a>, unfortunately, I was stuck on it for 6 days.&lt;/p>
+&lt;p>&lt;strong>OS Version&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Cisco IOS XE Software, Version 16.04.01&lt;/li>
+&lt;li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NetConf Requests&lt;/strong>&lt;/p>
+&lt;p>Tried many requests, all failed:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>The hello (works) request:&lt;/p></description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>&lt;p>After &lt;a href="https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/">Telnet&lt;/a>, continue to discuss how to access network device via SSH with Ansible.&lt;/p>
+&lt;p>For SSH access, we should consider 3 methods:&lt;/p>
+&lt;ol>
+&lt;li>Username/password&lt;/li>
+&lt;li>Username/Public-Key without password&lt;/li>
+&lt;li>Username/Public-Key with password&lt;/li>
+&lt;/ol>
+&lt;p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2113px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_acff4cb47d4a9f39.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_9eb5bd280204eb4f.png" class="img-responsive img-lazyload" alt=Topo style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="enable-ssh-on-the-router">Enable SSH on the router&lt;/h5>
+&lt;p>Jump #1 username/password part to public key configuration, I discussed &lt;a href="https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/">how to configure public key on IOS router with Putty&lt;/a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.&lt;/p></description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>&lt;p>I’m learning &lt;a href="https://www.ansible.com/">Ansible&lt;/a> by reading the official document and some books like &lt;a href="Ansible%E5%85%A5%E9%97%A8">Ansible入门&lt;/a>. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.&lt;/p>
+&lt;p>The most important thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour by accessing the network device from CLI too.&lt;/p></description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>Setup Cisco IPS on EVE&lt;/p>
+&lt;p>I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via &lt;a href="http://certcollection.org/forum/topic/270568-ips-4240-ver-7-unholy-darkness/page__hl__%20cisco%20%20ips">certcollection&lt;/a> (&lt;a href="https://mega.nz/#!W99UnTIa!-3k6bQwiD_DhNCDFfL6TWlU69KoRwIYeaJE9JlDOASY">mega&lt;/a>)&lt;/p>
+&lt;p>Followed the [instructions](&lt;a href="http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/">http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/&lt;/a> &lt;a href="http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips">http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips&lt;/a>) for IPS Interfaces.&lt;/p>
+&lt;p>and met the issue:&lt;/p>
+&lt;p>Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.&lt;/p>
+&lt;p>Related &lt;a href="http://www.unetlab.com/forum/viewtopic.php?f=5&amp;amp;t=55&amp;amp;sid=25184c5b3a889925218c20bffb2f180f">post&lt;/a> on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE&lt;/p></description></item><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>&lt;p>Refer to &lt;a href="https://adosztal.blogspot.com/2016/12/how-to-add-nx-osv-9000-to-gns3.html">how to add NX-OXv 9000 to GNS3&lt;/a>&lt;/p>
+&lt;h4 id="1-download-image-files">1. Download image files&lt;/h4>
+&lt;p>Here is the NX-OSv9k &lt;a href="https://software.cisco.com/download/release.html?mdfid=286312239&amp;amp;flowid=81422&amp;amp;softwareid=282088129&amp;amp;release=7.0(3)I5(1)&amp;amp;relind=AVAILABLE&amp;amp;rellifecycle=&amp;amp;reltype=latest">image&lt;/a> file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.&lt;/p>
+&lt;p>&lt;strong>No I can’t provide the image to anyone.&lt;/strong>&lt;/p>
+&lt;h4 id="2-copy-image-to-eveunl">2. Copy image to eve(UNL)&lt;/h4>
+&lt;p>change file name to ‘hda.qcow2’&lt;/p>
+&lt;p>copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’&lt;/p>
+&lt;p>run&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3-add-a-new-node-for-nxosv9k">3. Add a New node for nxosv9k&lt;/h4>
+&lt;p>Copy the &lt;a href="https://gitlab.com/hanbaobao2005/eve-ng-public/blob/master/html/templates/nxosv9k.php">php file&lt;/a> to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;&lt;/p></description></item><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>&lt;p>Topology:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 264px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_be4615ef6586dd59.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_25b5ce0b92cb5f75.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>start DHCP service by command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>service dhcp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>debug on Cisco router to check DHCP request by the commands:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>debug ip dhcp server packet
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>terminal monitor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Debug info :&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-log" data-lang="log">DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>configure DHCP&lt;/p></description></item><item><title>Configuring SSH public key authentication on Cisco IOS Device</title><link>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</guid><description>&lt;p>SSH public Key types:&lt;/p>
+&lt;ul>
+&lt;li>RSA key use with SSH1 and SSH2 protocol&lt;/li>
+&lt;li>DSA key use with SSH2 protocol&lt;br>&lt;br>Note: DSA is weak than RSA&lt;/li>
+&lt;/ul>
+&lt;p>The Key pairs:&lt;/p>
+&lt;ul>
+&lt;li>Public key: SSH.com使用的RFC 4716指定的公钥格式，而OpenSSH使用了另外的格式&lt;/li>
+&lt;li>Private Key: SSH v1私钥只有一种标准格式，但SSH v2私钥格式很多，OpenSSH、ssh.com、puty、winscp格式不同且不兼容&lt;/li>
+&lt;/ul>
+&lt;h4 id="generate-the-key">Generate the Key&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>SecureCRT
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 439px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/12-opt_hu_63c2f50f9e75d256.png" data-fancybox data-caption=SecureCRT-PublicKey-1 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/12-opt_hu_7f241b83164a8b4e.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-1 style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-1&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 415px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/13-opt_hu_e3fb489c31c0a6be.png" data-fancybox data-caption=SecureCRT-PublicKey-2 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/13-opt_hu_1c1c5d44bf6bd2bc.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-2 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-2&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 420px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/14-opt_hu_d0bfde43659df61e.png" data-fancybox data-caption=SecureCRT-PublicKey-3 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/14-opt_hu_2401e31783adc544.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-3 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-3&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+密钥类型有两种: DSA、RSA. Secure CRT提示多种服务器不支持RSA, Cisco IOS supports RSA only.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 411px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/15-opt_hu_ecf3773eec3f9bd.png" data-fancybox data-caption=SecureCRT-PublicKey-4 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/15-opt_hu_bc0053589b756be6.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-4 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-4&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+通行短语为对私钥加密的密码，注释为提示输入密码时的提示，两项均为可为空
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 418px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/16-opt_hu_61191c8d71b27274.png" data-fancybox data-caption=SecureCRT-PublicKey-5 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/16-opt_hu_b29676cd58ede033.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-5 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-5&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 419px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/17-opt_hu_f1432616b8f60d74.png" data-fancybox data-caption=SecureCRT-PublicKey-6 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/17-opt_hu_4a96cee4b01eafcc.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-6 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-6&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 411px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/18-opt_hu_8eebf98f3fa5b673.png" data-fancybox data-caption=SecureCRT-PublicKey-7 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/18-opt_hu_d9acee599e9ba0d1.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-7 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-7&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+为了更好的兼容性和适用性，OpenSSH format is prefered，Choose the location to save the key files：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 334px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/19-opt_hu_37ba079b6ab849c5.png" data-fancybox data-caption=SecureCRT-PublicKey-8 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/19-opt_hu_18b4ff7557e39f4b.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-8 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-8&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+点击’Finish’后会弹出对话框：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 283px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/20-opt_hu_1e1d6825887bddc8.png" data-fancybox data-caption=SecureCRT-PublicKey-9 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/20-opt_hu_6d16f2f10637958b.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-9 style="height: 150px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-9&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+如果选择’Yes’,会影响’快速连接’中的公钥指向保存的文件:
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 303px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/21-opt_hu_86e897584bf51a36.png" data-fancybox data-caption=SecureCRT-PublicKey-10 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/21-opt_hu_a70b6dffce8116c8.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-10 style="height: 290px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-10&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+&lt;/p></description></item></channel></rss>

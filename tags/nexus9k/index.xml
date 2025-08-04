@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nexus9K on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/nexus9k/</link><description>Recent content in Nexus9K on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 08 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/nexus9k/index.xml" rel="self" type="application/rss+xml"/><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>Refer to how to add NX-OXv 9000 to GNS3
-1. Download image files Here is the NX-OSv9k image file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.
-No I can’t provide the image to anyone.
-2. Copy image to eve(UNL) change file name to ‘hda.qcow2’
-copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’
-run
-/opt/unetlab/wrappers/unl_wrapper -a fixpermissions 3. Add a New node for nxosv9k Copy the php file to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nexus9K on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/nexus9k/</link><description>Recent content in Nexus9K on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/nexus9k/index.xml" rel="self" type="application/rss+xml"/><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>&lt;p>Refer to &lt;a href="https://adosztal.blogspot.com/2016/12/how-to-add-nx-osv-9000-to-gns3.html">how to add NX-OXv 9000 to GNS3&lt;/a>&lt;/p>
+&lt;h4 id="1-download-image-files">1. Download image files&lt;/h4>
+&lt;p>Here is the NX-OSv9k &lt;a href="https://software.cisco.com/download/release.html?mdfid=286312239&amp;amp;flowid=81422&amp;amp;softwareid=282088129&amp;amp;release=7.0(3)I5(1)&amp;amp;relind=AVAILABLE&amp;amp;rellifecycle=&amp;amp;reltype=latest">image&lt;/a> file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.&lt;/p>
+&lt;p>&lt;strong>No I can’t provide the image to anyone.&lt;/strong>&lt;/p>
+&lt;h4 id="2-copy-image-to-eveunl">2. Copy image to eve(UNL)&lt;/h4>
+&lt;p>change file name to ‘hda.qcow2’&lt;/p>
+&lt;p>copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’&lt;/p>
+&lt;p>run&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3-add-a-new-node-for-nxosv9k">3. Add a New node for nxosv9k&lt;/h4>
+&lt;p>Copy the &lt;a href="https://gitlab.com/hanbaobao2005/eve-ng-public/blob/master/html/templates/nxosv9k.php">php file&lt;/a> to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;&lt;/p></description></item></channel></rss>

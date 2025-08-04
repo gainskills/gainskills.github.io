@@ -1,11 +1,115 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ansible on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/ansible/</link><description>Recent content in Ansible on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 11 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/ansible/index.xml" rel="self" type="application/rss+xml"/><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>Continue to try ansible with the device which was configure in netconf feature on Cisco IOS/IOSXE.
-Ansible Inventory:
---- netconf: hosts: netconfIos: ansible_host: &amp;#34;172.16.254.100&amp;#34; ansible_network_os: &amp;#34;ios&amp;#34; ansible_ssh_port: 22 netconfJunos: ansible_host: &amp;#34;172.16.254.9&amp;#34; ansible_network_os: &amp;#34;junos&amp;#34; ansible_ssh_port: 830 vars: ansible_connection: &amp;#34;netconf&amp;#34; ansible_ssh_user: test ansible_ssh_pass: test123 Note:
-ansible_connnection should be ‘netconf’ Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830) PlayBook:
-- name: IOS hosts: netconfIos gather_facts: false tasks: - name: Get config for IOS devices netconf_get: source: running register: iosnetconf - name: Display output debug: msg: &amp;#34;{{ iosnetconf.</description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: Juniper’s official document is clear and easy to follow. but for Cisco, I followed NETCONF over SSHv2, unfortunately, I was stuck on it for 6 days. OS Version Cisco IOS XE Software, Version 16.04.01 Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>After Telnet, continue to discuss how to access network device via SSH with Ansible.
-For SSH access, we should consider 3 methods:
-Username/password Username/Public-Key without password Username/Public-Key with password Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH
-Topo Enable SSH on the router Jump #1 username/password part to public key configuration, I discussed how to configure public key on IOS router with Putty before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>I’m learning Ansible by reading the official document and some books like Ansible入门. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation. The most important thing to practice routers/switches/routing protocol is accessing the device and</description></item><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>Background:
-Here is a topology about the environment for performance testing, let’s name the servers 1st:
-1 windows server as the License/Workspace server 5 windows servers as the Network Server 5 windows servers as the Automation server Topo It took us a lot of time to deploy the product and collect logs on all of these servers.
-My colleague wrote a client-server application and do some of the tasks automatically. The application indeed works for log collection, but for product deployment, as the server end running as a service and fails to launch the InstallShield wizard, it doesn’t support the product installation.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ansible on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/ansible/</link><description>Recent content in Ansible on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/ansible/index.xml" rel="self" type="application/rss+xml"/><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>&lt;p>Continue to try ansible with the device which was configure in &lt;a href="https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/">netconf feature on Cisco IOS/IOSXE&lt;/a>.&lt;/p>
+&lt;p>Ansible Inventory:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">netconf&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfIos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.100&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ios&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">22&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfJunos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;junos&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">830&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">vars&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_connection&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;netconf&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_user&lt;/span>: &lt;span style="color:#ae81ff">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_pass&lt;/span>: &lt;span style="color:#ae81ff">test123&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p>
+&lt;ol>
+&lt;li>ansible_connnection should be ‘netconf’&lt;/li>
+&lt;li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)&lt;/li>
+&lt;/ol>
+&lt;p>PlayBook:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">IOS&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>: &lt;span style="color:#ae81ff">netconfIos&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">gather_facts&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tasks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Get config for IOS devices&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconf_get&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">source&lt;/span>: &lt;span style="color:#ae81ff">running&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">register&lt;/span>: &lt;span style="color:#ae81ff">iosnetconf&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Display output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">debug&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">msg&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ iosnetconf.stdout }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>&lt;p>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: &lt;a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html">Juniper’s official document&lt;/a> is clear and easy to follow. but for Cisco, I followed &lt;a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf">NETCONF over SSHv2&lt;/a>, unfortunately, I was stuck on it for 6 days.&lt;/p>
+&lt;p>&lt;strong>OS Version&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Cisco IOS XE Software, Version 16.04.01&lt;/li>
+&lt;li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NetConf Requests&lt;/strong>&lt;/p>
+&lt;p>Tried many requests, all failed:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>The hello (works) request:&lt;/p></description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>&lt;p>After &lt;a href="https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/">Telnet&lt;/a>, continue to discuss how to access network device via SSH with Ansible.&lt;/p>
+&lt;p>For SSH access, we should consider 3 methods:&lt;/p>
+&lt;ol>
+&lt;li>Username/password&lt;/li>
+&lt;li>Username/Public-Key without password&lt;/li>
+&lt;li>Username/Public-Key with password&lt;/li>
+&lt;/ol>
+&lt;p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2113px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_acff4cb47d4a9f39.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_9eb5bd280204eb4f.png" class="img-responsive img-lazyload" alt=Topo style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="enable-ssh-on-the-router">Enable SSH on the router&lt;/h5>
+&lt;p>Jump #1 username/password part to public key configuration, I discussed &lt;a href="https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/">how to configure public key on IOS router with Putty&lt;/a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.&lt;/p></description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>&lt;p>I’m learning &lt;a href="https://www.ansible.com/">Ansible&lt;/a> by reading the official document and some books like &lt;a href="Ansible%E5%85%A5%E9%97%A8">Ansible入门&lt;/a>. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.&lt;/p>
+&lt;p>The most important thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour by accessing the network device from CLI too.&lt;/p></description></item><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>&lt;p>Background:&lt;/p>
+&lt;p>Here is a topology about the environment for performance testing, let’s name the servers 1st:&lt;/p>
+&lt;ul>
+&lt;li>1 windows server as the License/Workspace server&lt;/li>
+&lt;li>5 windows servers as the Network Server&lt;/li>
+&lt;li>5 windows servers as the Automation server&lt;/li>
+&lt;/ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 476px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_fb9d39317589d7fd.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_7bb2a51c31b7b3fe.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>It took us a lot of time to deploy the product and collect logs on all of these servers.&lt;/p></description></item></channel></rss>

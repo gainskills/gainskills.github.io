@@ -1,2 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zip on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/zip/</link><description>Recent content in zip on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/zip/index.xml" rel="self" type="application/rss+xml"/><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>with Zip Read a block of pseudo Python code like comA = zip(lsA, lsB) comB = zip(*comA)
-then made a try to see how * works: 1 2 3 4 5 6 7 8 a = [1, 2, 3] b = [4, 5, 6] c = zip(a,b) for j in c: print(j) d = zip(*c) for i in d: print(i) and the output: (1, 4) (2, 5) (3, 6)</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zip on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/zip/</link><description>Recent content in Zip on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/zip/index.xml" rel="self" type="application/rss+xml"/><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>&lt;ul>
+&lt;li>
+&lt;h3>with Zip&lt;/h3>
+&lt;p>Read a block of pseudo Python code like
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>comA &lt;span style="color:#f92672">=&lt;/span> zip(lsA, lsB)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>comB &lt;span style="color:#f92672">=&lt;/span> zip(&lt;span style="color:#f92672">*&lt;/span>comA)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;p>then made a try to see how * works:
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="background-color:#3c3d38">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/span>&lt;span style="background-color:#3c3d38">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="background-color:#3c3d38">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>a &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>c &lt;span style="color:#f92672">=&lt;/span> zip(a,b)
+&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#3c3d38">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> j &lt;span style="color:#f92672">in&lt;/span> c:
+&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#3c3d38">&lt;span>print(j)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>d &lt;span style="color:#f92672">=&lt;/span> zip(&lt;span style="color:#f92672">*&lt;/span>c)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> d:
+&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#3c3d38">&lt;span>print(i)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/p></description></item></channel></rss>

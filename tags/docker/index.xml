@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Blog - uTIcARdI</title>
+    <link>http://localhost:1313/tags/docker/</link>
+    <description>Recent content in Docker on Blog - uTIcARdI</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Sep 2021 10:17:29 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certbot with Docker Compose</title>
+      <link>http://localhost:1313/2020/11/03/letsencrypt-nginx/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2020/11/03/letsencrypt-nginx/</guid>
+      <description>&lt;h3 id=&#34;why-this-ariticle&#34;&gt;Why this ariticle?&lt;/h3&gt;&#xA;&lt;p&gt;This article describes how I used certbot as the SSL certification. Thanks for &lt;a href=&#34;https://letsencrypt.org/docs/&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt; and &lt;a href=&#34;https://certbot.eff.org/&#34;&gt;certbot&lt;/a&gt;, it provides a trusted certificate at zero cost.&lt;/p&gt;&#xA;&lt;h3 id=&#34;why-https&#34;&gt;Why HTTPs?&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;HTTPS (Hypertext Transfer Protocol Secure) is the update to HTTP that uses the SSL/TLS protocol to provide security for connections between web browsers and web servers. Using HTTPS normally requires a certificate from a certificate authority, such as Let’s Encrypt, and will also require installing that certificate onto a web server. Certbot can help perform both of these steps automatically in many cases. HTTPS is an Internet standard.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Selenium </title>
+      <link>http://localhost:1313/2019/08/25/vscode-as-idle-for-web-dev/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2019/08/25/vscode-as-idle-for-web-dev/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

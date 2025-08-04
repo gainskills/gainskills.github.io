@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NetSuite on Blog - uTIcARdI</title>
+    <link>http://localhost:1313/tags/netsuite/</link>
+    <description>Recent content in NetSuite on Blog - uTIcARdI</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Dec 2019 14:39:47 +1300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/netsuite/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accessing NetSuite SavedSearch via python</title>
+      <link>http://localhost:1313/2020/03/02/access-netsuite-ss-python/</link>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2020/03/02/access-netsuite-ss-python/</guid>
+      <description>&lt;p&gt;Related Python library: &lt;a href=&#34;https://github.com/jjorissen52/netsuite&#34;&gt;netsuite&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;suitescript--python-netsuite-restlet&#34;&gt;SuiteScript + Python (NetSuite Restlet)&lt;/h3&gt;&#xA;&lt;h3 id=&#34;pure-python---advancedsearch&#34;&gt;Pure Python - AdvancedSearch&lt;/h3&gt;&#xA;&lt;h3 id=&#34;pure-python---basic-search&#34;&gt;Pure Python - Basic Search&lt;/h3&gt;&#xA;&lt;p&gt;Note for troubleshooting:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Take care of the web service role&amp;rsquo;s permissions. Resolved an issue: one script got much fewer items than UI by assigning read permission on &amp;lsquo;List -&amp;gt; Credit Note&amp;rsquo;.&lt;/li&gt;&#xA;&lt;li&gt;The column won&amp;rsquo;t be there if the record of saved search doesn&amp;rsquo;t have the property. I stuck on an issue: Unable to find &amp;rsquo;locationquantityonhand&amp;rsquo; from an Inventory Item search, figured it out until I sorted the result.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

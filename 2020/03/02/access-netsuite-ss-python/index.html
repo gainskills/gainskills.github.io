@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <meta name="description" content="Articles about Python, networking, servers and automation" />
+    
+    
+    
+    <meta name="keywords" content="Oracle NetSuite Python" />
+    
+    <link rel="shortcut icon" href="http://localhost:1313/img/favicon.ico" />
+    
+        <title>Accessing NetSuite SavedSearch via python-Blog - uTIcARdI</title>
+    
+
+    
+    
+    <link rel="alternate" hreflang="en" href="http://localhost:1313/2020/03/02/access-netsuite-ss-python/" />
+    
+    <link rel="alternate" href="http://localhost:1313/2020/03/02/access-netsuite-ss-python/" hreflang="x-default" />
+
+    <link rel="canonical" href="http://localhost:1313/2020/03/02/access-netsuite-ss-python/" />
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/bootstrap.min.css" />
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/hux-blog.min.css" />
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+    
+    
+    
+    <script src="http://localhost:1313/js/jquery.min.js"></script>
+
+    
+    
+    
+    <script src="http://localhost:1313/js/bootstrap.min.js"></script>
+
+    
+    
+    
+    <script src="http://localhost:1313/js/hux-blog.min.js"></script>
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/zanshang.min.css" />
+
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/iDisqus.min.css" />
+    
+    
+    
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+        },
+        "headline": "Accessing NetSuite SavedSearch via python",
+        "image": [
+
+            "https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"
+        ],
+        "datePublished": " March 2, 2020",
+        "dateModified": " December 7, 2019",
+        "author": {
+            "@type": "Person",
+            "name": "Blog - uTIcARdI",
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Hugo",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                }
+        },
+        "description": ""
+    }
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2131169764685829"
+        crossorigin="anonymous"></script>
+    
+    
+    </head>
+    <body>
+  
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://localhost:1313/">Home</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/code">code</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/devops">devops</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/life">life</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/network">network</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/os">os</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/pep">pep</a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="http://localhost:1313/top/about/">ABOUT</a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a rel="nofollow" href="http://localhost:1313/search">SEARCH <img src="http://localhost:1313/img/search.png" alt="Search" height="15" style="cursor: pointer;"></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-psb-bg.jpeg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="http://localhost:1313/tags/oracle" title="Oracle">Oracle</a>
+                        
+                        <a class="tag" href="http://localhost:1313/tags/netsuite" title="NetSuite">NetSuite</a>
+                        
+                        <a class="tag" href="http://localhost:1313/tags/python" title="Python">Python</a>
+                        
+                    </div>
+                    <h1>Accessing NetSuite SavedSearch via python</h1>
+                    <h3 class="subheading"></h3>
+                    <span class="meta">Posted on  March 2, 2020
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            
+            <div class="
+                col-lg-10 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+                
+                <p>Related Python library: <a href="https://github.com/jjorissen52/netsuite">netsuite</a></p>
+<h3 id="suitescript--python-netsuite-restlet">SuiteScript + Python (NetSuite Restlet)</h3>
+<h3 id="pure-python---advancedsearch">Pure Python - AdvancedSearch</h3>
+<h3 id="pure-python---basic-search">Pure Python - Basic Search</h3>
+<p>Note for troubleshooting:</p>
+<ul>
+<li>Take care of the web service role&rsquo;s permissions. Resolved an issue: one script got much fewer items than UI by assigning read permission on &lsquo;List -&gt; Credit Note&rsquo;.</li>
+<li>The column won&rsquo;t be there if the record of saved search doesn&rsquo;t have the property. I stuck on an issue: Unable to find &rsquo;locationquantityonhand&rsquo; from an Inventory Item search, figured it out until I sorted the result.</li>
+</ul>
+
+                
+                <div class="entry-shang text-center">
+	<button class="zs show-zs btn btn-bred">Donation</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+			<span class="author" align="right"><br><p class='tip'>Accessing NetSuite SavedSearch via python</p><br></span>
+	        
+        </div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">$2</button>
+			<button class="btn btn-blink" data-num="5">$5</button>
+			<button class="btn btn-blink" data-num="1">Any</button>
+		</div>
+		<div class="zs-modal-pay">
+			
+			<img alt="donation"  id="pay-image"/>
+			<p>Scan the QR code using <span id="pay-type">WeChat</span></p>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label class="radio-inline"><input type="radio" name="zs-type" value= "paypal" class="zs-type" class="zs-paypal" checked="checked"><img alt="paypal" /></label>
+		<label class="radio-inline"><input type="radio" name="zs-type" value="wechat" class="zs-type" class="zs-wechat"><img alt="wechat" /></label>
+		<label class="radio-inline"><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img alt="alipay" /></label>
+	</div>
+</div>
+
+
+<script src="http://localhost:1313/js/reward.min.js"></script>
+                
+                
+<div class="a2a_kit a2a_default_style"  >
+    <h5 class="share-this">Share this!</h5>
+    <ul class="list-inline">
+    <li>
+    <a rel="nofollow" class="a2a_button_facebook">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+        </span>
+        </a></li>
+    <li><a rel="nofollow" class="a2a_button_twitter">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_email">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_linkedin">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_pocket">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_evernote">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-sticky-note fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_sina_weibo">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_wechat">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_button_wordpress">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-wordpress fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    <li><a rel="nofollow" class="a2a_dd" href="https://www.addtoany.com/share">
+        <span class="fa-stack fa-lg" style="font-size: 1em;">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-share fa-stack-1x fa-inverse"></i>
+        </span>
+    </a></li>
+    </ul>
+</div>
+<script>
+    var a2a_config = a2a_config || {};
+    a2a_config.num_services = 2;
+    a2a_config.delay = 800;
+    a2a_config.prioritize = ["google_plus", "reddit"];
+    a2a_config.icon_color = "#2a89f5";
+    a2a_config.thanks = {
+        postShare:false,
+        ad:false
+    }
+</script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+
+
+                
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a rel="nofollow" href="http://localhost:1313/2019/12/25/py-pep0492/" data-toggle="tooltip" data-placement="top" title="PEP492 使用async和await语法实现协程">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a rel="nofollow" href="http://localhost:1313/2020/11/03/letsencrypt-nginx/" data-toggle="tooltip" data-placement="top" title="Certbot with Docker Compose">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function() {
+        return $("h2, h3, h4, h5, h6").each(function(i, el) {
+            var $el, icon, id;
+            $el = $(el);
+            id = $el.attr('id');
+            link = $el.attr('href')
+            icon = '<i class="fa fa-link"></i>';
+            if (id) {
+                return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+            }
+        });
+    });
+    </script>
+</article>
+<div class="container">
+    <div class="row">
+        <div class="
+            col-lg-10 col-lg-offset-1" >
+            <hr class="hidden-sm hidden-xs">
+            
+            
+            <h5>See Also</h5>
+            <ul>
+                
+                <li><a href="http://localhost:1313/2019/12/02/pyxlwtdebug/">An incompatible issue of xls file 
+                </a></li>
+                
+                <li><a href="http://localhost:1313/2019/11/15/vscode-as-idle-for-Django/">VSCode as an IDLE for Django
+                </a></li>
+                
+                <li><a href="http://localhost:1313/2019/08/25/vscode-as-idle-for-web-dev/">Selenium 
+                </a></li>
+                
+                <li><a href="http://localhost:1313/2019/07/23/path-join/">os.path.join() or os.sep.join()?
+                </a></li>
+                
+                <li><a href="http://localhost:1313/2019/02/20/post-file-by-curl-to-flask-via-api/">Post a file to Flask by Curl via API
+                </a></li>
+                
+            </ul>
+            
+
+            
+            
+            <div class="sidebar-container">
+            <h5>Pages with featured tags</h5>
+                <div class="tags">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/ansible" title="ansible">
+                        ansible
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/blog" title="blog">
+                        blog
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/cisco" title="cisco">
+                        cisco
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/hugo" title="hugo">
+                        hugo
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/ios" title="ios">
+                        ios
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/linux" title="linux">
+                        linux
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/python" title="python">
+                        python
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/security" title="security">
+                        security
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/simulator" title="simulator">
+                        simulator
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/tip" title="tip">
+                        tip
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/troubleshooting" title="troubleshooting">
+                        troubleshooting
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/web" title="web">
+                        web
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="http://localhost:1313/tags/windows" title="windows">
+                        windows
+                    </a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            </section>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+        <hr class="hidden-sm hidden-xs">
+        
+
+<div id="disqus-comment">
+    
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kexian-zhangs-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+
+                
+                
+
+                
+                <p class="copyright text-muted">
+                    Copyright &copy; Blog - uTIcARdI&sbquo; 2013 - 2025
+                    <br>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<script>
+    var options = {
+        "cookie": {
+            "domain": "http:\/\/localhost:1313\/",
+            "expiryDays": 7,
+        },
+        "palette": {
+            "popup": {
+                "background": "#4d4d4d",
+                "text": "#ffffff",
+            },
+            "button": {
+                "background": "transparent",
+                "text": "#ffffff",
+            }
+        },
+        "theme": "edgeless",
+        "content": {
+            "dismiss": "OK",
+            "message": "This site uses cookies to ensure you get the best experience.",
+            "link": "Learn more",
+            "target": '_blank',
+        },
+    };
+    var instance = new cookieconsent.Popup(options);
+    document.body.appendChild(instance.element);
+</script>
+
+
+</body>
+</html>

@@ -1,10 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>file on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/file/</link><description>Recent content in file on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/file/index.xml" rel="self" type="application/rss+xml"/><item><title>os.path.join() or os.sep.join()?</title><link>https://blog.gainskills.top/2019/07/23/path-join/</link><pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/07/23/path-join/</guid><description>There are two functions join a full path. E.g.: In drive: C:
-|- test | |- test.xt os.path.join
-import os fullpath = os.path.join(&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;) Output on windows:
-c:test\test.txt Output on Mac OS c:/test/test.txt
-os.sep.join
-import os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
-c:\test\test.txt Output on Mac OS c:/test/test.txt
-From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expected on windows.
-Further verification:
-with open(fullpath) as test: test.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>File on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/file/</link><description>Recent content in File on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/file/index.xml" rel="self" type="application/rss+xml"/><item><title>os.path.join() or os.sep.join()?</title><link>https://blog.gainskills.top/2019/07/23/path-join/</link><pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/07/23/path-join/</guid><description>&lt;p>There are two functions join a full path. E.g.: In drive: C:&lt;/p>
+&lt;pre>&lt;code>|- test
+| |- test.xt
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>os.path.join&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fullpath &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>path&lt;span style="color:#f92672">.&lt;/span>join(&lt;span style="color:#e6db74">&amp;#39;c:&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test.txt&amp;#39;&lt;/span>)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on windows:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:test\test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on Mac OS
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>os.sep.join&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fullpath &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>sep&lt;span style="color:#f92672">.&lt;/span>join([&lt;span style="color:#e6db74">&amp;#39;c:&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test.txt&amp;#39;&lt;/span>])&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on windows:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:\test\test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on Mac OS
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>From the outputs, you can see the difference: &lt;code>os.path.join()&lt;/code> doesn&amp;rsquo;t work as expected on windows.&lt;/p>
+&lt;p>Further verification:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">with&lt;/span> open(fullpath) &lt;span style="color:#66d9ef">as&lt;/span> test:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> test&lt;span style="color:#f92672">.&lt;/span>read()&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Run with error:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(fullpath) &lt;span style="color:#66d9ef">as&lt;/span> test:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">FileNotFoundError&lt;/span>: [Errno &lt;span style="color:#ae81ff">2&lt;/span>] No such file &lt;span style="color:#f92672">or&lt;/span> directory: &lt;span style="color:#e6db74">&amp;#39;c:test&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">test.txt&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item></channel></rss>

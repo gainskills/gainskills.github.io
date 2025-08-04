@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SEO on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/seo/</link><description>Recent content in SEO on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 06 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/seo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo-Customization</title><link>https://blog.gainskills.top/2019/02/06/hugo-customization/</link><pubDate>Wed, 06 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/06/hugo-customization/</guid><description>A list about how I customize Hugo and why I did the change, the post will be updated continuously.
-1. fractions Network Engineer should care about this, because it shows wrong IP/mask format with default value: fractions with default value Disable it in config.toml: [blackfriday] fractions = false
-2. hrefTargetBlank This default value of the option is false which means external links(The wording was corrected to &amp;ldquo;absolute&amp;rdquo; from &amp;rsquo;external&amp;rsquo; on Hugo official doc).</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SEO on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/seo/</link><description>Recent content in SEO on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/seo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo-Customization</title><link>https://blog.gainskills.top/2019/02/06/hugo-customization/</link><pubDate>Wed, 06 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/06/hugo-customization/</guid><description>&lt;p>A list about how I customize Hugo and why I did the change, the post will be updated continuously.&lt;/p>
+&lt;h3 id="1-fractions">1. &lt;a href="https://gohugo.io/getting-started/configuration/">fractions&lt;/a>&lt;/h3>
+&lt;p>Network Engineer should care about this, because it shows wrong &lt;em>IP/mask&lt;/em> format with default value:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 310px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/02/01-opt_hu_197622209dbd8d69.png" data-fancybox data-caption=fractions&amp;#32;with&amp;#32;default&amp;#32;value >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/02/01-opt_hu_32e1677037f5416.png" class="img-responsive img-lazyload" alt=fractions&amp;#32;with&amp;#32;default&amp;#32;value style="height: 140px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>fractions with default value&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+Disable it in config.toml:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">blackfriday&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fractions&lt;/span> = &lt;span style="color:#66d9ef">false&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;h3 id="2-hreftargetblank">2. hrefTargetBlank&lt;/h3>
+&lt;p>This default value of the option is &lt;code>false&lt;/code> which means external links(The wording was corrected to &amp;ldquo;absolute&amp;rdquo; from &amp;rsquo;external&amp;rsquo; on Hugo official doc).
+I prefer to change the value to &lt;code>true&lt;/code>.&lt;/p></description></item></channel></rss>

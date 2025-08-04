@@ -1,17 +1,378 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Security on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/security/</link><description>Recent content in Security on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>IPSec Over Palo Alto FW Static NAT</title><link>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</link><pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</guid><description>It took me about 2 hours on the following scenario and the root cause was located: lacking a static route on Palo Alto, so I decided to summarize every step here for further reference. Here is the topology on EVE-NG:
-Topology The left part is the office, and the right part is Internet 10.0.56.5 of R6 was NATed to IP: 10.0.17.3 by Palo Alto which establishes IPSec tunnel with R8: 10.</description></item><item><title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</title><link>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</link><pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</guid><description>I tried to run Palo Alto on EVE/Virtualbox/Apple MAC OS and found it fails to start the Palo Alto Firewall. So I decided to find the root cause. (EVE suggests the users use VMware, I used VirtualBox instead because I don’t have a VMware Fusion license)
-I went through EVE logs 1st.
-System -&amp;gt; System logs -&amp;gt; unl_wrapper.txt
-Log and found the log:
-Jan 25 05:18:13 INFO: starting /opt/unetlab/wrappers/qemu_wrapper -T 0 -D 3 -t &amp;#34;PaloAlto&amp;#34; -F /opt/qemu/bin/qemu-system-x86_64 -d 0 -- -nographic -device e1000,netdev=net0,mac=50:00:00:03:00:00 -netdev tap,id=net0,ifname=vunl0_3_0,script=no -device e1000,netdev=net1,mac=50:00:00:03:00:01 -netdev tap,id=net1,ifname=vunl0_3_1,script=no -device e1000,netdev=net2,mac=50:00:00:03:00:02 -netdev tap,id=net2,ifname=vunl0_3_2,script=no -device e1000,netdev=net3,mac=50:00:00:03:00:03 -netdev tap,id=net3,ifname=vunl0_3_3,script=no -smp 2 -m 4096 -name PaloAlto -uuid 934e653f-accd-4ce0-a243-369f853b4add -drive file=virtioa.</description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>Setup Cisco IPS on EVE
-I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via certcollection (mega)
-Followed the [instructions](http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/ http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips) for IPS Interfaces.
-and met the issue:
-Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.
-Related post on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE</description></item><item><title>Configuring SSH public key authentication on Cisco IOS Device</title><link>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</guid><description>SSH public Key types: RSA key use with SSH1 and SSH2 protocol DSA key use with SSH2 protocol Note: DSA is weak than RSA The Key pairs: Public key: SSH.com使用的RFC 4716指定的公钥格式，而OpenSSH使用了另外的格式</description></item><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.
-1.Download and install CentOS6.2 CentOS-6.xx-i366-minimal.iso
-2. CentOS configuration Network: IP address, DNS, and restart network service
-vi /etc/resolv.conf/DNS vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP vi /etc/networks//Route /etc/init.d/network restart configure host file
-vi /etc/hosts Modify 127.0.0.1 item to FQDN format because openldap get dc from the item automatically.
-127.0.0.1 ldap.kzblog.com Stop security services
-setenforce permissive getenforce service iptables stop Note: This only for the testing environment.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Security on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/security/</link><description>Recent content in Security on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>IPSec Over Palo Alto FW Static NAT</title><link>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</link><pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</guid><description>&lt;p>It took me about 2 hours on the following scenario and the root cause was located: lacking a static route on Palo Alto, so I decided to summarize every step here for further reference. Here is the topology on EVE-NG:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 634px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/14-opt_hu_2902bbfe321a8342.png" data-fancybox data-caption=Topology >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/14-opt_hu_ac22d5a500283c6.png" class="img-responsive img-lazyload" alt=Topology style="height: 180px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topology&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;ul>
+&lt;li>The left part is the office, and the right part is Internet&lt;/li>
+&lt;li>10.0.56.5 of R6 was NATed to IP: 10.0.17.3 by Palo Alto which establishes IPSec tunnel with R8: 10.0.78.8&lt;/li>
+&lt;li>Traffic from 5.5.5.0/24 to 8.8.8.0/24 will be forward over the #1 IPSec&lt;/li>
+&lt;li>All device in ‘LAN’ could access ‘Internet’ via Port Translation&lt;/li>
+&lt;/ul>
+&lt;h5 id="1-initial-palo-alto">1. Initial Palo Alto&lt;/h5>
+&lt;p>Console access Palo Alto with username/password: admin/admin, and configure MGMT IP 172.16.185.132 (I have bridged the MGMT interface of Palo Alto to my laptop). Here are the commands for the initialization:&lt;/p></description></item><item><title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</title><link>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</link><pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</guid><description>&lt;p>I tried to run Palo Alto on EVE/Virtualbox/Apple MAC OS and found it fails to start the Palo Alto Firewall. So I decided to find the root cause. (EVE suggests the users use VMware, I used VirtualBox instead because I don’t have a VMware Fusion license)&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>I went through EVE logs 1st.&lt;/p>
+&lt;p>System -&amp;gt; System logs -&amp;gt; unl_wrapper.txt&lt;/p>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 483px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/01/13-opt_hu_65af80ce9eba50f4.png" data-fancybox data-caption=Log >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/01/13-opt_hu_e1d63a52bdeb2ed2.png" class="img-responsive img-lazyload" alt=Log style="height: 200px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Log&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>and found the log:&lt;/p></description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>Setup Cisco IPS on EVE&lt;/p>
+&lt;p>I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via &lt;a href="http://certcollection.org/forum/topic/270568-ips-4240-ver-7-unholy-darkness/page__hl__%20cisco%20%20ips">certcollection&lt;/a> (&lt;a href="https://mega.nz/#!W99UnTIa!-3k6bQwiD_DhNCDFfL6TWlU69KoRwIYeaJE9JlDOASY">mega&lt;/a>)&lt;/p>
+&lt;p>Followed the [instructions](&lt;a href="http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/">http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/&lt;/a> &lt;a href="http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips">http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips&lt;/a>) for IPS Interfaces.&lt;/p>
+&lt;p>and met the issue:&lt;/p>
+&lt;p>Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.&lt;/p>
+&lt;p>Related &lt;a href="http://www.unetlab.com/forum/viewtopic.php?f=5&amp;amp;t=55&amp;amp;sid=25184c5b3a889925218c20bffb2f180f">post&lt;/a> on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE&lt;/p></description></item><item><title>Configuring SSH public key authentication on Cisco IOS Device</title><link>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</guid><description>&lt;p>SSH public Key types:&lt;/p>
+&lt;ul>
+&lt;li>RSA key use with SSH1 and SSH2 protocol&lt;/li>
+&lt;li>DSA key use with SSH2 protocol&lt;br>&lt;br>Note: DSA is weak than RSA&lt;/li>
+&lt;/ul>
+&lt;p>The Key pairs:&lt;/p>
+&lt;ul>
+&lt;li>Public key: SSH.com使用的RFC 4716指定的公钥格式，而OpenSSH使用了另外的格式&lt;/li>
+&lt;li>Private Key: SSH v1私钥只有一种标准格式，但SSH v2私钥格式很多，OpenSSH、ssh.com、puty、winscp格式不同且不兼容&lt;/li>
+&lt;/ul>
+&lt;h4 id="generate-the-key">Generate the Key&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>SecureCRT
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 439px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/12-opt_hu_63c2f50f9e75d256.png" data-fancybox data-caption=SecureCRT-PublicKey-1 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/12-opt_hu_7f241b83164a8b4e.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-1 style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-1&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 415px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/13-opt_hu_e3fb489c31c0a6be.png" data-fancybox data-caption=SecureCRT-PublicKey-2 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/13-opt_hu_1c1c5d44bf6bd2bc.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-2 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-2&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 420px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/14-opt_hu_d0bfde43659df61e.png" data-fancybox data-caption=SecureCRT-PublicKey-3 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/14-opt_hu_2401e31783adc544.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-3 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-3&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+密钥类型有两种: DSA、RSA. Secure CRT提示多种服务器不支持RSA, Cisco IOS supports RSA only.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 411px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/15-opt_hu_ecf3773eec3f9bd.png" data-fancybox data-caption=SecureCRT-PublicKey-4 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/15-opt_hu_bc0053589b756be6.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-4 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-4&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+通行短语为对私钥加密的密码，注释为提示输入密码时的提示，两项均为可为空
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 418px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/16-opt_hu_61191c8d71b27274.png" data-fancybox data-caption=SecureCRT-PublicKey-5 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/16-opt_hu_b29676cd58ede033.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-5 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-5&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 419px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/17-opt_hu_f1432616b8f60d74.png" data-fancybox data-caption=SecureCRT-PublicKey-6 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/17-opt_hu_4a96cee4b01eafcc.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-6 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-6&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 411px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/18-opt_hu_8eebf98f3fa5b673.png" data-fancybox data-caption=SecureCRT-PublicKey-7 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/18-opt_hu_d9acee599e9ba0d1.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-7 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-7&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+为了更好的兼容性和适用性，OpenSSH format is prefered，Choose the location to save the key files：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 334px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/19-opt_hu_37ba079b6ab849c5.png" data-fancybox data-caption=SecureCRT-PublicKey-8 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/19-opt_hu_18b4ff7557e39f4b.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-8 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-8&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+点击’Finish’后会弹出对话框：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 283px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/20-opt_hu_1e1d6825887bddc8.png" data-fancybox data-caption=SecureCRT-PublicKey-9 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/20-opt_hu_6d16f2f10637958b.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-9 style="height: 150px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-9&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+如果选择’Yes’,会影响’快速连接’中的公钥指向保存的文件:
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 303px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/21-opt_hu_86e897584bf51a36.png" data-fancybox data-caption=SecureCRT-PublicKey-10 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/21-opt_hu_a70b6dffce8116c8.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-10 style="height: 290px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-10&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+&lt;/p></description></item><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>&lt;p>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.&lt;/p>
+&lt;h4 id="1download-and-install-centos62">1.Download and install CentOS6.2&lt;/h4>
+&lt;p>&lt;a href="http://ftp.riken.jp/Linux/centos/6/isos/i386/CentOS-6.10-i386-minimal.iso">CentOS-6.xx-i366-minimal.iso&lt;/a>&lt;/p>
+&lt;h4 id="2-centos-configuration">2. CentOS configuration&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>Network: IP address, DNS, and restart network service&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/resolv.conf/DNS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/networks//Route
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/etc/init.d/network restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>configure host file&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/hosts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Modify 127.0.0.1 item to FQDN format because openldap get &lt;em>dc&lt;/em> from the item automatically.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>127.0.0.1 ldap.kzblog.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Stop security services&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>setenforce permissive
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getenforce
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>service iptables stop
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>Note: This only for the testing environment.&lt;/em>&lt;/p></description></item></channel></rss>

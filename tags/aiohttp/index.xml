@@ -1,7 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Aiohttp on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/aiohttp/</link><description>Recent content in Aiohttp on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/aiohttp/index.xml" rel="self" type="application/rss+xml"/><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>aiohttp is an Asynchronous HTTP client/server framework for asyncio and Python
-I tried it because of the features:
-Tuning the DNS cache Resolving using custom nameservers With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.
-Since the code on the official document is simple:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Aiohttp on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/aiohttp/</link><description>Recent content in Aiohttp on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/aiohttp/index.xml" rel="self" type="application/rss+xml"/><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>&lt;p>&lt;a href="https://github.com/aio-libs/aiohttp">aiohttp&lt;/a> is an Asynchronous HTTP client/server framework for asyncio and Python&lt;/p>
+&lt;p>I tried it because of the features:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache">Tuning the DNS cache&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers">Resolving using custom nameservers&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.&lt;/p>
+&lt;p>Since the code on the official document is simple:&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;p>from aiohttp.resolver import AsyncResolver&lt;/p>
+&lt;p>resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;])
+conn = aiohttp.TCPConnector(resolver=resolver)&lt;/p>
+&lt;pre tabindex="0">&lt;code>
+I tried it with following code:
+
+~~~python
+import aiohttp
+import asyncio
 from aiohttp.resolver import AsyncResolver
-resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;]) conn = aiohttp.TCPConnector(resolver=resolver)
-I tried it with following code: ~~~python import aiohttp import asyncio from aiohttp.</description></item></channel></rss>
+
+resolver = AsyncResolver(nameservers=[&amp;#34;114.114.114.114&amp;#34;])
+
+async def dnstesting():
+ async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) as session:
+ r = await session.get(&amp;#34;http://google.com&amp;#34;)
+ print(r.text)
+
+asyncio.run(dnstesting())
+&lt;/code>&lt;/pre>&lt;p>Run with following error:&lt;/p></description></item></channel></rss>

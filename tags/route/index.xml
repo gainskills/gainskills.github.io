@@ -1,6 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Route on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/route/</link><description>Recent content in Route on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/route/index.xml" rel="self" type="application/rss+xml"/><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.
-Topology: Topology Configuration Configured IP addresses on the routers
-Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.
-Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)
-Configure static routes
-R1(config)#ip route 0.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Route on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/route/</link><description>Recent content in Route on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/route/index.xml" rel="self" type="application/rss+xml"/><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>&lt;p>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.&lt;/p>
+&lt;h5 id="topology">Topology:&lt;/h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 575px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_113efef6f50fddc.png" data-fancybox data-caption=Topology >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_d0c6c5b0e1aa51b8.png" class="img-responsive img-lazyload" alt=Topology style="height: 130px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topology&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="configuration">Configuration&lt;/h5>
+&lt;ol>
+&lt;li>
+&lt;p>Configured IP addresses on the routers&lt;br>
+Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)&lt;/p></description></item></channel></rss>

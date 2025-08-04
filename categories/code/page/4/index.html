@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <meta name="description" content="Articles about Python, networking, servers and automation" />
+    
+    
+    
+    <meta name="keywords" content="Network, Cisco, Linux, Python, Internet, Web, Cloud, Ansible, Automation, Integration, Windows, Server, Code, Open Source, Cloud, SaaS" />
+    
+    <link rel="shortcut icon" href="http://localhost:1313/img/favicon.ico" />
+    
+        <title>Code-Blog - uTIcARdI</title>
+    
+
+    
+    
+    <link rel="alternate" hreflang="en" href="http://localhost:1313/categories/code/" />
+    
+    <link rel="alternate" href="http://localhost:1313/categories/code/" hreflang="x-default" />
+
+    <link rel="canonical" href="http://localhost:1313/categories/code/" />
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/bootstrap.min.css" />
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/hux-blog.min.css" />
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+    
+    
+    
+    <script src="http://localhost:1313/js/jquery.min.js"></script>
+
+    
+    
+    
+    <script src="http://localhost:1313/js/bootstrap.min.js"></script>
+
+    
+    
+    
+    <script src="http://localhost:1313/js/hux-blog.min.js"></script>
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/iDisqus.min.css" />
+    
+    
+    
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+        },
+        "headline": "Code",
+        "image": [
+
+            "https://raw.githubusercontent.com/gohugoio/hugoDocs/master/static/img/hugo-logo.png"
+        ],
+        "datePublished": " July 17, 2023",
+        "dateModified": " July 21, 2023",
+        "author": {
+            "@type": "Person",
+            "name": "Blog - uTIcARdI",
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Hugo",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                }
+        },
+        "description": ""
+    }
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2131169764685829"
+        crossorigin="anonymous"></script>
+    
+    
+    </head>
+    <body>
+  
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://localhost:1313/">Home</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/code">code</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/devops">devops</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/life">life</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/network">network</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/os">os</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://localhost:1313/categories/pep">pep</a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="http://localhost:1313/top/about/">ABOUT</a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a rel="nofollow" href="http://localhost:1313/search">SEARCH <img src="http://localhost:1313/img/search.png" alt="Search" height="15" style="cursor: pointer;"></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+<header class="intro-header" style="background-image: url('/img/home-psb-bg.jpeg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Blog - uTIcARdI </h1>
+                    
+                    <span class="subheading">KISS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+  
+<div class="container">
+    <div class="row">
+        
+        
+        <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
+            
+
+<div class="post-preview">
+    <a href="http://localhost:1313/2016/06/07/python-sublimetext-anaconda/">
+        <h2 class="post-title">
+            Python多版本, Sublime Text, Anaconda指北
+        </h2>
+        
+        <div class="post-content-preview">
+            
+            A tutorial about setup Sublime Text with Anaconda and multiple Python versions
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Blog - uTIcARdI on June, 7, 2016
+    </p>
+</div>
+<hr>
+
+            
+
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a rel="nofollow" href="http://localhost:1313/categories/code/page/3/">&larr; Newer Posts</a>
+    </li>
+    
+    
+</ul>
+
+
+        </div>
+        
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/ansible" title="ansible">
+                ansible
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/blog" title="blog">
+                blog
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/cisco" title="cisco">
+                cisco
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/hugo" title="hugo">
+                hugo
+            </a>
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/ios" title="ios">
+                ios
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/linux" title="linux">
+                linux
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/python" title="python">
+                python
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/security" title="security">
+                security
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/simulator" title="simulator">
+                simulator
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/tip" title="tip">
+                tip
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/troubleshooting" title="troubleshooting">
+                troubleshooting
+            </a>
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/web" title="web">
+                web
+            </a>
+            
+            
+            
+            
+            
+            <a href="http://localhost:1313/tags/windows" title="windows">
+                windows
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+    </section>
+    
+
+    
+    <section class="visible-md visible-lg">
+        <hr>
+        <h5><a href="'/top/about' " >ABOUT ME</a></h5>
+        <div class="short-about">
+            
+            
+            <p>Python Developer, Network Engineer, DevOps, Automation, Open Source Enthusiast</p>
+            
+            
+            
+            
+            <ul class="list-inline">
+    
+    <li>
+        <a href='http://localhost:1313/categories/code/index.xml' rel="alternate" type="application/rss+xml" title="Blog - uTIcARdI">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+    </li>
+    
+    
+    <li>
+        <a href="mailto:kex_zh@outlook.com">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    <li>
+        <a target="_blank" href="https://github.com/gainskills">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+    </li>
+    
+    
+    <li>
+        <a target="_blank" href="https://stackoverflow.com/users/2701959/69444091">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+    </li>
+    
+    
+    
+</ul>
+            
+        </div>
+    </section>
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+            
+            <li><a target="_blank" href="http://www.cnblogs.com/TomXu/">Tom大叔</a></li>
+            
+            <li><a target="_blank" href="https://www.weibo.com/u/5941049491">CC的行摄日记</a></li>
+            
+        </ul>
+    </section>
+    
+
+    
+    
+    <section>
+        <hr>
+        <h5>BOOKMARKS</h5>
+        <ul class="list-inline">
+            
+            <li><a target="_blank" href="http://eve-ng.net/">EVE-NG</a></li>
+            
+            <li><a target="_blank" href="https://zhaohuabing.com">Huabing&#39;s Blog</a></li>
+            
+            <li><a target="_blank" href="https://imtx.me/">TUALATRIX&#39;s Blog</a></li>
+            
+            <li><a target="_blank" href="https://lingxiankong.github.io">技术改变世界-孔今贤的博客</a></li>
+            
+        </ul>
+    </section>
+    
+</div>
+    </div>
+</div>
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+
+                
+                
+
+                
+                <p class="copyright text-muted">
+                    Copyright &copy; Blog - uTIcARdI&sbquo; 2013 - 2025
+                    <br>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<script>
+    var options = {
+        "cookie": {
+            "domain": "http:\/\/localhost:1313\/",
+            "expiryDays": 7,
+        },
+        "palette": {
+            "popup": {
+                "background": "#4d4d4d",
+                "text": "#ffffff",
+            },
+            "button": {
+                "background": "transparent",
+                "text": "#ffffff",
+            }
+        },
+        "theme": "edgeless",
+        "content": {
+            "dismiss": "OK",
+            "message": "This site uses cookies to ensure you get the best experience.",
+            "link": "Learn more",
+            "target": '_blank',
+        },
+    };
+    var instance = new cookieconsent.Popup(options);
+    document.body.appendChild(instance.element);
+</script>
+
+
+</body>
+</html>

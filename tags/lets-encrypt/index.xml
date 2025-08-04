@@ -1,5 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Let's Encrypt on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/lets-encrypt/</link><description>Recent content in Let's Encrypt on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 15 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/lets-encrypt/index.xml" rel="self" type="application/rss+xml"/><item><title>openwrt DDNS, acme commands</title><link>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</guid><description>I&amp;rsquo;m using OpenWrt R21.8.6 by compile it from coolsnowwolf/lede.
-1. Install softwares on Openwrt acme ddns-scripts (This originally built when compile the firmware) 2. DDNS configuration DNS System
-Creating a dynamic DNS record on your DNS service provider (Mine is running over dns.he.net)
-Dynamic DNS A Record - New Generate password for DDNS
-Dynamic DNS A Record password - entry Dynamic DNS A Record password - generate Configuration on Openwrt</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Let's Encrypt on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/lets-encrypt/</link><description>Recent content in Let's Encrypt on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/lets-encrypt/index.xml" rel="self" type="application/rss+xml"/><item><title>openwrt DDNS, acme commands</title><link>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</guid><description>&lt;p>I&amp;rsquo;m using &lt;a href="https://openwrt.org/releases/21.02/notes-21.02.0">OpenWrt R21.8.6&lt;/a> by compile it from &lt;a href="https://github.com/coolsnowwolf/lede">coolsnowwolf/lede&lt;/a>.&lt;/p>
+&lt;h3 id="1-install-softwares-on-openwrt">1. Install softwares on Openwrt&lt;/h3>
+&lt;ul>
+&lt;li>acme&lt;/li>
+&lt;li>ddns-scripts (This originally built when compile the firmware)&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-ddns-configuration">2. DDNS configuration&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>DNS System&lt;/p>
+&lt;p>Creating a dynamic DNS record on your DNS service provider (Mine is running over &lt;a href="https://dns.he.net/">dns.he.net&lt;/a>)&lt;/p>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 257px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2021/09/01-opt_hu_3faac8f37118d8bc.jpg" data-fancybox data-caption=Dynamic&amp;#32;DNS&amp;#32;A&amp;#32;Record&amp;#32;-&amp;#32;New >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2021/09/01-opt_hu_538f31170da74257.jpg" class="img-responsive img-lazyload" alt=Dynamic&amp;#32;DNS&amp;#32;A&amp;#32;Record&amp;#32;-&amp;#32;New style="height: 180px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Dynamic DNS A Record - New&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>Generate password for DDNS&lt;/p></description></item></channel></rss>

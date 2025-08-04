@@ -1,69 +1,707 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on Blog - uTIcARdI</title><link>https://blog.gainskills.top/categories/network/</link><description>Recent content in Network on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 15 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/categories/network/index.xml" rel="self" type="application/rss+xml"/><item><title>openwrt DDNS, acme commands</title><link>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</guid><description>I&amp;rsquo;m using OpenWrt R21.8.6 by compile it from coolsnowwolf/lede.
-1. Install softwares on Openwrt acme ddns-scripts (This originally built when compile the firmware) 2. DDNS configuration DNS System
-Creating a dynamic DNS record on your DNS service provider (Mine is running over dns.he.net)
-Dynamic DNS A Record - New Generate password for DDNS
-Dynamic DNS A Record password - entry Dynamic DNS A Record password - generate Configuration on Openwrt</description></item><item><title>Run Arista VM 4.2.2 and later version on EVE(UNL)</title><link>https://blog.gainskills.top/2019/12/08/evengaristabooting/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/12/08/evengaristabooting/</guid><description>One of my friends did his VXLAN practices, he came to me for help because he was unable to start the Arista instance on EVE-NG.
-The Arista vm can be started and stuck at:
-Issue I did a search and found a clue in the Arista forum, the instance began to work after changed the CPU number to 2:
-Issue</description></item><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.
-Topology: Topology Configuration Configured IP addresses on the routers
-Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.
-Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)
-Configure static routes
-R1(config)#ip route 0.</description></item><item><title>Run ASA9.1 on EVE(UNL)</title><link>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</guid><description>This blog discusses ASA, not ASAv. Refer to
-http://missingsmth.com/gns-asa-9-15-with-asdm/ http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo It’s possible to run ASA9.1 on EVE-NG (UNL, unified network lab), so I did a try:
-Image preparation
-No, I can’t provide the image to anyone, and I won’t respond to any question about it. Please Refer to following posts for the image file:
-http://missingsmth.com/gns-asa-9-15-with-asdm/ http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html https://github.com/nccgroup/asafw Refer to http://www.eve-ng.net/index.php/documentation/images-table, EVE only support hda.qcow2 format disk. Covert your image to qcow2 format before the next step.</description></item><item><title>IPSec Over Palo Alto FW Static NAT</title><link>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</link><pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</guid><description>It took me about 2 hours on the following scenario and the root cause was located: lacking a static route on Palo Alto, so I decided to summarize every step here for further reference. Here is the topology on EVE-NG:
-Topology The left part is the office, and the right part is Internet 10.0.56.5 of R6 was NATed to IP: 10.0.17.3 by Palo Alto which establishes IPSec tunnel with R8: 10.</description></item><item><title>MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成</title><link>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</link><pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</guid><description>版权声明：以下链接是本文的原文，对本文及原文任何内容、链接的转发、引用请务必标注以下链接: https://www.802101.com/unetlab-and-wireshark-for-osx-update/ https://www.802101.com/wireshark-integration-with-unetlab-on-osx/ 解决思路： MAC OX上没有为URL中’captur</description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>Continue to try ansible with the device which was configure in netconf feature on Cisco IOS/IOSXE.
-Ansible Inventory:
---- netconf: hosts: netconfIos: ansible_host: &amp;#34;172.16.254.100&amp;#34; ansible_network_os: &amp;#34;ios&amp;#34; ansible_ssh_port: 22 netconfJunos: ansible_host: &amp;#34;172.16.254.9&amp;#34; ansible_network_os: &amp;#34;junos&amp;#34; ansible_ssh_port: 830 vars: ansible_connection: &amp;#34;netconf&amp;#34; ansible_ssh_user: test ansible_ssh_pass: test123 Note:
-ansible_connnection should be ‘netconf’ Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830) PlayBook:
-- name: IOS hosts: netconfIos gather_facts: false tasks: - name: Get config for IOS devices netconf_get: source: running register: iosnetconf - name: Display output debug: msg: &amp;#34;{{ iosnetconf.</description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: Juniper’s official document is clear and easy to follow. but for Cisco, I followed NETCONF over SSHv2, unfortunately, I was stuck on it for 6 days. OS Version Cisco IOS XE Software, Version 16.04.01 Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</description></item><item><title>Monitor network connections based on Process</title><link>https://blog.gainskills.top/2018/09/21/monitor-network-connections-based-on-process/</link><pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/21/monitor-network-connections-based-on-process/</guid><description>Wireshark is widely used in packets capturing with flexible filters, but for some particular cases, end users care about the network sessions which established by a specific application.
-I will show how to check the sessions of ‘Microsoft OneNote’.
-Windows Microsoft provides its own product for packets capturing: Microsoft Network Monitor.
-Lunch ‘Microsoft Network Monitor’ before you run OneNote:
-nm-1 You will see the processes from the left panel, All related network sessions will shown in the ‘frame summary’ window once OneNote lunched:</description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>After Telnet, continue to discuss how to access network device via SSH with Ansible.
-For SSH access, we should consider 3 methods:
-Username/password Username/Public-Key without password Username/Public-Key with password Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH
-Topo Enable SSH on the router Jump #1 username/password part to public key configuration, I discussed how to configure public key on IOS router with Putty before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>I’m learning Ansible by reading the official document and some books like Ansible入门. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation. The most important thing to practice routers/switches/routing protocol is accessing the device and</description></item><item><title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</title><link>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</link><pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</guid><description>I tried to run Palo Alto on EVE/Virtualbox/Apple MAC OS and found it fails to start the Palo Alto Firewall. So I decided to find the root cause. (EVE suggests the users use VMware, I used VirtualBox instead because I don’t have a VMware Fusion license)
-I went through EVE logs 1st.
-System -&amp;gt; System logs -&amp;gt; unl_wrapper.txt
-Log and found the log:
-Jan 25 05:18:13 INFO: starting /opt/unetlab/wrappers/qemu_wrapper -T 0 -D 3 -t &amp;#34;PaloAlto&amp;#34; -F /opt/qemu/bin/qemu-system-x86_64 -d 0 -- -nographic -device e1000,netdev=net0,mac=50:00:00:03:00:00 -netdev tap,id=net0,ifname=vunl0_3_0,script=no -device e1000,netdev=net1,mac=50:00:00:03:00:01 -netdev tap,id=net1,ifname=vunl0_3_1,script=no -device e1000,netdev=net2,mac=50:00:00:03:00:02 -netdev tap,id=net2,ifname=vunl0_3_2,script=no -device e1000,netdev=net3,mac=50:00:00:03:00:03 -netdev tap,id=net3,ifname=vunl0_3_3,script=no -smp 2 -m 4096 -name PaloAlto -uuid 934e653f-accd-4ce0-a243-369f853b4add -drive file=virtioa.</description></item><item><title>tc-How it work on different IPs</title><link>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</link><pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</guid><description>#!/bin/bash interface=eth0 ip1=192.168.1.1 ip2=172.16.1.1 delay1=100ms delay2=200ms tc qdisc add dev $interface root handle 1: prio tc qdisc add dev $interface parent 1:1 netem delay $delay1 10ms 25% tc filter add dev $interface parent 1: protocol ip prio 1 u32 match ip dst $ip1 flowid 1:1 tc qdisc add dev $interface parent 1:2 netem delay $delay2 10ms 25% tc filter add dev $interface parent 1: protocol ip prio 2 u32 match ip dst $ip2 flowid 1:2</description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>Setup Cisco IPS on EVE
-I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via certcollection (mega)
-Followed the [instructions](http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/ http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips) for IPS Interfaces.
-and met the issue:
-Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.
-Related post on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE</description></item><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>Refer to how to add NX-OXv 9000 to GNS3
-1. Download image files Here is the NX-OSv9k image file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.
-No I can’t provide the image to anyone.
-2. Copy image to eve(UNL) change file name to ‘hda.qcow2’
-copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’
-run
-/opt/unetlab/wrappers/unl_wrapper -a fixpermissions 3. Add a New node for nxosv9k Copy the php file to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;</description></item><item><title>VSphere6, VCenter6 Installation</title><link>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</link><pubDate>Fri, 08 Jan 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</guid><description>Crash happened when I install Vsphere on my PC
-Solution: Disable option &amp;ldquo;Limit Maximum CPUID&amp;rdquo; in Bios
-VCenter appliance deployment
-Vmware doesn&amp;rsquo;t provide vcenter appliance in ova/ovf format anymore, follow the instruction to deploy it.
-Inventory is empty in the VCenter webpage
-The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;
-Also, Vmware has a KB about this issue:</description></item><item><title>Dynagen/Dynamips error: netio_desc_create_udp: unable to connect to</title><link>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</link><pubDate>Fri, 20 Dec 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</guid><description>OS: CentOS 6.5 x86_64 installed on vmware Dynamips 0.2.10 There is an error when loading a .net file named as test.net with 100 devices in Dynagen.0.11.0:
-netio_desc_create_udp: unable to connect to I searched on the Internet about this error msg, most of posts shared a method: specified UDP port of dynamips instance in .net file. But it doesn’t work for me.
-As I found a Dynagen description in GNS3 website: however Dynagen is still updated and developed for GNS3, this means you can download GNS3 sources, find Dynagen in it.</description></item><item><title>SNMP simulator installation guide</title><link>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</guid><description>About SNMP Simulator
-The the SNMP Simulator software is intended for testing SNMP Managers against a large number of SNMP Agents that represent a potentially very large network populated with different kinds of SNMP-capable devices.
-Refers to its project page for more info.
-Why?
-With SNMP simulator you can simulate a device by the output of SNMPwalk without considering MIB files.
-This article is about how to install SNMP Simulator.</description></item><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>Topology:
-Topo Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.
-start DHCP service by command:
-service dhcp debug on Cisco router to check DHCP request by the commands:
-debug ip dhcp server packet terminal monitor Debug info :
-DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98 configure DHCP
-ip dhcp pool ItalkBB host 10.0.0.127 255.255.255.0 //no mask configured, IP’s class mask assigned client-identifier 0100.</description></item><item><title>Configuring SSH public key authentication on Cisco IOS Device</title><link>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</guid><description>SSH public Key types: RSA key use with SSH1 and SSH2 protocol DSA key use with SSH2 protocol Note: DSA is weak than RSA The Key pairs: Public key: SSH.com使用的RFC 4716指定的公钥格式，而OpenSSH使用了另外的格式</description></item><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.
-1.Download and install CentOS6.2 CentOS-6.xx-i366-minimal.iso
-2. CentOS configuration Network: IP address, DNS, and restart network service
-vi /etc/resolv.conf/DNS vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP vi /etc/networks//Route /etc/init.d/network restart configure host file
-vi /etc/hosts Modify 127.0.0.1 item to FQDN format because openldap get dc from the item automatically.
-127.0.0.1 ldap.kzblog.com Stop security services
-setenforce permissive getenforce service iptables stop Note: This only for the testing environment.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on Blog - uTIcARdI</title><link>https://blog.gainskills.top/categories/network/</link><description>Recent content in Network on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/categories/network/index.xml" rel="self" type="application/rss+xml"/><item><title>openwrt DDNS, acme commands</title><link>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2021/09/15/openwrt-ddns-cert/</guid><description>&lt;p>I&amp;rsquo;m using &lt;a href="https://openwrt.org/releases/21.02/notes-21.02.0">OpenWrt R21.8.6&lt;/a> by compile it from &lt;a href="https://github.com/coolsnowwolf/lede">coolsnowwolf/lede&lt;/a>.&lt;/p>
+&lt;h3 id="1-install-softwares-on-openwrt">1. Install softwares on Openwrt&lt;/h3>
+&lt;ul>
+&lt;li>acme&lt;/li>
+&lt;li>ddns-scripts (This originally built when compile the firmware)&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-ddns-configuration">2. DDNS configuration&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>DNS System&lt;/p>
+&lt;p>Creating a dynamic DNS record on your DNS service provider (Mine is running over &lt;a href="https://dns.he.net/">dns.he.net&lt;/a>)&lt;/p>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 257px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2021/09/01-opt_hu_3faac8f37118d8bc.jpg" data-fancybox data-caption=Dynamic&amp;#32;DNS&amp;#32;A&amp;#32;Record&amp;#32;-&amp;#32;New >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2021/09/01-opt_hu_538f31170da74257.jpg" class="img-responsive img-lazyload" alt=Dynamic&amp;#32;DNS&amp;#32;A&amp;#32;Record&amp;#32;-&amp;#32;New style="height: 180px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Dynamic DNS A Record - New&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>Generate password for DDNS&lt;/p></description></item><item><title>Run Arista VM 4.2.2 and later version on EVE(UNL)</title><link>https://blog.gainskills.top/2019/12/08/evengaristabooting/</link><pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/12/08/evengaristabooting/</guid><description>&lt;p>One of my friends did his VXLAN practices, he came to me for help because he was unable to start the Arista instance on EVE-NG.&lt;/p>
+&lt;p>The Arista vm can be started and stuck at:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2071px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/12/3-opt_hu_9639c8bfbdbacc11.png" data-fancybox data-caption=Issue >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/12/3-opt_hu_423781357455df10.png" class="img-responsive img-lazyload" alt=Issue style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Issue&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>I did a search and found a clue in the Arista forum, the instance began to work after changed the CPU number to 2:&lt;/p></description></item><item><title>IOS command:IP classless</title><link>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/ios-ip-classless/</guid><description>&lt;p>I wrote down this article in 2009-03-13 when I was looking for my first job. Taking this again today as preparation for CCNP.&lt;/p>
+&lt;h5 id="topology">Topology:&lt;/h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 575px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_113efef6f50fddc.png" data-fancybox data-caption=Topology >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/02/02-opt_hu_d0c6c5b0e1aa51b8.png" class="img-responsive img-lazyload" alt=Topology style="height: 130px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topology&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="configuration">Configuration&lt;/h5>
+&lt;ol>
+&lt;li>
+&lt;p>Configured IP addresses on the routers&lt;br>
+Note: The subnets of R1&amp;rsquo;s Loopback1 and R2&amp;rsquo;s Loopback1 belong to the class A address.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Execute command &amp;ldquo;ip classless&amp;rdquo; on both R1 and R2 (The command has been the default since IOS 11.3)&lt;/p></description></item><item><title>Run ASA9.1 on EVE(UNL)</title><link>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/09/run-asa9.1-on-eve/</guid><description>&lt;p>This blog discusses ASA, not ASAv. Refer to&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://missingsmth.com/gns-asa-9-15-with-asdm/">http://missingsmth.com/gns-asa-9-15-with-asdm/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo">http://www.fixedbyvonnie.com/2015/05/how-to-setup-an-5520-asa-5-2-in-gns-3-version-1-3/#.WnwYwZNuYWo&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It’s possible to run ASA9.1 on EVE-NG (UNL, unified network lab), so I did a try:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Image preparation&lt;/p>
+&lt;p>&lt;strong>No&lt;/strong>, I can’t provide the image to anyone, and I won’t respond to any question about it.
+Please Refer to following posts for the image file:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://missingsmth.com/gns-asa-9-15-with-asdm/">http://missingsmth.com/gns-asa-9-15-with-asdm/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html">http://binarynature.blogspot.com/2014/01/create-cisco-asa-vmware-fusion.html&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/nccgroup/asafw">https://github.com/nccgroup/asafw&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Refer to &lt;a href="http://www.eve-ng.net/index.php/documentation/images-table">http://www.eve-ng.net/index.php/documentation/images-table&lt;/a>, EVE only support hda.qcow2 format disk. Covert your image to qcow2 format before the next step.&lt;/p></description></item><item><title>IPSec Over Palo Alto FW Static NAT</title><link>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</link><pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/19/ipsec-over-paloalto-fw-static-nat/</guid><description>&lt;p>It took me about 2 hours on the following scenario and the root cause was located: lacking a static route on Palo Alto, so I decided to summarize every step here for further reference. Here is the topology on EVE-NG:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 634px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/14-opt_hu_2902bbfe321a8342.png" data-fancybox data-caption=Topology >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/14-opt_hu_ac22d5a500283c6.png" class="img-responsive img-lazyload" alt=Topology style="height: 180px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topology&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;ul>
+&lt;li>The left part is the office, and the right part is Internet&lt;/li>
+&lt;li>10.0.56.5 of R6 was NATed to IP: 10.0.17.3 by Palo Alto which establishes IPSec tunnel with R8: 10.0.78.8&lt;/li>
+&lt;li>Traffic from 5.5.5.0/24 to 8.8.8.0/24 will be forward over the #1 IPSec&lt;/li>
+&lt;li>All device in ‘LAN’ could access ‘Internet’ via Port Translation&lt;/li>
+&lt;/ul>
+&lt;h5 id="1-initial-palo-alto">1. Initial Palo Alto&lt;/h5>
+&lt;p>Console access Palo Alto with username/password: admin/admin, and configure MGMT IP 172.16.185.132 (I have bridged the MGMT interface of Palo Alto to my laptop). Here are the commands for the initialization:&lt;/p></description></item><item><title>MAC OS-Wireshark/VNC与EVE-NG(UNL)的集成</title><link>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</link><pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/17/wireshark-vnc-integrate-eve-ngunlonosx/</guid><description>&lt;h5 id="版权声明以下链接是本文的原文对本文及原文任何内容链接的转发引用请务必标注以下链接">版权声明：以下链接是本文的原文，对本文及原文任何内容、链接的转发、引用请务必标注以下链接:&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://www.802101.com/unetlab-and-wireshark-for-osx-update/">https://www.802101.com/unetlab-and-wireshark-for-osx-update/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.802101.com/wireshark-integration-with-unetlab-on-osx/">https://www.802101.com/wireshark-integration-with-unetlab-on-osx/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>解决思路：&lt;/p>
+&lt;p>MAC OX上没有为URL中’capture://’前缀协议关联程序，我们可以编辑系统中已经存在的条目，但按需添加并不简单。&lt;/p>
+&lt;p>所以需要创建一个关联程序，并由它调用WireShark。此功能可以通过AppleScript实现，并实现关联’capture://’及调用Wireshark.&lt;/p></description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>&lt;p>Continue to try ansible with the device which was configure in &lt;a href="https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/">netconf feature on Cisco IOS/IOSXE&lt;/a>.&lt;/p>
+&lt;p>Ansible Inventory:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">netconf&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfIos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.100&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ios&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">22&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfJunos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;junos&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">830&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">vars&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_connection&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;netconf&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_user&lt;/span>: &lt;span style="color:#ae81ff">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_pass&lt;/span>: &lt;span style="color:#ae81ff">test123&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p>
+&lt;ol>
+&lt;li>ansible_connnection should be ‘netconf’&lt;/li>
+&lt;li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)&lt;/li>
+&lt;/ol>
+&lt;p>PlayBook:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">IOS&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>: &lt;span style="color:#ae81ff">netconfIos&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">gather_facts&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tasks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Get config for IOS devices&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconf_get&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">source&lt;/span>: &lt;span style="color:#ae81ff">running&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">register&lt;/span>: &lt;span style="color:#ae81ff">iosnetconf&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Display output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">debug&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">msg&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ iosnetconf.stdout }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>&lt;p>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: &lt;a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html">Juniper’s official document&lt;/a> is clear and easy to follow. but for Cisco, I followed &lt;a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf">NETCONF over SSHv2&lt;/a>, unfortunately, I was stuck on it for 6 days.&lt;/p>
+&lt;p>&lt;strong>OS Version&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Cisco IOS XE Software, Version 16.04.01&lt;/li>
+&lt;li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NetConf Requests&lt;/strong>&lt;/p>
+&lt;p>Tried many requests, all failed:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>The hello (works) request:&lt;/p></description></item><item><title>Monitor network connections based on Process</title><link>https://blog.gainskills.top/2018/09/21/monitor-network-connections-based-on-process/</link><pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/21/monitor-network-connections-based-on-process/</guid><description>&lt;p>&lt;a href="https://www.wireshark.org/">Wireshark&lt;/a> is widely used in packets capturing with flexible filters, but for some particular cases, end users care about the network sessions which established by a specific application.&lt;/p>
+&lt;p>I will show how to check the sessions of ‘Microsoft OneNote’.&lt;/p>
+&lt;h3 id="windows">Windows&lt;/h3>
+&lt;p>Microsoft provides its own product for packets capturing: &lt;a href="https://www.microsoft.com/en-us/download/4865">Microsoft Network Monitor&lt;/a>.&lt;/p>
+&lt;p>Lunch ‘Microsoft Network Monitor’ before you run OneNote:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 430px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/09/12-opt_hu_e0c726d9724957f7.png" data-fancybox data-caption=nm-1 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/09/12-opt_hu_adb9115e9eadc7bf.png" class="img-responsive img-lazyload" alt=nm-1 style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>nm-1&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>You will see the processes from the left panel, All related network sessions will shown in the ‘frame summary’ window once OneNote lunched:&lt;/p></description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>&lt;p>After &lt;a href="https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/">Telnet&lt;/a>, continue to discuss how to access network device via SSH with Ansible.&lt;/p>
+&lt;p>For SSH access, we should consider 3 methods:&lt;/p>
+&lt;ol>
+&lt;li>Username/password&lt;/li>
+&lt;li>Username/Public-Key without password&lt;/li>
+&lt;li>Username/Public-Key with password&lt;/li>
+&lt;/ol>
+&lt;p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2113px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_acff4cb47d4a9f39.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_9eb5bd280204eb4f.png" class="img-responsive img-lazyload" alt=Topo style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="enable-ssh-on-the-router">Enable SSH on the router&lt;/h5>
+&lt;p>Jump #1 username/password part to public key configuration, I discussed &lt;a href="https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/">how to configure public key on IOS router with Putty&lt;/a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.&lt;/p></description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>&lt;p>I’m learning &lt;a href="https://www.ansible.com/">Ansible&lt;/a> by reading the official document and some books like &lt;a href="Ansible%E5%85%A5%E9%97%A8">Ansible入门&lt;/a>. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.&lt;/p>
+&lt;p>The most important thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour by accessing the network device from CLI too.&lt;/p></description></item><item><title>Run PaloAlto VM on EVE(UNL)/virtualbox/OSX</title><link>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</link><pubDate>Thu, 25 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/25/run-paloalto-vm-on-eve-unl-virtualbox-osx/</guid><description>&lt;p>I tried to run Palo Alto on EVE/Virtualbox/Apple MAC OS and found it fails to start the Palo Alto Firewall. So I decided to find the root cause. (EVE suggests the users use VMware, I used VirtualBox instead because I don’t have a VMware Fusion license)&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>I went through EVE logs 1st.&lt;/p>
+&lt;p>System -&amp;gt; System logs -&amp;gt; unl_wrapper.txt&lt;/p>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 483px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/01/13-opt_hu_65af80ce9eba50f4.png" data-fancybox data-caption=Log >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/01/13-opt_hu_e1d63a52bdeb2ed2.png" class="img-responsive img-lazyload" alt=Log style="height: 200px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Log&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>and found the log:&lt;/p></description></item><item><title>tc-How it work on different IPs</title><link>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</link><pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/09/22/tc-how-it-works-on-different-ips/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>interface&lt;span style="color:#f92672">=&lt;/span>eth0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ip1&lt;span style="color:#f92672">=&lt;/span>192.168.1.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ip2&lt;span style="color:#f92672">=&lt;/span>172.16.1.1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>delay1&lt;span style="color:#f92672">=&lt;/span>100ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>delay2&lt;span style="color:#f92672">=&lt;/span>200ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc qdisc add dev $interface root handle 1: prio
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc qdisc add dev $interface parent 1:1 netem delay $delay1 10ms 25%
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc filter add dev $interface parent 1: protocol ip prio &lt;span style="color:#ae81ff">1&lt;/span> u32 match ip dst $ip1 flowid 1:1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc qdisc add dev $interface parent 1:2 netem delay $delay2 10ms 25%
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tc filter add dev $interface parent 1: protocol ip prio &lt;span style="color:#ae81ff">2&lt;/span> u32 match ip dst $ip2 flowid 1:2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Cisco IPS–Inline VLAN Pair mode</title><link>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</link><pubDate>Fri, 24 Mar 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/03/24/cisco-ips-inline-vlan-pair-mode/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>Setup Cisco IPS on EVE&lt;/p>
+&lt;p>I failed to setup Cisco IPS on EVE(ver 2.0.3-53). I Downloaded Cisco IPS ova file via &lt;a href="http://certcollection.org/forum/topic/270568-ips-4240-ver-7-unholy-darkness/page__hl__%20cisco%20%20ips">certcollection&lt;/a> (&lt;a href="https://mega.nz/#!W99UnTIa!-3k6bQwiD_DhNCDFfL6TWlU69KoRwIYeaJE9JlDOASY">mega&lt;/a>)&lt;/p>
+&lt;p>Followed the [instructions](&lt;a href="http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/">http://certcollection.org/forum/topic/266792-emulating-ips-on-unl/&lt;/a> &lt;a href="http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips">http://www.cznetlab.cz/index.php?cat=cciesec&amp;amp;subcat=unlips&lt;/a>) for IPS Interfaces.&lt;/p>
+&lt;p>and met the issue:&lt;/p>
+&lt;p>Cisco IPS failed to ping anything out of it, I run traffic capture on IPS’s interface, no packet out when I execute the ping command.&lt;/p>
+&lt;p>Related &lt;a href="http://www.unetlab.com/forum/viewtopic.php?f=5&amp;amp;t=55&amp;amp;sid=25184c5b3a889925218c20bffb2f180f">post&lt;/a> on EVE official forum, and the official answer is: This image is corrupted and not working neither on UNL nor EVE&lt;/p></description></item><item><title>Run NX-OSv 9000 on EVE(UNL)</title><link>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</link><pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/01/08/run-nx-osv-9000-on-eve-unl/</guid><description>&lt;p>Refer to &lt;a href="https://adosztal.blogspot.com/2016/12/how-to-add-nx-osv-9000-to-gns3.html">how to add NX-OXv 9000 to GNS3&lt;/a>&lt;/p>
+&lt;h4 id="1-download-image-files">1. Download image files&lt;/h4>
+&lt;p>Here is the NX-OSv9k &lt;a href="https://software.cisco.com/download/release.html?mdfid=286312239&amp;amp;flowid=81422&amp;amp;softwareid=282088129&amp;amp;release=7.0(3)I5(1)&amp;amp;relind=AVAILABLE&amp;amp;rellifecycle=&amp;amp;reltype=latest">image&lt;/a> file from Cisco (nxosv-final.7.0.3.I5.1.qcow2). Please note that you must have a service contract with Cisco in order to download it.&lt;/p>
+&lt;p>&lt;strong>No I can’t provide the image to anyone.&lt;/strong>&lt;/p>
+&lt;h4 id="2-copy-image-to-eveunl">2. Copy image to eve(UNL)&lt;/h4>
+&lt;p>change file name to ‘hda.qcow2’&lt;/p>
+&lt;p>copy source file to ‘/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I5.1’&lt;/p>
+&lt;p>run&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3-add-a-new-node-for-nxosv9k">3. Add a New node for nxosv9k&lt;/h4>
+&lt;p>Copy the &lt;a href="https://gitlab.com/hanbaobao2005/eve-ng-public/blob/master/html/templates/nxosv9k.php">php file&lt;/a> to &amp;lsquo;/opt/unetlab/html/templates/&amp;rsquo;&lt;/p></description></item><item><title>VSphere6, VCenter6 Installation</title><link>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</link><pubDate>Fri, 08 Jan 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/08/vsphere6-vcenter6-installation/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>Crash happened when I install Vsphere on my PC&lt;/p>
+&lt;p>Solution: Disable option &amp;ldquo;Limit Maximum CPUID&amp;rdquo; in Bios&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>VCenter appliance deployment&lt;/p>
+&lt;p>Vmware doesn&amp;rsquo;t provide vcenter appliance in ova/ovf format anymore, follow the &lt;a href="http://www.vladan.fr/vmware-vcenter-6-0-u1-vcsa-how-to-install-configure/">instruction&lt;/a> to deploy it.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Inventory is empty in the VCenter webpage&lt;/p>
+&lt;p>The most important thing: Don&amp;rsquo;t login vcenter by the account &amp;lsquo;root&amp;rsquo;, instead of it using SSO account. the account in the format: &amp;lsquo;administrator@domain-name&amp;rsquo;&lt;/p>
+&lt;p>Also, Vmware has a KB about this issue:&lt;/p></description></item><item><title>Dynagen/Dynamips error: netio_desc_create_udp: unable to connect to</title><link>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</link><pubDate>Fri, 20 Dec 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/12/20/dynagen-dynamips-error-netio_desc-create-udp-unable-to-connect-to/</guid><description>&lt;ul>
+&lt;li>OS: CentOS 6.5 x86_64 installed on vmware&lt;/li>
+&lt;li>Dynamips 0.2.10&lt;/li>
+&lt;/ul>
+&lt;p>There is an error when loading a .net file named as test.net with 100 devices in Dynagen.0.11.0:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>netio_desc_create_udp: unable to connect to
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>I searched on the Internet about this error msg, most of posts shared a method: specified UDP port of dynamips instance in .net file. But it doesn’t work for me.&lt;/p>
+&lt;p>As I found a Dynagen description in &lt;a href="http://www.gns3.net/dynagen/">GNS3 website&lt;/a>:
+however Dynagen is still updated and developed for GNS3, this means you can download &lt;a href="http://www.gns3.net/download/">GNS3 sources&lt;/a>, find Dynagen in it.&lt;/p></description></item><item><title>SNMP simulator installation guide</title><link>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/01/28/snmp-simulator-installation-guide/</guid><description>&lt;p>&lt;strong>About SNMP Simulator&lt;/strong>&lt;/p>
+&lt;p>The the SNMP Simulator software is intended for testing SNMP Managers against a large number of SNMP Agents that represent a potentially very large network populated with different kinds of SNMP-capable devices.&lt;/p>
+&lt;p>Refers to its &lt;a href="https://github.com/etingof/snmpsim">project page&lt;/a> for more info.&lt;/p>
+&lt;p>Why?&lt;/p>
+&lt;p>With SNMP simulator you can simulate a device by the output of SNMPwalk without considering MIB files.&lt;/p>
+&lt;p>This article is about how to install SNMP Simulator.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Python&lt;/p></description></item><item><title>Trouble shooting: Cisco router DHCP No option 125</title><link>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</link><pubDate>Wed, 13 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/13/trouble-shooting-cisco-router-dhcp-no-option125/</guid><description>&lt;p>Topology:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 264px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_be4615ef6586dd59.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/1-opt_hu_25b5ce0b92cb5f75.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Configure DHCP on Cisco router 2811 to assign a static IP to the italkBB: Cisco SPA 1202.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>start DHCP service by command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>service dhcp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>debug on Cisco router to check DHCP request by the commands:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>debug ip dhcp server packet
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>terminal monitor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Debug info :&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-log" data-lang="log">DHCPD: DHCPREQUEST received from client 0100.1c23.3541.98
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>configure DHCP&lt;/p></description></item><item><title>Configuring SSH public key authentication on Cisco IOS Device</title><link>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/</guid><description>&lt;p>SSH public Key types:&lt;/p>
+&lt;ul>
+&lt;li>RSA key use with SSH1 and SSH2 protocol&lt;/li>
+&lt;li>DSA key use with SSH2 protocol&lt;br>&lt;br>Note: DSA is weak than RSA&lt;/li>
+&lt;/ul>
+&lt;p>The Key pairs:&lt;/p>
+&lt;ul>
+&lt;li>Public key: SSH.com使用的RFC 4716指定的公钥格式，而OpenSSH使用了另外的格式&lt;/li>
+&lt;li>Private Key: SSH v1私钥只有一种标准格式，但SSH v2私钥格式很多，OpenSSH、ssh.com、puty、winscp格式不同且不兼容&lt;/li>
+&lt;/ul>
+&lt;h4 id="generate-the-key">Generate the Key&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>SecureCRT
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 439px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/12-opt_hu_63c2f50f9e75d256.png" data-fancybox data-caption=SecureCRT-PublicKey-1 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/12-opt_hu_7f241b83164a8b4e.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-1 style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-1&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 415px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/13-opt_hu_e3fb489c31c0a6be.png" data-fancybox data-caption=SecureCRT-PublicKey-2 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/13-opt_hu_1c1c5d44bf6bd2bc.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-2 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-2&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 420px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/14-opt_hu_d0bfde43659df61e.png" data-fancybox data-caption=SecureCRT-PublicKey-3 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/14-opt_hu_2401e31783adc544.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-3 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-3&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+密钥类型有两种: DSA、RSA. Secure CRT提示多种服务器不支持RSA, Cisco IOS supports RSA only.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 411px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/15-opt_hu_ecf3773eec3f9bd.png" data-fancybox data-caption=SecureCRT-PublicKey-4 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/15-opt_hu_bc0053589b756be6.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-4 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-4&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+通行短语为对私钥加密的密码，注释为提示输入密码时的提示，两项均为可为空
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 418px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/16-opt_hu_61191c8d71b27274.png" data-fancybox data-caption=SecureCRT-PublicKey-5 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/16-opt_hu_b29676cd58ede033.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-5 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-5&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 419px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/17-opt_hu_f1432616b8f60d74.png" data-fancybox data-caption=SecureCRT-PublicKey-6 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/17-opt_hu_4a96cee4b01eafcc.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-6 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-6&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 411px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/18-opt_hu_8eebf98f3fa5b673.png" data-fancybox data-caption=SecureCRT-PublicKey-7 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/18-opt_hu_d9acee599e9ba0d1.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-7 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-7&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+为了更好的兼容性和适用性，OpenSSH format is prefered，Choose the location to save the key files：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 334px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/19-opt_hu_37ba079b6ab849c5.png" data-fancybox data-caption=SecureCRT-PublicKey-8 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/19-opt_hu_18b4ff7557e39f4b.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-8 style="height: 270px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-8&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+点击’Finish’后会弹出对话框：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 283px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/20-opt_hu_1e1d6825887bddc8.png" data-fancybox data-caption=SecureCRT-PublicKey-9 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/20-opt_hu_6d16f2f10637958b.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-9 style="height: 150px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-9&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+如果选择’Yes’,会影响’快速连接’中的公钥指向保存的文件:
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 303px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2013/11/21-opt_hu_86e897584bf51a36.png" data-fancybox data-caption=SecureCRT-PublicKey-10 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2013/11/21-opt_hu_a70b6dffce8116c8.png" class="img-responsive img-lazyload" alt=SecureCRT-PublicKey-10 style="height: 290px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>SecureCRT-PublicKey-10&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+&lt;/p></description></item><item><title>Open LDAP and SSH Public key</title><link>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</link><pubDate>Fri, 08 Nov 2013 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2013/11/08/openldap-ssh-public-key/</guid><description>&lt;p>The article is about how I setup Open LDAP on CentOS6 for SSH public key authentication.&lt;/p>
+&lt;h4 id="1download-and-install-centos62">1.Download and install CentOS6.2&lt;/h4>
+&lt;p>&lt;a href="http://ftp.riken.jp/Linux/centos/6/isos/i386/CentOS-6.10-i386-minimal.iso">CentOS-6.xx-i366-minimal.iso&lt;/a>&lt;/p>
+&lt;h4 id="2-centos-configuration">2. CentOS configuration&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>Network: IP address, DNS, and restart network service&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/resolv.conf/DNS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/sysconfig/network-scripts/ifcfg-eth0/NIC IP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vi /etc/networks//Route
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/etc/init.d/network restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>configure host file&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/hosts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Modify 127.0.0.1 item to FQDN format because openldap get &lt;em>dc&lt;/em> from the item automatically.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>127.0.0.1 ldap.kzblog.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Stop security services&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>setenforce permissive
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getenforce
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>service iptables stop
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>Note: This only for the testing environment.&lt;/em>&lt;/p></description></item></channel></rss>

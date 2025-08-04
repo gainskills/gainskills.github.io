@@ -1,75 +1,542 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Code on Blog - uTIcARdI</title><link>https://blog.gainskills.top/categories/code/</link><description>Recent content in Code on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 17 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/categories/code/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang abnormal CPU usage</title><link>https://blog.gainskills.top/2023/07/17/</link><pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2023/07/17/</guid><description>Plan: Sleep 2.5 hours in a for loop
-Implementation:
-package test import ( &amp;#34;context&amp;#34; &amp;#34;time&amp;#34; ) const connChkInterval = 2.5 * time.Hour.Hours() func testFunc(ctx context.Context) { _Loop: for { select { case &amp;lt;-ctx.Done(): break _Loop default: // code of default branch } time.Sleep(connChkInterval) } } Issue:
-CPU usage goes high with the code Did analysis with golang profile, and saw runtime/internal/syscall.Syscall is the root cause The CPU usage never went to so high ever even though I run SQLite and the Golang App on the same server Troubleshooting:</description></item><item><title>An incompatible issue of xls file</title><link>https://blog.gainskills.top/2019/12/02/pyxlwtdebug/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/12/02/pyxlwtdebug/</guid><description>Background An integration project: exporting a csv file from system A, convert the csv file to xls file, and import the converted file into system B (A 3rd party system).
-Environment:
-Python3.7.5 xls library: xlwt1.3 Developing on Mac 10.15.1 with VS Code, and finally the project will be published to a Docker environment(ritht now, it&amp;rsquo;s Python:3.7.5-alpine3.10). Issue The converted xls file, system B doesn&amp;rsquo;t support it. However, the file can be opened in Microsoft Excel, and then system B supports it after the open operation (did nothing, just open it then close)😫.</description></item><item><title>VSCode as an IDLE for Django</title><link>https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-Django/</link><pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-Django/</guid><description>This blog is about using MS VSCode as Django IDLE (OS: Mac OX, the steps are referenceable on Linux, Windows).
-1. Download installation files and install MS VScode, Python from following links: MS VSCode
-Python3
-Optional: On Mac OS, I recommend homebrew for Python Installation because third party libraries&amp;rsquo; dependency will be processed smoothly.
-Install homebrew:
-/usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; Install Python3:
-brew install python@3 2. Python Extension Launch VSCode and install the Extension: Python</description></item><item><title>os.path.join() or os.sep.join()?</title><link>https://blog.gainskills.top/2019/07/23/path-join/</link><pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/07/23/path-join/</guid><description>There are two functions join a full path. E.g.: In drive: C:
-|- test | |- test.xt os.path.join
-import os fullpath = os.path.join(&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;) Output on windows:
-c:test\test.txt Output on Mac OS c:/test/test.txt
-os.sep.join
-import os fullpath = os.sep.join([&amp;#39;c:&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;test.txt&amp;#39;]) Output on windows:
-c:\test\test.txt Output on Mac OS c:/test/test.txt
-From the outputs, you can see the difference: os.path.join() doesn&amp;rsquo;t work as expected on windows.
-Further verification:
-with open(fullpath) as test: test.</description></item><item><title>File name on windows</title><link>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</link><pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</guid><description>Error 1 Run a bat (ping.bat) to ping multiple IPs like this: set testipa=x.x.x.x echo Checking ping %testipa% (15 times), please don&amp;#39;t close current window echo ping %testipa% (15 times) &amp;gt;&amp;gt; test.log ping %testipa% -w 500 -n 15 &amp;gt;&amp;gt; test.log
-But got the following error: Checking ping x.x.x.x (15 times), please don&amp;#39;t close current window The process cannot access the file because it is being used by another process. The process cannot access the file because it is being used by another process.</description></item><item><title>Post a file to Flask by Curl via API</title><link>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</link><pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</guid><description>Curl is widely used in command lines or scripts to transfer data.
-Different ways to use curl to post a file to a web server with samples (from both client-side and server: Python-Flask side) will be discussed because it took me a while on the server-side to receiving the data from client.
-I would like to add samples of Python-requests, Postman later.
-Started with macOS Mojave Python 3.7.2 Flask 1.0.2 Flask-RESTful 0.</description></item><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>with Zip Read a block of pseudo Python code like comA = zip(lsA, lsB) comB = zip(*comA)
-then made a try to see how * works: 1 2 3 4 5 6 7 8 a = [1, 2, 3] b = [4, 5, 6] c = zip(a,b) for j in c: print(j) d = zip(*c) for i in d: print(i) and the output: (1, 4) (2, 5) (3, 6)</description></item><item><title>Hugo-Customization</title><link>https://blog.gainskills.top/2019/02/06/hugo-customization/</link><pubDate>Wed, 06 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/06/hugo-customization/</guid><description>A list about how I customize Hugo and why I did the change, the post will be updated continuously.
-1. fractions Network Engineer should care about this, because it shows wrong IP/mask format with default value: fractions with default value Disable it in config.toml: [blackfriday] fractions = false
-2. hrefTargetBlank This default value of the option is false which means external links(The wording was corrected to &amp;ldquo;absolute&amp;rdquo; from &amp;rsquo;external&amp;rsquo; on Hugo official doc).</description></item><item><title>Hugo-Versioning</title><link>https://blog.gainskills.top/2019/01/27/hugo-versioning/</link><pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/27/hugo-versioning/</guid><description>Hugo provides the detail instructions about how to deploy it on different environment.
-At first, I followed Deployment of Project Pages from /docs folder on master branch, and put all files in one repository.
-I continue to check Deployment of Project Pages From Your gh-pages branch after I did some customization on hugo-theme-cleanwhite and want to publish the change to the forked branch.
-Instead of the follow Hugo guide, I did some try myself.</description></item><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>aiohttp is an Asynchronous HTTP client/server framework for asyncio and Python
-I tried it because of the features:
-Tuning the DNS cache Resolving using custom nameservers With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.
-Since the code on the official document is simple:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Code on Blog - uTIcARdI</title><link>https://blog.gainskills.top/categories/code/</link><description>Recent content in Code on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/categories/code/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang abnormal CPU usage</title><link>https://blog.gainskills.top/2023/07/17/</link><pubDate>Mon, 17 Jul 2023 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2023/07/17/</guid><description>&lt;p>Plan: Sleep 2.5 hours in a &lt;code>for&lt;/code> loop&lt;/p>
+&lt;p>Implementation:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;context&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;time&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">connChkInterval&lt;/span> = &lt;span style="color:#ae81ff">2.5&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">Hour&lt;/span>.&lt;span style="color:#a6e22e">Hours&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">testFunc&lt;/span>(&lt;span style="color:#a6e22e">ctx&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">Context&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">_Loop&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">select&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#f92672">&amp;lt;-&lt;/span>&lt;span style="color:#a6e22e">ctx&lt;/span>.&lt;span style="color:#a6e22e">Done&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span> &lt;span style="color:#a6e22e">_Loop&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">default&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//	code of default branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">Sleep&lt;/span>(&lt;span style="color:#a6e22e">connChkInterval&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Issue:&lt;/p>
+&lt;ol>
+&lt;li>CPU usage goes high with the code&lt;/li>
+&lt;li>Did analysis with golang profile, and saw &lt;code>runtime/internal/syscall.Syscall&lt;/code> is the root cause&lt;/li>
+&lt;li>The CPU usage never went to so high ever even though I run SQLite and the Golang App on the same server&lt;/li>
+&lt;/ol>
+&lt;p>Troubleshooting:&lt;/p></description></item><item><title>An incompatible issue of xls file</title><link>https://blog.gainskills.top/2019/12/02/pyxlwtdebug/</link><pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/12/02/pyxlwtdebug/</guid><description>&lt;h4 id="background">Background&lt;/h4>
+&lt;p>An integration project: exporting a csv file from system A, convert the csv file to xls file, and import the converted file into system B (A 3rd party system).&lt;/p>
+&lt;p>Environment:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.python.org/downloads/release/python-375/">Python3.7.5&lt;/a>&lt;/li>
+&lt;li>xls library: &lt;a href="https://github.com/python-excel/xlwt/releases">xlwt1.3&lt;/a>&lt;/li>
+&lt;li>Developing on Mac 10.15.1 with &lt;a href="https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-django/">VS Code&lt;/a>, and finally the project will be published to a Docker environment(ritht now, it&amp;rsquo;s &lt;a href="https://hub.docker.com/_/python/">Python:3.7.5-alpine3.10&lt;/a>).&lt;/li>
+&lt;/ul>
+&lt;h4 id="issue">Issue&lt;/h4>
+&lt;p>The converted xls file, system B doesn&amp;rsquo;t support it. However, the file can be opened in Microsoft Excel, and then system B supports it after the open operation (did nothing, just open it then close)😫.&lt;/p></description></item><item><title>VSCode as an IDLE for Django</title><link>https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-Django/</link><pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/11/15/vscode-as-idle-for-Django/</guid><description>&lt;p>This blog is about using MS VSCode as Django IDLE (OS: Mac OX, the steps are referenceable on Linux, Windows).&lt;/p>
+&lt;h5 id="1-download-installation-files-and-install-ms-vscode-python-from-following-links">1. Download installation files and install MS VScode, Python from following links:&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://code.visualstudio.com/download">MS VSCode&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://www.python.org/downloads/">Python3&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;strong>Optional:&lt;/strong> On Mac OS, I recommend &lt;a href="https://brew.sh/">homebrew&lt;/a> for Python Installation because third party libraries&amp;rsquo; dependency will be processed smoothly.&lt;/p>
+&lt;p>Install &lt;code>homebrew&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>/usr/bin/ruby -e &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install&lt;span style="color:#66d9ef">)&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Install &lt;code>Python3&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>brew install python@3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;h5 id="2-python-extension">2. Python Extension&lt;/h5>
+&lt;p>Launch VSCode and install the Extension: &lt;a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python&lt;/a>&lt;/p></description></item><item><title>os.path.join() or os.sep.join()?</title><link>https://blog.gainskills.top/2019/07/23/path-join/</link><pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/07/23/path-join/</guid><description>&lt;p>There are two functions join a full path. E.g.: In drive: C:&lt;/p>
+&lt;pre>&lt;code>|- test
+| |- test.xt
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>os.path.join&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fullpath &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>path&lt;span style="color:#f92672">.&lt;/span>join(&lt;span style="color:#e6db74">&amp;#39;c:&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test.txt&amp;#39;&lt;/span>)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on windows:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:test\test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on Mac OS
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>os.sep.join&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fullpath &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>sep&lt;span style="color:#f92672">.&lt;/span>join([&lt;span style="color:#e6db74">&amp;#39;c:&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;test.txt&amp;#39;&lt;/span>])&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on windows:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:\test\test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Output on Mac OS
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>c:&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">/&lt;/span>test&lt;span style="color:#f92672">.&lt;/span>txt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>From the outputs, you can see the difference: &lt;code>os.path.join()&lt;/code> doesn&amp;rsquo;t work as expected on windows.&lt;/p>
+&lt;p>Further verification:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">with&lt;/span> open(fullpath) &lt;span style="color:#66d9ef">as&lt;/span> test:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> test&lt;span style="color:#f92672">.&lt;/span>read()&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Run with error:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(fullpath) &lt;span style="color:#66d9ef">as&lt;/span> test:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">FileNotFoundError&lt;/span>: [Errno &lt;span style="color:#ae81ff">2&lt;/span>] No such file &lt;span style="color:#f92672">or&lt;/span> directory: &lt;span style="color:#e6db74">&amp;#39;c:test&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">test.txt&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item><item><title>File name on windows</title><link>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</link><pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/03/01/file-name-on-winos/</guid><description>&lt;h3 id="error-1">Error 1&lt;/h3>
+&lt;p>Run a bat (ping.bat) to ping multiple IPs like this:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bat" data-lang="bat">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">set&lt;/span> testipa=x.x.x.x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> Checking ping %testipa% (15 times), please don&amp;#39;t close current window
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">echo&lt;/span> ping %testipa% (15 times) &amp;gt;&amp;gt; test.log
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ping %testipa% -w 500 -n 15 &amp;gt;&amp;gt; test.log&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;p>But got the following error:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bat" data-lang="bat">&lt;span style="display:flex;">&lt;span>Checking ping x.x.x.x (15 times), please don&amp;#39;t close current window
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>The process cannot access the file because it is being used by another process.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>The process cannot access the file because it is being used by another process.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item><item><title>Post a file to Flask by Curl via API</title><link>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</link><pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/20/post-file-by-curl-to-flask-via-api/</guid><description>&lt;p>&lt;a href="https://curl.haxx.se/docs/manpage.html">Curl&lt;/a> is widely used in command lines or scripts to transfer data.&lt;br>
+Different ways to use curl to post a file to a web server with samples (from both client-side and server: &lt;a href="http://flask.pocoo.org/">Python-Flask&lt;/a> side) will be discussed because it took me a while on the server-side to receiving the data from client.&lt;br>
+I would like to add samples of &lt;a href="http://docs.python-requests.org/en/master/">Python-requests&lt;/a>, &lt;a href="https://www.getpostman.com/">Postman&lt;/a> later.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;h5 id="started-with">Started with&lt;/h5>
+&lt;ul>
+&lt;li>macOS Mojave&lt;/li>
+&lt;li>Python 3.7.2&lt;/li>
+&lt;li>Flask 1.0.2&lt;/li>
+&lt;li>Flask-RESTful 0.3.7&lt;/li>
+&lt;li>curl 7.54.0 (x86_64-apple-darwin18.0)&lt;/li>
+&lt;/ul>
+&lt;p>The Flask code:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Py file name: simple.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> flask &lt;span style="color:#f92672">import&lt;/span> Flask, request
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> flask_restful &lt;span style="color:#f92672">import&lt;/span> Api, Resource, reqparse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> werkzeug
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app &lt;span style="color:#f92672">=&lt;/span> Flask(__name__)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>api &lt;span style="color:#f92672">=&lt;/span> Api(app)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">kzwebfile&lt;/span>(Resource):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">post&lt;/span>(self, filename):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>api&lt;span style="color:#f92672">.&lt;/span>add_resource(kzwebfile, &lt;span style="color:#e6db74">&amp;#39;/&amp;lt;string:filename&amp;gt;&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app&lt;span style="color:#f92672">.&lt;/span>run()&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item><item><title>Python operator:single star(*)</title><link>https://blog.gainskills.top/2019/02/09/single-star-zip/</link><pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/09/single-star-zip/</guid><description>&lt;ul>
+&lt;li>
+&lt;h3>with Zip&lt;/h3>
+&lt;p>Read a block of pseudo Python code like
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>comA &lt;span style="color:#f92672">=&lt;/span> zip(lsA, lsB)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>comB &lt;span style="color:#f92672">=&lt;/span> zip(&lt;span style="color:#f92672">*&lt;/span>comA)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;p>then made a try to see how * works:
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="background-color:#3c3d38">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/span>&lt;span style="background-color:#3c3d38">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="background-color:#3c3d38">&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>a &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>c &lt;span style="color:#f92672">=&lt;/span> zip(a,b)
+&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#3c3d38">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> j &lt;span style="color:#f92672">in&lt;/span> c:
+&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#3c3d38">&lt;span>print(j)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>d &lt;span style="color:#f92672">=&lt;/span> zip(&lt;span style="color:#f92672">*&lt;/span>c)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> d:
+&lt;/span>&lt;/span>&lt;span style="display:flex; background-color:#3c3d38">&lt;span>print(i)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/p></description></item><item><title>Hugo-Customization</title><link>https://blog.gainskills.top/2019/02/06/hugo-customization/</link><pubDate>Wed, 06 Feb 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/02/06/hugo-customization/</guid><description>&lt;p>A list about how I customize Hugo and why I did the change, the post will be updated continuously.&lt;/p>
+&lt;h3 id="1-fractions">1. &lt;a href="https://gohugo.io/getting-started/configuration/">fractions&lt;/a>&lt;/h3>
+&lt;p>Network Engineer should care about this, because it shows wrong &lt;em>IP/mask&lt;/em> format with default value:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 310px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/02/01-opt_hu_197622209dbd8d69.png" data-fancybox data-caption=fractions&amp;#32;with&amp;#32;default&amp;#32;value >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/02/01-opt_hu_32e1677037f5416.png" class="img-responsive img-lazyload" alt=fractions&amp;#32;with&amp;#32;default&amp;#32;value style="height: 140px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>fractions with default value&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+Disable it in config.toml:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">blackfriday&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fractions&lt;/span> = &lt;span style="color:#66d9ef">false&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;h3 id="2-hreftargetblank">2. hrefTargetBlank&lt;/h3>
+&lt;p>This default value of the option is &lt;code>false&lt;/code> which means external links(The wording was corrected to &amp;ldquo;absolute&amp;rdquo; from &amp;rsquo;external&amp;rsquo; on Hugo official doc).
+I prefer to change the value to &lt;code>true&lt;/code>.&lt;/p></description></item><item><title>Hugo-Versioning</title><link>https://blog.gainskills.top/2019/01/27/hugo-versioning/</link><pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/27/hugo-versioning/</guid><description>&lt;p>Hugo provides the detail &lt;a href="https://gohugo.io/hosting-and-deployment/">instructions&lt;/a> about how to deploy it on different environment.&lt;/p>
+&lt;p>At first, I followed &lt;a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#deployment-of-project-pages-from-docs-folder-on-master-branch">Deployment of Project Pages from /docs folder on master branch&lt;/a>, and put all files in one repository.&lt;/p>
+&lt;p>I continue to check &lt;a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#deployment-of-project-pages-from-your-gh-pages-branch">Deployment of Project Pages From Your gh-pages branch&lt;/a> after I did some customization on &lt;a href="https://themes.gohugo.io/hugo-theme-cleanwhite/">hugo-theme-cleanwhite&lt;/a> and want to publish the change to the &lt;a href="https://github.com/gainskills/hugo-theme-cleanwhite">forked branch&lt;/a>.&lt;/p>
+&lt;p>Instead of the follow Hugo guide, I did some try myself. I searched &amp;ldquo;change a subfolder to another repository and found the article: &lt;a href="http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/">Moving Files from one Git Repository to Another, Preserving History&lt;/a> but its case is:&lt;/p></description></item><item><title>aiohttp/aiodns-Resolving using custom nameservers</title><link>https://blog.gainskills.top/2019/01/23/try-aiohttp/</link><pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/23/try-aiohttp/</guid><description>&lt;p>&lt;a href="https://github.com/aio-libs/aiohttp">aiohttp&lt;/a> is an Asynchronous HTTP client/server framework for asyncio and Python&lt;/p>
+&lt;p>I tried it because of the features:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://aiohttp.readthedocs.io/en/stable/client_advanced.html#tuning-the-dns-cache">Tuning the DNS cache&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://aiohttp.readthedocs.io/en/stable/client_advanced.html#resolving-using-custom-nameservers">Resolving using custom nameservers&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>With this, verifying the CDN&amp;rsquo;s POPs with different ISPs&amp;rsquo; DNS on single a point should be possible.&lt;/p>
+&lt;p>Since the code on the official document is simple:&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;p>from aiohttp.resolver import AsyncResolver&lt;/p>
+&lt;p>resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;])
+conn = aiohttp.TCPConnector(resolver=resolver)&lt;/p>
+&lt;pre tabindex="0">&lt;code>
+I tried it with following code:
+
+~~~python
+import aiohttp
+import asyncio
 from aiohttp.resolver import AsyncResolver
-resolver = AsyncResolver(nameservers=[&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;]) conn = aiohttp.TCPConnector(resolver=resolver)
-I tried it with following code: ~~~python import aiohttp import asyncio from aiohttp.</description></item><item><title>get() in get() method of Pyhon dict</title><link>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</link><pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</guid><description>Write down the tip for the practice: The Time in Words.
-A dict was created for the time in number format to string format:
-intToStrDict = { 1: &amp;#39;one&amp;#39;, 2: &amp;#39;two&amp;#39;, 3: &amp;#39;three&amp;#39;, 4: &amp;#39;four&amp;#39;, 5: &amp;#39;five&amp;#39;, 6: &amp;#39;six&amp;#39;, 7: &amp;#39;seven&amp;#39;, 8: &amp;#39;eight&amp;#39;, 9: &amp;#39;nine&amp;#39;, 10: &amp;#39;ten&amp;#39;, 11: &amp;#39;eleven&amp;#39;, 12: &amp;#39;twelve&amp;#39;, 13: &amp;#39;thirteen&amp;#39;, 14: &amp;#39;fourteen&amp;#39;, 15: &amp;#39;quarter&amp;#39;, 16: &amp;#39;sixteen&amp;#39;, 17: &amp;#39;seventeen&amp;#39;, 18: &amp;#39;eighteen&amp;#39;, 19: &amp;#39;nineteen&amp;#39;, 20: &amp;#39;twenty&amp;#39;, 30: &amp;#39;half&amp;#39;, 40: &amp;#39;fourty&amp;#39;, 50: &amp;#39;fifty&amp;#39; } get() is a good way get the value of a key from the dict, so I tried following function to convert minute in number format to string format:</description></item><item><title>Python operator: double start(**)</title><link>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</guid><description>Here is the data:
-testdata = { &amp;#39;a&amp;#39; : 1, &amp;#39;b&amp;#39;: 2 } There are two ways to pass the data to a function
-Passing the data to the function
-def loop(data): for key, value in data.items(): print(key, value) loop(testdata) Passing the data with operator: **
-def loopStar(**kwargs): for key, value in kwargs.items(): print(key, value) loopStar(**testdata)</description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:
-Install Jenkins
-Install Xcode plugin on Jenkins
-New a ‘Freestyle project’ on Jenkins
-Jenkins project configuration
-‘Source Code Management’ on Jenkins ‘Build’ setting on Jenkins Jenkins Project -&amp;gt; ‘Build Now’
-Errors:
-CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.</description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>Continue to try ansible with the device which was configure in netconf feature on Cisco IOS/IOSXE.
-Ansible Inventory:
---- netconf: hosts: netconfIos: ansible_host: &amp;#34;172.16.254.100&amp;#34; ansible_network_os: &amp;#34;ios&amp;#34; ansible_ssh_port: 22 netconfJunos: ansible_host: &amp;#34;172.16.254.9&amp;#34; ansible_network_os: &amp;#34;junos&amp;#34; ansible_ssh_port: 830 vars: ansible_connection: &amp;#34;netconf&amp;#34; ansible_ssh_user: test ansible_ssh_pass: test123 Note:
-ansible_connnection should be ‘netconf’ Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830) PlayBook:
-- name: IOS hosts: netconfIos gather_facts: false tasks: - name: Get config for IOS devices netconf_get: source: running register: iosnetconf - name: Display output debug: msg: &amp;#34;{{ iosnetconf.</description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: Juniper’s official document is clear and easy to follow. but for Cisco, I followed NETCONF over SSHv2, unfortunately, I was stuck on it for 6 days. OS Version Cisco IOS XE Software, Version 16.04.01 Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>After Telnet, continue to discuss how to access network device via SSH with Ansible.
-For SSH access, we should consider 3 methods:
-Username/password Username/Public-Key without password Username/Public-Key with password Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH
-Topo Enable SSH on the router Jump #1 username/password part to public key configuration, I discussed how to configure public key on IOS router with Putty before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>I’m learning Ansible by reading the official document and some books like Ansible入门. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation. The most important thing to practice routers/switches/routing protocol is accessing the device and</description></item><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:
-ImportError: cannot import name customClass. Error Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.
-Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).
-I guess there must be something wrong with the latest version, or there is something conflict with my previous version (mininet 2.</description></item><item><title>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration</title><link>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</link><pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</guid><description>I intend to acquire the Python skill on web after years&amp;rsquo; work on data processing, so I started with Flask by the following Miguel Grinberg&amp;rsquo;s instruction: The Flask Mega, you can learn how to integrate bootstrap with your project from it. After that, you can learn how to integrate select2 with your project by reading Flask Web开发:用Select2</description></item><item><title>Python SMTPlib/Email</title><link>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</link><pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</guid><description>I followed the instruction which is written in Chinese to learn how to send emails by Python, here some tips from my practice:
-Name of the attachment is shown as ‘ATT00002’
-The name of the attachment in the receiver mailbox is shown in the format ‘ATT0000X‘ with the code:
-att1[&amp;#34;Content-Disposition&amp;#34;] = &amp;#39;attachment; filename=&amp;#34;runoob.txt&amp;#34;&amp;#39; Issue The issue can be fixed by using .addheader() function:
-att1.add_header(&amp;#39;Content-Disposition&amp;#39;, &amp;#39;attachment&amp;#39;, filename=&amp;#34;1.cpp&amp;#34;) Here is my code:</description></item><item><title>30分钟上手Python网络爬虫</title><link>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</link><pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</guid><description>原文链接: https://hackernoon.com/30-minute-python-web-scraper-39d6d038e5da 此翻译已经获得作者许可。对原文、本文任何形式的转载、引用，必须知会作者 我想用Python和Selenium做网络爬虫有一会了，但</description></item><item><title>OverflowError: signed char is greater than maximum</title><link>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</link><pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</guid><description>Here the pseudo code about the flow:
-from array import array c = array(&amp;#39;b&amp;#39;) with open(file, mode = &amp;#39;rb&amp;#39;) as f: for character in f: res = func(character) c.append(res) It runs into the error:
-OverflowError: signed char is greater than maximum with a special character &amp;lsquo;À&amp;rsquo; which its binary value is 192:
-Character My way to resolve this error is to update the type code of the array from &amp;lsquo;b&amp;rsquo; (signed char) to &amp;lsquo;B&amp;rsquo; (unsigned char).</description></item><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>Background:
-Here is a topology about the environment for performance testing, let’s name the servers 1st:
-1 windows server as the License/Workspace server 5 windows servers as the Network Server 5 windows servers as the Automation server Topo It took us a lot of time to deploy the product and collect logs on all of these servers.
-My colleague wrote a client-server application and do some of the tasks automatically. The application indeed works for log collection, but for product deployment, as the server end running as a service and fails to launch the InstallShield wizard, it doesn’t support the product installation.</description></item><item><title>VSCode for Python debug</title><link>https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/</link><pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/</guid><description>MS VS Code for Python debug from k z View the article here if the iframe failed to load: www.slideshare.net/slideshow/embed_code/key/3GrRaqBAXV9mK</description></item><item><title>Loop a dict to update the keys</title><link>https://blog.gainskills.top/2016/07/21/loop-a-dict-to-update-key/</link><pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/07/21/loop-a-dict-to-update-key/</guid><description>Source dict:
-{&amp;#39;keyA&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;keyB&amp;#39;: &amp;#39;&amp;#39;} Expected dict:
-{‘keyA/&amp;#39;keyA&amp;#39; :’’, keyA/keyB’ : ‘’} Code1:
-keyPrefix = &amp;#39;keyA&amp;#39; for key, value in Dict.items(): newkey = &amp;#39;/&amp;#39;.join([keyPrefix, key]) Dict[newkey] = Dict.pop(key) Code2:
-keyPrefix = &amp;#39;keyA&amp;#39; for key, value in Dict.keys(): newkey = &amp;#39;/&amp;#39;.join([keyPrefix, key]) Dict[newkey] = Dict.pop(key) Result of code1/code2 is:
-{&amp;#39;keyA/keyA/keyB&amp;#39; : &amp;#39;&amp;#39;, &amp;#39;keyA/keyA/keyA&amp;#39;: &amp;#39;&amp;#39;} It doesn&amp;rsquo;t work as expected, and I found the case only exists when prefix is the same to a key of the dict which means code1/code2 works well when the keyPrefix is neither ‘keyA’ nor ‘beyB’.</description></item><item><title>Python多版本, Sublime Text, Anaconda指北</title><link>https://blog.gainskills.top/2016/06/07/python-sublimetext-anaconda/</link><pubDate>Tue, 07 Jun 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/06/07/python-sublimetext-anaconda/</guid><description>介绍 Sublime text是一款很好用的文本编辑器，更是一款先进的代码编辑器，支持通过插件进行功能扩展。在使用过UltraEditor, Notepad++, vim等等编辑</description></item></channel></rss>
+
+resolver = AsyncResolver(nameservers=[&amp;#34;114.114.114.114&amp;#34;])
+
+async def dnstesting():
+ async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False, use_dns_cache=False, resolver=resolver)) as session:
+ r = await session.get(&amp;#34;http://google.com&amp;#34;)
+ print(r.text)
+
+asyncio.run(dnstesting())
+&lt;/code>&lt;/pre>&lt;p>Run with following error:&lt;/p></description></item><item><title>get() in get() method of Pyhon dict</title><link>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</link><pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/19/get-in-dict-get/</guid><description>&lt;p>Write down the tip for the practice: &lt;a href="https://www.hackerrank.com/challenges/the-time-in-words/problem">The Time in Words&lt;/a>.&lt;/p>
+&lt;p>A dict was created for the time in number format to string format:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>intToStrDict &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">1&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;one&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">2&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;two&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">3&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;three&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">4&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;four&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">5&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;five&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">6&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;six&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">7&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;seven&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">8&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;eight&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">9&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;nine&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">10&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;ten&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">11&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;eleven&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">12&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;twelve&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">13&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;thirteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">14&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;fourteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">15&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;quarter&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">16&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;sixteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">17&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;seventeen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">18&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;eighteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">19&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;nineteen&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">20&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;twenty&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">30&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;half&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">40&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;fourty&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">50&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;fifty&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://docs.python.org/3.7/library/stdtypes.html?highlight=dict%20get#dict.get">get()&lt;/a> is a good way get the value of a key from the dict, so I tried following function to convert minute in number format to string format:&lt;/p></description></item><item><title>Python operator: double start(**)</title><link>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</link><pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/python-trick-double-stars/</guid><description>&lt;p>Here is the data:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>testdata &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span> : &lt;span style="color:#ae81ff">1&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;b&amp;#39;&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There are two ways to pass the data to a function&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Passing the data to the function&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">loop&lt;/span>(data):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> key, value &lt;span style="color:#f92672">in&lt;/span> data&lt;span style="color:#f92672">.&lt;/span>items():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(key, value)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loop(testdata)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Passing the data with operator: **&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">loopStar&lt;/span>(&lt;span style="color:#f92672">**&lt;/span>kwargs):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> key, value &lt;span style="color:#f92672">in&lt;/span> kwargs&lt;span style="color:#f92672">.&lt;/span>items():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(key, value)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loopStar(&lt;span style="color:#f92672">**&lt;/span>testdata)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol></description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>&lt;p>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Install Xcode plugin on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>New a ‘Freestyle project’ on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins project configuration&lt;/p>
+&lt;ul>
+&lt;li>‘Source Code Management’ on Jenkins&lt;/li>
+&lt;li>‘Build’ setting on Jenkins&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins Project -&amp;gt; ‘Build Now’&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Errors:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.x’&lt;/p></description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>&lt;p>Continue to try ansible with the device which was configure in &lt;a href="https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/">netconf feature on Cisco IOS/IOSXE&lt;/a>.&lt;/p>
+&lt;p>Ansible Inventory:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">netconf&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfIos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.100&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ios&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">22&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfJunos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;junos&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">830&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">vars&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_connection&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;netconf&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_user&lt;/span>: &lt;span style="color:#ae81ff">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_pass&lt;/span>: &lt;span style="color:#ae81ff">test123&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p>
+&lt;ol>
+&lt;li>ansible_connnection should be ‘netconf’&lt;/li>
+&lt;li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)&lt;/li>
+&lt;/ol>
+&lt;p>PlayBook:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">IOS&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>: &lt;span style="color:#ae81ff">netconfIos&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">gather_facts&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tasks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Get config for IOS devices&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconf_get&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">source&lt;/span>: &lt;span style="color:#ae81ff">running&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">register&lt;/span>: &lt;span style="color:#ae81ff">iosnetconf&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Display output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">debug&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">msg&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ iosnetconf.stdout }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>&lt;p>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: &lt;a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html">Juniper’s official document&lt;/a> is clear and easy to follow. but for Cisco, I followed &lt;a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf">NETCONF over SSHv2&lt;/a>, unfortunately, I was stuck on it for 6 days.&lt;/p>
+&lt;p>&lt;strong>OS Version&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Cisco IOS XE Software, Version 16.04.01&lt;/li>
+&lt;li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NetConf Requests&lt;/strong>&lt;/p>
+&lt;p>Tried many requests, all failed:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>The hello (works) request:&lt;/p></description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>&lt;p>After &lt;a href="https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/">Telnet&lt;/a>, continue to discuss how to access network device via SSH with Ansible.&lt;/p>
+&lt;p>For SSH access, we should consider 3 methods:&lt;/p>
+&lt;ol>
+&lt;li>Username/password&lt;/li>
+&lt;li>Username/Public-Key without password&lt;/li>
+&lt;li>Username/Public-Key with password&lt;/li>
+&lt;/ol>
+&lt;p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2113px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_acff4cb47d4a9f39.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_9eb5bd280204eb4f.png" class="img-responsive img-lazyload" alt=Topo style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="enable-ssh-on-the-router">Enable SSH on the router&lt;/h5>
+&lt;p>Jump #1 username/password part to public key configuration, I discussed &lt;a href="https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/">how to configure public key on IOS router with Putty&lt;/a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.&lt;/p></description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>&lt;p>I’m learning &lt;a href="https://www.ansible.com/">Ansible&lt;/a> by reading the official document and some books like &lt;a href="Ansible%E5%85%A5%E9%97%A8">Ansible入门&lt;/a>. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.&lt;/p>
+&lt;p>The most important thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour by accessing the network device from CLI too.&lt;/p></description></item><item><title>Mininet-ImportError: customClass</title><link>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</link><pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/07/20/mininet-importerror-customclass/</guid><description>&lt;p>I tried to run miniedit.py after I have mininet installed, unfortunately, I got the error:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">ImportError&lt;/span>: cannot &lt;span style="color:#f92672">import&lt;/span> name customClass&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 593px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_6fba2dcf3ba5ef1c.png" data-fancybox data-caption=Error >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/07/2-opt_hu_44500454d9367a5d.png" class="img-responsive img-lazyload" alt=Error style="height: 100px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Error&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Checked the py file: ~/mininet/mininet/util.py and miniedity.py, find nothing is wrong, search on the Internet, got no clue.&lt;/p>
+&lt;p>Suddenly I found the version is not the version I wanted to install (I forgot to take a screenshot, the version should be 2.2.2daily something).&lt;/p></description></item><item><title>Flask, Flask-WTF, Flask-Bootstrap, Select2, jinja2 integration</title><link>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</link><pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/04/16/flask-flask-wtf-flask-bootstrap-select2-jinja2-integration/</guid><description>&lt;p>I intend to acquire the Python skill on web after years&amp;rsquo; work on data processing, so I started with &lt;a href="http://flask.pocoo.org/">Flask&lt;/a> by the following Miguel &lt;a href="https://blog.miguelgrinberg.com/author/Miguel%20Grinberg">Grinberg&amp;rsquo;s instruction&lt;/a>: &lt;a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The Flask Mega&lt;/a>, you can learn how to integrate bootstrap with your project from it.&lt;/p>
+&lt;p>After that, you can learn how to integrate select2 with your project by reading &lt;a href="https://blog.csdn.net/zheng_integer/article/details/59507942">Flask Web开发:用Select2实现类似知乎的标签系统&lt;/a> as a guide.&lt;/p></description></item><item><title>Python SMTPlib/Email</title><link>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</link><pubDate>Tue, 13 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/02/13/python-smtplib-email/</guid><description>&lt;p>I followed the &lt;a href="http://www.runoob.com/python3/python3-smtp.html">instruction&lt;/a> which is written in Chinese to learn how to send emails by Python, here some tips from my practice:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Name of the attachment is shown as ‘ATT00002’&lt;/p>
+&lt;p>The name of the attachment in the receiver mailbox is shown in the format ‘ATT0000X‘ with the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>att1[&lt;span style="color:#e6db74">&amp;#34;Content-Disposition&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;attachment; filename=&amp;#34;runoob.txt&amp;#34;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 173px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/02/4-opt_hu_9676f6ceeda14331.png" data-fancybox data-caption=Issue >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/02/4-opt_hu_444778dc6ac8f025.png" class="img-responsive img-lazyload" alt=Issue style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Issue&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+ &lt;/div>
+
+&lt;p>The issue can be fixed by using .addheader() function:&lt;/p></description></item><item><title>30分钟上手Python网络爬虫</title><link>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</link><pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/01/30/30min-python-web-scrapper/</guid><description>&lt;p>原文链接: &lt;a href="https://hackernoon.com/30-minute-python-web-scraper-39d6d038e5da">https://hackernoon.com/30-minute-python-web-scraper-39d6d038e5da&lt;/a>&lt;/p>
+&lt;p>此翻译已经获得作者许可。对原文、本文任何形式的转载、引用，必须知会作者&lt;/p>
+&lt;p>我想用Python和&lt;a href="http://www.seleniumhq.org/">Selenium&lt;/a>做网络爬虫有一会了，但是一直没有实施。几天之前，我决定小试一下。看起来令人望而却步，但实现代码从&lt;a href="https://unsplash.com/">Unsplash&lt;/a>抓取一些漂亮的图片却是相当容易的。&lt;/p>
+&lt;h4 id="简易图片爬虫的食材">简易图片爬虫的食材&lt;/h4>
+&lt;ul>
+&lt;li>&lt;a href="https://www.python.org/downloads/">Python&lt;/a>(3.6.3或更新的版本)&lt;/li>
+&lt;li>&lt;a href="https://www.jetbrains.com/pycharm/download/#section=windows">Pycharm&lt;/a>(社区版就够了)&lt;/li>
+&lt;li>pip install &lt;a href="http://docs.python-requests.org/en/master/user/install/#install">requests&lt;/a> &lt;a href="https://pillow.readthedocs.io/en/latest/installation.html#basic-installation">Pillow&lt;/a> &lt;a href="http://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium">selenium&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mozilla/geckodriver/releases/latest">geckodriver&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.mozilla.org/en-US/firefox/new/">Mozlla Firefox&lt;/a>&lt;/li>
+&lt;li>互联网&lt;/li>
+&lt;li>30分钟(或更少）&lt;/li>
+&lt;/ul>
+&lt;p>*译者注：&lt;/p></description></item><item><title>OverflowError: signed char is greater than maximum</title><link>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</link><pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2017/06/06/overflowerror-signed-char-is-greater-than-maximum/</guid><description>&lt;p>Here the pseudo code about the flow:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> array &lt;span style="color:#f92672">import&lt;/span> array
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>c &lt;span style="color:#f92672">=&lt;/span> array(&lt;span style="color:#e6db74">&amp;#39;b&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">with&lt;/span> open(file, mode &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;rb&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> f:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> character &lt;span style="color:#f92672">in&lt;/span> f:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> func(character)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> c&lt;span style="color:#f92672">.&lt;/span>append(res)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It runs into the error:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">OverflowError&lt;/span>: signed char &lt;span style="color:#f92672">is&lt;/span> greater than maximum
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>with a special character &amp;lsquo;À&amp;rsquo; which its binary value is 192:&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 75px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2017/06/1-opt_hu_d296f5b1185ec01d.png" data-fancybox data-caption=Character >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2017/06/1-opt_hu_13f2b29ea9bc2109.png" class="img-responsive img-lazyload" alt=Character style="height: 20px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Character&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>My way to resolve this error is to update the type code of the array from &amp;lsquo;b&amp;rsquo; (signed char) to &amp;lsquo;B&amp;rsquo; (unsigned char).&lt;/p></description></item><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>&lt;p>Background:&lt;/p>
+&lt;p>Here is a topology about the environment for performance testing, let’s name the servers 1st:&lt;/p>
+&lt;ul>
+&lt;li>1 windows server as the License/Workspace server&lt;/li>
+&lt;li>5 windows servers as the Network Server&lt;/li>
+&lt;li>5 windows servers as the Automation server&lt;/li>
+&lt;/ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 476px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_fb9d39317589d7fd.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_7bb2a51c31b7b3fe.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>It took us a lot of time to deploy the product and collect logs on all of these servers.&lt;/p></description></item><item><title>VSCode for Python debug</title><link>https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/</link><pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/10/vscode-for-python-debug/</guid><description>&lt;iframe src="//www.slideshare.net/slideshow/embed_code/key/3GrRaqBAXV9mK" width="668" height="714" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> &lt;/iframe> &lt;div style="margin-bottom:5px"> &lt;strong> &lt;a href="//www.slideshare.net/69444091/vs-code-debug" title="MS VS Code for Python debug" target="_blank">MS VS Code for Python debug&lt;/a> &lt;/strong> from &lt;strong>&lt;a href="//www.slideshare.net/69444091" target="_blank">k z&lt;/a>&lt;/strong> &lt;/div>
+&lt;p>View the article here if the iframe failed to load: &lt;a href="www.slideshare.net/slideshow/embed_code/key/3GrRaqBAXV9mK">www.slideshare.net/slideshow/embed_code/key/3GrRaqBAXV9mK&lt;/a>&lt;/p></description></item><item><title>Loop a dict to update the keys</title><link>https://blog.gainskills.top/2016/07/21/loop-a-dict-to-update-key/</link><pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/07/21/loop-a-dict-to-update-key/</guid><description>&lt;p>Source dict:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#e6db74">&amp;#39;keyA&amp;#39;&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;keyB&amp;#39;&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Expected dict:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#960050;background-color:#1e0010">‘&lt;/span>keyA&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#e6db74">&amp;#39;keyA&amp;#39;&lt;/span> :&lt;span style="color:#960050;background-color:#1e0010">’’&lt;/span>, keyA&lt;span style="color:#f92672">/&lt;/span>keyB&lt;span style="color:#960050;background-color:#1e0010">’&lt;/span> : &lt;span style="color:#960050;background-color:#1e0010">‘’&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Code1:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>keyPrefix &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;keyA&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> key, value &lt;span style="color:#f92672">in&lt;/span> Dict&lt;span style="color:#f92672">.&lt;/span>items():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    newkey &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join([keyPrefix, key])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    Dict[newkey] &lt;span style="color:#f92672">=&lt;/span> Dict&lt;span style="color:#f92672">.&lt;/span>pop(key)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Code2:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>keyPrefix &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;keyA&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> key, value &lt;span style="color:#f92672">in&lt;/span> Dict&lt;span style="color:#f92672">.&lt;/span>keys():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    newkey &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join([keyPrefix, key])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>    Dict[newkey] &lt;span style="color:#f92672">=&lt;/span> Dict&lt;span style="color:#f92672">.&lt;/span>pop(key)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Result of code1/code2 is:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#e6db74">&amp;#39;keyA/keyA/keyB&amp;#39;&lt;/span> : &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;keyA/keyA/keyA&amp;#39;&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>It doesn&amp;rsquo;t work as expected, and I found the case only exists when &lt;strong>prefix is the same to a key of the dict&lt;/strong> which means code1/code2 works well when the keyPrefix is neither ‘keyA’ nor ‘beyB’.&lt;/p></description></item><item><title>Python多版本, Sublime Text, Anaconda指北</title><link>https://blog.gainskills.top/2016/06/07/python-sublimetext-anaconda/</link><pubDate>Tue, 07 Jun 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/06/07/python-sublimetext-anaconda/</guid><description>&lt;h4 id="介绍">介绍&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://www.sublimetext.com/">Sublime text&lt;/a>是一款很好用的文本编辑器，更是一款先进的代码编辑器，支持通过插件进行功能扩展。在使用过UltraEditor, Notepad++, vim等等编辑器后，感觉sublime text最好用 (Update @ 2019-02-07: 目前由Sublimetext转移至&lt;a href="https://code.visualstudio.com/">MS VSCode&lt;/a>)。&lt;/p></description></item></channel></rss>

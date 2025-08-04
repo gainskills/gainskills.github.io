@@ -1,22 +1,270 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevOps on Blog - uTIcARdI</title><link>https://blog.gainskills.top/categories/devops/</link><description>Recent content in DevOps on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 27 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/categories/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS S3 Bucket Creation</title><link>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</link><pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</guid><description>Try to create a bucket with the Python library: boto3
-from boto3.session import Session session=Session(aws_access_key_id=&amp;#39;key1&amp;#39;, aws_secret_access_key=&amp;#39;key2&amp;#39;) s3 = session.resource(&amp;#39;s3&amp;#39;) s3.create_bucket(Bucket=&amp;#39;kz-testbucket&amp;#39;) but failed to run the script with errors:
-botocore.exceptions.ClientError: An error occurred (IllegalLocationConstraintException) when calling the CreateBucket operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
-botocore.errorfactory.BucketAlreadyExists: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: The requested bucket name is not available.</description></item><item><title>Jenkins/Xcode plugin-parameterized project</title><link>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</link><pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</guid><description> setting1 setting2 setting3 setting4 setting5 Reference
-Link1</description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:
-Install Jenkins
-Install Xcode plugin on Jenkins
-New a ‘Freestyle project’ on Jenkins
-Jenkins project configuration
-‘Source Code Management’ on Jenkins ‘Build’ setting on Jenkins Jenkins Project -&amp;gt; ‘Build Now’
-Errors:
-CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.</description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>Continue to try ansible with the device which was configure in netconf feature on Cisco IOS/IOSXE.
-Ansible Inventory:
---- netconf: hosts: netconfIos: ansible_host: &amp;#34;172.16.254.100&amp;#34; ansible_network_os: &amp;#34;ios&amp;#34; ansible_ssh_port: 22 netconfJunos: ansible_host: &amp;#34;172.16.254.9&amp;#34; ansible_network_os: &amp;#34;junos&amp;#34; ansible_ssh_port: 830 vars: ansible_connection: &amp;#34;netconf&amp;#34; ansible_ssh_user: test ansible_ssh_pass: test123 Note:
-ansible_connnection should be ‘netconf’ Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830) PlayBook:
-- name: IOS hosts: netconfIos gather_facts: false tasks: - name: Get config for IOS devices netconf_get: source: running register: iosnetconf - name: Display output debug: msg: &amp;#34;{{ iosnetconf.</description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: Juniper’s official document is clear and easy to follow. but for Cisco, I followed NETCONF over SSHv2, unfortunately, I was stuck on it for 6 days. OS Version Cisco IOS XE Software, Version 16.04.01 Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]</description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>After Telnet, continue to discuss how to access network device via SSH with Ansible.
-For SSH access, we should consider 3 methods:
-Username/password Username/Public-Key without password Username/Public-Key with password Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH
-Topo Enable SSH on the router Jump #1 username/password part to public key configuration, I discussed how to configure public key on IOS router with Putty before, instead of windows/putty, openssh is useful for generating keys on MAC OS.</description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>I’m learning Ansible by reading the official document and some books like Ansible入门. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation. The most important thing to practice routers/switches/routing protocol is accessing the device and</description></item><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>Background:
-Here is a topology about the environment for performance testing, let’s name the servers 1st:
-1 windows server as the License/Workspace server 5 windows servers as the Network Server 5 windows servers as the Automation server Topo It took us a lot of time to deploy the product and collect logs on all of these servers.
-My colleague wrote a client-server application and do some of the tasks automatically. The application indeed works for log collection, but for product deployment, as the server end running as a service and fails to launch the InstallShield wizard, it doesn’t support the product installation.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevOps on Blog - uTIcARdI</title><link>https://blog.gainskills.top/categories/devops/</link><description>Recent content in DevOps on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/categories/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS S3 Bucket Creation</title><link>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</link><pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/27/aws-s3-bucket-creation/</guid><description>&lt;p>Try to create a bucket with the Python library: boto3&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-Python" data-lang="Python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> boto3.session &lt;span style="color:#f92672">import&lt;/span> Session
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>session&lt;span style="color:#f92672">=&lt;/span>Session(aws_access_key_id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;key1&amp;#39;&lt;/span>, aws_secret_access_key&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;key2&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>s3 &lt;span style="color:#f92672">=&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>resource(&lt;span style="color:#e6db74">&amp;#39;s3&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>s3&lt;span style="color:#f92672">.&lt;/span>create_bucket(Bucket&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;kz-testbucket&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>but failed to run the script with errors:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>botocore.exceptions.ClientError: An error occurred (IllegalLocationConstraintException) when calling the CreateBucket operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>botocore.errorfactory.BucketAlreadyExists: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.&lt;/p></description></item><item><title>Jenkins/Xcode plugin-parameterized project</title><link>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</link><pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/26/jenkins-xcode-plugin-parameterized-project/</guid><description>&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 494px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/40-opt_hu_6a49542754d38af4.png" data-fancybox data-caption=setting1 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/40-opt_hu_f69a82919b69b3a5.png" class="img-responsive img-lazyload" alt=setting1 style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting1&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 1759px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/41-opt_hu_b2c0285096799f69.png" data-fancybox data-caption=setting2 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/41-opt_hu_72167153ff1becce.png" class="img-responsive img-lazyload" alt=setting2 style="height: 400px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting2&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 207px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/42-opt_hu_363089aa7182c81.png" data-fancybox data-caption=setting3 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/42-opt_hu_fe33c8429b8a3cc1.png" class="img-responsive img-lazyload" alt=setting3 style="height: 400px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting3&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 572px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/43-opt_hu_b2c0285096799f69.png" data-fancybox data-caption=setting4 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/43-opt_hu_194b6d319393d969.png" class="img-responsive img-lazyload" alt=setting4 style="height: 130px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting4&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 498px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/12/44-opt_hu_950ff4db04bb2a07.png" data-fancybox data-caption=setting5 >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/12/44-opt_hu_7bfd656887eb2152.png" class="img-responsive img-lazyload" alt=setting5 style="height: 200px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>setting5&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Reference&lt;/p></description></item><item><title>Jenkins/Xcode plugin for iOS project delivery</title><link>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</link><pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/12/18/jenkinsx-iosproject-delivery/</guid><description>&lt;p>Most of this blog is discuss the errors and how I resolve the errors when I try iOS project Continuous Delivery with Jenkins. The brief steps are:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Install Xcode plugin on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>New a ‘Freestyle project’ on Jenkins&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins project configuration&lt;/p>
+&lt;ul>
+&lt;li>‘Source Code Management’ on Jenkins&lt;/li>
+&lt;li>‘Build’ setting on Jenkins&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Jenkins Project -&amp;gt; ‘Build Now’&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Errors:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>CodeSign error: Code signing is required for product type ‘Application’ in SDK ‘iOS x.x’&lt;/p></description></item><item><title>Ansible-Access Network via Netconf</title><link>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</link><pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/11/ansible-access-network-netconf/</guid><description>&lt;p>Continue to try ansible with the device which was configure in &lt;a href="https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/">netconf feature on Cisco IOS/IOSXE&lt;/a>.&lt;/p>
+&lt;p>Ansible Inventory:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">netconf&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfIos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.100&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ios&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">22&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconfJunos&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_host&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;172.16.254.9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_network_os&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;junos&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_port&lt;/span>: &lt;span style="color:#ae81ff">830&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">vars&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_connection&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;netconf&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_user&lt;/span>: &lt;span style="color:#ae81ff">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ansible_ssh_pass&lt;/span>: &lt;span style="color:#ae81ff">test123&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p>
+&lt;ol>
+&lt;li>ansible_connnection should be ‘netconf’&lt;/li>
+&lt;li>Be careful on the netconf port, it should be 22 if you enable netconf over SSH (the default port is 830)&lt;/li>
+&lt;/ol>
+&lt;p>PlayBook:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">IOS&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hosts&lt;/span>: &lt;span style="color:#ae81ff">netconfIos&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">gather_facts&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tasks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Get config for IOS devices&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">netconf_get&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">source&lt;/span>: &lt;span style="color:#ae81ff">running&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">register&lt;/span>: &lt;span style="color:#ae81ff">iosnetconf&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Display output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">debug&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">msg&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ iosnetconf.stdout }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Netconf feature on Cisco IOS/IOSXE</title><link>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</link><pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/10/07/netconf-feature-on-cisco-ios-iosxe/</guid><description>&lt;p>I tried to see how Ansible works with the netconf feature on Cisco and Juniper in past days: &lt;a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/netconf-ssh-connection.html">Juniper’s official document&lt;/a> is clear and easy to follow. but for Cisco, I followed &lt;a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/cns/configuration/xe-3s/cns-xe-3s-book/netconf-sshv2.pdf">NETCONF over SSHv2&lt;/a>, unfortunately, I was stuck on it for 6 days.&lt;/p>
+&lt;p>&lt;strong>OS Version&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Cisco IOS XE Software, Version 16.04.01&lt;/li>
+&lt;li>Cisco IOS Software, Linux Software (I86BI_LINUXL2-IPBASEK9-M), Experimental Version 15.2(20170809:194209) [dstivers-aug9_]&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NetConf Requests&lt;/strong>&lt;/p>
+&lt;p>Tried many requests, all failed:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>The hello (works) request:&lt;/p></description></item><item><title>Ansible-Access Network via SSH</title><link>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/07/ansible-access-network-via-ssh/</guid><description>&lt;p>After &lt;a href="https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/">Telnet&lt;/a>, continue to discuss how to access network device via SSH with Ansible.&lt;/p>
+&lt;p>For SSH access, we should consider 3 methods:&lt;/p>
+&lt;ol>
+&lt;li>Username/password&lt;/li>
+&lt;li>Username/Public-Key without password&lt;/li>
+&lt;li>Username/Public-Key with password&lt;/li>
+&lt;/ol>
+&lt;p>Same EVE lab as the Telnet one: The Cisco IOS Router-192.168.1.99 is for SSH&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 2113px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_acff4cb47d4a9f39.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2018/09/5-opt_hu_9eb5bd280204eb4f.png" class="img-responsive img-lazyload" alt=Topo style="height: 350px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;h5 id="enable-ssh-on-the-router">Enable SSH on the router&lt;/h5>
+&lt;p>Jump #1 username/password part to public key configuration, I discussed &lt;a href="https://blog.gainskills.top/2013/11/08/ios-devices-ssh-key-auth/">how to configure public key on IOS router with Putty&lt;/a> before, instead of windows/putty, openssh is useful for generating keys on MAC OS.&lt;/p></description></item><item><title>Ansible-Access Network via Telnet</title><link>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</link><pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2018/09/04/ansible-access-network-via-telnet/</guid><description>&lt;p>I’m learning &lt;a href="https://www.ansible.com/">Ansible&lt;/a> by reading the official document and some books like &lt;a href="Ansible%E5%85%A5%E9%97%A8">Ansible入门&lt;/a>. Most of the instructions show you how to deploy or maintain the services on Linux, or file operations. But what I do is trying to explore its capability on network device management automation.&lt;/p>
+&lt;p>The most important thing to practice routers/switches/routing protocol is accessing the device and configure it via CLI when I started to learn network, so I start my ansible tour by accessing the network device from CLI too.&lt;/p></description></item><item><title>Run Ansible on Windows</title><link>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</link><pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2016/11/30/run-ansible-on-windows/</guid><description>&lt;p>Background:&lt;/p>
+&lt;p>Here is a topology about the environment for performance testing, let’s name the servers 1st:&lt;/p>
+&lt;ul>
+&lt;li>1 windows server as the License/Workspace server&lt;/li>
+&lt;li>5 windows servers as the Network Server&lt;/li>
+&lt;li>5 windows servers as the Automation server&lt;/li>
+&lt;/ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 476px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_fb9d39317589d7fd.png" data-fancybox data-caption=Topo >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2016/11/5-opt_hu_7bb2a51c31b7b3fe.png" class="img-responsive img-lazyload" alt=Topo style="height: 300px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>Topo&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>It took us a lot of time to deploy the product and collect logs on all of these servers.&lt;/p></description></item></channel></rss>

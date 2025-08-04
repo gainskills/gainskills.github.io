@@ -1,2 +1,67 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lazy load on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/lazy-load/</link><description>Recent content in Lazy load on Blog - uTIcARdI</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/lazy-load/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo-Images management</title><link>https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/</link><pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/</guid><description>I introduced why I migrate my blog to github and Hugo here. Most of articles have been moved to here in 30 days. Next, I just want to talk about something about posts&amp;rsquo; images management, versioning, theme customization/something about SEO.
-Before start All images will be compressed before I upload them for the post. Many tools that could do this, such as tinypng, UPNG. My choice is Tinypng because it supports variety formats and its API.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lazy Load on Blog - uTIcARdI</title><link>https://blog.gainskills.top/tags/lazy-load/</link><description>Recent content in Lazy Load on Blog - uTIcARdI</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 04 Aug 2025 18:51:32 +1200</lastBuildDate><atom:link href="https://blog.gainskills.top/tags/lazy-load/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo-Images management</title><link>https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/</link><pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate><guid>https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/</guid><description>&lt;p>I introduced &lt;a href="2019/01/01/hello-world/">why&lt;/a> I migrate my blog to github and Hugo here. Most of articles have been moved to here in 30 days. Next, I just want to talk about something about &lt;a href="https://blog.gainskills.top/2019/01/25/post-img-mgmt-hugo/">posts&amp;rsquo; images management&lt;/a>, &lt;a href="https://blog.gainskills.top/2019/01/27/hugo-versioning/">versioning&lt;/a>, &lt;a href="https://blog.gainskills.top/2019/02/07/hugo-customization/">theme customization/something about SEO&lt;/a>.&lt;/p>
+&lt;h3 id="before-start">Before start&lt;/h3>
+&lt;p>All images will be compressed before I upload them for the post. Many tools that could do this, such as &lt;a href="https://tinypng.com/">tinypng&lt;/a>, &lt;a href="http://upng.photopea.com/">UPNG&lt;/a>. My choice is Tinypng because it supports variety formats and its &lt;a href="https://tinypng.com/developers/reference#%7Btpath(%22/developers%22)%7D">API&lt;/a>.&lt;/p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div align="center">
+ &lt;figure style="padding: 0.8rem; margin: 2rem 0; border: thin #c0c0c0 solid; border-radius: 10px; width: 1362px; max-width: 88%; ">
+ &lt;a href="https://blog.gainskills.top/img/postimgs/2019/01/01-opt_hu_7d302392f7ee3c76.png" data-fancybox data-caption=img&amp;#32;compression&amp;#32;(20M&amp;#32;to&amp;#32;5.1M) >
+ &lt;img data-src="https://blog.gainskills.top/img/postimgs/2019/01/01-opt_hu_e75b43c94fbfd0e8.png" class="img-responsive img-lazyload" alt=img&amp;#32;compression&amp;#32;(20M&amp;#32;to&amp;#32;5.1M) style="height: 400px;"/>
+ &lt;/a>
+ &lt;figcaption class="text-capitalize">
+ &lt;small>img compression (20M to 5.1M)&lt;/small>
+ &lt;/figcaption>
+ &lt;/figure>
+&lt;/div>
+
+&lt;p>Tinypng&amp;rsquo;s APIs can be called by &lt;a href="http://docs.python-requests.org/en/master/">Python-Requests&lt;/a> in this way:
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> os &lt;span style="color:#f92672">import&lt;/span> path
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> requests.auth &lt;span style="color:#f92672">import&lt;/span> HTTPBasicAuth
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">picopt&lt;/span>(root_path, apikey):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> f &lt;span style="color:#f92672">in&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>listdir(root_path):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fullurl &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>sep&lt;span style="color:#f92672">.&lt;/span>join([root_path, f])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> path&lt;span style="color:#f92672">.&lt;/span>isdir(fullurl):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> picopt(fullurl, apikey)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> fullurl&lt;span style="color:#f92672">.&lt;/span>endswith((&lt;span style="color:#e6db74">&amp;#39;.DS_Store&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;-opt.png&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;-opt.jpg&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;-opt.jpeg&amp;#39;&lt;/span>)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;ignore &amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> fullurl)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;processing &amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> fullurl)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(fullurl, &lt;span style="color:#e6db74">&amp;#39;rb&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> imgf:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> content &lt;span style="color:#f92672">=&lt;/span> imgf&lt;span style="color:#f92672">.&lt;/span>read()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>post(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auth&lt;span style="color:#f92672">=&lt;/span>HTTPBasicAuth(&lt;span style="color:#e6db74">&amp;#34;api:&lt;/span>&lt;span style="color:#e6db74">%s&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">%&lt;/span>(apikey), &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>), url&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;https://api.tinify.com/shrink&amp;#39;&lt;/span>, data&lt;span style="color:#f92672">=&lt;/span>content)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(res&lt;span style="color:#f92672">.&lt;/span>json())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> optimgurl &lt;span style="color:#f92672">=&lt;/span> res&lt;span style="color:#f92672">.&lt;/span>json()[&lt;span style="color:#e6db74">&amp;#39;output&amp;#39;&lt;/span>][&lt;span style="color:#e6db74">&amp;#39;url&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># print(optimgurl)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>get(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auth&lt;span style="color:#f92672">=&lt;/span>HTTPBasicAuth(&lt;span style="color:#e6db74">&amp;#34;api:&lt;/span>&lt;span style="color:#e6db74">%s&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">%&lt;/span>(apikey), &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>), url&lt;span style="color:#f92672">=&lt;/span>optimgurl)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> filename, filetypestr &lt;span style="color:#f92672">=&lt;/span> fullurl&lt;span style="color:#f92672">.&lt;/span>rsplit(&lt;span style="color:#e6db74">&amp;#39;.&amp;#39;&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> optfullurl &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;-opt.&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join([filename, filetypestr])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(optfullurl, &lt;span style="color:#e6db74">&amp;#39;wb&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> fd:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> chunk &lt;span style="color:#f92672">in&lt;/span> res&lt;span style="color:#f92672">.&lt;/span>iter_content(chunk_size&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">128&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fd&lt;span style="color:#f92672">.&lt;/span>write(chunk)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;optimized img file: &amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> fullurl)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> devkey &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> postimgsfolder &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> picopt(postimgsfolder, devkey)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p></description></item></channel></rss>
